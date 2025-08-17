@@ -1,0 +1,332 @@
+/* Light Mode Design System - Inspired by Futurepedia */
+
+/* Animation Speeds - Fixed */
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infinite-scroll 80s linear infinite; /* Slowed down from 40s */
+  display: flex;
+}
+
+/* Hero Text Animation - Slowed Down */
+@keyframes gradient-shift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.hero-gradient-text {
+  background-size: 200% 200%;
+  animation: gradient-shift 8s ease infinite; /* Slowed down from 3s */
+}
+
+/* Light Mode Color Variables */
+:root {
+  /* Futurepedia-inspired colors */
+  --light-bg: #FAFBFC; /* Soft blue-tinted white */
+  --light-surface: #FFFFFF;
+  --light-surface-hover: #F9FAFB;
+  --light-text: #1F2937;
+  --light-text-secondary: #6B7280;
+  --light-border: #E5E7EB;
+  --light-border-hover: #D1D5DB;
+  
+  /* Gradient colors */
+  --gradient-purple: #8B5CF6;
+  --gradient-blue: #3B82F6;
+  --gradient-teal: #10B981;
+  --gradient-cyan: #06B6D4;
+  --gradient-pink: #EC4899;
+  --gradient-orange: #F97316;
+  
+  /* Shadow colors */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-colored: 0 10px 40px -10px;
+}
+
+/* Light Mode Base Styles */
+.light {
+  background-color: var(--light-bg);
+  color: var(--light-text);
+}
+
+/* Navigation Bar - Light Mode */
+.light nav {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--light-border);
+  box-shadow: var(--shadow-sm);
+}
+
+.light nav .logo-gradient {
+  background: linear-gradient(135deg, var(--gradient-purple) 0%, var(--gradient-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Buttons - Light Mode */
+.light .btn-primary {
+  background: linear-gradient(135deg, var(--gradient-purple) 0%, var(--gradient-blue) 100%);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(139, 92, 246, 0.25);
+  transition: all 0.3s ease;
+}
+
+.light .btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px 0 rgba(139, 92, 246, 0.35);
+}
+
+.light .btn-secondary {
+  background: linear-gradient(135deg, var(--gradient-teal) 0%, var(--gradient-cyan) 100%);
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(16, 185, 129, 0.25);
+}
+
+.light .btn-outline {
+  background: white;
+  border: 2px solid var(--light-border);
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+.light .btn-outline:hover {
+  border-color: var(--gradient-purple);
+  color: var(--gradient-purple);
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+}
+
+/* Cards - Light Mode */
+.light .card {
+  background: white;
+  border: 1px solid var(--light-border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.light .card:hover {
+  box-shadow: var(--shadow-xl);
+  transform: translateY(-4px);
+  border-color: var(--gradient-purple);
+}
+
+.light .card-gradient {
+  background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(59, 130, 246, 0.05) 100%);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* News Ticker - Light Mode */
+.light .ticker-section {
+  background: linear-gradient(90deg, #FAFBFC 0%, #F3F4F6 50%, #FAFBFC 100%);
+  border-top: 1px solid var(--light-border);
+  border-bottom: 1px solid var(--light-border);
+}
+
+.light .ticker-gradient-overlay {
+  background: linear-gradient(90deg, 
+    rgba(139, 92, 246, 0.05) 0%, 
+    rgba(59, 130, 246, 0.05) 25%,
+    rgba(16, 185, 129, 0.05) 50%,
+    rgba(6, 182, 212, 0.05) 75%,
+    rgba(236, 72, 153, 0.05) 100%
+  );
+}
+
+/* Text Colors - Light Mode */
+.light .text-gradient-purple {
+  background: linear-gradient(135deg, var(--gradient-purple) 0%, var(--gradient-blue) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .text-gradient-teal {
+  background: linear-gradient(135deg, var(--gradient-teal) 0%, var(--gradient-cyan) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light .text-gradient-pink {
+  background: linear-gradient(135deg, var(--gradient-pink) 0%, var(--gradient-orange) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Hero Section - Light Mode */
+.light .hero-section {
+  background: linear-gradient(180deg, 
+    #FFFFFF 0%, 
+    rgba(139, 92, 246, 0.05) 50%, 
+    rgba(59, 130, 246, 0.05) 100%
+  );
+}
+
+.light .hero-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  box-shadow: 0 20px 40px -10px rgba(139, 92, 246, 0.15);
+}
+
+/* Tool Cards - Light Mode */
+.light .tool-card {
+  background: white;
+  border: 1px solid var(--light-border);
+  box-shadow: var(--shadow-md);
+  transition: all 0.3s ease;
+}
+
+.light .tool-card:hover {
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.02) 0%, 
+    rgba(59, 130, 246, 0.02) 100%
+  );
+  border-color: var(--gradient-purple);
+  box-shadow: 0 10px 40px -10px rgba(139, 92, 246, 0.25);
+  transform: translateY(-4px);
+}
+
+.light .tool-badge-hot {
+  background: linear-gradient(135deg, #EF4444 0%, #F97316 100%);
+  color: white;
+  box-shadow: 0 2px 8px 0 rgba(239, 68, 68, 0.25);
+}
+
+.light .tool-badge-new {
+  background: linear-gradient(135deg, var(--gradient-teal) 0%, var(--gradient-cyan) 100%);
+  color: white;
+  box-shadow: 0 2px 8px 0 rgba(16, 185, 129, 0.25);
+}
+
+.light .tool-badge-trending {
+  background: linear-gradient(135deg, var(--gradient-purple) 0%, var(--gradient-blue) 100%);
+  color: white;
+  box-shadow: 0 2px 8px 0 rgba(139, 92, 246, 0.25);
+}
+
+/* Footer - Light Mode */
+.light footer {
+  background: linear-gradient(180deg, #FAFBFC 0%, #F3F4F6 100%);
+  border-top: 1px solid var(--light-border);
+}
+
+/* Smooth Transitions */
+.light * {
+  transition: background-color 0.3s ease, 
+              color 0.3s ease, 
+              border-color 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+/* Scrollbar - Light Mode */
+.light ::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+.light ::-webkit-scrollbar-track {
+  background: #F3F4F6;
+}
+
+.light ::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--gradient-purple) 0%, var(--gradient-blue) 100%);
+  border-radius: 6px;
+}
+
+.light ::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--gradient-blue) 0%, var(--gradient-purple) 100%);
+}
+
+/* Selection - Light Mode */
+.light ::selection {
+  background: rgba(139, 92, 246, 0.2);
+  color: var(--gradient-purple);
+}
+
+/* Focus States - Light Mode */
+.light *:focus {
+  outline: 2px solid var(--gradient-purple);
+  outline-offset: 2px;
+}
+
+/* Input Fields - Light Mode */
+.light input,
+.light textarea,
+.light select {
+  background: white;
+  border: 1px solid var(--light-border);
+  color: var(--light-text);
+  transition: all 0.3s ease;
+}
+
+.light input:focus,
+.light textarea:focus,
+.light select:focus {
+  border-color: var(--gradient-purple);
+  box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+}
+
+/* Code Blocks - Light Mode */
+.light pre,
+.light code {
+  background: #F9FAFB;
+  border: 1px solid var(--light-border);
+  color: var(--light-text);
+}
+
+/* Tooltips - Light Mode */
+.light .tooltip {
+  background: white;
+  color: var(--light-text);
+  border: 1px solid var(--light-border);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Modal/Dialog - Light Mode */
+.light .modal {
+  background: white;
+  border: 1px solid var(--light-border);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Badges - Light Mode */
+.light .badge {
+  background: linear-gradient(135deg, 
+    rgba(139, 92, 246, 0.1) 0%, 
+    rgba(59, 130, 246, 0.1) 100%
+  );
+  color: var(--gradient-purple);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+}
+
+/* Loading States - Light Mode */
+.light .skeleton {
+  background: linear-gradient(90deg, 
+    #F3F4F6 0%, 
+    #E5E7EB 50%, 
+    #F3F4F6 100%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.5s ease-in-out infinite;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}

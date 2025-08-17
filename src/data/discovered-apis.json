@@ -1,0 +1,129 @@
+{
+  "apis": [
+    {
+      "name": "GPT-4 Turbo",
+      "provider": "OpenAI",
+      "description": "Most capable GPT-4 model",
+      "pricing": "$0.01 per 1K tokens",
+      "category": "LLM",
+      "endpoint": "https://api.openai.com",
+      "models": [
+        "gpt-4-turbo-preview",
+        "gpt-4-0125-preview"
+      ],
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "GPT-4 Vision",
+      "provider": "OpenAI",
+      "description": "Multimodal GPT-4 with vision capabilities",
+      "pricing": "$0.03 per 1K tokens",
+      "category": "Multimodal",
+      "endpoint": "https://api.openai.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "DALL-E 3",
+      "provider": "OpenAI",
+      "description": "Advanced image generation",
+      "pricing": "$0.04-0.12 per image",
+      "category": "Image Generation",
+      "endpoint": "https://api.openai.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "Claude 3.5 Sonnet",
+      "provider": "Anthropic",
+      "description": "Most intelligent Claude model",
+      "pricing": "$3 per million tokens",
+      "category": "LLM",
+      "endpoint": "https://api.anthropic.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    },
+    {
+      "name": "Claude 3 Opus",
+      "provider": "Anthropic",
+      "description": "Powerful reasoning and analysis",
+      "pricing": "$15 per million tokens",
+      "category": "LLM",
+      "endpoint": "https://api.anthropic.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "Gemini 2.0 Flash",
+      "provider": "Google",
+      "description": "Fast multimodal AI model",
+      "pricing": "$0.30 per million tokens",
+      "category": "Multimodal",
+      "endpoint": "https://generativelanguage.googleapis.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "Gemini Pro",
+      "provider": "Google",
+      "description": "Advanced reasoning model",
+      "pricing": "$0.50 per million tokens",
+      "category": "LLM",
+      "endpoint": "https://generativelanguage.googleapis.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    },
+    {
+      "name": "Mistral Large",
+      "provider": "Mistral AI",
+      "description": "Flagship multilingual model",
+      "pricing": "€8 per million tokens",
+      "category": "LLM",
+      "endpoint": "https://api.mistral.ai",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": true
+    },
+    {
+      "name": "Mixtral 8x7B",
+      "provider": "Mistral AI",
+      "description": "Open-weight mixture of experts",
+      "pricing": "€0.7 per million tokens",
+      "category": "LLM",
+      "endpoint": "https://api.mistral.ai",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    },
+    {
+      "name": "Llama 3.1 405B",
+      "provider": "Meta",
+      "description": "Open-source frontier model",
+      "pricing": "Free (self-hosted)",
+      "category": "Open Source",
+      "endpoint": "Various providers",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    },
+    {
+      "name": "Stable Diffusion XL",
+      "provider": "Stability AI",
+      "description": "High-quality image generation",
+      "pricing": "$0.002 per image",
+      "category": "Image Generation",
+      "endpoint": "https://api.stability.ai",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    },
+    {
+      "name": "Whisper API",
+      "provider": "OpenAI",
+      "description": "Speech to text transcription",
+      "pricing": "$0.006 per minute",
+      "category": "Speech",
+      "endpoint": "https://api.openai.com",
+      "dateAdded": "2025-08-16T18:19:50.510Z",
+      "trending": false
+    }
+  ],
+  "lastUpdated": "2025-08-16T18:19:50.510Z"
+}

@@ -1,0 +1,30 @@
+User-agent: *
+Allow: /
+
+# Main sections
+Allow: /tools
+Allow: /blog
+Allow: /mcp
+Allow: /api-directory
+
+# Resources
+Allow: /*.js
+Allow: /*.css
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.gif
+Allow: /*.svg
+Allow: /*.webp
+
+# Disallow admin and private paths
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin
+Disallow: /private
+
+# Crawl-delay (optional, for rate limiting)
+Crawl-delay: 1
+
+# Sitemap location
+Sitemap: https://aidevtoolsdaily.com/sitemap.xml

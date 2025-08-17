@@ -1,0 +1,49 @@
+name: Auto-Discover AI Tools
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+env:
+  NODE_VERSION: '18'
+
+jobs:
+  discover:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm ci
+    
+    - name: Run discovery script
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        PRODUCT_HUNT_TOKEN: ${{ secrets.PRODUCT_HUNT_TOKEN }}
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        CRON_SECRET: ${{ secrets.CRON_SECRET }}
+        DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+      run: |
+        # Trigger the discovery API
+        curl -X GET \
+          -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+          "${{ secrets.DEPLOY_URL }}/api/cron/update-tools"
+    
+    - name: Commit and push if changed
+      run: |
+        git config --global user.email "bot@aidevtoolsdaily.com"
+        git config --global user.name "AI Tools Bot"
+        git add -A
+        git diff --quiet && git diff --staged --quiet || (git commit -m "🤖 Auto-update: Discovered new AI tools" && git push)

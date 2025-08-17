@@ -1,0 +1,558 @@
+{
+  "servers": [
+    {
+      "name": "Awesome Mcp Servers",
+      "description": "A collection of MCP servers.",
+      "github": "https://github.com/punkpeye/awesome-mcp-servers",
+      "stars": 66241,
+      "language": null,
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "ai",
+        "mcp"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Github Mcp Server",
+      "description": "GitHub's official MCP Server",
+      "github": "https://github.com/github/github-mcp-server",
+      "stars": 21089,
+      "language": "Go",
+      "updated": "2025-08-16T17:41:51Z",
+      "topics": [
+        "github",
+        "mcp",
+        "mcp-server"
+      ],
+      "category": "Version Control"
+    },
+    {
+      "name": "Playwright Mcp",
+      "description": "Playwright MCP server",
+      "github": "https://github.com/microsoft/playwright-mcp",
+      "stars": 17106,
+      "language": "TypeScript",
+      "updated": "2025-08-16T17:56:12Z",
+      "topics": [
+        "mcp",
+        "playwright"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Fastmcp",
+      "description": "🚀 The fast, Pythonic way to build MCP servers and clients",
+      "github": "https://github.com/jlowin/fastmcp",
+      "stars": 16330,
+      "language": "Python",
+      "updated": "2025-08-16T17:15:50Z",
+      "topics": [
+        "agents",
+        "fastmcp",
+        "llms",
+        "mcp",
+        "mcp-clients",
+        "mcp-servers",
+        "mcp-tools",
+        "model-context-protocol",
+        "python"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Figma Context MCP",
+      "description": "MCP server to provide Figma layout information to AI coding agents like Cursor",
+      "github": "https://github.com/GLips/Figma-Context-MCP",
+      "stars": 9960,
+      "language": "TypeScript",
+      "updated": "2025-08-16T14:06:45Z",
+      "topics": [
+        "ai",
+        "cursor",
+        "figma",
+        "mcp",
+        "typescript"
+      ],
+      "category": "AI/ML"
+    },
+    {
+      "name": "Mcp Use",
+      "description": "mcp-use is the easiest way to interact with mcp servers with custom agents",
+      "github": "https://github.com/mcp-use/mcp-use",
+      "stars": 6550,
+      "language": "Python",
+      "updated": "2025-08-16T17:20:21Z",
+      "topics": [
+        "agent",
+        "agents",
+        "ai",
+        "mcp",
+        "mcp-client",
+        "model-context-protocol",
+        "model-context-protocol-client",
+        "model-context-protocol-sdk",
+        "python"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Zen Mcp Server",
+      "description": "The power of Claude Code + [Gemini / OpenAI / Grok / OpenRouter / Ollama / Custom Model / All Of The Above] working as one.",
+      "github": "https://github.com/BeehiveInnovations/zen-mcp-server",
+      "stars": 6211,
+      "language": "Python",
+      "updated": "2025-08-16T18:19:41Z",
+      "topics": [],
+      "category": "AI/ML"
+    },
+    {
+      "name": "Mcp Chrome",
+      "description": "Chrome MCP Server is a Chrome extension-based Model Context Protocol (MCP) server that exposes your Chrome browser functionality to AI assistants like Claude, enabling complex browser automation, content analysis, and semantic search.",
+      "github": "https://github.com/hangwin/mcp-chrome",
+      "stars": 5999,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:11:37Z",
+      "topics": [],
+      "category": "Browser"
+    },
+    {
+      "name": "GhidraMCP",
+      "description": "MCP Server for Ghidra",
+      "github": "https://github.com/LaurieWired/GhidraMCP",
+      "stars": 5627,
+      "language": "Java",
+      "updated": "2025-08-16T18:14:00Z",
+      "topics": [],
+      "category": "Tools"
+    },
+    {
+      "name": "Mcp",
+      "description": "AWS MCP Servers — helping you get the most out of AWS, wherever you use MCP.",
+      "github": "https://github.com/awslabs/mcp",
+      "stars": 5383,
+      "language": "Python",
+      "updated": "2025-08-16T17:50:32Z",
+      "topics": [
+        "aws",
+        "mcp",
+        "mcp-client",
+        "mcp-clients",
+        "mcp-host",
+        "mcp-server",
+        "mcp-servers",
+        "mcp-tools",
+        "modelcontextprotocol"
+      ],
+      "category": "Cloud"
+    },
+    {
+      "name": "Git Mcp",
+      "description": "Put an end to code hallucinations! GitMCP is a free, open-source, remote MCP server for any GitHub project",
+      "github": "https://github.com/idosal/git-mcp",
+      "stars": 5273,
+      "language": "TypeScript",
+      "updated": "2025-08-16T17:20:23Z",
+      "topics": [
+        "agentic-ai",
+        "agents",
+        "ai",
+        "claude",
+        "copilot",
+        "cursor",
+        "git",
+        "llm",
+        "mcp"
+      ],
+      "category": "Version Control"
+    },
+    {
+      "name": "Whatsapp Mcp",
+      "description": "WhatsApp MCP server",
+      "github": "https://github.com/lharries/whatsapp-mcp",
+      "stars": 4697,
+      "language": "Go",
+      "updated": "2025-08-16T12:47:56Z",
+      "topics": [
+        "ai",
+        "mcp",
+        "whatsapp",
+        "whatsapp-api"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Mcp Playwright",
+      "description": "Playwright Model Context Protocol Server - Tool to automate Browsers and APIs in Claude Desktop, Cline, Cursor IDE and More 🔌",
+      "github": "https://github.com/executeautomation/mcp-playwright",
+      "stars": 4562,
+      "language": "TypeScript",
+      "updated": "2025-08-16T17:58:59Z",
+      "topics": [],
+      "category": "API Integration"
+    },
+    {
+      "name": "5ire",
+      "description": "5ire is a cross-platform desktop AI assistant, MCP client. It compatible with major service providers,  supports local knowledge base and  tools via model context protocol servers .",
+      "github": "https://github.com/nanbingxyz/5ire",
+      "stars": 4358,
+      "language": "TypeScript",
+      "updated": "2025-08-16T10:01:24Z",
+      "topics": [
+        "knowledge-base",
+        "llms",
+        "mcp",
+        "mcp-client",
+        "model-context-protocol"
+      ],
+      "category": "AI/ML"
+    },
+    {
+      "name": "DesktopCommanderMCP",
+      "description": "This is MCP server for Claude that gives it terminal control, file system search and diff file editing capabilities",
+      "github": "https://github.com/wonderwhy-er/DesktopCommanderMCP",
+      "stars": 4226,
+      "language": "JavaScript",
+      "updated": "2025-08-16T17:51:49Z",
+      "topics": [
+        "agent",
+        "ai",
+        "code-analysis",
+        "code-generation",
+        "mcp",
+        "terminal-ai",
+        "terminal-automation",
+        "vibe-coding"
+      ],
+      "category": "File System"
+    },
+    {
+      "name": "Firecrawl Mcp Server",
+      "description": "🔥 Official Firecrawl MCP Server - Adds powerful web scraping to Cursor, Claude and any other LLM clients.",
+      "github": "https://github.com/mendableai/firecrawl-mcp-server",
+      "stars": 4186,
+      "language": "JavaScript",
+      "updated": "2025-08-16T18:14:39Z",
+      "topics": [
+        "batch-processing",
+        "claude",
+        "content-extraction",
+        "data-collection",
+        "firecrawl",
+        "firecrawl-ai",
+        "javascript-rendering",
+        "llm-tools",
+        "mcp-server",
+        "model-context-protocol",
+        "search-api",
+        "web-crawler",
+        "web-scraping"
+      ],
+      "category": "API Integration"
+    },
+    {
+      "name": "Awesome MCP ZH",
+      "description": "MCP 资源精选， MCP指南，Claude MCP，MCP Servers, MCP Clients",
+      "github": "https://github.com/yzfly/Awesome-MCP-ZH",
+      "stars": 3868,
+      "language": null,
+      "updated": "2025-08-16T14:54:41Z",
+      "topics": [
+        "claude",
+        "claude-mcp",
+        "deepseek",
+        "deepseek-mcp",
+        "mcp",
+        "mcp-clients",
+        "mcp-host",
+        "mcp-server",
+        "mcp-servers",
+        "mcp-servers-directory",
+        "mcp-tools",
+        "qwen-mcp"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Mcp",
+      "description": "Browser MCP is a Model Context Provider (MCP) server that allows AI applications to control your browser",
+      "github": "https://github.com/BrowserMCP/mcp",
+      "stars": 3674,
+      "language": "TypeScript",
+      "updated": "2025-08-16T17:43:52Z",
+      "topics": [
+        "browser-automation",
+        "browser-extension",
+        "claude",
+        "cursor",
+        "mcp",
+        "mcp-server"
+      ],
+      "category": "Browser"
+    },
+    {
+      "name": "Awesome Mcp Servers",
+      "description": "Awesome MCP Servers - A curated list of Model Context Protocol servers",
+      "github": "https://github.com/appcypher/awesome-mcp-servers",
+      "stars": 3533,
+      "language": null,
+      "updated": "2025-08-16T11:58:55Z",
+      "topics": [
+        "ai",
+        "anthropic-claude",
+        "awesome",
+        "context",
+        "mcp",
+        "model-context-protocol",
+        "servers",
+        "tool-use",
+        "tools"
+      ],
+      "category": "Tools"
+    },
+    {
+      "name": "Core",
+      "description": "A framework helps you quickly build AI Native IDE products. MCP Client, supports Model Context Protocol (MCP) tools via MCP server.",
+      "github": "https://github.com/opensumi/core",
+      "stars": 3483,
+      "language": "TypeScript",
+      "updated": "2025-08-16T04:39:41Z",
+      "topics": [
+        "ai",
+        "ai-first",
+        "ai-native",
+        "editor",
+        "electron",
+        "ide",
+        "ide-framework",
+        "mcp",
+        "mcp-client",
+        "opensumi",
+        "typescript",
+        "webide"
+      ],
+      "category": "AI/ML"
+    },
+    {
+      "name": "Modelcontextprotocol",
+      "description": "Specification and documentation for the Model Context Protocol",
+      "github": "https://github.com/modelcontextprotocol/modelcontextprotocol",
+      "stars": 5205,
+      "language": "TypeScript",
+      "updated": "2025-08-16T16:37:32Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Typescript Sdk",
+      "description": "The official TypeScript SDK for Model Context Protocol servers and clients",
+      "github": "https://github.com/modelcontextprotocol/typescript-sdk",
+      "stars": 9232,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:03:45Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Python Sdk",
+      "description": "The official Python SDK for Model Context Protocol servers and clients",
+      "github": "https://github.com/modelcontextprotocol/python-sdk",
+      "stars": 17561,
+      "language": "Python",
+      "updated": "2025-08-16T18:14:20Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": ".github",
+      "description": "Discussions and README for Model Context Protocol",
+      "github": "https://github.com/modelcontextprotocol/.github",
+      "stars": 47,
+      "language": null,
+      "updated": "2025-08-13T20:32:47Z",
+      "official": true,
+      "category": "Version Control"
+    },
+    {
+      "name": "Inspector",
+      "description": "Visual testing tool for MCP servers",
+      "github": "https://github.com/modelcontextprotocol/inspector",
+      "stars": 5727,
+      "language": "TypeScript",
+      "updated": "2025-08-16T15:25:33Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Docs",
+      "description": "Documentation for the Model Context Protocol (MCP)",
+      "github": "https://github.com/modelcontextprotocol/docs",
+      "stars": 405,
+      "language": "MDX",
+      "updated": "2025-08-15T07:15:58Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Create Typescript Server",
+      "description": "CLI tool to create a new TypeScript MCP server",
+      "github": "https://github.com/modelcontextprotocol/create-typescript-server",
+      "stars": 164,
+      "language": "JavaScript",
+      "updated": "2025-08-16T11:35:17Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Create Python Server",
+      "description": "Create a Python MCP server",
+      "github": "https://github.com/modelcontextprotocol/create-python-server",
+      "stars": 453,
+      "language": "Python",
+      "updated": "2025-08-16T11:35:16Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Servers",
+      "description": "Model Context Protocol Servers",
+      "github": "https://github.com/modelcontextprotocol/servers",
+      "stars": 64530,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:18:04Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Quickstart Resources",
+      "description": "A repository of servers and clients from the Model Context Protocol tutorials",
+      "github": "https://github.com/modelcontextprotocol/quickstart-resources",
+      "stars": 691,
+      "language": "TypeScript",
+      "updated": "2025-08-16T15:30:19Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Kotlin Sdk",
+      "description": "The official Kotlin SDK for Model Context Protocol servers and clients. Maintained in collaboration with JetBrains",
+      "github": "https://github.com/modelcontextprotocol/kotlin-sdk",
+      "stars": 988,
+      "language": "Kotlin",
+      "updated": "2025-08-16T11:36:08Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Java Sdk",
+      "description": "The official Java SDK for Model Context Protocol servers and clients. Maintained in collaboration with Spring AI",
+      "github": "https://github.com/modelcontextprotocol/java-sdk",
+      "stars": 2272,
+      "language": "Java",
+      "updated": "2025-08-16T17:24:06Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Registry",
+      "description": "A community driven registry service for Model Context Protocol (MCP) servers.",
+      "github": "https://github.com/modelcontextprotocol/registry",
+      "stars": 2071,
+      "language": "Go",
+      "updated": "2025-08-16T09:57:16Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Swift Sdk",
+      "description": "The official Swift SDK for Model Context Protocol servers and clients.",
+      "github": "https://github.com/modelcontextprotocol/swift-sdk",
+      "stars": 927,
+      "language": "Swift",
+      "updated": "2025-08-16T07:55:42Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Rust Sdk",
+      "description": "The official Rust SDK for the Model Context Protocol",
+      "github": "https://github.com/modelcontextprotocol/rust-sdk",
+      "stars": 2004,
+      "language": "Rust",
+      "updated": "2025-08-16T14:58:04Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Ruby Sdk",
+      "description": "The official Ruby SDK for the Model Context Protocol. Maintained in collaboration with Shopify.",
+      "github": "https://github.com/modelcontextprotocol/ruby-sdk",
+      "stars": 394,
+      "language": "Ruby",
+      "updated": "2025-08-16T11:57:40Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Csharp Sdk",
+      "description": "The official C# SDK for Model Context Protocol servers and clients. Maintained in collaboration with Microsoft.",
+      "github": "https://github.com/modelcontextprotocol/csharp-sdk",
+      "stars": 3071,
+      "language": "C#",
+      "updated": "2025-08-16T17:59:44Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Go Sdk",
+      "description": "The official Go SDK for Model Context Protocol servers and clients. Maintained in collaboration with Google.",
+      "github": "https://github.com/modelcontextprotocol/go-sdk",
+      "stars": 1614,
+      "language": "Go",
+      "updated": "2025-08-16T16:14:56Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Example Remote Server",
+      "description": "A hosted version of the Everything server - for demonstration and testing purposes, hosted at https://example-server.modelcontextprotocol.io/sse",
+      "github": "https://github.com/modelcontextprotocol/example-remote-server",
+      "stars": 15,
+      "language": "TypeScript",
+      "updated": "2025-08-13T20:33:19Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Servers Archived",
+      "description": "Reference MCP servers that are no longer maintained",
+      "github": "https://github.com/modelcontextprotocol/servers-archived",
+      "stars": 134,
+      "language": "JavaScript",
+      "updated": "2025-08-16T02:27:01Z",
+      "official": true,
+      "category": "AI/ML"
+    },
+    {
+      "name": "Use Mcp",
+      "description": "Official MCP server",
+      "github": "https://github.com/modelcontextprotocol/use-mcp",
+      "stars": 916,
+      "language": "TypeScript",
+      "updated": "2025-08-16T13:06:50Z",
+      "official": true,
+      "category": "Tools"
+    },
+    {
+      "name": "Example Remote Client",
+      "description": "Official MCP server",
+      "github": "https://github.com/modelcontextprotocol/example-remote-client",
+      "stars": 16,
+      "language": "TypeScript",
+      "updated": "2025-08-13T20:33:17Z",
+      "official": true,
+      "category": "Tools"
+    }
+  ],
+  "lastUpdated": "2025-08-16T18:19:50.510Z"
+}

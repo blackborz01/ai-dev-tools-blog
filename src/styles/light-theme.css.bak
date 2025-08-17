@@ -1,0 +1,240 @@
+/* Light Theme - Minimal Working Version */
+
+/* Only apply styles when in light mode */
+.light {
+  /* Base background */
+  background: #FFFFFF;
+}
+
+.light body {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+/* Fix white on white issue */
+.light .bg-white:not(.dark\:bg-white) {
+  background: #FFFFFF;
+}
+
+.light .bg-black:not(.text-white) {
+  background: #FFFFFF;
+}
+
+/* Navigation and active states */
+.light nav .bg-black.text-white,
+.light .bg-black.text-white {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.light nav .dark\:bg-white.dark\:text-black {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+/* Text colors */
+.light .text-white:not(.bg-black):not(.bg-red-500):not(.bg-lime-400):not(.bg-blue-600):not(.bg-green-400):not(.bg-purple-400):not(.bg-orange-500) {
+  color: #000000;
+}
+
+.light .dark\:text-white:not(.dark\:bg-white) {
+  color: #000000;
+}
+
+.light .text-black {
+  color: #000000;
+}
+
+/* Borders */
+.light .border-white,
+.light .dark\:border-white {
+  border-color: #000000;
+}
+
+.light .border-black,
+.light .dark\:border-black {
+  border-color: #000000;
+}
+
+/* Gray scale */
+.light .text-gray-400,
+.light .dark\:text-gray-400 {
+  color: #6b7280;
+}
+
+.light .text-gray-500,
+.light .dark\:text-gray-500 {
+  color: #4b5563;
+}
+
+.light .text-gray-600,
+.light .dark\:text-gray-600 {
+  color: #374151;
+}
+
+.light .bg-gray-900,
+.light .dark\:bg-gray-900 {
+  background: #f3f4f6;
+}
+
+.light .bg-gray-800,
+.light .dark\:bg-gray-800 {
+  background: #f9fafb;
+}
+
+/* Hover states */
+.light .hover\:bg-black:hover {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.light .hover\:text-white:hover {
+  color: #FFFFFF;
+}
+
+.light .dark\:hover\:bg-white:hover {
+  background: #000000;
+  color: #FFFFFF;
+}
+
+.light .dark\:hover\:text-black:hover {
+  color: #FFFFFF;
+}
+
+/* Keep accent colors */
+.light .bg-red-500 { background: #ef4444; }
+.light .bg-lime-400 { background: #a3e635; }
+.light .bg-yellow-400 { background: #facc15; }
+.light .bg-green-400 { background: #4ade80; }
+.light .bg-purple-400 { background: #a78bfa; }
+.light .bg-cyan-400 { background: #22d3ee; }
+.light .bg-blue-600 { background: #2563eb; }
+.light .bg-orange-500 { background: #f97316; }
+.light .bg-pink-400 { background: #f472b6; }
+.light .bg-teal-500 { background: #14b8a6; }
+
+.light .text-red-500 { color: #ef4444; }
+.light .text-lime-400 { color: #a3e635; }
+.light .text-yellow-400 { color: #facc15; }
+.light .text-green-400 { color: #4ade80; }
+.light .text-purple-400 { color: #a78bfa; }
+.light .text-cyan-400 { color: #22d3ee; }
+.light .text-blue-600 { color: #2563eb; }
+.light .text-orange-500 { color: #f97316; }
+.light .text-pink-400 { color: #f472b6; }
+.light .text-teal-500 { color: #14b8a6; }
+
+/* MCP page glass morphism */
+.light .glass-morphism {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid #e5e7eb;
+}
+
+.light .border-cyan-500\/30,
+.light .dark\:border-cyan-500\/30 {
+  border-color: #e5e7eb;
+}
+
+.light .border-cyan-500\/20,
+.light .dark\:border-cyan-500\/20 {
+  border-color: #f3f4f6;
+}
+
+/* Input fields */
+.light input,
+.light textarea,
+.light select {
+  background: #FFFFFF;
+  color: #000000;
+  border-color: #000000;
+}
+
+.light input::placeholder {
+  color: #9ca3af;
+}
+
+/* Code blocks */
+.light pre,
+.light code {
+  background: #f3f4f6;
+  color: #000000;
+}
+
+/* Articles and blog posts */
+.light article {
+  background: #FFFFFF;
+  color: #000000;
+}
+
+.light .prose {
+  color: #000000;
+}
+
+/* Opacity classes */
+.light .opacity-60 { opacity: 0.6; }
+.light .opacity-70 { opacity: 0.7; }
+.light .opacity-80 { opacity: 0.8; }
+.light .opacity-90 { opacity: 0.9; }
+
+/* Brutal shadows */
+.light .brutal-shadow {
+  box-shadow: 4px 4px 0px 0px #000000;
+}
+
+.light .brutal-shadow-sm {
+  box-shadow: 2px 2px 0px 0px #000000;
+}
+
+.light .brutal-shadow-lg {
+  box-shadow: 6px 6px 0px 0px #000000;
+}
+
+.light .brutal-shadow-red {
+  box-shadow: 4px 4px 0px 0px #ef4444;
+}
+
+/* Gradient backgrounds - let them work normally */
+.light .bg-gradient-to-b.from-orange-500.to-red-500 {
+  background: linear-gradient(to bottom, #f97316, #ef4444);
+  color: #FFFFFF;
+}
+
+.light .bg-gradient-to-r.from-purple-100.to-pink-100 {
+  background: linear-gradient(to right, #faf5ff, #fdf2f8);
+  color: #000000;
+}
+
+.light .bg-gradient-to-br.from-purple-100.to-pink-100 {
+  background: linear-gradient(to bottom right, #faf5ff, #fdf2f8);
+  color: #000000;
+}
+
+/* Gradient text */
+.light .bg-gradient-to-r.from-cyan-400.to-purple-400.bg-clip-text.text-transparent {
+  background: linear-gradient(to right, #22d3ee, #a78bfa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Fix noise overlay */
+.light .noise {
+  opacity: 0.02;
+}
+
+/* Keep important buttons styled correctly */
+.light .bg-red-500.text-white {
+  background: #ef4444;
+  color: #FFFFFF;
+}
+
+.light .bg-lime-400.text-black {
+  background: #a3e635;
+  color: #000000;
+}
+
+/* Fix line-through text */
+.light .line-through {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

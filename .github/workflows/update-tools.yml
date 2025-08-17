@@ -1,0 +1,31 @@
+name: Update AI Tools Data
+
+on:
+  schedule:
+    # Run every hour
+    - cron: '0 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+      
+      - name: Trigger Update
+        env:
+          CRON_SECRET: ${{ secrets.CRON_SECRET }}
+          SITE_URL: ${{ secrets.SITE_URL }}
+        run: |
+          curl -X GET "$SITE_URL/api/cron/update-tools" \
+            -H "Authorization: Bearer $CRON_SECRET"
+      
+      - name: Notify Success
+        if: success()
+        run: echo "✅ Tools updated successfully"
