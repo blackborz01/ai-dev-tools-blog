@@ -146,3 +146,4 @@ MIT License - feel free to use this project for any purpose.
 ---
 
 Built with ❤️ using Model Context Protocol (MCP) integrations
+
