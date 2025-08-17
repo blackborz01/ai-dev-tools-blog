@@ -13,8 +13,9 @@ export async function generateStaticParams() {
   }))
 }
 
-export async function generateMetadata({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug)
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const article = articles.find((a) => a.slug === resolvedParams.slug)
   
   if (!article) {
     return {
@@ -43,8 +44,9 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   }
 }
 
-export default function ArticlePage({ params }: { params: { slug: string } }) {
-  const article = articles.find((a) => a.slug === params.slug)
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
+  const resolvedParams = await params
+  const article = articles.find((a) => a.slug === resolvedParams.slug)
 
   if (!article) {
     notFound()

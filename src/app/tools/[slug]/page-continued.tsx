@@ -1,6 +1,6 @@
-                            {con.workaround && (
+                            {consideration.workaround && (
                               <p className="text-sm bg-white dark:bg-black p-2 border-2 border-red-300">
-                                <strong>Workaround:</strong> {con.workaround}
+                                <strong>Workaround:</strong> {consideration.workaround}
                               </p>
                             )}
                           </div>

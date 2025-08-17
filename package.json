@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "NODE_OPTIONS='--max-old-space-size=4096' next build",
     "start": "next start",
     "lint": "next lint",
     "update-data": "node scripts/run-update.js",
@@ -12,7 +12,10 @@
     "check-articles": "node scripts/check-articles.js",
     "find-duplicates": "node scripts/find-duplicates.js",
     "type-check": "tsc --noEmit",
-    "analyze": "ANALYZE=true next build"
+    "analyze": "next build",
+    "diagnose": "node scripts/diagnose-build.js",
+    "clean": "rm -rf .next node_modules package-lock.json",
+    "clean-install": "npm run clean && npm install"
   },
   "dependencies": {
     "next": "14.2.0",

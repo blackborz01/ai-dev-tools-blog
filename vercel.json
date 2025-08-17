@@ -1,8 +1,3 @@
 {
-  "crons": [
-    {
-      "path": "/api/cron/update-tools",
-      "schedule": "0 * * * *"
-    }
-  ]
+  "framework": "nextjs"
 }

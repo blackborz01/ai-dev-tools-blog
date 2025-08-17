@@ -25,7 +25,7 @@ const categories = [
   { name: "NEWS", count: visibleArticlesForCategories.filter(a => a.category === "NEWS").length, active: false },
 ]
 
-export default function BlogPage() {
+export default async function BlogPage() {
   // Hide duplicate articles (only hide the security vulnerabilities one)
   const duplicateSlugs = [
     'ai-security-vulnerabilities-hidden-crisis'
