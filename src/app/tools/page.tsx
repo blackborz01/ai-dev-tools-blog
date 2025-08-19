@@ -619,29 +619,27 @@ export default function ToolsPage() {
                             </div>
                           </div>
                           
-                          {/* Main CTA Button */}
+                          {/* Internal Details Link */}
+                          <Link
+                            href={`/tools/${tool.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
+                            className="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-bold text-center flex items-center justify-center gap-2 transition-all group-hover:shadow-lg"
+                          >
+                            <Sparkles className="w-4 h-4" />
+                            VIEW DETAILS
+                            <ChevronRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
+                          </Link>
+                          
+                          {/* External Website Link */}
                           <a
                             href={tool.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-full px-4 py-3 bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white rounded-lg font-bold text-center flex items-center justify-center gap-2 transition-all group-hover:shadow-lg"
+                            className="w-full mt-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-semibold text-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors flex items-center justify-center gap-2"
                           >
-                            <Globe className="w-4 h-4" />
-                            VISIT WEBSITE
-                            <ArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                            <Globe className="w-3.5 h-3.5" />
+                            Visit Website
+                            <ArrowUpRight className="w-3.5 h-3.5" />
                           </a>
-                          
-                          {/* Secondary Link if available */}
-                          {tool.sourceUrl && tool.sourceUrl !== tool.url && (
-                            <a
-                              href={tool.sourceUrl}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="w-full mt-2 px-4 py-2 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 rounded-lg text-sm font-semibold text-center hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
-                            >
-                              View Details
-                            </a>
-                          )}
                         </div>
                       </div>
                     </div>
@@ -684,6 +682,12 @@ export default function ToolsPage() {
                             )}
                             
                             <div className="ml-auto flex gap-2">
+                              <Link
+                                href={`/tools/${tool.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')}`}
+                                className="px-4 py-1 border-2 border-black dark:border-white text-black dark:text-white font-black hover:bg-black hover:text-white dark:hover:bg-white dark:hover:text-black transition-colors"
+                              >
+                                DETAILS
+                              </Link>
                               <a
                                 href={tool.url}
                                 target="_blank"

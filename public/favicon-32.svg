@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <defs>
+    <radialGradient id="bg32" cx="50%" cy="50%">
+      <stop offset="0%" style="stop-color:#0c1222;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:1" />
+    </radialGradient>
+    <linearGradient id="el32" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ffff;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0077b6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <rect width="32" height="32" rx="6" fill="url(#bg32)"/>
+  
+  <!-- Simplified infinity for small size -->
+  <g transform="translate(16, 16)">
+    <path d="M -7 0 C -7 -3, -3 -3, -3 0 C -3 3, -7 3, -7 0 Z M 7 0 C 7 -3, 3 -3, 3 0 C 3 3, 7 3, 7 0 Z" 
+          fill="none" 
+          stroke="url(#el32)" 
+          stroke-width="2"
+          stroke-linecap="round"/>
+    <path d="M -3 0 Q 0 -1.5, 3 0 Q 0 1.5, -3 0" 
+          fill="url(#el32)"/>
+  </g>
+</svg>

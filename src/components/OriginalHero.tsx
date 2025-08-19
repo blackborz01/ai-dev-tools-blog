@@ -7,41 +7,22 @@ import { useRouter } from 'next/navigation'
 import NeuralNetworkAnimation from './NeuralNetworkAnimation'
 import { useDataStats, useAnimatedCount } from '@/hooks/useDataStats'
 
-// Comprehensive tool database for search - Updated with current information
-const searchableItems = [
-  // AI Coding Tools - Updated to current tools
-  { id: 'cursor', name: 'Cursor', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🎯', tags: ['ai', 'code', 'editor', 'gpt-4'] },
-  { id: 'github-copilot', name: 'GitHub Copilot', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🐙', tags: ['ai', 'code', 'completion', 'github'] },
-  { id: 'windsurf', name: 'Windsurf IDE', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🏄', tags: ['ide', 'ai', 'editor'] },
-  { id: 'v0', name: 'v0 by Vercel', category: 'AI Coding', type: 'tool', url: '/tools', icon: '⚡', tags: ['ui', 'generation', 'react'] },
-  { id: 'codeium', name: 'Codeium', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🚀', tags: ['free', 'code', 'completion'] },
-  { id: 'tabnine', name: 'Tabnine', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🤖', tags: ['ai', 'autocomplete', 'privacy'] },
-  { id: 'claude-code', name: 'Claude Code', category: 'AI Coding', type: 'tool', url: '/tools', icon: '💻', tags: ['anthropic', 'claude', 'terminal', 'agent'] },
-  { id: 'replit-ai', name: 'Replit AI', category: 'AI Coding', type: 'tool', url: '/tools', icon: '🎨', tags: ['cloud', 'ide', 'collaboration'] },
-  
-  // MCP Servers
-  { id: 'mcp-filesystem', name: 'MCP Filesystem', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '📁', tags: ['mcp', 'file', 'claude'] },
-  { id: 'mcp-github', name: 'MCP GitHub', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '🔗', tags: ['mcp', 'github', 'integration'] },
-  { id: 'mcp-slack', name: 'MCP Slack', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '💬', tags: ['mcp', 'slack', 'communication'] },
-  { id: 'mcp-postgres', name: 'MCP PostgreSQL', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '🗄️', tags: ['mcp', 'database', 'sql'] },
-  { id: 'mcp-google', name: 'MCP Google Drive', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '📎', tags: ['mcp', 'google', 'storage'] },
-  { id: 'mcp-azure', name: 'MCP Azure', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '☁️', tags: ['mcp', 'azure', 'cloud'] },
-  { id: 'mcp-selenium', name: 'MCP Selenium', category: 'MCP Server', type: 'mcp', url: '/mcp', icon: '🔧', tags: ['mcp', 'automation', 'testing'] },
-  
-  // API Models - Updated to current models
-  { id: 'gpt-4-turbo', name: 'GPT-4 Turbo', category: 'API Model', type: 'api', url: '/api-directory/openai/gpt-4-turbo', icon: '🧠', tags: ['openai', 'gpt-4', 'api', 'llm'] },
-  { id: 'gpt-4o', name: 'GPT-4o', category: 'API Model', type: 'api', url: '/api-directory/openai/gpt-4o', icon: '⚡', tags: ['openai', 'gpt-4o', 'api', 'fast'] },
-  { id: 'claude-3-5-sonnet', name: 'Claude 3.5 Sonnet', category: 'API Model', type: 'api', url: '/api-directory/anthropic/claude-3-5-sonnet', icon: '🎭', tags: ['anthropic', 'claude', 'api', 'llm'] },
-  { id: 'claude-3-opus', name: 'Claude 3 Opus', category: 'API Model', type: 'api', url: '/api-directory/anthropic/claude-3-opus', icon: '🎼', tags: ['anthropic', 'claude', 'api', 'powerful'] },
-  { id: 'gemini-pro', name: 'Gemini Pro', category: 'API Model', type: 'api', url: '/api-directory/google/gemini-pro', icon: '✨', tags: ['google', 'gemini', 'api', 'free'] },
-  { id: 'mistral-large', name: 'Mistral Large', category: 'API Model', type: 'api', url: '/api-directory', icon: '🌪️', tags: ['mistral', 'api', 'europe'] },
-  { id: 'llama-3', name: 'Llama 3', category: 'API Model', type: 'api', url: '/api-directory', icon: '🦙', tags: ['meta', 'llama', 'open-source'] },
-  
-  // Dev Tools
-  { id: 'docker', name: 'Docker', category: 'Dev Tool', type: 'tool', url: '/tools', icon: '🐳', tags: ['container', 'devops', 'deployment'] },
-  { id: 'vscode', name: 'VS Code', category: 'Dev Tool', type: 'tool', url: '/tools', icon: '💻', tags: ['editor', 'microsoft', 'ide'] },
-  { id: 'git', name: 'Git', category: 'Dev Tool', type: 'tool', url: '/tools', icon: '🌳', tags: ['version', 'control', 'github'] },
-]
+// Type definitions for search results
+interface SearchAPIResult {
+  type: 'article' | 'tool' | 'mcp' | 'api' | 'guide'
+  title: string
+  excerpt: string
+  url: string
+  category: string
+  score: number
+  metadata?: {
+    provider?: string
+    status?: string
+    pricing?: string
+    capabilities?: string[]
+    tags?: string[]
+  }
+}
 
 interface SearchResult {
   id: string
@@ -50,7 +31,7 @@ interface SearchResult {
   type: string
   url: string
   icon: string
-  tags: string[]
+  tags?: string[]
 }
 
 export default function OriginalHero() {
@@ -70,24 +51,81 @@ export default function OriginalHero() {
   const dailyUpdates = useAnimatedCount(12, 1500) // Keep this static for now
   const usersCount = useAnimatedCount(8543, 2000) // Keep this static for now
   
-  // Handle search input
+  // Debounce timer ref
+  const debounceTimer = useRef<NodeJS.Timeout>()
+  const [isSearching, setIsSearching] = useState(false)
+  
+  // Handle search input with API call
   useEffect(() => {
-    if (searchQuery.length > 0) {
-      const query = searchQuery.toLowerCase()
-      const results = searchableItems.filter(item => 
-        item.name.toLowerCase().includes(query) ||
-        item.category.toLowerCase().includes(query) ||
-        item.tags.some(tag => tag.includes(query))
-      ).slice(0, 8) // Limit to 8 results
+    if (searchQuery.length > 1) {
+      // Clear previous timer
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current)
+      }
       
-      setSearchResults(results)
-      setShowResults(true)
-      setSelectedIndex(-1)
+      // Set loading state
+      setIsSearching(true)
+      
+      // Debounce search
+      debounceTimer.current = setTimeout(async () => {
+        try {
+          const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}&limit=12`)
+          const data = await response.json()
+          
+          if (data.success && data.results) {
+            // Convert API results to component format
+            const formattedResults: SearchResult[] = data.results.map((result: SearchAPIResult, idx: number) => ({
+              id: `${result.type}-${idx}`,
+              name: result.title,
+              category: result.category,
+              type: result.type,
+              url: result.url,
+              icon: getIconForType(result.type, result.category),
+              tags: result.metadata?.tags || []
+            }))
+            
+            setSearchResults(formattedResults)
+            setShowResults(true)
+            setSelectedIndex(-1)
+          }
+        } catch (error) {
+          console.error('Search error:', error)
+          setSearchResults([])
+        } finally {
+          setIsSearching(false)
+        }
+      }, 300) // 300ms debounce
     } else {
       setSearchResults([])
       setShowResults(false)
+      setIsSearching(false)
+    }
+    
+    // Cleanup
+    return () => {
+      if (debounceTimer.current) {
+        clearTimeout(debounceTimer.current)
+      }
     }
   }, [searchQuery])
+  
+  // Helper function to get icon based on type
+  const getIconForType = (type: string, category: string): string => {
+    if (type === 'tool') {
+      if (category.toLowerCase().includes('coding')) return '💻'
+      if (category.toLowerCase().includes('image')) return '🎨'
+      if (category.toLowerCase().includes('video')) return '🎬'
+      if (category.toLowerCase().includes('voice')) return '🎙️'
+      if (category.toLowerCase().includes('writing')) return '✍️'
+      if (category.toLowerCase().includes('chat')) return '💬'
+      return '🔧'
+    }
+    if (type === 'mcp') return '🔌'
+    if (type === 'api') return '🔗'
+    if (type === 'article') return '📄'
+    if (type === 'guide') return '📚'
+    return '📦'
+  }
   
   // Handle click outside
   useEffect(() => {
@@ -127,13 +165,15 @@ export default function OriginalHero() {
   
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()
-    if (searchQuery) {
+    if (searchQuery && searchResults.length === 0) {
+      // Only go to tools page if no results found
       router.push(`/tools?search=${encodeURIComponent(searchQuery)}`)
     }
   }
   
   const handleResultClick = (result: SearchResult) => {
-    router.push(result.url)
+    // Navigate directly to the URL without search page
+    window.location.href = result.url
   }
 
   return (
@@ -175,7 +215,7 @@ export default function OriginalHero() {
                     onChange={(e) => setSearchQuery(e.target.value)}
                     onKeyDown={handleKeyDown}
                     onFocus={() => searchQuery && setShowResults(true)}
-                    placeholder="Search tools... (e.g., 'cursor', 'MCP servers', 'GPT-4')"
+                    placeholder="Search 3700+ tools, MCP servers, APIs... (e.g., 'cursor', 'GPT-4')"
                     className="w-full pl-16 pr-32 py-5 text-lg bg-white dark:bg-gray-900 text-black dark:text-white border-4 border-black dark:border-white font-bold placeholder:text-gray-400 focus:outline-none focus:ring-4 focus:ring-lime-400 transition-all"
                     aria-label="Search AI tools"
                   />
@@ -190,7 +230,15 @@ export default function OriginalHero() {
               </form>
               
               {/* Instant Search Results Dropdown */}
-              {showResults && searchResults.length > 0 && (
+              {isSearching && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 text-black dark:text-white border-4 border-black dark:border-white shadow-2xl p-8 z-50">
+                  <div className="text-center">
+                    <div className="inline-block animate-spin rounded-full h-8 w-8 border-4 border-gray-300 border-t-lime-400 mb-2"></div>
+                    <div className="font-mono text-sm opacity-60">Searching database...</div>
+                  </div>
+                </div>
+              )}
+              {showResults && !isSearching && searchResults.length > 0 && (
                 <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 text-black dark:text-white border-4 border-black dark:border-white shadow-2xl max-h-96 overflow-y-auto z-50">
                   {searchResults.map((result, index) => (
                     <button
@@ -212,7 +260,18 @@ export default function OriginalHero() {
                     </button>
                   ))}
                   <div className="px-6 py-3 bg-gray-100 dark:bg-gray-800 text-sm text-center">
-                    Press <kbd className="px-2 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 font-mono text-xs">Enter</kbd> to search all results
+                    <div className="flex items-center justify-between">
+                      <span className="font-mono text-xs opacity-60">Showing top results</span>
+                      <span>Press <kbd className="px-2 py-1 bg-white dark:bg-gray-700 border border-gray-300 dark:border-gray-600 font-mono text-xs">Enter</kbd> to see all</span>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {showResults && !isSearching && searchResults.length === 0 && searchQuery.length > 1 && (
+                <div className="absolute top-full left-0 right-0 mt-2 bg-white dark:bg-gray-900 text-black dark:text-white border-4 border-black dark:border-white shadow-2xl p-6 z-50">
+                  <div className="text-center">
+                    <div className="font-black text-lg mb-2">No results found</div>
+                    <div className="text-sm opacity-60">Try different keywords or browse all tools</div>
                   </div>
                 </div>
               )}

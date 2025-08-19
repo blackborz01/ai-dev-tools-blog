@@ -2,6 +2,10 @@
 // Import this in ai-tools-fetcher.ts
 
 export const AI_TOOLS_MEGA_LIST = [
+  // === FEATURED AUDIO & MUSIC TOOLS ===
+  { name: 'SoundCloud', url: 'https://soundcloud.com', category: 'Audio & Music', description: 'AI-powered music distribution and discovery platform with advanced recommendation engine', pricing: 'freemium' },
+  { name: 'SoundCloud AI', url: 'https://soundcloud.com', category: 'Audio & Music', description: 'Next-generation AI-powered music distribution, discovery, and creation platform', pricing: 'freemium' },
+  
   // === CHATBOTS & ASSISTANTS (150) ===
   { name: 'ChatGPT', url: 'https://chat.openai.com', category: 'Chatbots & Assistants', description: 'OpenAI conversational AI', pricing: 'freemium' },
   { name: 'Claude', url: 'https://claude.ai', category: 'Chatbots & Assistants', description: 'Anthropic AI assistant', pricing: 'freemium' },

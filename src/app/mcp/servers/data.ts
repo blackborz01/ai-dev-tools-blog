@@ -351,6 +351,175 @@ const baseMcpServers = [
     difficulty: 'Medium',
     tags: ['automation', 'configuration', 'deployment', 'playbooks'],
     official: false
+  },
+  // New discovered servers with pages
+  {
+    id: 'playwright-mcp',
+    name: 'Playwright MCP',
+    slug: 'playwright-mcp',
+    emoji: '🎭',
+    description: 'Microsoft\'s official Playwright integration for browser automation and testing.',
+    category: 'Automation',
+    stars: 17100,
+    users: '85K+',
+    setupTime: '3 min',
+    difficulty: 'Easy',
+    tags: ['browser', 'testing', 'automation', 'microsoft'],
+    official: true
+  },
+  {
+    id: 'fastmcp',
+    name: 'FastMCP',
+    slug: 'fastmcp',
+    emoji: '🚀',
+    description: 'The fast, Pythonic way to build MCP servers and clients.',
+    category: 'Development',
+    stars: 16300,
+    users: '75K+',
+    setupTime: '1 min',
+    difficulty: 'Easy',
+    tags: ['python', 'framework', 'development', 'fast'],
+    official: false
+  },
+  {
+    id: 'figma-context-mcp',
+    name: 'Figma Context MCP',
+    slug: 'figma-context-mcp',
+    emoji: '🎨',
+    description: 'Provide Figma layout information to AI coding agents like Cursor.',
+    category: 'Design',
+    stars: 9900,
+    users: '50K+',
+    setupTime: '5 min',
+    difficulty: 'Easy',
+    tags: ['figma', 'design', 'ui', 'cursor'],
+    official: false
+  },
+  {
+    id: 'mcp-chrome',
+    name: 'Chrome MCP',
+    slug: 'mcp-chrome',
+    emoji: '🌐',
+    description: 'Chrome extension-based MCP server for browser automation and content analysis.',
+    category: 'Browser',
+    stars: 6000,
+    users: '30K+',
+    setupTime: '3 min',
+    difficulty: 'Easy',
+    tags: ['chrome', 'browser', 'extension', 'automation'],
+    official: false
+  },
+  {
+    id: 'whatsapp-mcp',
+    name: 'WhatsApp MCP',
+    slug: 'whatsapp-mcp',
+    emoji: '💚',
+    description: 'WhatsApp integration for AI - send messages and manage chats.',
+    category: 'Communication',
+    stars: 4700,
+    users: '25K+',
+    setupTime: '5 min',
+    difficulty: 'Medium',
+    tags: ['whatsapp', 'messaging', 'chat', 'communication'],
+    official: false
+  },
+  {
+    id: 'firecrawl-mcp-server',
+    name: 'Firecrawl MCP',
+    slug: 'firecrawl-mcp-server',
+    emoji: '🔥',
+    description: 'Official Firecrawl MCP Server - powerful web scraping for AI.',
+    category: 'Automation',
+    stars: 4200,
+    users: '20K+',
+    setupTime: '3 min',
+    difficulty: 'Easy',
+    tags: ['scraping', 'web', 'crawling', 'data'],
+    official: true
+  },
+  {
+    id: 'zen-mcp-server',
+    name: 'Zen MCP Server',
+    slug: 'zen-mcp-server',
+    emoji: '☯️',
+    description: 'Multiple AI models working as one - Gemini, OpenAI, Grok, Ollama.',
+    category: 'AI/ML',
+    stars: 6200,
+    users: '30K+',
+    setupTime: '5 min',
+    difficulty: 'Medium',
+    tags: ['ai', 'models', 'gemini', 'openai'],
+    official: false
+  },
+  {
+    id: 'ghidramcp',
+    name: 'Ghidra MCP',
+    slug: 'ghidramcp',
+    emoji: '🔍',
+    description: 'MCP Server for Ghidra reverse engineering framework.',
+    category: 'Security',
+    stars: 5600,
+    users: '15K+',
+    setupTime: '10 min',
+    difficulty: 'Hard',
+    tags: ['reverse-engineering', 'security', 'ghidra', 'analysis'],
+    official: false
+  },
+  {
+    id: 'git-mcp',
+    name: 'Git MCP Remote',
+    slug: 'git-mcp',
+    emoji: '📡',
+    description: 'Remote MCP server for any GitHub project - end code hallucinations.',
+    category: 'Development',
+    stars: 5300,
+    users: '26K+',
+    setupTime: '3 min',
+    difficulty: 'Easy',
+    tags: ['git', 'remote', 'github', 'code'],
+    official: false
+  },
+  {
+    id: 'desktopcommandermcp',
+    name: 'Desktop Commander',
+    slug: 'desktopcommandermcp',
+    emoji: '💻',
+    description: 'Terminal control and file system management for AI assistants.',
+    category: 'System',
+    stars: 4200,
+    users: '21K+',
+    setupTime: '2 min',
+    difficulty: 'Easy',
+    tags: ['terminal', 'filesystem', 'system', 'control'],
+    official: false
+  },
+  {
+    id: 'browser-mcp',
+    name: 'Browser MCP',
+    slug: 'browser-mcp',
+    emoji: '🌍',
+    description: 'Control your browser with AI - automation and web scraping.',
+    category: 'Browser',
+    stars: 3700,
+    users: '18K+',
+    setupTime: '5 min',
+    difficulty: 'Medium',
+    tags: ['browser', 'automation', 'scraping', 'control'],
+    official: false
+  },
+  {
+    id: 'mcp-use',
+    name: 'MCP Use',
+    slug: 'mcp-use',
+    emoji: '🔧',
+    description: 'The easiest way to interact with MCP servers with custom agents.',
+    category: 'Tools',
+    stars: 6500,
+    users: '33K+',
+    setupTime: '2 min',
+    difficulty: 'Easy',
+    tags: ['agents', 'client', 'tools', 'interaction'],
+    official: false
   }
 ]
 
@@ -379,7 +548,13 @@ export const mcpCategories = [
   { id: 'Storage', name: 'Storage', emoji: '💾' },
   { id: 'Automation', name: 'Automation', emoji: '🤖' },
   { id: 'Search', name: 'Search', emoji: '🔍' },
-  { id: 'Finance', name: 'Finance', emoji: '💰' }
+  { id: 'Finance', name: 'Finance', emoji: '💰' },
+  { id: 'Browser', name: 'Browser', emoji: '🌐' },
+  { id: 'Design', name: 'Design', emoji: '🎨' },
+  { id: 'Security', name: 'Security', emoji: '🔒' },
+  { id: 'System', name: 'System', emoji: '💻' },
+  { id: 'AI/ML', name: 'AI/ML', emoji: '🤖' },
+  { id: 'Tools', name: 'Tools', emoji: '🛠️' }
 ]
 
 // SEO metadata for each MCP page
@@ -451,8 +626,8 @@ export const mcpInstallCommands = {
 }
 
 // Featured servers for homepage
-export const featuredServers = ['filesystem', 'github', 'slack', 'postgresql', 'docker', 'puppeteer']
+export const featuredServers = ['filesystem', 'github', 'slack', 'postgresql', 'docker', 'puppeteer', 'playwright-mcp', 'fastmcp', 'figma-context-mcp']
 
 // New and trending servers  
-export const trendingServers = ['notion', 'aws', 'stripe', 'elasticsearch']
-export const newServers = ['terraform', 'ansible', 'twilio', 'confluence']
+export const trendingServers = ['playwright-mcp', 'fastmcp', 'figma-context-mcp', 'zen-mcp-server', 'mcp-chrome']
+export const newServers = ['whatsapp-mcp', 'firecrawl-mcp-server', 'ghidramcp', 'git-mcp', 'desktopcommandermcp', 'browser-mcp', 'mcp-use']

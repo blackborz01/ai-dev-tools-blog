@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowLeft, Star, HardDrive, FileText, FolderOpen, Share2, Search, CheckCircle, XCircle, TrendingUp, Users, Clock, Cloud, Upload } from 'lucide-react'
 

@@ -13,25 +13,25 @@ import CookieConsent from '@/components/CookieConsent'
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://aidevtoolsdaily.com'),
-  title: 'AI Dev Tools Daily - Latest AI Coding Tools & MCP Servers | 2025',
-  description: 'Discover the best AI development tools in 2025. Compare Cursor, GitHub Copilot, Claude Code. Browse 200+ MCP servers. Daily updates, honest reviews, real benchmarks.',
-  keywords: 'AI coding tools, MCP servers, Model Context Protocol, Claude 3.5 Sonnet, GPT-4 Turbo, Cursor IDE, GitHub Copilot, Windsurf IDE, AI development tools, coding assistants 2025',
-  authors: [{ name: 'AI Dev Tools Daily' }],
+  metadataBase: new URL('https://www.boostdevspeed.com'),
+  title: 'BoostDevSpeed - Ship Code 3x Faster with AI Tools | 2025',
+  description: 'Master AI coding tools and ship faster. Real benchmarks of Cursor, Copilot, Claude. Fix MCP errors, avoid AI slowdowns, boost your dev speed 3x.',
+  keywords: 'boost developer speed, AI coding tools, MCP servers, GitHub Copilot, Cursor IDE, Claude, developer productivity, AI code optimization, faster coding',
+  authors: [{ name: 'BoostDevSpeed' }],
   alternates: {
-    canonical: 'https://aidevtoolsdaily.com',
+    canonical: 'https://www.boostdevspeed.com',
   },
   openGraph: {
-    title: 'AI Dev Tools Daily',
-    description: 'Premier destination for AI development tools and innovations',
-    url: 'https://aidevtoolsdaily.com',
-    siteName: 'AI Dev Tools Daily',
+    title: 'BoostDevSpeed - Ship Code 3x Faster',
+    description: 'Master AI coding tools. Real benchmarks. Proven strategies. Boost your development speed.',
+    url: 'https://www.boostdevspeed.com',
+    siteName: 'BoostDevSpeed',
     images: [
       {
-        url: 'https://aidevtoolsdaily.com/api/og',
+        url: 'https://www.boostdevspeed.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'AI Dev Tools Daily'
+        alt: 'BoostDevSpeed - Ship Code 3x Faster'
       },
     ],
     locale: 'en_US',
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'AI Dev Tools Daily',
-    description: 'Latest MCP, Claude Code & Cursor Innovations',
-    images: ['https://aidevtoolsdaily.com/api/og'],
+    title: 'BoostDevSpeed',
+    description: 'Ship code 3x faster with AI. Real benchmarks & strategies.',
+    images: ['https://www.boostdevspeed.com/api/og'],
   },
   robots: {
     index: true,
@@ -55,49 +55,9 @@ export const metadata: Metadata = {
     },
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || '',
+    google: 'your-google-verification-code',
+    yandex: 'your-yandex-verification-code',
   },
-}
-
-// Generate JSON-LD structured data
-const structuredData = {
-  '@context': 'https://schema.org',
-  '@graph': [
-    {
-      '@type': 'Organization',
-      '@id': 'https://aidevtoolsdaily.com/#organization',
-      name: 'AI Dev Tools Daily',
-      url: 'https://aidevtoolsdaily.com',
-      logo: {
-        '@type': 'ImageObject',
-        url: 'https://aidevtoolsdaily.com/logo.png',
-        width: 512,
-        height: 512
-      },
-      sameAs: [
-        'https://twitter.com/aidevtools',
-        'https://github.com/aidevtools'
-      ]
-    },
-    {
-      '@type': 'WebSite',
-      '@id': 'https://aidevtoolsdaily.com/#website',
-      url: 'https://aidevtoolsdaily.com',
-      name: 'AI Dev Tools Daily',
-      description: 'Discover the best AI development tools, MCP servers, and coding assistants',
-      publisher: {
-        '@id': 'https://aidevtoolsdaily.com/#organization'
-      },
-      potentialAction: {
-        '@type': 'SearchAction',
-        target: {
-          '@type': 'EntryPoint',
-          urlTemplate: 'https://aidevtoolsdaily.com/search?q={search_term_string}'
-        },
-        'query-input': 'required name=search_term_string'
-      }
-    }
-  ]
 }
 
 export default function RootLayout({
@@ -108,29 +68,21 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-        />
+        <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-32.svg?v=2" sizes="32x32" type="image/svg+xml" />
+        <link rel="icon" href="/favicon-16.svg?v=2" sizes="16x16" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/apple-icon.svg?v=2" />
+        <GoogleAnalytics />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ErrorBoundary>
-          <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-          {/* <AuthProvider> - removed */}
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem={false}
-              forcedTheme="dark"
-              disableTransitionOnChange
-            >
-              {children}
-              <Toaster />
-              <CookieConsent />
-              <Analytics />
-              <SpeedInsights />
-            </ThemeProvider>
-          {/* </AuthProvider> - removed */}
+          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
+            {children}
+            <Toaster />
+            <Analytics />
+            <SpeedInsights />
+            <CookieConsent />
+          </ThemeProvider>
         </ErrorBoundary>
       </body>
     </html>

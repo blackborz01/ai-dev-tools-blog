@@ -63,17 +63,18 @@ export default function Navbar() {
               </div>
               <div>
                 <div className="text-2xl font-bold tracking-tight">
-                  <span className="text-white">AI.</span>
-                  <span className="bg-gradient-to-r from-cyan-400 to-cyan-300 bg-clip-text text-transparent">TOOLS</span>
+                  <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">Boost</span>
+                  <span className="text-white">Dev</span>
+                  <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Speed</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="flex gap-0.5">
-                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full" />
-                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full" />
-                    <div className="w-1.5 h-1.5 bg-red-400 rounded-full" />
+                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
+                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}} />
+                    <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}} />
                   </div>
                   <div className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">
-                    Daily.Updates: 22:25:52
+                    Ship 3x Faster
                   </div>
                 </div>
               </div>

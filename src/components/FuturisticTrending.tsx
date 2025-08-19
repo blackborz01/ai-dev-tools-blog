@@ -229,7 +229,7 @@ export default function FuturisticTrending() {
             </span>
           </div>
           
-          <h2 className="text-3xl md:text-4xl font-black mb-3 relative">
+          <h2 className="text-5xl md:text-7xl font-black mb-3 relative">
             <span 
               className="bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent animate-gradient"
               style={{

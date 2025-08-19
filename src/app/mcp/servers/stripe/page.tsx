@@ -1,5 +1,3 @@
-'use client'
-
 import Link from 'next/link'
 import { ArrowLeft, Star, CreditCard, FileText, DollarSign, Zap, Shield, CheckCircle, XCircle, TrendingUp, Users, Clock, Receipt, BarChart } from 'lucide-react'
 

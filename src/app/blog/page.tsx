@@ -34,8 +34,13 @@ export default async function BlogPage() {
   // Filter out duplicates
   const visibleArticles = articles.filter(a => !duplicateSlugs.includes(a.slug))
   
+  // Sort articles by publish date (newest first)
+  const sortedArticles = [...visibleArticles].sort((a, b) => {
+    return new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime()
+  })
+  
   // Get hot/featured articles (from visible articles only)
-  const featuredArticles = visibleArticles.filter(a => a.featured)
+  const featuredArticles = sortedArticles.filter(a => a.featured)
   
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 via-white to-purple-50/20 dark:bg-gradient-to-br dark:from-black dark:via-gray-900 dark:to-purple-900/10 text-gray-800 dark:text-white">
@@ -53,7 +58,7 @@ export default async function BlogPage() {
             LATEST INTEL
           </h1>
           <p className="text-xl font-mono opacity-60">
-            &gt; {visibleArticles.length} ARTICLES // UPDATED DAILY // NO FLUFF
+            &gt; {sortedArticles.length} ARTICLES // UPDATED DAILY // NO FLUFF
           </p>
         </div>
       </section>
@@ -106,7 +111,7 @@ export default async function BlogPage() {
       <section className="py-12">
         <div className="container mx-auto px-4">
           <div className="grid gap-6">
-            {visibleArticles.map((article) => (
+            {sortedArticles.map((article) => (
               <Link href={`/blog/${article.slug}`} key={article.slug}>
                 <article className="bg-white dark:bg-black border-4 border-black dark:border-white brutal-shadow-lg brutal-hover cursor-pointer">
                   <div className="flex">

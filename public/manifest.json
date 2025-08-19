@@ -1,7 +1,7 @@
 {
-  "name": "AI Dev Tools Daily",
-  "short_name": "AI Tools",
-  "description": "Daily updates on AI development tools, MCP servers, Claude Code, Cursor IDE, and the latest AI coding innovations",
+  "name": "BoostDevSpeed",
+  "short_name": "BDS",
+  "description": "Master AI coding tools and ship code 3x faster. Real benchmarks, proven strategies, boost your development speed.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
