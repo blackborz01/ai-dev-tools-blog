@@ -27,4 +27,4 @@ Disallow: /private
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://www.boostdevspeed.com/sitemap.xml
+Sitemap: https://boostdevspeed.com/sitemap.xml

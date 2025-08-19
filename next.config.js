@@ -22,6 +22,35 @@ const nextConfig = {
     workerThreads: false,
     cpus: 1,
   },
+  
+  // SEO Redirects
+  async redirects() {
+    return [
+      // Redirect www to non-www
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'host',
+            value: 'www.boostdevspeed.com',
+          },
+        ],
+        destination: 'https://boostdevspeed.com/:path*',
+        permanent: true,
+      },
+      // Redirect index.html and index.php to root
+      {
+        source: '/index.html',
+        destination: '/',
+        permanent: true,
+      },
+      {
+        source: '/index.php',
+        destination: '/',
+        permanent: true,
+      },
+    ]
+  },
 }
 
 module.exports = nextConfig
