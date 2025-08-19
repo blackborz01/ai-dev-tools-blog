@@ -1,20 +1,35 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { 
   Terminal, ArrowRight, Code2, Cpu, Database,
-  Cloud, User, Menu, X, Globe
+  Cloud, User, Menu, X, Globe, ChevronDown,
+  Bot, Zap
 } from 'lucide-react'
 
 export default function Navbar() {
   const pathname = usePathname()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false)
+  const [mobilMoreOpen, setMobileMoreOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     setMounted(true)
+  }, [])
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setMoreDropdownOpen(false)
+      }
+    }
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
   const navLinks = [
@@ -25,6 +40,11 @@ export default function Navbar() {
     { name: 'APIs', href: '/api-directory', icon: Cloud },
   ]
 
+  const moreLinks = [
+    { name: 'Agents', href: '/agents', icon: Bot, description: 'AI Agents & Automation' },
+    { name: 'Fast Solutions', href: '/fast-solutions', icon: Zap, description: 'Quick Fixes & Snippets' },
+  ]
+
   // Determine active link based on pathname
   const getActiveLink = () => {
     if (pathname === '/') return 'HOME'
@@ -32,6 +52,7 @@ export default function Navbar() {
     if (pathname.startsWith('/tools')) return 'TOOLS'
     if (pathname.startsWith('/mcp')) return 'MCP'
     if (pathname.startsWith('/api')) return 'APIs'
+    if (pathname.startsWith('/agents') || pathname.startsWith('/fast-solutions')) return 'MORE'
     return 'HOME'
   }
 
@@ -105,6 +126,58 @@ export default function Navbar() {
                   </Link>
                 )
               })}
+              
+              {/* More Dropdown */}
+              <div className="relative" ref={dropdownRef}>
+                <button
+                  onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                  onMouseEnter={() => setMoreDropdownOpen(true)}
+                  className={`
+                    flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200
+                    ${activeLink === 'MORE'
+                      ? 'bg-cyan-500 text-white' 
+                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    }
+                  `}
+                >
+                  <ChevronDown className={`w-4 h-4 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} />
+                  <span className="text-sm font-semibold tracking-wide">MORE</span>
+                </button>
+                
+                {/* Dropdown Menu */}
+                {moreDropdownOpen && (
+                  <div 
+                    className="absolute top-full left-0 mt-2 w-64 bg-gray-900 border border-gray-800 rounded-lg shadow-xl overflow-hidden"
+                    onMouseLeave={() => setMoreDropdownOpen(false)}
+                  >
+                    {moreLinks.map((link) => {
+                      const Icon = link.icon
+                      const isActive = pathname.startsWith(link.href)
+                      
+                      return (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          onClick={() => setMoreDropdownOpen(false)}
+                          className={`
+                            flex items-start gap-3 px-4 py-3 transition-all
+                            ${isActive
+                              ? 'bg-cyan-500/20 text-cyan-400'
+                              : 'text-gray-300 hover:bg-gray-800 hover:text-white'
+                            }
+                          `}
+                        >
+                          <Icon className="w-5 h-5 mt-0.5 flex-shrink-0" />
+                          <div>
+                            <div className="font-semibold">{link.name}</div>
+                            <div className="text-xs opacity-70 mt-0.5">{link.description}</div>
+                          </div>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
 
             {/* Right Section - Desktop */}
@@ -169,6 +242,50 @@ export default function Navbar() {
                   </Link>
                 )
               })}
+              
+              {/* Mobile More Section */}
+              <div>
+                <button
+                  onClick={() => setMobileMoreOpen(!mobilMoreOpen)}
+                  className={`
+                    w-full flex items-center justify-between px-4 py-3 rounded-lg transition-all
+                    ${activeLink === 'MORE'
+                      ? 'bg-cyan-500 text-white' 
+                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                    }
+                  `}
+                >
+                  <span className="font-semibold">MORE</span>
+                  <ChevronDown className={`w-5 h-5 transition-transform ${mobilMoreOpen ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {mobilMoreOpen && (
+                  <div className="ml-4 mt-2 space-y-2">
+                    {moreLinks.map((link) => {
+                      const Icon = link.icon
+                      const isActive = pathname.startsWith(link.href)
+                      
+                      return (
+                        <Link
+                          key={link.name}
+                          href={link.href}
+                          onClick={() => setMobileMenuOpen(false)}
+                          className={`
+                            flex items-center gap-3 px-4 py-2 rounded-lg transition-all
+                            ${isActive
+                              ? 'bg-cyan-500/20 text-cyan-400'
+                              : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                            }
+                          `}
+                        >
+                          <Icon className="w-4 h-4" />
+                          <span className="text-sm font-semibold">{link.name}</span>
+                        </Link>
+                      )
+                    })}
+                  </div>
+                )}
+              </div>
               
               <div className="border-t border-gray-800 pt-2 mt-2 space-y-2">
                 <Link href="/auth/signin" onClick={() => setMobileMenuOpen(false)}>
