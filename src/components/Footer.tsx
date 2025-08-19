@@ -15,20 +15,20 @@ export default function Footer() {
                 <Terminal className="w-5 h-5 text-black" />
               </div>
               <div>
-                <div className="text-xl font-black text-cyan-400">AI.TOOLS</div>
-                <div className="text-xs font-mono text-gray-400">DIRECTORY</div>
+                <div className="text-xl font-black text-cyan-400">BOOST</div>
+                <div className="text-xs font-mono text-gray-400">DEVSPEED</div>
               </div>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              Your comprehensive guide to AI development tools, APIs, and MCP servers.
+              Ship code 3x faster with AI. Real benchmarks, MCP guides, and productivity tips.
             </p>
             <div className="flex gap-3">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
                  className="w-8 h-8 bg-gray-800 hover:bg-cyan-500/20 rounded flex items-center justify-center transition-colors">
                 <Github className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer"
-                 className="w-8 h-8 bg-gray-800 hover:bg-cyan-500/20 rounded flex items-center justify-center transition-colors">
+              <a href="https://x.com/BoostDevSpeed" target="_blank" rel="noopener noreferrer"
+                 className="w-8 h-8 bg-gray-800 hover:bg-cyan-500/20 rounded flex items-center justify-center transition-colors" title="Follow us on X">
                 <Twitter className="w-4 h-4" />
               </a>
             </div>
@@ -123,7 +123,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-mono text-xs text-gray-500">
-              © {currentYear} AI.TOOLS.DIRECTORY • BUILT WITH ❤️ FOR DEVELOPERS
+              © {currentYear} BOOSTDEVSPEED • SHIP CODE 3X FASTER WITH AI
             </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-xs text-gray-500 hover:text-cyan-400 transition-colors">
