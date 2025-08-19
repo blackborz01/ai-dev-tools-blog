@@ -6,6 +6,7 @@ import { Toaster } from '@/components/ui/toaster'
 import { Analytics } from '@vercel/analytics/react'
 import { SpeedInsights } from '@vercel/speed-insights/next'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
+import FacebookPixel from '@/components/FacebookPixel'
 // import AuthProvider from '@/providers/auth-provider' - removed
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import CookieConsent from '@/components/CookieConsent'
@@ -16,7 +17,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.boostdevspeed.com'),
   title: 'BoostDevSpeed - Ship Code 3x Faster with AI Coding Tools',
-  description: 'Master AI coding tools like Cursor, GitHub Copilot & Claude. Fix MCP server errors, avoid AI slowdowns, boost developer productivity 3x with proven strategies & real benchmarks.',
+  description: 'Master AI coding tools like Cursor, GitHub Copilot & Claude. Fix MCP errors, boost developer productivity 3x with proven strategies.',
   keywords: 'boost developer speed, AI coding tools, MCP servers, GitHub Copilot, Cursor IDE, Claude, developer productivity, AI code optimization, faster coding',
   authors: [{ name: 'BoostDevSpeed' }],
   alternates: {
@@ -86,6 +87,7 @@ export default function RootLayout({
           }}
         />
         <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+        <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ErrorBoundary>

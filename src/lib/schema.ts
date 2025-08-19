@@ -17,7 +17,11 @@ export const websiteSchema = {
     },
     "sameAs": [
       "https://twitter.com/boostdevspeed",
-      "https://github.com/boostdevspeed"
+      "https://github.com/boostdevspeed",
+      "https://www.facebook.com/boostdevspeed",
+      "https://www.instagram.com/boostdevspeed",
+      "https://www.linkedin.com/company/boostdevspeed",
+      "https://www.youtube.com/@boostdevspeed"
     ]
   },
   "potentialAction": {
@@ -42,7 +46,11 @@ export const organizationSchema = {
   "email": "contact@boostdevspeed.com",
   "sameAs": [
     "https://twitter.com/boostdevspeed",
-    "https://github.com/boostdevspeed"
+    "https://github.com/boostdevspeed",
+    "https://www.facebook.com/boostdevspeed",
+    "https://www.instagram.com/boostdevspeed",
+    "https://www.linkedin.com/company/boostdevspeed",
+    "https://www.youtube.com/@boostdevspeed"
   ],
   "address": {
     "@type": "PostalAddress",
