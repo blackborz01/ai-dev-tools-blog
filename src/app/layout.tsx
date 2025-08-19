@@ -9,13 +9,14 @@ import GoogleAnalytics from '@/components/GoogleAnalytics'
 // import AuthProvider from '@/providers/auth-provider' - removed
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import CookieConsent from '@/components/CookieConsent'
+import { websiteSchema, organizationSchema } from '@/lib/schema'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.boostdevspeed.com'),
-  title: 'BoostDevSpeed - Ship Code 3x Faster with AI Tools | 2025',
-  description: 'Master AI coding tools and ship faster. Real benchmarks of Cursor, Copilot, Claude. Fix MCP errors, avoid AI slowdowns, boost your dev speed 3x.',
+  title: 'BoostDevSpeed - Ship Code 3x Faster with AI Coding Tools',
+  description: 'Master AI coding tools like Cursor, GitHub Copilot & Claude. Fix MCP server errors, avoid AI slowdowns, boost developer productivity 3x with proven strategies & real benchmarks.',
   keywords: 'boost developer speed, AI coding tools, MCP servers, GitHub Copilot, Cursor IDE, Claude, developer productivity, AI code optimization, faster coding',
   authors: [{ name: 'BoostDevSpeed' }],
   alternates: {
@@ -72,6 +73,18 @@ export default function RootLayout({
         <link rel="icon" href="/favicon-32.svg?v=2" sizes="32x32" type="image/svg+xml" />
         <link rel="icon" href="/favicon-16.svg?v=2" sizes="16x16" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-icon.svg?v=2" />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(websiteSchema)
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(organizationSchema)
+          }}
+        />
         <GoogleAnalytics />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>

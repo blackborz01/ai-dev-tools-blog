@@ -24,22 +24,36 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return {
-    title: `${article.title} | AI Dev Tools Daily`,
+    title: `${article.title} | BoostDevSpeed`,
     description: article.excerpt,
     keywords: article.tags.join(', '),
     authors: [{ name: article.author.name }],
+    alternates: {
+      canonical: `https://www.boostdevspeed.com/blog/${article.slug}`,
+    },
     openGraph: {
       title: article.title,
       description: article.excerpt,
       type: 'article',
       publishedTime: article.publishDate,
+      modifiedTime: article.updateDate,
       authors: [article.author.name],
       tags: article.tags,
+      images: [{
+        url: article.featuredImage,
+        width: 1200,
+        height: 630,
+        alt: article.imageAlt
+      }],
+      siteName: 'BoostDevSpeed',
+      locale: 'en_US',
     },
     twitter: {
       card: 'summary_large_image',
       title: article.title,
       description: article.excerpt,
+      images: [article.featuredImage],
+      creator: '@boostdevspeed',
     },
   }
 }

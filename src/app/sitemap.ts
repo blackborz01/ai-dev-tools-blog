@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { articles } from '@/lib/articles'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = 'https://aidevtoolsdaily.com'
+  const baseUrl = 'https://www.boostdevspeed.com'
   
   // Static pages
   const staticPages = [
