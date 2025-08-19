@@ -85,7 +85,7 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema)
           }}
         />
-        <GoogleAnalytics />
+        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ErrorBoundary>
