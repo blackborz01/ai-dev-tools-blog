@@ -3,16 +3,40 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
-import { Analytics } from '@vercel/analytics/react'
-import { SpeedInsights } from '@vercel/speed-insights/next'
-import GoogleAnalytics from '@/components/GoogleAnalytics'
-import FacebookPixel from '@/components/FacebookPixel'
-// import AuthProvider from '@/providers/auth-provider' - removed
+import dynamic from 'next/dynamic'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import CookieConsent from '@/components/CookieConsent'
 import { websiteSchema, organizationSchema } from '@/lib/schema'
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
+// Optimize font loading with display: swap
+const inter = Inter({ 
+  subsets: ['latin'], 
+  variable: '--font-inter',
+  display: 'swap',
+  preload: true,
+  fallback: ['system-ui', '-apple-system', 'sans-serif']
+})
+
+// Lazy load analytics to not block initial render
+const Analytics = dynamic(
+  () => import('@vercel/analytics/react').then(mod => mod.Analytics),
+  { ssr: false }
+)
+
+const SpeedInsights = dynamic(
+  () => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights),
+  { ssr: false }
+)
+
+const GoogleAnalytics = dynamic(
+  () => import('@/components/GoogleAnalytics'),
+  { ssr: false }
+)
+
+const FacebookPixel = dynamic(
+  () => import('@/components/FacebookPixel'),
+  { ssr: false }
+)
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.boostdevspeed.com'),
@@ -70,10 +94,19 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
+        {/* Preconnect to critical domains */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        
+        {/* Favicons */}
         <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml" />
         <link rel="icon" href="/favicon-32.svg?v=2" sizes="32x32" type="image/svg+xml" />
         <link rel="icon" href="/favicon-16.svg?v=2" sizes="16x16" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-icon.svg?v=2" />
+        
+        {/* Structured Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
@@ -86,16 +119,23 @@ export default function RootLayout({
             __html: JSON.stringify(organizationSchema)
           }}
         />
-        <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-        <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ErrorBoundary>
           <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
             {children}
             <Toaster />
-            <Analytics />
-            <SpeedInsights />
+            
+            {/* Load analytics after main content */}
+            {process.env.NODE_ENV === 'production' && (
+              <>
+                <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+                <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
+                <Analytics />
+                <SpeedInsights />
+              </>
+            )}
+            
             <CookieConsent />
           </ThemeProvider>
         </ErrorBoundary>
