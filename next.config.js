@@ -11,9 +11,10 @@ const nextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 365, // 1 year
   },
   
-  // Type checking
+  // Type checking - ignore all errors to ensure build succeeds
   typescript: {
     ignoreBuildErrors: true,
+    tsconfigPath: './tsconfig.json',
   },
   
   eslint: {

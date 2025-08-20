@@ -1,3 +1,17 @@
 {
-  "framework": "nextjs"
+  "framework": "nextjs",
+  "buildCommand": "next build",
+  "devCommand": "next dev",
+  "outputDirectory": ".next",
+  "installCommand": "npm install",
+  "build": {
+    "env": {
+      "NODE_OPTIONS": "--max-old-space-size=4096"
+    }
+  },
+  "functions": {
+    "app/api/search/route.ts": {
+      "maxDuration": 10
+    }
+  }
 }
