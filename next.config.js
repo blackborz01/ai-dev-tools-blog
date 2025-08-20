@@ -23,7 +23,7 @@ const nextConfig = {
   
   // Performance optimizations
   experimental: {
-    optimizeCss: true, // Now enabled with critters installed
+    optimizeCss: true,
     scrollRestoration: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
@@ -124,85 +124,30 @@ const nextConfig = {
     ]
   },
   
-  // Advanced webpack optimizations
+  // Simplified webpack config to avoid build errors
   webpack: (config, { dev, isServer }) => {
-    // Production optimizations only
+    // Only apply minimal optimizations to avoid build issues
     if (!dev && !isServer) {
-      // Use terser for better minification
-      config.optimization.minimizer = config.optimization.minimizer.map((minimizer) => {
-        if (minimizer.constructor.name === 'TerserPlugin') {
-          minimizer.options.terserOptions = {
-            compress: {
-              drop_console: true,
-              drop_debugger: true,
-              pure_funcs: ['console.log', 'console.info'],
-            },
-            format: {
-              comments: false,
-            },
-          }
-        }
-        return minimizer
-      })
-      
-      // Aggressive code splitting
+      // Basic optimization without complex splitting
       config.optimization = {
         ...config.optimization,
-        usedExports: true,
         minimize: true,
-        sideEffects: false,
-        concatenateModules: true,
-        runtimeChunk: 'single',
-        moduleIds: 'deterministic',
         splitChunks: {
           chunks: 'all',
-          maxInitialRequests: 25,
-          minSize: 20000,
-          maxSize: 100000, // Reduced from 244KB to 100KB for smaller chunks
           cacheGroups: {
-            default: false,
-            vendors: false,
-            // React framework bundle
-            framework: {
-              name: 'framework',
-              chunks: 'all',
-              test: /[\\/]node_modules[\\/](react|react-dom|scheduler|prop-types|use-subscription)[\\/]/,
-              priority: 40,
-              enforce: true,
-              reuseExistingChunk: true,
-            },
-            // All other node_modules
-            vendor: {
-              test: /[\\/]node_modules[\\/]/,
-              name(module) {
-                const packageName = module.context.match(/[\\/]node_modules[\\/](.*?)([\\/]|$)/)[1]
-                return `vendor-${packageName.replace('@', '')}`
-              },
-              priority: 20,
-              reuseExistingChunk: true,
-            },
-            // Common components
-            common: {
-              name: 'common',
+            default: {
               minChunks: 2,
-              priority: 10,
+              priority: -20,
               reuseExistingChunk: true,
-              enforce: true,
+            },
+            vendors: {
+              test: /[\\/]node_modules[\\/]/,
+              priority: -10,
+              reuseExistingChunk: true,
+              name: 'vendors',
             },
           },
         },
-      }
-      
-      // Add bundle analyzer
-      if (process.env.ANALYZE === 'true') {
-        const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer')
-        config.plugins.push(
-          new BundleAnalyzerPlugin({
-            analyzerMode: 'static',
-            reportFilename: './analyze.html',
-            openAnalyzer: true,
-          })
-        )
       }
     }
     
