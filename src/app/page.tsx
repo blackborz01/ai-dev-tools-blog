@@ -14,7 +14,7 @@ const LoadingSkeleton = () => (
 )
 
 // Critical components - load immediately
-import Navbar from '@/components/Navbar'
+import FuturisticNavbar from '@/components/FuturisticNavbar'
 import Footer from '@/components/Footer'
 import LatestIntel from '@/components/LatestIntel'
 import ScrollingBanner from '@/components/ScrollingBanner'
@@ -56,7 +56,7 @@ const SocialProof = dynamic(() => import('@/components/SocialProof'), {
 export default function HomePage() {
   return (
     <>
-      <Navbar />
+      <FuturisticNavbar />
       
       {/* Main content wrapper with EXACT TRENDING.NOW background */}
       <div className="min-h-screen bg-black relative overflow-hidden">
