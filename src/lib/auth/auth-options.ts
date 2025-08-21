@@ -17,6 +17,18 @@ export function addUser(email: string, user: any) {
   users[email] = user
 }
 
+// Generate a default secret if not provided (for development/demo purposes)
+const getAuthSecret = () => {
+  if (process.env.NEXTAUTH_SECRET) {
+    return process.env.NEXTAUTH_SECRET
+  }
+  
+  // Fallback secret for when environment variable is not set
+  // This ensures the app works even without proper configuration
+  console.warn("NEXTAUTH_SECRET is not set. Using default secret. This is insecure for production!")
+  return "K3yL8mN9pQ2rS5tV7wX1yZ4aB6cD8eF0gH3jK5mN7pR9sT2v"
+}
+
 export const authOptions: NextAuthOptions = {
   providers: [
     // Only add Google provider if credentials are available
@@ -89,5 +101,5 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: getAuthSecret(),
 }
