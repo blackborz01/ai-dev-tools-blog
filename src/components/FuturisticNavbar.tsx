@@ -7,8 +7,9 @@ import { useRouter } from 'next/navigation'
 import { 
   Terminal, ArrowRight, Sparkles, Cpu, Globe, 
   Code2, ChevronRight, Menu, X, Database, Cloud,
-  User, LogOut, Settings, ChevronDown
+  User, LogOut, Settings
 } from 'lucide-react'
+import UserProfileDropdown from './UserProfileDropdown'
 
 
 export default function FuturisticNavbar() {
@@ -277,93 +278,8 @@ export default function FuturisticNavbar() {
                   <div className="w-20 h-8 bg-gray-800 rounded-xl animate-pulse" />
                 </div>
               ) : session ? (
-                /* User Menu Dropdown */
-                <div className="relative user-menu-container">
-                  <button
-                    onClick={() => setUserMenuOpen(!userMenuOpen)}
-                    className="group relative overflow-hidden"
-                  >
-                    <div className="relative px-4 py-2 bg-black/50 backdrop-blur-xl rounded-xl border border-purple-500/30 group-hover:border-purple-400 transition-all">
-                      <div className="absolute inset-0 bg-gradient-to-r from-purple-500/10 to-pink-500/10 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity" />
-                      
-                      <div className="relative flex items-center gap-3">
-                        {/* User Avatar */}
-                        <div className="w-8 h-8 bg-gradient-to-br from-cyan-400 to-purple-400 rounded-lg flex items-center justify-center">
-                          {session.user?.image ? (
-                            <img 
-                              src={session.user.image} 
-                              alt={session.user.name || 'User'}
-                              className="w-full h-full rounded-lg object-cover"
-                            />
-                          ) : (
-                            <User className="w-4 h-4 text-black" />
-                          )}
-                        </div>
-                        
-                        {/* User Name */}
-                        <span className="text-sm font-semibold text-white hidden md:block">
-                          {session.user?.name || session.user?.email?.split('@')[0]}
-                        </span>
-                        
-                        <ChevronDown className={`w-4 h-4 text-gray-400 transition-transform ${userMenuOpen ? 'rotate-180' : ''}`} />
-                      </div>
-                    </div>
-                  </button>
-                  
-                  {/* Dropdown Menu */}
-                  {userMenuOpen && (
-                    <div className="absolute right-0 mt-2 w-56 py-2 bg-gray-950/95 backdrop-blur-xl border border-gray-800 rounded-xl shadow-2xl z-50">
-                      {/* User Info */}
-                      <div className="px-4 py-3 border-b border-gray-800">
-                        <p className="text-sm font-semibold text-white">
-                          {session.user?.name || 'User'}
-                        </p>
-                        <p className="text-xs text-gray-400 mt-1">
-                          {session.user?.email}
-                        </p>
-                      </div>
-                      
-                      {/* Menu Items */}
-                      <div className="py-2">
-                        <button
-                          onClick={() => {
-                            setUserMenuOpen(false)
-                            router.push('/dashboard')
-                          }}
-                          className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-900/50 hover:text-white transition-colors flex items-center gap-3"
-                        >
-                          <User className="w-4 h-4" />
-                          Dashboard
-                        </button>
-                        
-                        <button
-                          onClick={() => {
-                            setUserMenuOpen(false)
-                            router.push('/settings')
-                          }}
-                          className="w-full px-4 py-2 text-left text-sm text-gray-300 hover:bg-gray-900/50 hover:text-white transition-colors flex items-center gap-3"
-                        >
-                          <Settings className="w-4 h-4" />
-                          Settings
-                        </button>
-                      </div>
-                      
-                      {/* Logout */}
-                      <div className="border-t border-gray-800 pt-2">
-                        <button
-                          onClick={() => {
-                            setUserMenuOpen(false)
-                            signOut({ callbackUrl: '/' })
-                          }}
-                          className="w-full px-4 py-2 text-left text-sm text-red-400 hover:bg-gray-900/50 hover:text-red-300 transition-colors flex items-center gap-3"
-                        >
-                          <LogOut className="w-4 h-4" />
-                          Sign Out
-                        </button>
-                      </div>
-                    </div>
-                  )}
-                </div>
+                /* Use the new UserProfileDropdown component */
+                <UserProfileDropdown />
               ) : (
                 /* Login Button */
                 <button

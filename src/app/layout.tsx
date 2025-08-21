@@ -7,6 +7,7 @@ import dynamic from 'next/dynamic'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
 import CookieConsent from '@/components/CookieConsent'
 import { websiteSchema, organizationSchema } from '@/lib/schema'
+import { AuthProvider } from '@/providers/auth-provider'
 
 // Optimize font loading with display: swap
 const inter = Inter({ 
@@ -122,22 +123,24 @@ export default function RootLayout({
       </head>
       <body className={`${inter.variable} font-sans antialiased`}>
         <ErrorBoundary>
-          <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
-            {children}
-            <Toaster />
-            
-            {/* Load analytics after main content */}
-            {process.env.NODE_ENV === 'production' && (
-              <>
-                <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-                <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
-                <Analytics />
-                <SpeedInsights />
-              </>
-            )}
-            
-            <CookieConsent />
-          </ThemeProvider>
+          <AuthProvider>
+            <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">
+              {children}
+              <Toaster />
+              
+              {/* Load analytics after main content */}
+              {process.env.NODE_ENV === 'production' && (
+                <>
+                  <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
+                  <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
+                  <Analytics />
+                  <SpeedInsights />
+                </>
+              )}
+              
+              <CookieConsent />
+            </ThemeProvider>
+          </AuthProvider>
         </ErrorBoundary>
       </body>
     </html>
