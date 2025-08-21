@@ -9,17 +9,10 @@ import {
   BarChart3, Bell, Moon, Sun, Sparkles, Crown, Zap,
   BookOpen, Heart, Star, TrendingUp, Activity, Lock,
   Mail, Github, Twitter, Globe, CheckCircle2, AlertCircle,
-  Palette, Languages, HelpCircle, FileText, Award, Gift
+  Palette, Languages, HelpCircle, FileText, Award, Gift,
+  Trophy, Cpu, Calendar, Clock
 } from 'lucide-react'
-
-interface UserStats {
-  articlesRead: number
-  toolsUsed: number
-  daysStreak: number
-  achievements: number
-  subscription: 'free' | 'pro' | 'premium'
-  joinedDate: string
-}
+import { getUserStats, getLevelProgress, getGlobalRank, getMemberSince, type UserStats } from '@/lib/stats/userStats'
 
 export default function UserProfileDropdown() {
   const { data: session } = useSession()
@@ -28,17 +21,34 @@ export default function UserProfileDropdown() {
   const [activeTab, setActiveTab] = useState<'profile' | 'stats' | 'settings'>('profile')
   const [theme, setTheme] = useState<'light' | 'dark' | 'auto'>('dark')
   const [notifications, setNotifications] = useState(true)
+  const [userStats, setUserStats] = useState<UserStats | null>(null)
+  const [levelProgress, setLevelProgress] = useState({ current: 0, next: 100, progress: 0 })
   const dropdownRef = useRef<HTMLDivElement>(null)
-  
-  // Mock user stats - in production, fetch from API
-  const [userStats] = useState<UserStats>({
-    articlesRead: 42,
-    toolsUsed: 15,
-    daysStreak: 7,
-    achievements: 8,
-    subscription: 'pro',
-    joinedDate: 'December 2024'
-  })
+
+  // Load real user stats
+  useEffect(() => {
+    if (session?.user?.email) {
+      const stats = getUserStats(session.user.email)
+      setUserStats(stats)
+      setLevelProgress(getLevelProgress(stats))
+    }
+  }, [session])
+
+  // Track time spent on page
+  useEffect(() => {
+    if (!session?.user?.email) return
+    
+    const startTime = Date.now()
+    
+    return () => {
+      const timeSpent = Math.floor((Date.now() - startTime) / 1000)
+      if (timeSpent > 5) { // Only track if spent more than 5 seconds
+        import('@/lib/stats/userStats').then(({ trackTimeSpent }) => {
+          trackTimeSpent(session.user!.email!, timeSpent)
+        })
+      }
+    }
+  }, [session])
 
   // Close dropdown when clicking outside
   useEffect(() => {
@@ -52,10 +62,14 @@ export default function UserProfileDropdown() {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
-  if (!session?.user) return null
+  if (!session?.user || !userStats) return null
 
   const getSubscriptionBadge = () => {
-    switch (userStats.subscription) {
+    // Determine subscription based on actual user data
+    // For now, default to free unless we detect otherwise
+    const subscriptionType = userStats.subscriptionType || 'free'
+    
+    switch (subscriptionType) {
       case 'premium':
         return { icon: Crown, color: 'from-yellow-400 to-amber-600', text: 'Premium', glow: 'yellow' }
       case 'pro':
@@ -67,6 +81,11 @@ export default function UserProfileDropdown() {
 
   const subscriptionBadge = getSubscriptionBadge()
   const SubscriptionIcon = subscriptionBadge.icon
+  const globalRank = getGlobalRank(userStats.totalPoints)
+  const memberSince = getMemberSince(userStats)
+  
+  // Get unlocked achievements count
+  const unlockedAchievements = userStats.achievements.filter(a => a.unlockedAt).length
 
   return (
     <div className="relative" ref={dropdownRef}>
@@ -80,8 +99,10 @@ export default function UserProfileDropdown() {
         
         {/* Avatar with Status Ring */}
         <div className="relative">
-          {/* Animated Ring */}
-          <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 animate-spin-slow opacity-75" />
+          {/* Animated Ring for streak */}
+          {userStats.currentStreak > 0 && (
+            <div className="absolute inset-0 rounded-full bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 animate-spin-slow opacity-75" />
+          )}
           <div className="absolute inset-0.5 rounded-full bg-black" />
           
           {/* Avatar */}
@@ -174,7 +195,7 @@ export default function UserProfileDropdown() {
                 className="p-2 rounded-lg bg-white/10 backdrop-blur hover:bg-white/20 transition-colors relative"
               >
                 <Bell className={`w-4 h-4 text-white ${notifications ? '' : 'opacity-50'}`} />
-                {notifications && (
+                {notifications && userStats.articlesRead.length === 0 && (
                   <div className="absolute top-1 right-1 w-2 h-2 bg-red-500 rounded-full" />
                 )}
               </button>
@@ -192,7 +213,7 @@ export default function UserProfileDropdown() {
                   {session.user.email}
                 </p>
                 <div className="flex items-center gap-2 mt-2">
-                  <span className="text-xs text-gray-500">Member since {userStats.joinedDate}</span>
+                  <span className="text-xs text-gray-500">Member since {memberSince}</span>
                   {session.user.provider === 'google' && (
                     <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20">
                       <CheckCircle2 className="w-3 h-3 text-blue-400" />
@@ -227,20 +248,20 @@ export default function UserProfileDropdown() {
           <div className="px-6 pb-4 max-h-80 overflow-y-auto custom-scrollbar">
             {activeTab === 'profile' && (
               <div className="space-y-3">
-                {/* Quick Stats Grid */}
+                {/* Real Stats Grid */}
                 <div className="grid grid-cols-2 gap-3">
                   <div className="p-3 rounded-xl bg-gradient-to-br from-cyan-500/10 to-blue-500/10 border border-cyan-500/20">
                     <div className="flex items-center justify-between">
                       <BookOpen className="w-5 h-5 text-cyan-400" />
-                      <span className="text-2xl font-bold text-white">{userStats.articlesRead}</span>
+                      <span className="text-2xl font-bold text-white">{userStats.articlesRead.length}</span>
                     </div>
                     <p className="text-xs text-gray-400 mt-1">Articles Read</p>
                   </div>
                   
                   <div className="p-3 rounded-xl bg-gradient-to-br from-purple-500/10 to-pink-500/10 border border-purple-500/20">
                     <div className="flex items-center justify-between">
-                      <Zap className="w-5 h-5 text-purple-400" />
-                      <span className="text-2xl font-bold text-white">{userStats.toolsUsed}</span>
+                      <Cpu className="w-5 h-5 text-purple-400" />
+                      <span className="text-2xl font-bold text-white">{userStats.toolsUsed.length}</span>
                     </div>
                     <p className="text-xs text-gray-400 mt-1">Tools Used</p>
                   </div>
@@ -248,7 +269,7 @@ export default function UserProfileDropdown() {
                   <div className="p-3 rounded-xl bg-gradient-to-br from-green-500/10 to-emerald-500/10 border border-green-500/20">
                     <div className="flex items-center justify-between">
                       <TrendingUp className="w-5 h-5 text-green-400" />
-                      <span className="text-2xl font-bold text-white">{userStats.daysStreak}</span>
+                      <span className="text-2xl font-bold text-white">{userStats.currentStreak}</span>
                     </div>
                     <p className="text-xs text-gray-400 mt-1">Day Streak</p>
                   </div>
@@ -256,7 +277,7 @@ export default function UserProfileDropdown() {
                   <div className="p-3 rounded-xl bg-gradient-to-br from-yellow-500/10 to-orange-500/10 border border-yellow-500/20">
                     <div className="flex items-center justify-between">
                       <Award className="w-5 h-5 text-yellow-400" />
-                      <span className="text-2xl font-bold text-white">{userStats.achievements}</span>
+                      <span className="text-2xl font-bold text-white">{unlockedAchievements}</span>
                     </div>
                     <p className="text-xs text-gray-400 mt-1">Achievements</p>
                   </div>
@@ -284,7 +305,11 @@ export default function UserProfileDropdown() {
                     <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
                       <Heart className="w-4 h-4 text-gray-400 group-hover:text-pink-400" />
                       <span className="text-sm font-medium">Saved Articles</span>
-                      <span className="ml-auto px-2 py-0.5 rounded-full bg-pink-500/20 text-xs text-pink-400">12</span>
+                      {userStats.savedArticles.length > 0 && (
+                        <span className="ml-auto px-2 py-0.5 rounded-full bg-pink-500/20 text-xs text-pink-400">
+                          {userStats.savedArticles.length}
+                        </span>
+                      )}
                     </button>
                   </Link>
                   
@@ -292,7 +317,11 @@ export default function UserProfileDropdown() {
                     <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
                       <Award className="w-4 h-4 text-gray-400 group-hover:text-yellow-400" />
                       <span className="text-sm font-medium">Achievements</span>
-                      <span className="ml-auto px-2 py-0.5 rounded-full bg-yellow-500/20 text-xs text-yellow-400">New</span>
+                      {unlockedAchievements < userStats.achievements.length && (
+                        <span className="ml-auto px-2 py-0.5 rounded-full bg-yellow-500/20 text-xs text-yellow-400">
+                          {unlockedAchievements}/{userStats.achievements.length}
+                        </span>
+                      )}
                     </button>
                   </Link>
                 </div>
@@ -301,23 +330,23 @@ export default function UserProfileDropdown() {
 
             {activeTab === 'stats' && (
               <div className="space-y-4">
-                {/* Activity Chart */}
+                {/* Level & Points */}
                 <div className="p-4 rounded-xl bg-gray-900/50 border border-gray-800">
                   <div className="flex items-center justify-between mb-3">
-                    <h4 className="text-sm font-semibold text-white">Activity Overview</h4>
-                    <Activity className="w-4 h-4 text-cyan-400" />
+                    <h4 className="text-sm font-semibold text-white">Level {userStats.level}</h4>
+                    <span className="text-xs text-cyan-400">{userStats.totalPoints} points</span>
                   </div>
                   
-                  {/* Mini Activity Graph */}
-                  <div className="flex items-end gap-1 h-20">
-                    {[40, 65, 30, 85, 50, 70, 90].map((height, i) => (
-                      <div key={i} className="flex-1 bg-gradient-to-t from-cyan-500 to-purple-500 rounded-t opacity-75 hover:opacity-100 transition-opacity" 
-                        style={{ height: `${height}%` }} />
-                    ))}
+                  {/* Level Progress Bar */}
+                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
+                    <div 
+                      className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full transition-all"
+                      style={{ width: `${levelProgress.progress}%` }}
+                    />
                   </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-xs text-gray-500">Mon</span>
-                    <span className="text-xs text-gray-500">Sun</span>
+                  <div className="flex justify-between mt-2 text-xs text-gray-500">
+                    <span>{levelProgress.current} pts</span>
+                    <span>{levelProgress.next} pts</span>
                   </div>
                 </div>
 
@@ -325,39 +354,58 @@ export default function UserProfileDropdown() {
                 <div className="space-y-2">
                   <div className="flex items-center justify-between p-3 rounded-lg bg-gray-900/30">
                     <div className="flex items-center gap-2">
-                      <Star className="w-4 h-4 text-yellow-400" />
-                      <span className="text-sm text-gray-300">Total Points</span>
+                      <Calendar className="w-4 h-4 text-blue-400" />
+                      <span className="text-sm text-gray-300">Days Active</span>
                     </div>
-                    <span className="text-sm font-bold text-white">2,450</span>
+                    <span className="text-sm font-bold text-white">
+                      {Object.keys(userStats.dailyVisits).length}
+                    </span>
                   </div>
                   
                   <div className="flex items-center justify-between p-3 rounded-lg bg-gray-900/30">
                     <div className="flex items-center gap-2">
-                      <Globe className="w-4 h-4 text-blue-400" />
+                      <Zap className="w-4 h-4 text-yellow-400" />
+                      <span className="text-sm text-gray-300">Longest Streak</span>
+                    </div>
+                    <span className="text-sm font-bold text-white">{userStats.longestStreak} days</span>
+                  </div>
+                  
+                  <div className="flex items-center justify-between p-3 rounded-lg bg-gray-900/30">
+                    <div className="flex items-center gap-2">
+                      <Globe className="w-4 h-4 text-green-400" />
                       <span className="text-sm text-gray-300">Global Rank</span>
                     </div>
-                    <span className="text-sm font-bold text-white">#1,234</span>
+                    <span className="text-sm font-bold text-white">#{globalRank.toLocaleString()}</span>
                   </div>
                   
                   <div className="flex items-center justify-between p-3 rounded-lg bg-gray-900/30">
                     <div className="flex items-center gap-2">
-                      <Zap className="w-4 h-4 text-purple-400" />
-                      <span className="text-sm text-gray-300">Power User Level</span>
+                      <Clock className="w-4 h-4 text-purple-400" />
+                      <span className="text-sm text-gray-300">Time Spent</span>
                     </div>
-                    <span className="text-sm font-bold text-white">Level 5</span>
+                    <span className="text-sm font-bold text-white">
+                      {Math.floor(userStats.totalTimeSpent / 60)} min
+                    </span>
                   </div>
                 </div>
 
-                {/* Progress Bar */}
-                <div className="p-3 rounded-lg bg-gray-900/30">
-                  <div className="flex items-center justify-between mb-2">
-                    <span className="text-xs text-gray-400">Next Level Progress</span>
-                    <span className="text-xs text-cyan-400">450/500 XP</span>
+                {/* Recent Achievements */}
+                {unlockedAchievements > 0 && (
+                  <div className="p-3 rounded-lg bg-gray-900/30">
+                    <h4 className="text-xs text-gray-400 mb-2">Recent Achievements</h4>
+                    <div className="space-y-2">
+                      {userStats.achievements
+                        .filter(a => a.unlockedAt)
+                        .slice(-3)
+                        .map((achievement) => (
+                          <div key={achievement.id} className="flex items-center gap-2">
+                            <Trophy className={`w-3 h-3 text-${achievement.color}-400`} />
+                            <span className="text-xs text-white">{achievement.name}</span>
+                          </div>
+                        ))}
+                    </div>
                   </div>
-                  <div className="h-2 bg-gray-800 rounded-full overflow-hidden">
-                    <div className="h-full bg-gradient-to-r from-cyan-500 to-purple-500 rounded-full" style={{ width: '90%' }} />
-                  </div>
-                </div>
+                )}
               </div>
             )}
 
@@ -387,36 +435,12 @@ export default function UserProfileDropdown() {
                   </button>
                 </Link>
                 
-                <Link href="/settings/appearance">
-                  <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
-                    <Palette className="w-4 h-4 text-gray-400 group-hover:text-purple-400" />
-                    <span className="text-sm font-medium">Appearance</span>
-                    <ChevronDown className="w-4 h-4 ml-auto -rotate-90 text-gray-600" />
-                  </button>
-                </Link>
-                
-                <Link href="/settings/language">
-                  <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
-                    <Languages className="w-4 h-4 text-gray-400 group-hover:text-blue-400" />
-                    <span className="text-sm font-medium">Language & Region</span>
-                    <ChevronDown className="w-4 h-4 ml-auto -rotate-90 text-gray-600" />
-                  </button>
-                </Link>
-                
                 <div className="border-t border-gray-800 my-2" />
                 
                 <Link href="/help">
                   <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
                     <HelpCircle className="w-4 h-4 text-gray-400 group-hover:text-cyan-400" />
                     <span className="text-sm font-medium">Help & Support</span>
-                    <ChevronDown className="w-4 h-4 ml-auto -rotate-90 text-gray-600" />
-                  </button>
-                </Link>
-                
-                <Link href="/legal">
-                  <button className="w-full px-3 py-2.5 rounded-lg flex items-center gap-3 text-gray-300 hover:bg-gray-800/50 hover:text-white transition-all group">
-                    <FileText className="w-4 h-4 text-gray-400 group-hover:text-gray-300" />
-                    <span className="text-sm font-medium">Legal</span>
                     <ChevronDown className="w-4 h-4 ml-auto -rotate-90 text-gray-600" />
                   </button>
                 </Link>
@@ -427,7 +451,7 @@ export default function UserProfileDropdown() {
           {/* Footer Actions */}
           <div className="px-6 py-4 border-t border-gray-800 space-y-3">
             {/* Subscription Upgrade */}
-            {userStats.subscription !== 'premium' && (
+            {userStats.subscriptionType !== 'premium' && (
               <Link href="/subscribe">
                 <button className="w-full px-4 py-3 rounded-xl bg-gradient-to-r from-cyan-500 to-purple-500 text-white font-semibold text-sm hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
                   <Crown className="w-4 h-4" />

@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { articles } from '@/lib/articles'
 import SearchBar from '@/components/SearchBar'
-import Navbar from '@/components/Navbar'
+import FuturisticNavbar from '@/components/FuturisticNavbar'
 
 // Category configuration with icons and colors
 const categoryConfig: { [key: string]: { icon: any, gradient: string, bgColor: string, borderColor: string } } = {
@@ -121,7 +121,7 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <Navbar />
+      <FuturisticNavbar />
 
       {/* Hero Section */}
       <section className="relative overflow-hidden border-b border-gray-800">

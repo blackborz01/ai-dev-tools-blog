@@ -6,6 +6,12 @@ import {
   Copy, TrendingUp, CheckCircle
 } from 'lucide-react'
 import { articles } from '@/lib/articles'
+import dynamic from 'next/dynamic'
+
+// Dynamically import ArticleTracker to avoid SSR issues
+const ArticleTracker = dynamic(() => import('@/components/ArticleTracker'), {
+  ssr: false
+})
 
 export async function generateStaticParams() {
   return articles.map((article) => ({
@@ -68,6 +74,9 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Track article read */}
+      <ArticleTracker articleSlug={article.slug} />
+      
       {/* Navigation */}
       <nav className="border-b border-cyan-500/30 sticky top-0 z-50 bg-black/90 backdrop-blur-md">
         <div className="container mx-auto px-4">

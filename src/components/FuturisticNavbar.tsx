@@ -7,7 +7,7 @@ import { useRouter } from 'next/navigation'
 import { 
   Terminal, ArrowRight, Sparkles, Cpu, Globe, 
   Code2, ChevronRight, Menu, X, Database, Cloud,
-  User, LogOut, Settings
+  User, LogOut, Settings, ChevronDown, Bot, Zap
 } from 'lucide-react'
 import UserProfileDropdown from './UserProfileDropdown'
 
@@ -22,6 +22,7 @@ export default function FuturisticNavbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [userMenuOpen, setUserMenuOpen] = useState(false)
+  const [moreDropdownOpen, setMoreDropdownOpen] = useState(false)
 
   // Set mounted state
   useEffect(() => {
@@ -79,6 +80,11 @@ export default function FuturisticNavbar() {
     { name: 'TOOLS', href: '/tools', icon: Cpu, color: 'from-green-400 to-emerald-500', glow: 'green' },
     { name: 'MCP', href: '/mcp', icon: Database, color: 'from-yellow-400 to-orange-500', glow: 'yellow' },
     { name: 'APIs', href: '/api-directory', icon: Cloud, color: 'from-pink-400 to-red-500', glow: 'pink' },
+  ]
+
+  const moreLinks = [
+    { name: 'Agents', href: '/agents', icon: Bot, description: 'AI Agents & Automation' },
+    { name: 'Fast Solutions', href: '/fast-solutions', icon: Zap, description: 'Quick Fixes & Snippets' },
   ]
 
   // Don't render interactive elements until mounted to avoid hydration issues
@@ -183,10 +189,10 @@ export default function FuturisticNavbar() {
                   <div className="relative">
                     {/* Glitch effect text layers */}
                     <div className="absolute inset-0 text-3xl font-black tracking-tighter opacity-50 text-cyan-400 animate-glitch-1 select-none">
-                      AI.TOOLS
+                      BoostDevSpeed
                     </div>
                     <div className="absolute inset-0 text-3xl font-black tracking-tighter opacity-50 text-purple-400 animate-glitch-2 select-none">
-                      AI.TOOLS
+                      BoostDevSpeed
                     </div>
                     
                     {/* Main text */}
@@ -196,7 +202,7 @@ export default function FuturisticNavbar() {
                         animation: 'gradient 3s linear infinite'
                       }}
                     >
-                      AI.TOOLS
+                      BoostDevSpeed
                     </div>
                   </div>
                   
@@ -208,7 +214,7 @@ export default function FuturisticNavbar() {
                       <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                     </div>
                     <div className="text-[10px] font-mono text-cyan-400/80 tracking-[0.2em] uppercase">
-                      Daily.Updates
+                      Ship 3x Faster
                     </div>
                     {timeString && (
                       <div className="text-[10px] font-mono text-green-400">
@@ -265,6 +271,58 @@ export default function FuturisticNavbar() {
                     </Link>
                   )
                 })}
+                
+                {/* MORE Dropdown */}
+                <div className="relative">
+                  <button
+                    onClick={() => setMoreDropdownOpen(!moreDropdownOpen)}
+                    className="group relative"
+                  >
+                    <div className={`
+                      relative px-5 py-2.5 rounded-xl transition-all duration-300
+                      ${moreDropdownOpen 
+                        ? 'bg-gradient-to-r from-gray-600 to-gray-700 text-white shadow-lg' 
+                        : 'hover:bg-gray-900/50'
+                      }
+                    `}>
+                      <div className="relative flex items-center gap-2">
+                        <span className={`text-xs font-bold tracking-wider ${
+                          moreDropdownOpen ? 'text-white' : 'text-gray-400 group-hover:text-white'
+                        } transition-colors`}>
+                          MORE
+                        </span>
+                        <ChevronDown className={`w-4 h-4 ${
+                          moreDropdownOpen ? 'text-white rotate-180' : 'text-gray-400 group-hover:text-white'
+                        } transition-all`} />
+                      </div>
+                    </div>
+                  </button>
+                  
+                  {/* Dropdown Menu */}
+                  {moreDropdownOpen && (
+                    <div className="absolute top-full mt-2 w-56 py-2 bg-gray-950/95 backdrop-blur-xl border border-gray-800 rounded-xl shadow-2xl z-50">
+                      {moreLinks.map((link) => {
+                        const Icon = link.icon
+                        return (
+                          <Link
+                            key={link.name}
+                            href={link.href}
+                            onClick={() => setMoreDropdownOpen(false)}
+                            className="block px-4 py-3 hover:bg-gray-800/50 transition-colors"
+                          >
+                            <div className="flex items-center gap-3">
+                              <Icon className="w-4 h-4 text-cyan-400" />
+                              <div>
+                                <div className="text-sm font-semibold text-white">{link.name}</div>
+                                <div className="text-xs text-gray-400">{link.description}</div>
+                              </div>
+                            </div>
+                          </Link>
+                        )
+                      })}
+                    </div>
+                  )}
+                </div>
               </div>
 
 
@@ -349,9 +407,9 @@ export default function FuturisticNavbar() {
               </div>
               <div>
                 <div className="text-xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
-                  AI.TOOLS
+                  BoostDevSpeed
                 </div>
-                <div className="text-[9px] font-mono text-cyan-400/80">DAILY.UPDATES</div>
+                <div className="text-[9px] font-mono text-cyan-400/80">SHIP 3X FASTER</div>
               </div>
             </Link>
 
@@ -391,6 +449,29 @@ export default function FuturisticNavbar() {
                   </Link>
                 )
               })}
+              
+              {/* MORE Section in Mobile */}
+              <div className="border-t border-gray-800 pt-2 mt-2">
+                <div className="text-xs font-bold text-gray-500 px-4 mb-2">MORE</div>
+                {moreLinks.map((link) => {
+                  const Icon = link.icon
+                  return (
+                    <Link
+                      key={link.name}
+                      href={link.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="flex items-center gap-3 px-4 py-3 bg-gray-900/50 rounded-lg border border-gray-800 hover:border-cyan-500/50 transition-all"
+                    >
+                      <Icon className="w-4 h-4 text-cyan-400" />
+                      <div className="flex-1">
+                        <span className="text-sm font-bold text-white">{link.name}</span>
+                        <div className="text-xs text-gray-400">{link.description}</div>
+                      </div>
+                      <ChevronRight className="w-4 h-4 text-gray-500" />
+                    </Link>
+                  )
+                })}
+              </div>
               
               {/* Mobile Auth Section */}
               <div className="border-t border-gray-800 pt-2 mt-2">
