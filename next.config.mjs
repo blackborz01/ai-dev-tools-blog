@@ -30,6 +30,16 @@ const nextConfig = {
     scrollRestoration: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
+    // New CSS optimization flags
+    cssChunking: 'strict',
+    turbo: {
+      rules: {
+        '*.module.css': {
+          loaders: ['css-loader'],
+          as: '*.css',
+        },
+      },
+    },
   },
   
   // Compress and optimize
@@ -66,9 +76,41 @@ const nextConfig = {
   // HTTP Headers for caching and security with performance focus
   async headers() {
     return [
+      // Critical performance headers for all pages
+      {
+        source: '/:path*',
+        headers: [
+          {
+            key: 'X-DNS-Prefetch-Control',
+            value: 'on',
+          },
+          {
+            key: 'Connection',
+            value: 'keep-alive',
+          },
+          {
+            key: 'Link',
+            value: '</fonts/inter-var-latin.woff2>; rel=preload; as=font; type=font/woff2; crossorigin=anonymous',
+          },
+        ],
+      },
       // Static assets - 1 year cache
       {
         source: '/:all*(svg|jpg|jpeg|png|gif|ico|webp|avif)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=31536000, immutable',
+          },
+          {
+            key: 'X-Content-Type-Options',
+            value: 'nosniff',
+          },
+        ],
+      },
+      // CSS files - optimize delivery
+      {
+        source: '/_next/static/css/:path*',
         headers: [
           {
             key: 'Cache-Control',
@@ -104,17 +146,13 @@ const nextConfig = {
           },
         ],
       },
-      // HTML pages - short cache for freshness
+      // HTML pages - short cache for freshness with stale-while-revalidate
       {
-        source: '/:path*',
+        source: '/',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=3600, stale-while-revalidate=59',
-          },
-          {
-            key: 'X-DNS-Prefetch-Control',
-            value: 'on',
+            value: 'public, s-maxage=10, stale-while-revalidate=59',
           },
           {
             key: 'X-XSS-Protection',
@@ -171,7 +209,7 @@ const nextConfig = {
   webpack: (config, { dev, isServer, webpack }) => {
     // Production optimizations
     if (!dev && !isServer) {
-      // Better chunk splitting
+      // Better chunk splitting for CSS
       config.optimization = {
         ...config.optimization,
         minimize: true,
@@ -189,6 +227,14 @@ const nextConfig = {
           cacheGroups: {
             default: false,
             defaultVendors: false,
+            // Critical CSS in separate chunk
+            styles: {
+              name: 'styles',
+              type: 'css/mini-extract',
+              chunks: 'all',
+              enforce: true,
+              priority: 50,
+            },
             framework: {
               name: 'framework',
               chunks: 'all',
@@ -253,6 +299,23 @@ const nextConfig = {
       );
     }
     
+    // CSS optimization
+    if (!dev) {
+      config.module.rules.forEach((rule) => {
+        if (Array.isArray(rule.oneOf)) {
+          rule.oneOf.forEach((one) => {
+            if (one.use && one.use.loader && one.use.loader.includes('css-loader')) {
+              if (one.use.options) {
+                one.use.options.modules = {
+                  ...one.use.options.modules,
+                  exportOnlyLocals: isServer,
+                };
+              }
+            }
+          });
+        }
+      });
+    }
     
     return config
   },
@@ -264,4 +327,4 @@ const nextConfig = {
   swcMinify: true,
 }
 
-module.exports = nextConfig
+export default nextConfig
