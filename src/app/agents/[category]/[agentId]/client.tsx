@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { ArrowLeft, Copy, CheckCircle, Clock, Zap, Users, Download, Share2, BookOpen, Code2 } from 'lucide-react'
@@ -11,12 +11,82 @@ import { getCategoryById } from '@/lib/agentCategories'
 import { agents } from '@/lib/agents'
 
 export default function AgentPageClient({ params }: { params: { category: string; agentId: string } }) {
+  const [copied, setCopied] = useState(false)
+  const [downloaded, setDownloaded] = useState(false)
+  
   const prompt = getAgentPrompt(params.agentId)
   const agent = agents.find(a => a.id === params.agentId)
   const category = getCategoryById(params.category)
   
   if (!prompt || !agent || !category) {
     notFound()
+  }
+
+  const handleDownload = () => {
+    // Create a complete prompt document
+    const promptDocument = {
+      name: prompt.name,
+      version: prompt.version,
+      category: category.name,
+      lastUpdated: prompt.lastUpdated,
+      systemPrompt: prompt.systemPrompt || '',
+      mainPrompt: prompt.prompt,
+      variables: prompt.variables || [],
+      tips: prompt.tips || [],
+      examples: prompt.examples || [],
+      metadata: {
+        tokenSavings: agent.tokenSavings,
+        timeSavings: agent.timeSavings,
+        difficulty: agent.difficulty,
+        useCases: agent.useCases,
+        features: agent.features
+      }
+    }
+    
+    // Convert to formatted JSON
+    const jsonContent = JSON.stringify(promptDocument, null, 2)
+    
+    // Create blob and download
+    const blob = new Blob([jsonContent], { type: 'application/json' })
+    const url = URL.createObjectURL(blob)
+    const link = document.createElement('a')
+    link.href = url
+    link.download = `${params.agentId}-prompt-v${prompt.version}.json`
+    document.body.appendChild(link)
+    link.click()
+    document.body.removeChild(link)
+    URL.revokeObjectURL(url)
+    
+    // Show feedback
+    setDownloaded(true)
+    setTimeout(() => setDownloaded(false), 3000)
+  }
+
+  const handleShare = async () => {
+    const shareUrl = window.location.href
+    const shareText = `Check out this AI agent: ${prompt.name} - ${agent.shortDesc}`
+    
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: prompt.name,
+          text: shareText,
+          url: shareUrl
+        })
+      } catch (err) {
+        // Fallback to copy URL
+        copyToClipboard(shareUrl)
+      }
+    } else {
+      // Fallback to copy URL
+      copyToClipboard(shareUrl)
+    }
+  }
+
+  const copyToClipboard = (text: string) => {
+    navigator.clipboard.writeText(text)
+    setCopied(true)
+    setTimeout(() => setCopied(false), 3000)
   }
 
   return (
@@ -229,13 +299,37 @@ export default function AgentPageClient({ params }: { params: { category: string
 
               {/* Action Buttons */}
               <div className="flex flex-wrap gap-4">
-                <button className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-colors">
-                  <Download className="w-5 h-5" />
-                  Download Prompt
+                <button 
+                  onClick={handleDownload}
+                  className="flex items-center gap-2 px-6 py-3 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold transition-all transform hover:scale-105 active:scale-95"
+                >
+                  {downloaded ? (
+                    <>
+                      <CheckCircle className="w-5 h-5" />
+                      Downloaded!
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-5 h-5" />
+                      Download Prompt
+                    </>
+                  )}
                 </button>
-                <button className="flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-semibold transition-colors">
-                  <Share2 className="w-5 h-5" />
-                  Share Agent
+                <button 
+                  onClick={handleShare}
+                  className="flex items-center gap-2 px-6 py-3 border border-gray-300 dark:border-gray-600 hover:bg-gray-50 dark:hover:bg-gray-800 rounded-lg font-semibold transition-all transform hover:scale-105 active:scale-95"
+                >
+                  {copied ? (
+                    <>
+                      <CheckCircle className="w-5 h-5 text-green-500" />
+                      Link Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Share2 className="w-5 h-5" />
+                      Share Agent
+                    </>
+                  )}
                 </button>
                 <Link 
                   href={`/agents/${params.category}`}
