@@ -23,35 +23,61 @@ export default function AgentPageClient({ params }: { params: { category: string
   }
 
   const handleDownload = () => {
-    // Create a complete prompt document
-    const promptDocument = {
-      name: prompt.name,
-      version: prompt.version,
-      category: category.name,
-      lastUpdated: prompt.lastUpdated,
-      systemPrompt: prompt.systemPrompt || '',
-      mainPrompt: prompt.prompt,
-      variables: prompt.variables || [],
-      tips: prompt.tips || [],
-      examples: prompt.examples || [],
-      metadata: {
-        tokenSavings: agent.tokenSavings,
-        timeSavings: agent.timeSavings,
-        difficulty: agent.difficulty,
-        useCases: agent.useCases,
-        features: agent.features
-      }
+    // Create a formatted text document
+    let textContent = `# ${prompt.name}\n`
+    textContent += `Version: ${prompt.version} | Last Updated: ${prompt.lastUpdated}\n`
+    textContent += `Category: ${category.name} | Difficulty: ${agent.difficulty}\n`
+    textContent += `Token Savings: ${agent.tokenSavings} | Time Savings: ${agent.timeSavings}\n`
+    textContent += `\n${'='.repeat(80)}\n\n`
+    
+    // Add system prompt if exists
+    if (prompt.systemPrompt) {
+      textContent += `## SYSTEM PROMPT\n\n`
+      textContent += `${prompt.systemPrompt}\n\n`
+      textContent += `${'='.repeat(80)}\n\n`
     }
     
-    // Convert to formatted JSON
-    const jsonContent = JSON.stringify(promptDocument, null, 2)
+    // Add main prompt
+    textContent += `## MAIN PROMPT\n\n`
+    textContent += `${prompt.prompt}\n\n`
+    textContent += `${'='.repeat(80)}\n\n`
     
-    // Create blob and download
-    const blob = new Blob([jsonContent], { type: 'application/json' })
+    // Add variables section if exists
+    if (prompt.variables && prompt.variables.length > 0) {
+      textContent += `## VARIABLES TO REPLACE\n\n`
+      prompt.variables.forEach(variable => {
+        textContent += `• [${variable.name}]: ${variable.description}\n`
+        textContent += `  Example: ${variable.example}\n`
+        textContent += `  Required: ${variable.required ? 'Yes' : 'No'}\n\n`
+      })
+      textContent += `${'='.repeat(80)}\n\n`
+    }
+    
+    // Add tips section if exists
+    if (prompt.tips && prompt.tips.length > 0) {
+      textContent += `## TIPS FOR BEST RESULTS\n\n`
+      prompt.tips.forEach((tip, index) => {
+        textContent += `${index + 1}. ${tip}\n`
+      })
+      textContent += `\n${'='.repeat(80)}\n\n`
+    }
+    
+    // Add use cases and features
+    textContent += `## USE CASES\n\n`
+    agent.useCases.forEach(useCase => {
+      textContent += `• ${useCase}\n`
+    })
+    textContent += `\n## KEY FEATURES\n\n`
+    agent.features.forEach(feature => {
+      textContent += `• ${feature}\n`
+    })
+    
+    // Create blob and download as text file
+    const blob = new Blob([textContent], { type: 'text/plain;charset=utf-8' })
     const url = URL.createObjectURL(blob)
     const link = document.createElement('a')
     link.href = url
-    link.download = `${params.agentId}-prompt-v${prompt.version}.json`
+    link.download = `${params.agentId}-prompt-v${prompt.version}.txt`
     document.body.appendChild(link)
     link.click()
     document.body.removeChild(link)
