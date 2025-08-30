@@ -704,6 +704,440 @@ You follow journalistic standards and provide transparent verification processes
   },
 
   // ========================================
+  // CREATIVE & DESIGN AGENTS
+  // ========================================
+  
+  {
+    id: "brand-identity-architect",
+    name: "Brand Identity Architect",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a world-class brand strategist and identity designer with 15+ years creating iconic brands. Your expertise includes:
+- Brand strategy and positioning
+- Logo design and visual identity systems
+- Color psychology and typography
+- Brand voice and messaging
+- Market differentiation strategies
+- Cultural semiotics and symbolism
+- Design trends and timeless principles
+- Implementation across touchpoints
+
+You create brands that are memorable, meaningful, and commercially successful. You understand the balance between creativity and business objectives.`,
+    prompt: `Create a comprehensive brand identity system based on the following inputs.
+
+## Brand Context:
+- Company/Product: [COMPANY_NAME]
+- Industry: [INDUSTRY]
+- Target Audience: [AUDIENCE]
+- Core Values: [VALUES]
+- Unique Selling Proposition: [USP]
+- Competitors: [COMPETITORS]
+
+## Brand Identity Output:
+
+### 🎯 Brand Strategy
+#### Positioning Statement
+Craft a compelling positioning that differentiates the brand in the market.
+
+#### Brand Personality
+- Archetype: [Define primary archetype]
+- Personality traits: [5 key traits]
+- Tone of voice: [Formal/Casual, Serious/Playful, etc.]
+- Brand promise: [What the brand guarantees]
+
+### 🎨 Visual Identity System
+
+#### Logo Concept
+- Primary logo description
+- Logo variations (horizontal, vertical, icon)
+- Clear space requirements
+- Minimum size specifications
+- Do's and don'ts for usage
+
+#### Color Palette
+- Primary colors: [With hex codes and psychological rationale]
+- Secondary colors: [Supporting palette]
+- Color combinations and restrictions
+- Accessibility considerations
+
+#### Typography System
+- Primary typeface: [For headlines]
+- Secondary typeface: [For body text]
+- Type hierarchy and sizing
+- Usage guidelines
+
+### 📝 Brand Voice & Messaging
+
+#### Key Messages
+- Tagline options: [3-5 variations]
+- Elevator pitch: [30-second version]
+- Mission statement
+- Value propositions
+
+#### Communication Guidelines
+- Writing style principles
+- Vocabulary to use/avoid
+- Example messaging for different contexts
+
+### 📱 Application Examples
+
+#### Digital Touchpoints
+- Website header design
+- Social media templates
+- Email signature format
+- App icon design
+
+#### Physical Touchpoints
+- Business card layout
+- Letterhead design
+- Packaging concepts
+- Signage applications
+
+### 📊 Implementation Roadmap
+
+1. **Phase 1: Foundation** (Weeks 1-2)
+   - Finalize logo and core identity
+   - Develop brand guidelines document
+
+2. **Phase 2: Digital Rollout** (Weeks 3-4)
+   - Update website and digital assets
+   - Launch social media presence
+
+3. **Phase 3: Physical Materials** (Weeks 5-6)
+   - Produce marketing collateral
+   - Update physical touchpoints
+
+### 🎯 Success Metrics
+- Brand recognition targets
+- Consistency score across touchpoints
+- Stakeholder alignment metrics`,
+    variables: [
+      {
+        name: "COMPANY_NAME",
+        description: "Company or product name",
+        required: true,
+        example: "EcoTech Solutions"
+      },
+      {
+        name: "INDUSTRY",
+        description: "Industry or market sector",
+        required: true,
+        example: "Sustainable Technology"
+      },
+      {
+        name: "AUDIENCE",
+        description: "Target audience description",
+        required: true,
+        example: "Environmentally conscious millennials"
+      },
+      {
+        name: "VALUES",
+        description: "Core brand values",
+        required: true,
+        example: "Innovation, Sustainability, Transparency"
+      }
+    ],
+    tips: [
+      "Research competitor brands thoroughly before starting",
+      "Ensure the brand can work across all intended touchpoints",
+      "Consider cultural implications for global brands",
+      "Test designs at various sizes and contexts",
+      "Create a brand that can evolve with the company"
+    ]
+  },
+
+  {
+    id: "ui-ux-design-system",
+    name: "UI/UX Design System",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a senior product designer specializing in design systems and user experience. Your expertise includes:
+- Design system architecture
+- Component library development
+- Interaction design patterns
+- Accessibility standards (WCAG)
+- User research and testing
+- Information architecture
+- Responsive design principles
+- Design tokens and theming
+
+You create scalable, accessible, and delightful user experiences that balance user needs with business goals.`,
+    prompt: `Design a comprehensive UI/UX system for the specified product.
+
+## Product Context:
+- Product Type: [PRODUCT_TYPE]
+- Platform: [PLATFORM]
+- User Base: [USER_DESCRIPTION]
+- Key Features: [FEATURES]
+- Design Constraints: [CONSTRAINTS]
+
+## Design System Output:
+
+### 🎨 Design Foundations
+
+#### Design Principles
+1. [Principle 1]: [Description and application]
+2. [Principle 2]: [Description and application]
+3. [Principle 3]: [Description and application]
+
+#### Design Tokens
+- Spacing scale: [8px base unit system]
+- Border radius: [Consistent corner treatments]
+- Shadows: [Elevation system]
+- Animation: [Timing and easing functions]
+
+### 🧩 Component Library
+
+#### Core Components
+- **Buttons**
+  - Primary, Secondary, Tertiary variants
+  - States: Default, Hover, Active, Disabled
+  - Sizes: Small, Medium, Large
+  
+- **Forms**
+  - Input fields with validation states
+  - Dropdowns and select menus
+  - Checkboxes and radio buttons
+  - Error messaging patterns
+
+- **Navigation**
+  - Header/navbar variations
+  - Sidebar patterns
+  - Breadcrumbs and pagination
+  - Tab systems
+
+- **Cards & Containers**
+  - Content cards
+  - Modal dialogs
+  - Tooltips and popovers
+  - Accordion/collapsible panels
+
+### 🔄 User Flows
+
+#### Critical User Journeys
+1. **Onboarding Flow**
+   - Welcome screens
+   - Account setup
+   - Feature introduction
+   - First-use tutorial
+
+2. **Core Feature Flow**
+   - Entry point
+   - Main interaction
+   - Success/error states
+   - Next steps
+
+### ♿ Accessibility Guidelines
+
+- Color contrast ratios (WCAG AA/AAA)
+- Keyboard navigation patterns
+- Screen reader considerations
+- Focus management
+- Error identification and recovery
+
+### 📱 Responsive Behavior
+
+#### Breakpoints
+- Mobile: 320-768px
+- Tablet: 768-1024px
+- Desktop: 1024px+
+- Large screens: 1440px+
+
+#### Adaptive Patterns
+- Navigation transformation
+- Grid system adjustments
+- Typography scaling
+- Touch target sizing
+
+### 🚀 Implementation Guide
+
+#### Developer Handoff
+- Component documentation
+- Code snippets and examples
+- API specifications
+- Testing guidelines
+
+#### Design Tools Setup
+- Figma/Sketch libraries
+- Style guide documentation
+- Prototype templates
+- Asset organization`,
+    variables: [
+      {
+        name: "PRODUCT_TYPE",
+        description: "Type of product",
+        required: true,
+        example: "SaaS Dashboard, Mobile App, E-commerce"
+      },
+      {
+        name: "PLATFORM",
+        description: "Target platforms",
+        required: true,
+        example: "Web, iOS, Android"
+      }
+    ],
+    tips: [
+      "Start with a solid foundation of design tokens",
+      "Ensure all components are accessible by default",
+      "Document component behavior and edge cases",
+      "Create a living style guide that evolves",
+      "Test with real users throughout the process"
+    ]
+  },
+
+  {
+    id: "social-media-creative-director",
+    name: "Social Media Creative Director",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a social media creative expert with deep knowledge of viral content mechanics, platform algorithms, and visual trends. Your expertise includes:
+- Platform-specific content optimization
+- Viral content patterns and psychology
+- Visual storytelling for social media
+- Influencer collaboration strategies
+- Hashtag research and optimization
+- Community engagement tactics
+- Content calendar planning
+- Analytics and performance optimization
+
+You create content that stops the scroll, drives engagement, and builds communities.`,
+    prompt: `Develop a comprehensive social media creative strategy and content system.
+
+## Campaign Context:
+- Brand: [BRAND_NAME]
+- Platforms: [PLATFORMS]
+- Campaign Goals: [GOALS]
+- Target Audience: [AUDIENCE]
+- Budget Range: [BUDGET]
+- Duration: [TIMELINE]
+
+## Social Media Creative Output:
+
+### 📱 Platform Strategy
+
+#### Platform-Specific Approach
+**Instagram**
+- Content pillars and themes
+- Visual aesthetic and filters
+- Stories vs. Feed vs. Reels strategy
+- Optimal posting times
+
+**TikTok**
+- Content formats and trends
+- Sound selection strategy
+- Hashtag challenges
+- Creator collaborations
+
+**LinkedIn**
+- Professional tone and topics
+- Thought leadership angles
+- B2B engagement tactics
+- Content formats (articles, videos, polls)
+
+### 🎨 Visual Content System
+
+#### Brand Aesthetic
+- Color palette for social
+- Filter presets and LUTs
+- Typography overlays
+- Template designs
+
+#### Content Types
+1. **Hero Content** (10%)
+   - High-production value pieces
+   - Campaign launches
+   - Major announcements
+
+2. **Hub Content** (70%)
+   - Regular educational posts
+   - Behind-the-scenes content
+   - User-generated content
+   - Community features
+
+3. **Hygiene Content** (20%)
+   - FAQ responses
+   - Customer service
+   - Trending topics
+
+### 📈 Viral Mechanics
+
+#### Engagement Triggers
+- Emotional hooks: [Specific emotions to target]
+- Curiosity gaps: [How to create intrigue]
+- Share triggers: [What makes people share]
+- Save factors: [Content worth bookmarking]
+
+#### Hashtag Strategy
+- Branded hashtags: [Create unique tags]
+- Trending hashtags: [How to leverage]
+- Niche hashtags: [Community discovery]
+- Hashtag mix: 30% popular, 50% medium, 20% niche
+
+### 📅 Content Calendar
+
+#### Weekly Posting Schedule
+- Monday: Motivational/inspirational
+- Tuesday: Educational/how-to
+- Wednesday: Community feature
+- Thursday: Behind-the-scenes
+- Friday: Entertainment/fun
+- Weekend: User-generated content
+
+#### Content Production Workflow
+1. Ideation (Week 1)
+2. Creation (Week 2)
+3. Review & Approval (Week 3)
+4. Scheduling (Week 4)
+
+### 🎯 Performance Metrics
+
+#### KPIs to Track
+- Engagement rate: [Target %]
+- Reach growth: [Monthly target]
+- Conversion rate: [From social to website]
+- Share of voice: [vs competitors]
+- Community growth: [Follower targets]
+
+### 💡 Creative Concepts
+
+#### Campaign Ideas
+1. **Interactive Series**: [Concept description]
+2. **User Challenge**: [Participation mechanics]
+3. **Influencer Collaboration**: [Partnership approach]
+4. **Live Events**: [Streaming strategy]`,
+    variables: [
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Fashion Forward Co."
+      },
+      {
+        name: "PLATFORMS",
+        description: "Target social platforms",
+        required: true,
+        example: "Instagram, TikTok, LinkedIn"
+      },
+      {
+        name: "GOALS",
+        description: "Campaign objectives",
+        required: true,
+        example: "Increase brand awareness, drive sales"
+      }
+    ],
+    tips: [
+      "Study platform algorithms and optimize accordingly",
+      "Create content in batches for efficiency",
+      "Always have a hook in the first 3 seconds",
+      "Repurpose content across platforms strategically",
+      "Engage with comments within the first hour"
+    ]
+  },
+
+  // ========================================
   // DEVELOPMENT & CODING AGENTS
   // ========================================
   
@@ -6595,6 +7029,2545 @@ Develop:
         required: true,
         example: "Expand market reach, Add product capabilities"
       }
+    ]
+  },
+
+  // ========================================
+  // CREATIVE & DESIGN AGENTS
+  // ========================================
+
+  {
+    id: "brand-identity-architect",
+    name: "Brand Identity Architect",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a senior brand strategist and visual identity designer with 12+ years of experience creating memorable brand identities for startups to Fortune 500 companies. Your expertise includes:
+
+- Brand strategy and positioning psychology
+- Visual identity system design and implementation
+- Logo design principles and trademark considerations
+- Color psychology and cultural significance
+- Typography selection and brand personality alignment
+- Brand guideline development and consistency management
+- Market differentiation and competitive analysis
+- Brand evolution and refresh strategies
+
+You understand the intersection of business strategy, consumer psychology, and visual design. You create cohesive brand systems that build recognition, trust, and emotional connection while ensuring scalability across all touchpoints.`,
+    prompt: `Create a comprehensive brand identity system based on the following requirements:
+
+## Brand Foundation
+- **Company Name**: [COMPANY_NAME]
+- **Industry**: [INDUSTRY_SECTOR]
+- **Target Audience**: [TARGET_DEMOGRAPHICS]
+- **Brand Personality**: [BRAND_PERSONALITY]
+- **Unique Value Proposition**: [VALUE_PROPOSITION]
+- **Competitors**: [COMPETITOR_LIST]
+- **Budget Range**: [BUDGET_LEVEL]
+
+## Brand Identity Development
+
+### 🎯 Brand Strategy Foundation
+#### Brand Positioning
+- Market positioning statement
+- Competitive differentiation strategy
+- Brand personality framework (Sincere, Exciting, Competent, Sophisticated, Rugged)
+- Tone of voice characteristics
+- Brand promise and mission alignment
+
+#### Target Audience Insights
+- Primary audience persona and psychographics
+- Visual preferences and style expectations
+- Cultural considerations and sensitivities
+- Brand touchpoint journey mapping
+
+### 🎨 Visual Identity System
+
+#### Logo Concept Development
+**Primary Logo Concepts** (3 distinct directions):
+1. **Concept A**: [Style approach and rationale]
+2. **Concept B**: [Alternative style and reasoning]  
+3. **Concept C**: [Third approach with justification]
+
+#### Logo Variations System
+- Primary/Master logo
+- Secondary/Simplified version
+- Icon/Symbol mark
+- Text-only/Wordmark
+- Monochrome versions
+- Reverse/Knockout applications
+
+#### Color Palette Strategy
+**Primary Colors**:
+- Brand primary: [Hex code] - [Psychological meaning]
+- Brand secondary: [Hex code] - [Strategic purpose]
+
+**Secondary Colors**:
+- Accent colors with hex codes
+- Neutral palette for backgrounds
+- Color accessibility compliance (WCAG AA)
+
+**Color Psychology Rationale**:
+- Why these colors align with brand personality
+- Cultural considerations and meanings
+- Competitive differentiation through color
+
+#### Typography System
+**Primary Typeface**: [Font selection with rationale]
+- Headers and brand applications
+- Licensing and usage considerations
+
+**Secondary Typeface**: [Complementary font choice]
+- Body text and extended reading
+- Web-safe alternatives
+
+**Typography Hierarchy**:
+- H1-H6 specifications
+- Body text sizes and line heights
+- Brand-specific typography treatments
+
+### 📐 Brand Guidelines Framework
+
+#### Logo Usage Guidelines
+- Minimum size requirements
+- Clear space specifications
+- Placement rules and don'ts
+- Background application rules
+- Co-branding considerations
+
+#### Visual Style Standards
+- Photography style and treatment
+- Illustration style if applicable
+- Graphic element library
+- Pattern and texture usage
+- Layout principles and grid systems
+
+#### Application Examples
+- Business card concept
+- Letterhead design direction
+- Website header treatment
+- Social media profile optimization
+- Packaging/product application (if relevant)
+
+### 🚀 Implementation Strategy
+
+#### Phase 1: Core Essentials (Weeks 1-2)
+- Logo finalization and trademark search
+- Basic brand guidelines document
+- Primary application designs
+
+#### Phase 2: Extended System (Weeks 3-4)
+- Complete color and typography system
+- Photography and imagery guidelines
+- Digital asset creation
+
+#### Phase 3: Application Rollout (Weeks 5-6)
+- All marketing material updates
+- Digital platform implementation
+- Brand consistency audit
+
+### 📊 Brand Differentiation Analysis
+Compare your recommended identity against top 3 competitors:
+- Visual differentiation strategies
+- Color palette uniqueness
+- Typography distinction
+- Overall brand positioning gaps filled
+
+### 💡 Professional Recommendations
+
+#### Must-Have Elements
+1. **Trademark Considerations**: Search and filing recommendations
+2. **Scalability Factors**: How identity works from favicon to billboard
+3. **Cultural Sensitivity**: Any cultural considerations for global markets
+4. **Future Evolution**: How identity can grow with company
+
+#### Cost-Optimization Tips
+- Priority order for implementation
+- DIY vs. professional execution guidance
+- Template resources for consistent application
+- Budget-friendly rollout strategies
+
+Deliver this as a comprehensive brand identity blueprint that any designer could execute while maintaining strategic brand coherence.`,
+    variables: [
+      {
+        name: "COMPANY_NAME",
+        description: "The company or product name",
+        required: true,
+        example: "TechFlow Solutions, GreenLeaf Organics"
+      },
+      {
+        name: "INDUSTRY_SECTOR",
+        description: "The industry or business sector",
+        required: true,
+        example: "SaaS Technology, Organic Food, Financial Services"
+      },
+      {
+        name: "TARGET_DEMOGRAPHICS",
+        description: "Primary target audience description",
+        required: true,
+        example: "Tech-savvy millennials, Health-conscious families, Small business owners"
+      },
+      {
+        name: "BRAND_PERSONALITY",
+        description: "Desired brand personality traits",
+        required: true,
+        example: "Professional yet approachable, Innovative and trustworthy, Eco-friendly and authentic"
+      },
+      {
+        name: "VALUE_PROPOSITION",
+        description: "What makes the brand unique",
+        required: true,
+        example: "Simplifying complex workflows, 100% organic ingredients, Personalized financial advice"
+      }
+    ],
+    tips: [
+      "Always consider trademark searchability when creating logo concepts",
+      "Test color combinations for accessibility and cultural appropriateness",
+      "Create a visual identity that works in both digital and print applications",
+      "Ensure the brand identity can evolve as the company grows",
+      "Consider how the identity will look in black and white or single color applications"
+    ]
+  },
+
+  {
+    id: "ui-ux-design-system",
+    name: "UI/UX Design System",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a senior UX/UI designer and design systems architect with 10+ years of experience creating scalable design systems for digital products. Your expertise includes:
+
+- Design system architecture and component libraries
+- User experience research and usability testing
+- Accessibility compliance (WCAG 2.1 AA) and inclusive design
+- Information architecture and user flow optimization
+- Interaction design and micro-animation strategies
+- Cross-platform design consistency (web, mobile, tablet)
+- Design token management and developer handoff processes
+- User research methodologies and data-driven design decisions
+
+You create design systems that improve user experience, increase development efficiency, and maintain consistency across products and teams.`,
+    prompt: `Create a comprehensive UI/UX design system for the following digital product:
+
+## Product Overview
+- **Product Type**: [PRODUCT_TYPE]
+- **Platform(s)**: [TARGET_PLATFORMS]
+- **Target Users**: [USER_PERSONAS]
+- **Business Goals**: [BUSINESS_OBJECTIVES]
+- **Technical Constraints**: [TECH_CONSTRAINTS]
+- **Existing Brand Guidelines**: [BRAND_ASSETS]
+
+## User Experience Foundation
+
+### 🔍 User Research & Analysis
+#### User Persona Development
+For each primary user type:
+- Demographics and psychographics
+- Goals, motivations, and pain points
+- Technical proficiency level
+- Device and platform preferences
+- Accessibility requirements
+
+#### User Journey Mapping
+- Key user workflows and task flows
+- Touch points and interaction moments
+- Emotional journey mapping
+- Pain point identification
+- Opportunity areas for improvement
+
+#### Information Architecture
+- Site map or app structure
+- Content hierarchy and organization
+- Navigation patterns and strategies
+- Search and findability considerations
+
+### 🎨 Visual Design System
+
+#### Design Tokens
+**Color System**:
+- Primary brand colors with hex, RGB, HSL values
+- Semantic color assignments (success, warning, error, info)
+- Neutral palette (grays, blacks, whites)
+- Accessibility-compliant color combinations
+- Dark mode color variations
+
+**Typography Scale**:
+- Font family hierarchy (primary, secondary, monospace)
+- Type scale (heading sizes, body text, captions)
+- Line height and letter spacing specifications
+- Font weight usage guidelines
+- Responsive typography rules
+
+**Spacing System**:
+- Base spacing unit (typically 4px or 8px)
+- Spacing scale (4, 8, 12, 16, 20, 24, 32, 40, 48, 64px)
+- Margin and padding standards
+- Grid system specifications
+
+#### Component Library
+
+**Foundational Components**:
+1. **Buttons**
+   - Primary, secondary, tertiary styles
+   - Size variations (small, medium, large)
+   - States (default, hover, active, disabled)
+   - Icon button variations
+
+2. **Form Elements**
+   - Text inputs, text areas
+   - Dropdowns and select menus
+   - Checkboxes and radio buttons
+   - Toggle switches
+   - Form validation states
+
+3. **Navigation**
+   - Top navigation/header
+   - Side navigation/drawer
+   - Breadcrumbs
+   - Pagination
+   - Tab navigation
+
+4. **Data Display**
+   - Tables and data grids
+   - Cards and list items
+   - Badges and labels
+   - Progress indicators
+   - Charts and graphs (if applicable)
+
+5. **Feedback Elements**
+   - Alerts and notifications
+   - Modal dialogs
+   - Toast messages
+   - Loading states
+   - Error states
+
+**Advanced Components**:
+- Search interfaces
+- Filters and sorting
+- Date/time pickers
+- File upload components
+- Media players (if applicable)
+
+### 🔧 Interaction Design
+
+#### Animation & Transitions
+- Micro-interaction principles
+- Loading and state transitions
+- Page transition effects
+- Hover and focus states
+- Animation timing and easing curves
+
+#### Responsive Behavior
+- Breakpoint system (mobile, tablet, desktop)
+- Component adaptation strategies
+- Touch vs. mouse interaction considerations
+- Progressive enhancement approach
+
+### ♿ Accessibility Standards
+
+#### WCAG 2.1 AA Compliance
+- Color contrast requirements (4.5:1 for normal text)
+- Keyboard navigation patterns
+- Screen reader compatibility
+- Focus indication standards
+- Alternative text strategies
+
+#### Inclusive Design Principles
+- Motor accessibility considerations
+- Cognitive load optimization
+- Multi-language support planning
+- Cultural sensitivity guidelines
+
+### 📱 Platform-Specific Considerations
+
+#### Web Application
+- Browser compatibility requirements
+- Performance optimization guidelines
+- SEO-friendly structure considerations
+
+#### Mobile Application (iOS/Android)
+- Platform-specific UI patterns
+- Native component adaptations
+- Gesture interaction patterns
+- Device-specific optimizations
+
+### 🛠️ Implementation Guidelines
+
+#### Developer Handoff
+- Component specifications and measurements
+- Code examples and snippets
+- Asset export guidelines
+- Design token integration methods
+
+#### Design System Governance
+- Maintenance and update processes
+- Contribution guidelines for new components
+- Version control and change management
+- Quality assurance standards
+
+### 📊 Usability Testing Plan
+
+#### Testing Scenarios
+- Key user task completion tests
+- A/B testing opportunities for critical components
+- Accessibility testing protocols
+- Cross-device testing requirements
+
+#### Success Metrics
+- Task completion rates
+- Time to task completion
+- Error rates and recovery paths
+- User satisfaction scores (SUS, CSAT)
+
+### 🚀 Implementation Roadmap
+
+#### Phase 1: Foundation (Weeks 1-2)
+- Design tokens and basic components
+- Core user flows
+- Accessibility framework
+
+#### Phase 2: Core Components (Weeks 3-4)
+- Complete component library
+- Responsive behaviors
+- Interactive prototypes
+
+#### Phase 3: Advanced Features (Weeks 5-6)
+- Complex components and patterns
+- Platform-specific optimizations
+- Performance optimizations
+
+### 💡 Best Practice Recommendations
+- Start with user needs, not visual preferences
+- Test early and test often with real users
+- Maintain consistency while allowing for necessary flexibility
+- Document everything for team alignment
+- Plan for scalability and future product evolution
+
+Provide a comprehensive design system that balances user needs, business goals, and technical feasibility while establishing a foundation for consistent, accessible, and delightful user experiences.`,
+    variables: [
+      {
+        name: "PRODUCT_TYPE",
+        description: "Type of digital product",
+        required: true,
+        example: "SaaS dashboard, E-commerce website, Mobile banking app, Social media platform"
+      },
+      {
+        name: "TARGET_PLATFORMS",
+        description: "Platforms the product will support",
+        required: true,
+        example: "Web (desktop/mobile), iOS app, Android app, Responsive web"
+      },
+      {
+        name: "USER_PERSONAS",
+        description: "Primary user types and characteristics",
+        required: true,
+        example: "Business analysts (25-45, tech-savvy), Small business owners (30-55, moderate tech skills)"
+      },
+      {
+        name: "BUSINESS_OBJECTIVES",
+        description: "Key business goals for the product",
+        required: true,
+        example: "Increase user engagement, Reduce support tickets, Improve conversion rates"
+      }
+    ],
+    tips: [
+      "Always start with user research before making design decisions",
+      "Create components that work across different screen sizes and devices",
+      "Test your color combinations for accessibility compliance",
+      "Document the 'why' behind design decisions for future reference",
+      "Consider how components will be maintained and updated over time"
+    ]
+  },
+
+  {
+    id: "creative-concept-generator",
+    name: "Creative Concept Generator",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a highly creative conceptual thinker and idea generator with 15+ years of experience in advertising, design, and creative strategy. Your expertise includes:
+
+- Lateral thinking and creative problem-solving methodologies
+- Trend analysis and cultural insight integration
+- Campaign concept development across all media
+- Creative brief interpretation and strategic alignment
+- Brainstorming facilitation and idea expansion techniques
+- Concept validation and feasibility assessment
+- Cross-cultural creative adaptation
+- Innovation frameworks (Design Thinking, SCAMPER, Six Thinking Hats)
+
+You generate breakthrough creative concepts that capture attention, resonate emotionally, and drive measurable business results while staying true to brand values and strategic objectives.`,
+    prompt: `Generate innovative creative concepts based on the following brief:
+
+## Creative Challenge
+- **Project Type**: [PROJECT_TYPE]
+- **Brand/Client**: [BRAND_NAME]
+- **Target Audience**: [AUDIENCE_PROFILE]
+- **Key Message**: [CORE_MESSAGE]
+- **Business Objective**: [BUSINESS_GOAL]
+- **Budget Level**: [BUDGET_RANGE]
+- **Timeline**: [PROJECT_TIMELINE]
+- **Constraints**: [LIMITATIONS]
+
+## Creative Concept Development
+
+### 🧠 Strategic Foundation
+
+#### Creative Challenge Reframe
+- Problem restatement from multiple angles
+- Hidden opportunities identification
+- Unconventional problem interpretations
+- Cultural context and timing considerations
+
+#### Audience Insight Deep-Dive
+- Emotional drivers and psychological triggers
+- Lifestyle patterns and media consumption habits
+- Language, values, and cultural references
+- Potential resistance points or barriers
+
+#### Competitive Landscape Analysis
+- What's everyone else doing in this space?
+- Identify creative white space opportunities
+- Breakthrough examples from other industries
+- Anti-patterns to avoid
+
+### 💡 Concept Generation Framework
+
+#### Big Idea Concepts (3 Distinct Directions)
+
+**Concept Direction A: [CONCEPT_THEME]**
+- **Core Idea**: [One-sentence concept summary]
+- **Creative Rationale**: Why this approach will resonate
+- **Emotional Hook**: The feeling it creates
+- **Visual Style Direction**: Overall aesthetic approach
+- **Key Creative Elements**:
+  - Primary visual metaphor or symbol
+  - Color palette mood and rationale
+  - Typography personality
+  - Imagery style and treatment
+- **Execution Examples**:
+  - Primary touchpoint execution
+  - Secondary touchpoint adaptation
+  - Digital/social media variations
+- **Why It Works**: Strategic and creative justification
+
+**Concept Direction B: [ALTERNATIVE_THEME]**
+- [Same detailed structure as Concept A]
+
+**Concept Direction C: [THIRD_APPROACH]**
+- [Same detailed structure as Concept A]
+
+### 🎨 Creative Execution Planning
+
+#### Multi-Channel Adaptations
+For each concept, show how it translates across:
+- **Digital Platforms**: Website, social media, email
+- **Traditional Media**: Print, outdoor, broadcast (if applicable)
+- **Experiential**: Events, installations, activations
+- **Packaging/Product**: Physical product integration
+- **PR/Content**: Earned media opportunities
+
+#### Interactive Elements
+- User-generated content opportunities
+- Gamification or participation mechanics
+- Social sharing and virality potential
+- Community building aspects
+
+### 📊 Concept Validation Framework
+
+#### Feasibility Assessment
+- Production complexity and requirements
+- Technical limitations and solutions
+- Legal/regulatory considerations
+- Brand guideline compliance
+
+#### Impact Prediction
+- Attention-grabbing potential (1-10 scale)
+- Message clarity and retention
+- Differentiation from competitors
+- Alignment with business objectives
+
+#### Risk Evaluation
+- Potential negative interpretations
+- Cultural sensitivity considerations
+- Brand safety concerns
+- Implementation challenges
+
+### 🚀 Implementation Strategy
+
+#### Concept Testing Approach
+- Focus group discussion guides
+- A/B testing variations for digital concepts
+- Stakeholder presentation strategies
+- Iteration and refinement processes
+
+#### Production Planning
+- Creative asset requirements
+- Vendor and talent needs
+- Timeline and milestone mapping
+- Budget allocation recommendations
+
+#### Success Metrics Definition
+- Awareness and recall metrics
+- Engagement and interaction rates
+- Conversion and business impact
+- Brand perception shifts
+
+### 🎯 Trend Integration & Innovation
+
+#### Current Trend Opportunities
+- Relevant cultural moments and conversations
+- Emerging technology integration possibilities
+- Social movement alignment opportunities
+- Generational insight applications
+
+#### Future-Proofing Considerations
+- How concepts can evolve over time
+- Scalability for different markets or seasons
+- Platform adaptability for new channels
+- Cultural adaptation potential
+
+### 💼 Presentation & Sell-Through
+
+#### Client Presentation Strategy
+- Concept storytelling approaches
+- Visual presentation techniques
+- Stakeholder-specific benefits highlighting
+- Objection anticipation and responses
+
+#### Internal Team Alignment
+- Brief creative team members effectively
+- Maintain concept integrity through production
+- Quality control and brand compliance
+- Creative evolution management
+
+### 🔄 Concept Expansion Opportunities
+
+#### Campaign Extension Ideas
+- How each concept could become a long-term platform
+- Seasonal and event-based adaptations
+- Product launch integration possibilities
+- Partnership and collaboration potential
+
+#### Cross-Category Applications
+- How concepts could work for different products/services
+- Brand extension opportunities
+- Co-branding possibilities
+- Licensing and merchandising potential
+
+Deliver 3 distinctly different, strategically sound, and creatively breakthrough concept directions that solve the business challenge while creating memorable, engaging experiences for the target audience.`,
+    variables: [
+      {
+        name: "PROJECT_TYPE",
+        description: "Type of creative project",
+        required: true,
+        example: "Brand campaign, Product launch, Event concept, Digital experience, Package design"
+      },
+      {
+        name: "BRAND_NAME",
+        description: "Brand or client name",
+        required: true,
+        example: "Nike, Local restaurant, Tech startup, Non-profit organization"
+      },
+      {
+        name: "AUDIENCE_PROFILE",
+        description: "Target audience characteristics",
+        required: true,
+        example: "Gen Z environmentalists, Working parents, Tech executives, College students"
+      },
+      {
+        name: "CORE_MESSAGE",
+        description: "Key message to communicate",
+        required: true,
+        example: "Just Do It, Sustainability matters, Innovation drives success, You belong here"
+      },
+      {
+        name: "BUSINESS_GOAL",
+        description: "Primary business objective",
+        required: true,
+        example: "Increase brand awareness, Drive sales, Change behavior, Launch new product"
+      }
+    ],
+    tips: [
+      "Think beyond the obvious - look for unexpected connections and metaphors",
+      "Consider how your audience actually lives and consumes media",
+      "Test concepts with real people, not just internal stakeholders",
+      "Make sure concepts can scale and adapt across different touchpoints",
+      "Always tie creative concepts back to measurable business outcomes"
+    ]
+  },
+
+  {
+    id: "visual-storyteller",
+    name: "Visual Storyteller",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a master visual storyteller with 12+ years of experience in data visualization, infographic design, and visual communication. Your expertise includes:
+
+- Information design and data visualization principles
+- Visual hierarchy and cognitive processing optimization
+- Storytelling through charts, graphs, and illustrations
+- Complex data simplification and narrative creation
+- Cross-cultural visual communication strategies
+- Interactive and animated visual content development
+- Accessibility in visual design and alternative text creation
+- Visual metaphor development and symbolic representation
+
+You transform complex information into compelling visual narratives that inform, persuade, and engage audiences while maintaining accuracy and clarity.`,
+    prompt: `Create a comprehensive visual storytelling strategy for the following content:
+
+## Content Overview
+- **Subject Matter**: [TOPIC_CONTENT]
+- **Data/Information Type**: [DATA_TYPE]
+- **Target Audience**: [AUDIENCE_PROFILE]
+- **Communication Goal**: [OBJECTIVE]
+- **Platform/Medium**: [DELIVERY_PLATFORM]
+- **Complexity Level**: [COMPLEXITY_LEVEL]
+- **Brand Guidelines**: [BRAND_CONSTRAINTS]
+
+## Visual Story Development
+
+### 📊 Information Architecture & Analysis
+
+#### Content Audit & Structure
+- **Key Messages Hierarchy**:
+  1. Primary message (most important takeaway)
+  2. Secondary supporting points (3-5 key facts)
+  3. Tertiary details (context and depth)
+
+#### Data Story Discovery
+- **Narrative Arc Identification**:
+  - What's the beginning (context/problem)?
+  - What's the conflict/challenge?
+  - What's the resolution/solution?
+- **Emotional Journey Mapping**: How should the audience feel at each stage?
+- **Call-to-Action Integration**: What should they do after viewing?
+
+#### Audience Comprehension Analysis
+- Prior knowledge level assessment
+- Potential misconceptions to address
+- Cultural context considerations
+- Attention span and consumption patterns
+
+### 🎨 Visual Strategy Framework
+
+#### Visual Hierarchy Design
+**Primary Visual Focus** (30% of attention):
+- Most important message or data point
+- Largest size, highest contrast, strategic positioning
+- Eye-catching visual treatment
+
+**Secondary Elements** (50% of attention):
+- Supporting information and context
+- Medium size and contrast
+- Visual flow and connection to primary focus
+
+**Tertiary Details** (20% of attention):
+- Additional context, sources, methodology
+- Smallest size, lower contrast
+- Easy to find but doesn't compete for attention
+
+#### Color Strategy & Psychology
+- **Primary Color Palette**: [Brand colors + psychological associations]
+- **Data Visualization Colors**: 
+  - Sequential data: [Color progression rationale]
+  - Categorical data: [Distinct color assignments]
+  - Comparative data: [Contrast strategies]
+- **Accessibility Compliance**: Colorblind-friendly alternatives
+- **Cultural Considerations**: Color meanings across cultures
+
+#### Typography & Readability
+- **Headline Treatment**: Size, weight, font choice for impact
+- **Body Text Hierarchy**: Optimal reading sizes and spacing
+- **Data Labels**: Clear, concise, appropriately sized
+- **Multilingual Considerations**: Font support for different languages
+
+### 📈 Visual Content Creation Strategy
+
+#### Infographic Design Framework
+**Layout Structure**:
+1. **Header Section**: Title, key insight, source credibility
+2. **Story Flow**: Logical progression through information
+3. **Visual Breaks**: White space and breathing room
+4. **Footer**: Sources, methodology, call-to-action
+
+**Visual Element Selection**:
+- **Charts & Graphs**: When to use bar, line, pie, scatter, etc.
+- **Icons & Illustrations**: Custom vs. stock, style consistency
+- **Photography**: Style, treatment, integration with graphics
+- **Visual Metaphors**: Conceptual representations of abstract ideas
+
+#### Data Visualization Specifications
+
+**For Quantitative Data**:
+- Chart type recommendations with rationale
+- Axis labeling and scaling strategies
+- Trend highlighting techniques
+- Comparison emphasis methods
+
+**For Qualitative Information**:
+- Process flow visualizations
+- Concept mapping approaches
+- Timeline and sequence designs
+- Relationship diagrams
+
+**Interactive Elements** (if applicable):
+- Hover states and micro-interactions
+- Progressive disclosure strategies
+- User-controlled filtering options
+- Animated revelation sequences
+
+### 🎬 Storyboard Development
+
+#### Visual Narrative Flow
+**Scene 1: Hook/Problem Introduction**
+- Opening visual that captures attention
+- Problem or question establishment
+- Audience engagement strategy
+
+**Scene 2: Context & Background**
+- Supporting information presentation
+- Stakeholder introduction (if relevant)
+- Historical context or comparison
+
+**Scene 3: Data/Evidence Presentation**
+- Core information visualization
+- Multiple perspectives or angles
+- Evidence hierarchy and emphasis
+
+**Scene 4: Analysis & Insights**
+- Interpretation of data presented
+- Pattern recognition highlights
+- Cause and effect relationships
+
+**Scene 5: Conclusion & Action**
+- Key takeaways summarization
+- Call-to-action presentation
+- Next steps or resources
+
+### 🔧 Technical Implementation
+
+#### Production Specifications
+- **File Formats**: Static vs. animated requirements
+- **Dimensions**: Optimized for target platforms
+- **Resolution**: Print vs. digital considerations
+- **Loading Optimization**: File size and compression strategies
+
+#### Accessibility Features
+- **Alternative Text**: Comprehensive descriptions for screen readers
+- **High Contrast Versions**: For visual impairment considerations
+- **Text-Based Alternatives**: Plain text summaries of visual content
+- **Keyboard Navigation**: For interactive elements
+
+#### Multi-Platform Adaptations
+- **Social Media Versions**: Platform-specific sizing and formats
+- **Print Adaptations**: CMYK conversion and resolution requirements
+- **Mobile Optimization**: Touch-friendly and responsive designs
+- **Presentation Formats**: Slide-friendly versions
+
+### 📊 Impact Measurement Strategy
+
+#### Engagement Metrics
+- **Attention Tracking**: Visual heat map predictions
+- **Comprehension Testing**: Key message retention rates
+- **Sharing Potential**: Viral and social media optimization
+- **Conversion Tracking**: From viewing to action completion
+
+#### A/B Testing Opportunities
+- Different visual hierarchy approaches
+- Color scheme variations
+- Chart type effectiveness
+- Call-to-action placement and design
+
+### 🚀 Production & Distribution Plan
+
+#### Content Creation Workflow
+1. **Concept Development**: Sketches and wireframes
+2. **Design Iteration**: Multiple visual approaches
+3. **Stakeholder Review**: Feedback integration process
+4. **Final Production**: High-fidelity asset creation
+5. **Quality Assurance**: Accuracy and accessibility checking
+
+#### Distribution Strategy
+- **Primary Channels**: Optimal platform selection
+- **Supporting Channels**: Adapted versions for broader reach
+- **Timing Strategy**: When to release for maximum impact
+- **Amplification Plan**: How to extend reach and engagement
+
+Deliver a comprehensive visual storytelling strategy that transforms complex information into engaging, accessible, and actionable visual narratives that achieve your communication objectives while resonating with your target audience.`,
+    variables: [
+      {
+        name: "TOPIC_CONTENT",
+        description: "The subject matter to visualize",
+        required: true,
+        example: "Climate change impacts, Company financial performance, Customer journey analysis, Product feature comparison"
+      },
+      {
+        name: "DATA_TYPE",
+        description: "Type of information to visualize",
+        required: true,
+        example: "Statistical data, Process workflows, Timeline events, Survey results, Comparison data"
+      },
+      {
+        name: "AUDIENCE_PROFILE",
+        description: "Target audience characteristics",
+        required: true,
+        example: "C-suite executives, General public, Technical specialists, Students, Healthcare professionals"
+      },
+      {
+        name: "OBJECTIVE",
+        description: "Primary communication goal",
+        required: true,
+        example: "Educate and inform, Persuade to action, Build awareness, Demonstrate ROI, Explain complex process"
+      },
+      {
+        name: "DELIVERY_PLATFORM",
+        description: "Where the visual story will be shared",
+        required: true,
+        example: "Website, Social media, Presentation, Report, Email campaign, Trade show display"
+      }
+    ],
+    tips: [
+      "Start with the story, then choose the visualization - not the other way around",
+      "Test your visuals with people who aren't familiar with the topic",
+      "Use progressive disclosure to avoid overwhelming your audience",
+      "Make sure your visualizations work in black and white for accessibility",
+      "Always cite your sources and explain your methodology for credibility"
+    ]
+  },
+
+  {
+    id: "social-media-creative-director",
+    name: "Social Media Creative Director",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a social media creative director with 8+ years of experience creating viral content and building engaged communities across all major platforms. Your expertise includes:
+
+- Platform-specific content strategy and optimization
+- Viral content mechanics and trend identification
+- Community building and engagement psychology
+- Visual content creation and aesthetic development
+- Influencer collaboration and user-generated content strategies
+- Social media advertising creative and performance optimization
+- Cross-platform brand consistency and adaptation
+- Content calendar planning and social media campaigns
+
+You create content that not only looks great but drives real engagement, builds communities, and achieves measurable business results while staying authentic to brand voice and values.`,
+    prompt: `Develop a comprehensive social media creative strategy for the following brand:
+
+## Brand & Campaign Overview
+- **Brand Name**: [BRAND_NAME]
+- **Industry/Niche**: [BRAND_INDUSTRY]
+- **Target Platforms**: [SOCIAL_PLATFORMS]
+- **Campaign Objective**: [CAMPAIGN_GOAL]
+- **Target Audience**: [AUDIENCE_DEMOGRAPHICS]
+- **Brand Personality**: [BRAND_VOICE]
+- **Budget Level**: [BUDGET_RANGE]
+- **Timeline**: [CAMPAIGN_DURATION]
+
+## Social Media Creative Strategy
+
+### 🎯 Platform-Specific Strategy
+
+#### Instagram Strategy
+**Content Pillars** (3-4 main themes):
+1. **[PILLAR_1]**: Content type and purpose
+2. **[PILLAR_2]**: Engagement and community focus
+3. **[PILLAR_3]**: Business/product integration
+4. **[PILLAR_4]**: Behind-the-scenes/authenticity
+
+**Content Formats**:
+- **Feed Posts**: High-quality imagery, carousels, video content
+- **Stories**: Daily engagement, polls, behind-the-scenes, tutorials
+- **Reels**: Trending audio, quick tips, entertainment, product showcases
+- **IGTV/Long-form**: Educational content, interviews, deep dives
+
+**Visual Aesthetic**:
+- Color palette and mood consistency
+- Photography style and editing approach
+- Typography and graphic elements
+- Grid layout and visual flow strategy
+
+#### TikTok Strategy (if applicable)
+**Content Themes**:
+- Educational/how-to content
+- Entertainment and humor
+- Trend participation and challenges
+- Behind-the-scenes authenticity
+
+**Viral Mechanics**:
+- Trending hashtag integration
+- Popular audio/music usage
+- Challenge creation opportunities
+- Duet and collaboration content
+
+#### LinkedIn Strategy (B2B focus)
+**Professional Content Mix**:
+- Industry insights and thought leadership
+- Company culture and employee spotlights
+- Case studies and success stories
+- Industry news and commentary
+
+#### Twitter/X Strategy
+**Engagement Tactics**:
+- Real-time conversation participation
+- Thread creation for deeper insights
+- Community building through spaces
+- News-jacking and trend commentary
+
+### 🎨 Creative Concept Development
+
+#### Visual Brand Identity for Social
+**Color Psychology & Application**:
+- Primary brand colors: [Strategic usage across platforms]
+- Secondary palette: [Seasonal and campaign variations]
+- Platform-specific adaptations: [How colors translate across platforms]
+
+**Typography System**:
+- Headline fonts for impact posts
+- Body text for readability
+- Script/decorative fonts for personality
+- Platform-native text considerations
+
+**Visual Elements Library**:
+- Logo variations and placements
+- Pattern and texture library
+- Icon set and graphic elements
+- Photography/illustration style guide
+
+#### Content Template Systems
+**Post Templates** (10-15 versatile designs):
+1. **Quote/Inspiration Posts**: Typography-focused designs
+2. **Educational Carousels**: Multi-slide information sharing
+3. **Product Showcases**: Hero product presentations
+4. **Behind-the-Scenes**: Authentic, documentary-style content
+5. **User-Generated Content**: Customer spotlight formats
+6. **Announcement Posts**: News and update templates
+7. **Interactive Posts**: Polls, questions, engagement drivers
+
+### 📅 Content Calendar & Campaign Planning
+
+#### Monthly Content Architecture
+**Week 1 Focus**: [Theme and objectives]
+**Week 2 Focus**: [Theme and objectives]
+**Week 3 Focus**: [Theme and objectives]
+**Week 4 Focus**: [Theme and objectives]
+
+#### Content Mix Formula
+- **Educational Content**: 40% (tutorials, tips, insights)
+- **Entertainment**: 30% (humor, trends, lifestyle)
+- **Promotional**: 20% (products, services, offers)
+- **Community**: 10% (user-generated, behind-the-scenes)
+
+#### Seasonal Campaign Integration
+- Holiday and event calendar alignment
+- Industry-specific seasonal trends
+- Product launch coordination
+- Cultural moment participation
+
+### 🚀 Viral Content Strategy
+
+#### Trend Analysis & Participation
+**Trend Identification Process**:
+- Daily trend monitoring across platforms
+- Relevance and brand fit assessment
+- Quick adaptation and execution strategy
+- Performance tracking and optimization
+
+**Viral Content Elements**:
+- **Emotional Triggers**: Joy, surprise, inspiration, relatability
+- **Shareability Factors**: Useful information, entertainment value, social currency
+- **Timing Optimization**: Peak audience activity periods
+- **Hashtag Strategy**: Mix of trending, niche, and branded hashtags
+
+#### User-Generated Content Strategy
+**UGC Campaign Concepts**:
+- Contest and challenge ideas
+- Hashtag campaign development
+- Customer story amplification
+- Community showcasing initiatives
+
+**Influencer Collaboration Framework**:
+- Micro vs. macro influencer strategies
+- Content collaboration formats
+- Brand partnership guidelines
+- Performance measurement criteria
+
+### 📊 Engagement & Community Building
+
+#### Community Management Strategy
+**Engagement Tactics**:
+- Response time and tone guidelines
+- Conversation starter techniques
+- Crisis management protocols
+- Community building initiatives
+
+**Interactive Content Ideas**:
+- Polls, quizzes, and questions
+- Live streaming concepts
+- AR filters and interactive features
+- Community challenges and campaigns
+
+#### Relationship Building
+**Audience Segmentation**:
+- New followers welcome strategy
+- Loyal customer appreciation
+- Industry professional networking
+- Potential customer nurturing
+
+### 📈 Performance Optimization
+
+#### Content Testing Strategy
+**A/B Testing Areas**:
+- Post timing and frequency
+- Visual style variations
+- Caption length and tone
+- Call-to-action effectiveness
+
+**Performance Metrics**:
+- **Engagement Rate**: Likes, comments, shares, saves
+- **Reach & Impressions**: Organic vs. paid performance
+- **Follower Growth**: Quality over quantity focus
+- **Conversion Tracking**: Website traffic, lead generation, sales
+
+#### Content Optimization Process
+- Weekly performance analysis
+- Top-performing content identification
+- Underperforming content improvement
+- Strategy refinement based on data
+
+### 🔧 Production & Workflow
+
+#### Content Creation Workflow
+**Pre-Production**:
+- Content brief development
+- Asset gathering and preparation
+- Location and talent coordination
+
+**Production**:
+- Photography and videography guidelines
+- Editing style and quality standards
+- Brand compliance checking
+
+**Post-Production**:
+- Content review and approval process
+- Scheduling and publishing workflow
+- Community management preparation
+
+#### Tools & Resources
+- **Design Tools**: Recommended software and templates
+- **Analytics Platforms**: Tracking and measurement tools
+- **Scheduling Software**: Content calendar management
+- **Asset Management**: Brand asset organization and access
+
+Deliver a comprehensive social media creative strategy that builds authentic community engagement, drives brand awareness, and achieves measurable business results while maintaining consistent brand personality across all platforms.`,
+    variables: [
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Nike, Local coffee shop, SaaS startup, Fashion brand"
+      },
+      {
+        name: "BRAND_INDUSTRY",
+        description: "Industry or business niche",
+        required: true,
+        example: "Athletic wear, Food & beverage, Technology, Fashion, Healthcare"
+      },
+      {
+        name: "SOCIAL_PLATFORMS",
+        description: "Primary social media platforms to focus on",
+        required: true,
+        example: "Instagram, TikTok, LinkedIn, Twitter, Facebook, YouTube"
+      },
+      {
+        name: "CAMPAIGN_GOAL",
+        description: "Primary campaign objective",
+        required: true,
+        example: "Brand awareness, Product launch, Community building, Lead generation, Sales conversion"
+      },
+      {
+        name: "AUDIENCE_DEMOGRAPHICS",
+        description: "Target audience description",
+        required: true,
+        example: "Gen Z fitness enthusiasts, Small business owners, Working parents, Tech professionals"
+      }
+    ],
+    tips: [
+      "Focus on building genuine connections, not just follower counts",
+      "Create content that provides value - educate, entertain, or inspire",
+      "Stay authentic to your brand voice while adapting to platform cultures",
+      "Engage consistently - social media is about conversation, not broadcasting",
+      "Track what matters to your business goals, not just vanity metrics"
+    ]
+  },
+
+  {
+    id: "video-concept-producer",
+    name: "Video Concept Producer",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a video production expert with 10+ years of experience in concept development, pre-production planning, and creative video strategy. Your expertise includes:
+
+- Video storytelling and narrative structure development
+- Multi-platform video content optimization (YouTube, TikTok, Instagram, etc.)
+- Production planning, budgeting, and resource management
+- Visual storytelling techniques and cinematography principles
+- Post-production workflow optimization and technical specifications
+- Performance video creation for marketing and advertising
+- Educational and training video methodology
+- Live streaming and virtual event production
+
+You create compelling video concepts that engage audiences, communicate effectively, and achieve specific business objectives while optimizing for platform requirements and production constraints.`,
+    prompt: `Develop a comprehensive video production strategy for the following project:
+
+## Project Overview
+- **Video Type**: [VIDEO_TYPE]
+- **Brand/Client**: [BRAND_NAME]
+- **Target Audience**: [AUDIENCE_PROFILE]
+- **Primary Platform**: [MAIN_PLATFORM]
+- **Secondary Platforms**: [ADDITIONAL_PLATFORMS]
+- **Video Objective**: [PRIMARY_GOAL]
+- **Budget Range**: [BUDGET_LEVEL]
+- **Timeline**: [PRODUCTION_SCHEDULE]
+- **Brand Guidelines**: [BRAND_CONSTRAINTS]
+
+## Video Concept Development
+
+### 🎬 Creative Concept & Story Framework
+
+#### Core Concept Development
+**Big Idea**: [One-sentence video concept summary]
+
+**Narrative Structure**:
+- **Hook** (0-5 seconds): Attention-grabbing opening
+- **Setup** (5-15 seconds): Context and problem introduction
+- **Conflict/Challenge** (15-45 seconds): Core content delivery
+- **Resolution** (45-55 seconds): Solution or key message
+- **Call-to-Action** (55-60 seconds): Next steps for viewer
+
+#### Emotional Journey Map
+- **Opening Emotion**: How viewers should feel at start
+- **Mid-Point Shift**: Emotional transition or revelation
+- **Closing Emotion**: Desired feeling at conclusion
+- **Lasting Impression**: What they remember afterwards
+
+#### Key Message Hierarchy
+1. **Primary Message**: Main takeaway (most important)
+2. **Supporting Points**: 2-3 key supporting facts
+3. **Call-to-Action**: Specific desired action
+
+### 📱 Platform Optimization Strategy
+
+#### Platform-Specific Adaptations
+**Primary Platform: [MAIN_PLATFORM]**
+- **Optimal Length**: [Duration with rationale]
+- **Aspect Ratio**: [Format specifications]
+- **Content Style**: [Platform-appropriate approach]
+- **Engagement Features**: [Platform-specific interactive elements]
+
+**Secondary Platform Adaptations**:
+- **YouTube**: Long-form, educational, searchable content
+- **Instagram**: Square/vertical, story-friendly, visual-first
+- **TikTok**: Vertical, trend-aware, entertainment-focused
+- **LinkedIn**: Professional, value-driven, B2B optimized
+- **Facebook**: Shareable, community-focused, subtitle-friendly
+
+#### Multi-Platform Content Strategy
+- **Master Video**: Full-length primary version
+- **Cut-Down Versions**: Platform-specific edits
+- **Teaser Content**: Preview clips for promotion
+- **Behind-the-Scenes**: Additional engagement content
+
+### 🎯 Visual Storytelling Strategy
+
+#### Cinematography Approach
+**Visual Style Direction**:
+- **Mood & Tone**: [Overall aesthetic feeling]
+- **Color Palette**: [Primary colors and psychological impact]
+- **Lighting Style**: [Natural, dramatic, soft, etc.]
+- **Camera Movement**: [Static, dynamic, handheld, smooth]
+
+**Shot List Framework**:
+1. **Establishing Shots**: Setting context and environment
+2. **Medium Shots**: Character interaction and dialogue
+3. **Close-ups**: Emotional moments and product details
+4. **Insert Shots**: Supporting details and cutaways
+5. **B-roll**: Supplementary footage for story support
+
+#### Visual Elements Integration
+- **Graphics & Text**: On-screen text style and timing
+- **Brand Elements**: Logo placement and brand integration
+- **Animations**: Motion graphics and transitions
+- **Product Integration**: Natural product showcasing
+
+### 🎤 Audio Strategy
+
+#### Voiceover & Narration
+- **Narrator Profile**: [Voice characteristics and personality]
+- **Tone Guidelines**: [Conversational, authoritative, friendly, etc.]
+- **Script Structure**: [Dialogue and narration balance]
+- **Language Considerations**: [Multilingual needs, accessibility]
+
+#### Music & Sound Design
+- **Music Style**: [Genre and mood alignment]
+- **Sound Effects**: [Environmental and emphasis sounds]
+- **Audio Branding**: [Brand sound elements integration]
+- **Technical Requirements**: [Audio quality and formats]
+
+### 📝 Production Planning
+
+#### Pre-Production Requirements
+
+**Casting Needs**:
+- **On-Screen Talent**: [Actor/presenter requirements]
+- **Voice Talent**: [Narrator specifications]
+- **Extras/Background**: [Additional people needed]
+
+**Location Requirements**:
+- **Primary Location**: [Main shooting environment]
+- **Secondary Locations**: [Additional settings needed]
+- **Set Design Needs**: [Props, decoration, branding]
+- **Permit Requirements**: [Legal considerations]
+
+**Equipment Specifications**:
+- **Camera Setup**: [Camera types and accessories]
+- **Lighting Kit**: [Lighting equipment needs]
+- **Audio Equipment**: [Microphones and recording gear]
+- **Additional Gear**: [Specialized equipment requirements]
+
+#### Production Schedule
+**Pre-Production Phase** (Week 1):
+- Concept refinement and approval
+- Casting and location scouting
+- Equipment and crew booking
+- Script finalization and storyboarding
+
+**Production Phase** (Week 2):
+- **Day 1**: [Specific shooting activities]
+- **Day 2**: [Additional production needs]
+- **Contingency**: [Backup plans and flexibility]
+
+**Post-Production Phase** (Weeks 3-4):
+- **Week 3**: Editing and initial cuts
+- **Week 4**: Graphics, audio, and final polish
+
+### 🎬 Storyboard & Shot Planning
+
+#### Detailed Shot Breakdown
+**Scene 1: Opening Hook**
+- **Shot 1**: [Visual description, duration, camera angle]
+- **Shot 2**: [Next shot details]
+- **Audio**: [Dialogue, music, sound effects]
+
+**Scene 2: Problem/Context**
+- [Detailed shot-by-shot breakdown]
+
+**Scene 3: Solution/Content**
+- [Core content delivery shots]
+
+**Scene 4: Call-to-Action**
+- [Closing shots and messaging]
+
+#### Technical Specifications
+- **Resolution**: [4K, 1080p, platform requirements]
+- **Frame Rate**: [24fps, 30fps, 60fps based on content type]
+- **Color Profile**: [Log, standard, brand-specific]
+- **Audio Format**: [Stereo, mono, surround requirements]
+
+### 🔧 Post-Production Strategy
+
+#### Editing Workflow
+**Rough Cut Phase**:
+- Story structure and pacing
+- Content organization and sequencing
+- Initial music and audio integration
+
+**Fine Cut Phase**:
+- Color correction and grading
+- Audio mixing and sound design
+- Graphics and title integration
+- Transition and effect refinement
+
+#### Graphics & Animation Requirements
+- **Lower Thirds**: Name/title presentations
+- **Call-out Graphics**: Key information highlighting
+- **Transitions**: Scene change animations
+- **End Screens**: Contact information and CTAs
+
+### 📊 Success Measurement Strategy
+
+#### Performance Metrics
+**Engagement Metrics**:
+- View duration and retention rates
+- Like, comment, and share ratios
+- Click-through rates on CTAs
+- Audience feedback and sentiment
+
+**Business Impact Metrics**:
+- Lead generation and conversions
+- Brand awareness lift
+- Website traffic increases
+- Sales attribution (if applicable)
+
+#### Testing & Optimization
+- **A/B Testing**: Different thumbnail and title options
+- **Platform Performance**: Cross-platform comparison
+- **Audience Feedback**: Comment analysis and response
+- **Iteration Planning**: Future video improvements
+
+### 💰 Budget Allocation & ROI
+
+#### Cost Breakdown
+- **Pre-Production**: [Planning and preparation costs]
+- **Production**: [Shooting day expenses]
+- **Post-Production**: [Editing and finishing costs]
+- **Distribution**: [Platform promotion and amplification]
+
+#### ROI Projections
+- **Cost Per View**: [Estimated reach and cost efficiency]
+- **Cost Per Engagement**: [Interaction value calculations]
+- **Business Value**: [Lead generation and conversion impact]
+
+Deliver a comprehensive video production plan that creates engaging, platform-optimized content that achieves specific business objectives while maximizing production value within budget constraints.`,
+    variables: [
+      {
+        name: "VIDEO_TYPE",
+        description: "Type of video content",
+        required: true,
+        example: "Brand commercial, Product demo, Educational tutorial, Company culture, Customer testimonial"
+      },
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Tech startup, Local restaurant, Fashion brand, Non-profit organization"
+      },
+      {
+        name: "AUDIENCE_PROFILE",
+        description: "Target audience characteristics",
+        required: true,
+        example: "Young professionals, Parents, Tech enthusiasts, Small business owners"
+      },
+      {
+        name: "MAIN_PLATFORM",
+        description: "Primary distribution platform",
+        required: true,
+        example: "YouTube, Instagram, TikTok, LinkedIn, Company website"
+      },
+      {
+        name: "PRIMARY_GOAL",
+        description: "Main objective for the video",
+        required: true,
+        example: "Brand awareness, Product launch, Education, Lead generation, Entertainment"
+      }
+    ],
+    tips: [
+      "Always start with a strong hook in the first 5 seconds to capture attention",
+      "Plan for mobile viewing - most video content is consumed on mobile devices",
+      "Create multiple versions for different platforms rather than one-size-fits-all",
+      "Test thumbnails and titles as they significantly impact click-through rates",
+      "Plan your video with captions in mind for accessibility and silent viewing"
+    ]
+  },
+
+  {
+    id: "packaging-design-specialist",
+    name: "Packaging Design Specialist",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a packaging design specialist with 12+ years of experience in structural and graphic packaging design across consumer goods industries. Your expertise includes:
+
+- Structural packaging engineering and material optimization
+- Consumer psychology and purchase decision influence
+- Regulatory compliance and labeling requirements
+- Sustainable packaging solutions and eco-friendly materials
+- Shelf impact and retail environment optimization
+- Brand differentiation and visual identity integration
+- Manufacturing feasibility and cost optimization
+- Global market adaptation and cultural considerations
+
+You create packaging designs that protect products, attract consumers, communicate brand values, and drive sales while considering sustainability, cost, and regulatory requirements.`,
+    prompt: `Design a comprehensive packaging solution for the following product:
+
+## Product & Brand Overview
+- **Product Type**: [PRODUCT_CATEGORY]
+- **Brand Name**: [BRAND_NAME]
+- **Product Name**: [PRODUCT_NAME]
+- **Target Market**: [TARGET_DEMOGRAPHICS]
+- **Retail Environment**: [SALES_CHANNELS]
+- **Price Point**: [PRICE_CATEGORY]
+- **Brand Positioning**: [BRAND_PERSONALITY]
+- **Sustainability Goals**: [ECO_REQUIREMENTS]
+- **Regulatory Requirements**: [COMPLIANCE_NEEDS]
+
+## Packaging Design Strategy
+
+### 🎯 Strategic Foundation
+
+#### Market Analysis & Positioning
+**Competitive Landscape Review**:
+- Current category packaging trends and patterns
+- Competitor strengths and weaknesses analysis
+- Shelf differentiation opportunities
+- Price point positioning implications
+
+**Consumer Behavior Insights**:
+- Purchase decision factors and timing
+- Unboxing experience expectations
+- Storage and usage considerations
+- Disposal and sustainability concerns
+
+#### Brand Integration Strategy
+**Visual Identity Application**:
+- Logo placement and sizing optimization
+- Brand color implementation across materials
+- Typography hierarchy and readability
+- Brand voice and messaging integration
+
+### 📦 Structural Design Development
+
+#### Packaging Architecture
+**Primary Package Structure**:
+- **Form Factor**: [Shape, size, and proportions]
+- **Opening Mechanism**: [User experience and functionality]
+- **Protection Level**: [Product safety and damage prevention]
+- **Stacking/Storage**: [Efficiency and stability considerations]
+
+**Material Selection Rationale**:
+- **Primary Materials**: [Material choice with performance justification]
+- **Barrier Properties**: [Moisture, light, oxygen protection needs]
+- **Durability Requirements**: [Shipping and handling considerations]
+- **Sustainability Profile**: [Recycling, biodegradability, renewable sources]
+
+#### Technical Specifications
+**Dimensional Requirements**:
+- **External Dimensions**: [Length x Width x Height]
+- **Internal Product Fit**: [Protection and presentation balance]
+- **Shipping Optimization**: [Pallet efficiency and logistics]
+- **Retail Display**: [Shelf space maximization]
+
+**Manufacturing Considerations**:
+- **Production Method**: [Die-cutting, molding, forming processes]
+- **Assembly Requirements**: [Manual vs. automated assembly]
+- **Quality Control Points**: [Critical inspection stages]
+- **Scale Production**: [Small batch vs. mass production optimization]
+
+### 🎨 Visual Design System
+
+#### Graphic Design Strategy
+**Visual Hierarchy Framework**:
+1. **Brand Identity**: Logo and brand recognition elements
+2. **Product Name**: Clear product identification
+3. **Key Benefits**: Primary value proposition
+4. **Supporting Information**: Usage, ingredients, features
+5. **Regulatory Text**: Required legal information
+
+**Color Strategy**:
+- **Primary Color Application**: [Brand color usage and psychology]
+- **Secondary Palette**: [Supporting colors for information hierarchy]
+- **Shelf Standout**: [Differentiation from competitors]
+- **Cultural Considerations**: [Global market color meanings]
+
+#### Typography & Information Design
+**Text Hierarchy**:
+- **Primary Headlines**: Product name and key messaging
+- **Secondary Text**: Features and benefits
+- **Legal Text**: Regulatory and compliance information
+- **Instructional Content**: Usage and care instructions
+
+**Readability Optimization**:
+- Font size minimums for different viewing distances
+- Contrast ratios for accessibility compliance
+- Multi-language considerations and space planning
+- Age-appropriate design for target demographics
+
+### 🌱 Sustainability Integration
+
+#### Environmental Impact Strategy
+**Material Sustainability**:
+- **Renewable Sources**: [Bio-based and plant-derived materials]
+- **Recycled Content**: [Post-consumer and post-industrial integration]
+- **End-of-Life Plan**: [Recycling, composting, reuse options]
+- **Carbon Footprint**: [Transportation and production impact minimization]
+
+**Waste Reduction Optimization**:
+- **Right-Sizing**: [Minimal material usage while maintaining protection]
+- **Multi-Use Design**: [Secondary use opportunities]
+- **Refill/Reuse Options**: [Circular economy integration]
+- **Packaging Elimination**: [Unnecessary layer removal]
+
+#### Sustainability Communication
+- **Eco-Claims**: [Accurate and compliant environmental messaging]
+- **Certification Logos**: [Third-party verification display]
+- **Consumer Education**: [Proper disposal and recycling instructions]
+- **Brand Story**: [Sustainability commitment communication]
+
+### 🏪 Retail Optimization
+
+#### Shelf Impact Strategy
+**Visual Standout Techniques**:
+- **Color Blocking**: [Bold color usage for attention-grabbing]
+- **Shape Differentiation**: [Unique form factor for category disruption]
+- **Texture and Finish**: [Tactile elements for premium feel]
+- **Size Optimization**: [Shelf presence vs. cost efficiency]
+
+**Purchase Decision Support**:
+- **Key Information Visibility**: [Critical details at point of sale]
+- **Product Demonstration**: [Usage visualization through design]
+- **Trust Signals**: [Quality cues and credibility markers]
+- **Emotional Connection**: [Lifestyle and aspiration alignment]
+
+#### Retail Environment Adaptation
+**Channel-Specific Optimization**:
+- **Grocery/Mass Retail**: [High-volume, cost-effective design]
+- **Premium/Specialty**: [Elevated materials and finishing]
+- **E-commerce**: [Shipping durability and unboxing experience]
+- **International Markets**: [Cultural adaptation and local preferences]
+
+### 📋 Regulatory Compliance
+
+#### Legal Requirements Integration
+**Mandatory Information**:
+- **Nutritional/Ingredient Lists**: [FDA, EU, or local requirements]
+- **Safety Warnings**: [Product-specific hazard communication]
+- **Country of Origin**: [Manufacturing location requirements]
+- **Regulatory Codes**: [UPC, lot codes, expiration dating]
+
+**Compliance Strategy**:
+- **Text Placement**: [Regulatory text integration without compromising design]
+- **Multi-Market Adaptation**: [Different regulatory requirements management]
+- **Updates and Revisions**: [System for regulatory change management]
+
+### 🔧 Production & Implementation
+
+#### Manufacturing Workflow
+**Pre-Production Phase**:
+- **Prototype Development**: [Concept validation and testing]
+- **Material Testing**: [Performance and durability verification]
+- **Regulatory Approval**: [Compliance verification and documentation]
+- **Cost Optimization**: [Value engineering and budget alignment]
+
+**Production Setup**:
+- **Supplier Selection**: [Material and manufacturing partner evaluation]
+- **Quality Standards**: [Inspection criteria and testing protocols]
+- **Inventory Planning**: [Production run sizing and storage]
+- **Launch Coordination**: [Marketing and sales alignment]
+
+#### Cost Management Strategy
+**Budget Allocation**:
+- **Material Costs**: [Substrate and printing materials]
+- **Tooling Investment**: [Dies, plates, and setup costs]
+- **Labor and Processing**: [Manufacturing and assembly costs]
+- **Quality Assurance**: [Testing and inspection expenses]
+
+**Cost Optimization Opportunities**:
+- **Material Efficiency**: [Waste reduction and yield improvement]
+- **Production Scale**: [Volume discounts and efficiency gains]
+- **Design Simplification**: [Complexity reduction without impact loss]
+- **Supplier Negotiation**: [Partnership and long-term agreement benefits]
+
+### 📊 Success Measurement
+
+#### Performance Metrics
+**Market Performance**:
+- **Sales Velocity**: [Product turnover and movement rates]
+- **Market Share**: [Category position and growth]
+- **Consumer Feedback**: [Packaging satisfaction and usability]
+- **Retail Partner Satisfaction**: [Buyer and merchandiser feedback]
+
+**Sustainability Impact**:
+- **Material Reduction**: [Packaging weight and volume decreases]
+- **Waste Diversion**: [Recycling and composting rates]
+- **Carbon Footprint**: [Lifecycle impact measurement]
+- **Consumer Behavior**: [Sustainable disposal compliance]
+
+#### Optimization Opportunities
+- **Design Iteration**: [Performance-based improvements]
+- **Cost Reduction**: [Ongoing efficiency improvements]
+- **Market Expansion**: [Additional channel or geography adaptation]
+- **Innovation Integration**: [New technology and material adoption]
+
+Deliver a comprehensive packaging design strategy that protects the product, communicates brand values, drives purchase decisions, and meets sustainability goals while optimizing for cost-effectiveness and regulatory compliance across all target markets.`,
+    variables: [
+      {
+        name: "PRODUCT_CATEGORY",
+        description: "Type of product being packaged",
+        required: true,
+        example: "Food & beverage, Cosmetics, Electronics, Pharmaceuticals, Consumer goods"
+      },
+      {
+        name: "BRAND_NAME",
+        description: "Brand name and positioning",
+        required: true,
+        example: "Premium organic brand, Tech startup, Luxury skincare, Health supplement company"
+      },
+      {
+        name: "TARGET_DEMOGRAPHICS",
+        description: "Primary target customer profile",
+        required: true,
+        example: "Health-conscious millennials, Busy parents, Tech enthusiasts, Luxury consumers"
+      },
+      {
+        name: "SALES_CHANNELS",
+        description: "Where the product will be sold",
+        required: true,
+        example: "Grocery stores, Online marketplace, Specialty retail, Direct-to-consumer"
+      },
+      {
+        name: "PRICE_CATEGORY",
+        description: "Product pricing tier",
+        required: true,
+        example: "Budget-friendly, Mid-tier, Premium, Luxury"
+      }
+    ],
+    tips: [
+      "Always consider the entire customer journey from shelf to disposal",
+      "Test packaging with real consumers in actual retail environments",
+      "Balance sustainability goals with product protection requirements",
+      "Design for manufacturing efficiency to control costs",
+      "Plan for regulatory changes and market expansion from the start"
+    ]
+  },
+
+  {
+    id: "typography-design-master",
+    name: "Typography Design Master",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a typography expert and type designer with 15+ years of experience in typeface selection, custom lettering, and typographic system development. Your expertise includes:
+
+- Typography psychology and emotional impact
+- Font pairing principles and hierarchy development
+- Cross-cultural typography and multilingual considerations
+- Digital typography optimization and web font performance
+- Brand personality expression through type choices
+- Accessibility and readability optimization
+- Custom lettering and logo typography development
+- Typography across various media and applications
+
+You create typographic systems that enhance brand communication, improve readability, and create emotional connections while considering technical constraints and user experience across all touchpoints.`,
+    prompt: `Develop a comprehensive typography strategy for the following brand application:
+
+## Brand & Project Overview
+- **Brand Name**: [BRAND_NAME]
+- **Industry**: [BRAND_INDUSTRY]
+- **Brand Personality**: [BRAND_CHARACTERISTICS]
+- **Target Audience**: [AUDIENCE_PROFILE]
+- **Application Type**: [TYPOGRAPHY_APPLICATION]
+- **Platform/Medium**: [DELIVERY_PLATFORMS]
+- **Technical Constraints**: [TECHNICAL_LIMITATIONS]
+- **Budget Level**: [TYPOGRAPHY_BUDGET]
+
+## Typography Strategy Development
+
+### 🎯 Brand Typography Foundation
+
+#### Brand Personality Analysis
+**Personality Attributes Translation**:
+- **[ATTRIBUTE_1]**: [How this translates to typography choices]
+- **[ATTRIBUTE_2]**: [Font characteristics that express this trait]
+- **[ATTRIBUTE_3]**: [Visual typography approach for this quality]
+
+**Emotional Goals**:
+- **Primary Emotion**: [Main feeling typography should evoke]
+- **Secondary Emotions**: [Supporting emotional responses]
+- **Avoid**: [Emotions or perceptions to prevent]
+
+#### Audience Considerations
+**Demographic Factors**:
+- **Age Range**: [Typography preferences and readability needs]
+- **Cultural Background**: [Script familiarity and cultural typography preferences]
+- **Technical Proficiency**: [Digital typography comfort level]
+- **Accessibility Needs**: [Vision, dyslexia, and other reading considerations]
+
+**Context Analysis**:
+- **Reading Environment**: [Where and how text will be consumed]
+- **Device Usage**: [Primary devices for content consumption]
+- **Attention Span**: [Text length and scanning behavior]
+- **Language Requirements**: [Multilingual needs and character support]
+
+### 🔤 Typeface Selection Strategy
+
+#### Primary Typeface Recommendations
+
+**Option 1: [FONT_NAME_1]**
+- **Classification**: [Serif, Sans-serif, Display, Script, etc.]
+- **Personality Match**: [How it aligns with brand characteristics]
+- **Technical Benefits**: [Performance and functionality advantages]
+- **Usage Applications**: [Where this font excels]
+- **Licensing**: [Cost and usage restrictions]
+
+**Option 2: [FONT_NAME_2]**
+- **Alternative Approach**: [Different stylistic direction]
+- **Strengths**: [Unique benefits of this choice]
+- **Brand Differentiation**: [How it sets brand apart]
+- **Scalability**: [Performance across sizes and media]
+
+**Option 3: [FONT_NAME_3]**
+- **Conservative Choice**: [Safe, reliable option]
+- **Versatility**: [Broad application capability]
+- **Cost-Effectiveness**: [Budget-friendly considerations]
+- **Longevity**: [Timeless appeal and future-proofing]
+
+#### Font Pairing System
+**Primary + Secondary Combinations**:
+- **Heading Font**: [Display/impact typography choice]
+- **Body Font**: [Readability-optimized selection]
+- **Accent Font**: [Personality and emphasis typography]
+- **Technical Font**: [Code, data, or technical content]
+
+**Pairing Rationale**:
+- **Contrast Strategy**: [How fonts complement each other]
+- **Hierarchy Support**: [How pairing enhances information structure]
+- **Brand Cohesion**: [Unified brand expression across fonts]
+
+### 📐 Typographic Hierarchy System
+
+#### Information Architecture
+**Hierarchy Levels**:
+1. **H1 - Primary Headlines**: [Size, weight, spacing specifications]
+2. **H2 - Section Headers**: [Proportional scaling and treatment]
+3. **H3 - Subsection Titles**: [Hierarchy differentiation approach]
+4. **H4-H6 - Minor Headings**: [Subtle hierarchy indicators]
+5. **Body Text**: [Optimal reading specifications]
+6. **Captions & Fine Print**: [Minimum readable sizes]
+
+#### Size and Spacing Guidelines
+**Desktop/Web Specifications**:
+- **Base Font Size**: [Typically 16-18px for optimal readability]
+- **Line Height**: [1.4-1.6x font size for comfortable reading]
+- **Paragraph Spacing**: [Visual breathing room between sections]
+- **Letter Spacing**: [Tracking adjustments for different sizes]
+
+**Mobile Optimization**:
+- **Touch-Friendly Sizing**: [Minimum 16px to prevent zoom]
+- **Thumb Zone Considerations**: [Accessible text and button sizing]
+- **Screen Density**: [Retina and high-DPI optimizations]
+
+#### Responsive Typography Strategy
+**Breakpoint Adaptations**:
+- **Large Screens (1200px+)**: [Desktop optimal sizing]
+- **Medium Screens (768-1199px)**: [Tablet adaptations]
+- **Small Screens (320-767px)**: [Mobile optimizations]
+
+**Fluid Typography**:
+- **CSS Custom Properties**: [Variable font size implementation]
+- **Viewport-Based Scaling**: [Proportional sizing approach]
+- **Container Query Integration**: [Context-aware typography]
+
+### 🌍 Multilingual & Accessibility Considerations
+
+#### Global Typography Support
+**Language-Specific Requirements**:
+- **Character Set Coverage**: [Unicode support and special characters]
+- **Script Compatibility**: [Latin, Cyrillic, Arabic, Asian script support]
+- **Reading Direction**: [Left-to-right, right-to-left adaptations]
+- **Cultural Typography Norms**: [Local preferences and conventions]
+
+#### Accessibility Optimization
+**WCAG 2.1 Compliance**:
+- **Color Contrast**: [4.5:1 minimum for normal text, 3:1 for large text]
+- **Font Size Minimums**: [16px equivalent for body text]
+- **Dyslexia-Friendly Features**: [Letter spacing, font choices, line height]
+- **Screen Reader Compatibility**: [Semantic markup and font fallbacks]
+
+**Inclusive Design Principles**:
+- **Low Vision Considerations**: [High contrast and magnification support]
+- **Cognitive Load Management**: [Scannable text and clear hierarchy]
+- **Motor Accessibility**: [Touch target sizing for interactive text elements]
+
+### 💻 Technical Implementation
+
+#### Web Font Strategy
+**Font Loading Optimization**:
+- **Subset Creation**: [Character set optimization for performance]
+- **Font Display Strategy**: [FOUT, FOIT, and swap optimization]
+- **Critical Font Preloading**: [Above-the-fold text optimization]
+- **Fallback Font Selection**: [System font alternatives]
+
+**Performance Considerations**:
+- **File Size Management**: [WOFF2 compression and subset optimization]
+- **Loading Priority**: [Critical vs. non-critical font loading]
+- **Caching Strategy**: [Browser and CDN font caching]
+- **Network Failure Handling**: [Graceful fallback systems]
+
+#### Variable Font Integration
+**Dynamic Typography Benefits**:
+- **Weight Range**: [Single file with multiple font weights]
+- **Responsive Scaling**: [Smooth size transitions]
+- **Performance Gains**: [Reduced HTTP requests and file sizes]
+- **Design Flexibility**: [Fine-tuned weight and width adjustments]
+
+### 🎨 Brand Application Guidelines
+
+#### Logo and Wordmark Typography
+**Custom Lettering Considerations**:
+- **Brand Name Treatment**: [Unique typographic brand expression]
+- **Tagline Integration**: [Complementary typography for taglines]
+- **Icon and Type Balance**: [Symbol and wordmark relationships]
+- **Trademark Considerations**: [Legal protection and uniqueness]
+
+#### Marketing Material Applications
+**Print Applications**:
+- **Business Cards**: [Hierarchy and contact information clarity]
+- **Brochures**: [Extended reading optimization]
+- **Posters**: [Impact and distance readability]
+- **Packaging**: [Legal requirements and brand expression balance]
+
+**Digital Applications**:
+- **Website**: [User experience and conversion optimization]
+- **Email**: [Client compatibility and mobile rendering]
+- **Social Media**: [Platform-specific typography constraints]
+- **App Interface**: [Native platform integration]
+
+### 📊 Typography Testing & Optimization
+
+#### Readability Testing
+**User Testing Methods**:
+- **Comprehension Tests**: [Understanding and retention measurement]
+- **Speed Reading Assessment**: [Optimal reading pace evaluation]
+- **Eye-Tracking Analysis**: [Visual scanning pattern optimization]
+- **Accessibility Testing**: [Assistive technology compatibility]
+
+#### A/B Testing Opportunities
+**Conversion Impact Testing**:
+- **Headline Typography**: [Impact on engagement and clicks]
+- **Body Text Optimization**: [Reading completion and time-on-page]
+- **Call-to-Action Typography**: [Button and link effectiveness]
+- **Form Typography**: [Completion rates and error reduction]
+
+### 💰 Budget and Licensing Strategy
+
+#### Font Licensing Options
+**Commercial Licensing**:
+- **Desktop Licenses**: [Design and print application costs]
+- **Web Licenses**: [Website and digital platform costs]
+- **App Licenses**: [Mobile and desktop application integration]
+- **Enterprise Licenses**: [Organization-wide usage rights]
+
+**Cost Optimization Strategies**:
+- **Open Source Alternatives**: [High-quality free font options]
+- **Font Subscription Services**: [Access to extensive libraries]
+- **Custom Typography Development**: [Long-term brand differentiation investment]
+
+#### Implementation Timeline
+**Phase 1: Foundation** (Week 1):
+- Primary typeface selection and licensing
+- Basic hierarchy establishment
+- Web font implementation setup
+
+**Phase 2: System Development** (Week 2-3):
+- Complete typography system documentation
+- Responsive implementation
+- Accessibility optimization
+
+**Phase 3: Application & Testing** (Week 4-6):
+- Brand application across touchpoints
+- User testing and feedback integration
+- Performance optimization and refinement
+
+Deliver a comprehensive typography strategy that enhances brand communication, optimizes user experience, and creates consistent, accessible, and emotionally resonant typographic experiences across all brand touchpoints and platforms.`,
+    variables: [
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Tech startup, Fashion brand, Law firm, Restaurant, Non-profit"
+      },
+      {
+        name: "BRAND_INDUSTRY",
+        description: "Industry or business sector",
+        required: true,
+        example: "Technology, Fashion, Professional services, Food & beverage, Healthcare"
+      },
+      {
+        name: "BRAND_CHARACTERISTICS",
+        description: "Brand personality traits",
+        required: true,
+        example: "Modern and innovative, Traditional and trustworthy, Playful and approachable, Luxury and sophisticated"
+      },
+      {
+        name: "AUDIENCE_PROFILE",
+        description: "Target audience description",
+        required: true,
+        example: "Tech-savvy millennials, Conservative business professionals, Creative freelancers, Health-conscious families"
+      },
+      {
+        name: "TYPOGRAPHY_APPLICATION",
+        description: "Primary use case for typography",
+        required: true,
+        example: "Website redesign, Brand identity system, Mobile app, Marketing materials, Publication design"
+      }
+    ],
+    tips: [
+      "Always test typography with your actual target audience, not just design professionals",
+      "Consider how your typography will perform across different devices and screen sizes",
+      "Don't sacrifice readability for style - function should always come first",
+      "Plan for future brand evolution when selecting foundational typefaces",
+      "Invest in proper font licensing to avoid legal issues and ensure quality"
+    ]
+  },
+
+  {
+    id: "creative-campaign-strategist",
+    name: "Creative Campaign Strategist",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a senior creative strategist with 12+ years of experience developing integrated marketing campaigns for Fortune 500 brands and emerging companies. Your expertise includes:
+
+- Integrated campaign strategy across all channels and touchpoints
+- Creative brief development and creative team direction
+- Consumer insight identification and creative interpretation
+- Multi-platform campaign optimization and adaptation
+- Brand storytelling and narrative development
+- Performance creative strategy and optimization
+- Creative testing methodologies and data-driven optimization
+- Campaign measurement and ROI analysis
+
+You develop campaigns that create emotional connections, drive brand awareness, and generate measurable business results while maintaining creative integrity and brand consistency across all channels.`,
+    prompt: `Develop a comprehensive integrated creative campaign strategy for the following brand challenge:
+
+## Campaign Brief
+- **Brand/Client**: [BRAND_NAME]
+- **Campaign Objective**: [PRIMARY_GOAL]
+- **Target Audience**: [AUDIENCE_SEGMENTS]
+- **Key Challenge**: [BUSINESS_CHALLENGE]
+- **Competitive Context**: [MARKET_SITUATION]
+- **Budget Range**: [BUDGET_LEVEL]
+- **Campaign Duration**: [TIMELINE]
+- **Success Metrics**: [KPI_DEFINITIONS]
+
+## Strategic Foundation
+
+### 🎯 Campaign Strategy Development
+
+#### Situation Analysis
+**Market Context**:
+- **Category Landscape**: [Industry trends and competitive dynamics]
+- **Brand Position**: [Current market standing and perception]
+- **Consumer Behavior**: [How target audience currently interacts with category]
+- **Opportunity Identification**: [Unique angles and white space opportunities]
+
+**Challenge Reframe**:
+- **Core Problem Statement**: [Root challenge beyond surface symptoms]
+- **Consumer Barrier Analysis**: [What prevents desired behavior/attitude]
+- **Motivation Drivers**: [What would compel audience to act]
+- **Success Vision**: [Ideal end state and transformation]
+
+#### Target Audience Deep-Dive
+**Primary Segment: [SEGMENT_1]**
+- **Demographics**: [Age, income, location, lifestyle details]
+- **Psychographics**: [Values, motivations, fears, aspirations]
+- **Media Behavior**: [Content consumption and platform preferences]
+- **Purchase Journey**: [Awareness to conversion pathway and touchpoints]
+- **Emotional Triggers**: [What resonates and drives action]
+
+**Secondary Segment: [SEGMENT_2]** (if applicable)
+- [Same detailed analysis framework]
+
+#### Creative Strategy Platform
+**Big Idea Development**:
+- **Central Creative Concept**: [One-sentence campaign essence]
+- **Strategic Rationale**: [Why this idea will achieve objectives]
+- **Emotional Core**: [Primary feeling the campaign should create]
+- **Behavioral Goal**: [Specific action we want audience to take]
+
+**Brand Truth Integration**:
+- **Brand Promise Alignment**: [How campaign reinforces brand positioning]
+- **Unique Value Proposition**: [Differentiated benefit communication]
+- **Brand Personality Expression**: [How brand character comes through]
+
+### 🎨 Creative Concept Development
+
+#### Campaign Creative Framework
+**Master Creative Concept**:
+- **Concept Title**: [Campaign name and thematic identity]
+- **Creative Brief Summary**: [Elevator pitch for the campaign idea]
+- **Visual Identity**: [Overall aesthetic direction and mood]
+- **Tone of Voice**: [Communication personality and approach]
+- **Key Messages**: [Primary and supporting message hierarchy]
+
+#### Storytelling Strategy
+**Narrative Architecture**:
+- **Story Arc**: [Beginning, middle, end across campaign timeline]
+- **Character Development**: [Brand, consumer, and supporting characters]
+- **Conflict/Resolution**: [Tension and solution that drives engagement]
+- **Call-to-Action Integration**: [Natural action moments within story]
+
+**Content Pillar Development**:
+- **Pillar 1: [THEME_1]**: [Content focus and execution approach]
+- **Pillar 2: [THEME_2]**: [Supporting content theme and strategy]
+- **Pillar 3: [THEME_3]**: [Additional content direction for depth]
+
+### 📺 Multi-Channel Campaign Strategy
+
+#### Integrated Channel Planning
+**Paid Media Strategy**:
+- **Television/Video**: [Brand storytelling and mass awareness]
+- **Digital Display**: [Programmatic targeting and retargeting]
+- **Social Media Advertising**: [Platform-specific paid strategies]
+- **Search Marketing**: [Intent-based capture and conversion]
+- **Out-of-Home**: [High-impact brand presence and reach]
+
+**Owned Media Activation**:
+- **Website Experience**: [Landing pages and conversion optimization]
+- **Email Marketing**: [Nurturing and retention campaigns]
+- **Social Media Organic**: [Community building and engagement]
+- **Content Hub**: [Resource center and thought leadership]
+
+**Earned Media Strategy**:
+- **PR and Media Relations**: [Story angles and press opportunities]
+- **Influencer Partnerships**: [Authentic advocacy and reach extension]
+- **User-Generated Content**: [Community participation and amplification]
+- **Word-of-Mouth**: [Shareability and conversation generation]
+
+#### Platform-Specific Adaptations
+**Television/Streaming Video**:
+- **30-Second Spot**: [Core brand story and emotional connection]
+- **15-Second Cut-Down**: [Distilled message for frequency]
+- **6-Second Bumpers**: [Brand recognition and recall]
+
+**Digital and Social Platforms**:
+- **Facebook/Instagram**: [Visual storytelling and community engagement]
+- **TikTok**: [Trend participation and younger audience capture]
+- **LinkedIn**: [Professional angle and B2B considerations]
+- **YouTube**: [Long-form content and educational value]
+- **Twitter/X**: [Real-time engagement and conversation]
+
+**Traditional and Experiential**:
+- **Print Advertising**: [Detailed information and credibility]
+- **Radio**: [Voice and personality expression]
+- **Outdoor/OOH**: [Simple, memorable brand presence]
+- **Events and Activations**: [Hands-on brand experience]
+
+### 🎬 Creative Execution Planning
+
+#### Visual Identity System
+**Creative Look and Feel**:
+- **Color Palette**: [Campaign colors and psychological associations]
+- **Typography**: [Font choices that support brand personality]
+- **Photography Style**: [Visual treatment and mood direction]
+- **Graphic Elements**: [Supporting visual system and consistency]
+- **Animation/Motion**: [Movement principles and brand expression]
+
+**Brand Integration Standards**:
+- **Logo Treatment**: [Placement, sizing, and contextual usage]
+- **Brand Color Usage**: [Primary and supporting brand elements]
+- **Voice and Tone**: [Consistent communication personality]
+- **Legal Requirements**: [Disclaimers, regulatory, and trademark]
+
+#### Asset Development Framework
+**Core Creative Assets**:
+- **Hero Video**: [Primary storytelling piece across channels]
+- **Photography Library**: [Supporting visuals for all applications]
+- **Graphic Templates**: [Scalable design system for efficiency]
+- **Copy Bank**: [Headlines, taglines, and message variations]
+
+**Platform Adaptations**:
+- **Aspect Ratios**: [16:9, 9:16, 1:1 for different platform needs]
+- **Duration Variations**: [60s, 30s, 15s, 6s video cuts]
+- **Interactive Elements**: [Clickable, swipeable, and engaging features]
+- **Localization Assets**: [Regional and cultural adaptations]
+
+### 📊 Campaign Performance Strategy
+
+#### Success Measurement Framework
+**Brand Metrics**:
+- **Awareness**: [Aided and unaided brand recognition]
+- **Consideration**: [Purchase intent and brand preference]
+- **Perception**: [Brand attribute and personality tracking]
+- **Recall**: [Campaign message retention and association]
+
+**Engagement Metrics**:
+- **Digital Engagement**: [Clicks, shares, comments, time spent]
+- **Social Metrics**: [Follower growth, community engagement]
+- **Content Performance**: [View completion, interaction rates]
+- **User-Generated Content**: [Participation and amplification]
+
+**Business Impact Metrics**:
+- **Lead Generation**: [Qualified prospects and pipeline impact]
+- **Sales Conversion**: [Attributed revenue and ROI calculation]
+- **Customer Acquisition**: [New customer acquisition cost and value]
+- **Market Share**: [Category position and competitive gains]
+
+#### Testing and Optimization Strategy
+**Creative Testing Framework**:
+- **Concept Testing**: [Pre-launch audience validation]
+- **A/B Testing**: [Message, creative, and format optimization]
+- **Platform Performance**: [Cross-channel effectiveness comparison]
+- **Audience Optimization**: [Segment-specific creative refinement]
+
+**Real-Time Optimization**:
+- **Daily Performance Monitoring**: [Key metric tracking and alerts]
+- **Creative Refresh Strategy**: [When and how to update assets]
+- **Budget Reallocation**: [Performance-based spending optimization]
+- **Message Refinement**: [Audience response-driven improvements]
+
+### 🚀 Campaign Launch and Management
+
+#### Launch Strategy
+**Pre-Launch Phase** (4 weeks before):
+- **Asset Production**: [Creative development and approval]
+- **Channel Setup**: [Platform configuration and testing]
+- **Team Training**: [Internal alignment and execution preparation]
+- **Soft Launch**: [Limited audience testing and refinement]
+
+**Launch Phase** (Week 1-2):
+- **Full Activation**: [All-channel campaign launch]
+- **Monitoring and Adjustment**: [Real-time performance tracking]
+- **PR Activation**: [Earned media amplification]
+- **Influencer Coordination**: [Partnership activation and content]
+
+**Optimization Phase** (Ongoing):
+- **Performance Analysis**: [Weekly performance reviews]
+- **Creative Rotation**: [Fresh asset introduction]
+- **Audience Expansion**: [Lookalike and interest targeting growth]
+- **Channel Mix Optimization**: [Budget reallocation based on performance]
+
+#### Crisis Management and Contingency Planning
+**Risk Assessment**:
+- **Potential Negative Reception**: [Response strategy and messaging]
+- **Competitive Response**: [Counter-strategy and differentiation]
+- **Technical Issues**: [Backup plans and rapid resolution]
+- **Budget Performance**: [Contingency plans for over/under performance]
+
+### 💰 Budget Allocation and ROI Strategy
+
+#### Investment Strategy
+**Budget Distribution**:
+- **Paid Media**: [60-70% for reach and frequency]
+- **Creative Production**: [15-20% for asset development]
+- **Influencer and Partnerships**: [10-15% for authentic reach]
+- **Testing and Optimization**: [5-10% for performance improvement]
+
+**ROI Optimization**:
+- **Performance Channels**: [High-converting platform investment]
+- **Brand Building**: [Long-term awareness and consideration]
+- **Acquisition vs. Retention**: [New customer vs. existing customer focus]
+- **Lifetime Value**: [Long-term customer relationship building]
+
+Deliver a comprehensive integrated creative campaign strategy that creates meaningful connections with target audiences, drives measurable business results, and builds long-term brand equity while optimizing performance across all channels and touchpoints.`,
+    variables: [
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Nike, Local restaurant chain, SaaS startup, Fashion retailer, Non-profit organization"
+      },
+      {
+        name: "PRIMARY_GOAL",
+        description: "Main campaign objective",
+        required: true,
+        example: "Brand awareness, Product launch, Behavior change, Sales growth, Market share gain"
+      },
+      {
+        name: "AUDIENCE_SEGMENTS",
+        description: "Target audience groups",
+        required: true,
+        example: "Young professionals, Working parents, Gen Z consumers, B2B decision makers"
+      },
+      {
+        name: "BUSINESS_CHALLENGE",
+        description: "Key business problem to solve",
+        required: true,
+        example: "Declining market share, New competitor threat, Category commoditization, Brand perception issues"
+      },
+      {
+        name: "BUDGET_LEVEL",
+        description: "Campaign budget range",
+        required: true,
+        example: "Under $100K, $100K-$500K, $500K-$2M, $2M+, Startup budget, Enterprise level"
+      }
+    ],
+    tips: [
+      "Start with a clear understanding of what success looks like before developing creative",
+      "Ensure your campaign idea works across all channels, not just the hero medium",
+      "Test creative concepts with real consumers before full production investment",
+      "Plan for campaign evolution and optimization from the beginning",
+      "Measure both short-term performance and long-term brand impact"
+    ]
+  },
+
+  {
+    id: "illustration-concept-artist",
+    name: "Illustration Concept Artist",
+    category: "creative",
+    version: "2.0",
+    lastUpdated: "2025-01",
+    systemPrompt: `You are a concept artist and illustration director with 10+ years of experience creating visual concepts, illustrations, and artistic direction for brands, publications, and digital products. Your expertise includes:
+
+- Concept art development and visual ideation
+- Brand illustration style development and consistency
+- Visual metaphor creation and symbolic representation
+- Cross-cultural visual communication and iconography
+- Digital and traditional illustration techniques
+- Editorial and commercial illustration strategy
+- Icon design and pictographic communication
+- Art direction for illustration projects and team management
+
+You create unique visual languages that communicate complex ideas through artistic interpretation, enhance brand personality, and engage audiences through compelling visual storytelling.`,
+    prompt: `Develop a comprehensive illustration concept and style strategy for the following project:
+
+## Project Overview
+- **Client/Brand**: [BRAND_NAME]
+- **Project Type**: [ILLUSTRATION_TYPE]
+- **Target Audience**: [AUDIENCE_PROFILE]
+- **Communication Goal**: [OBJECTIVE]
+- **Brand Personality**: [BRAND_CHARACTERISTICS]
+- **Application Context**: [USAGE_CONTEXT]
+- **Technical Requirements**: [TECHNICAL_SPECS]
+- **Budget and Timeline**: [PROJECT_CONSTRAINTS]
+
+## Illustration Concept Development
+
+### 🎨 Artistic Direction Strategy
+
+#### Concept Exploration and Ideation
+**Core Concept Development**:
+- **Central Theme**: [Primary visual concept that ties everything together]
+- **Visual Metaphor**: [Key symbolic representation of main message]
+- **Artistic Approach**: [Conceptual framework for visual problem-solving]
+- **Narrative Elements**: [Story components that drive visual development]
+
+**Mood and Atmosphere**:
+- **Emotional Tone**: [Primary feeling illustrations should evoke]
+- **Visual Mood**: [Aesthetic atmosphere and environmental feeling]
+- **Cultural Context**: [References and influences that resonate with audience]
+- **Temporal Setting**: [Modern, vintage, futuristic, or timeless approach]
+
+#### Brand Integration and Differentiation
+**Brand Personality Translation**:
+- **[BRAND_TRAIT_1]**: [How this characteristic appears in illustration style]
+- **[BRAND_TRAIT_2]**: [Visual expression of this brand quality]
+- **[BRAND_TRAIT_3]**: [Artistic interpretation of this attribute]
+
+**Competitive Differentiation**:
+- **Market Analysis**: [Current illustration trends in the industry]
+- **White Space Opportunities**: [Unique visual approaches not being used]
+- **Signature Elements**: [Distinctive features that make illustrations recognizable]
+- **Scalability Considerations**: [How style works across different applications]
+
+### 🖌️ Visual Style Development
+
+#### Artistic Style Framework
+**Style Direction Options**:
+
+**Option A: [STYLE_NAME_1]**
+- **Artistic Influence**: [Art movements, artists, or periods that inspire this style]
+- **Visual Characteristics**: [Line quality, shading, texture, composition approach]
+- **Color Philosophy**: [Color usage strategy and emotional impact]
+- **Technical Approach**: [Digital, traditional, or mixed media methodology]
+- **Brand Alignment**: [How this style supports brand objectives]
+
+**Option B: [STYLE_NAME_2]**
+- **Alternative Direction**: [Different artistic approach and rationale]
+- **Unique Benefits**: [Advantages of this stylistic choice]
+- **Audience Appeal**: [How this resonates with target demographic]
+- **Production Efficiency**: [Workflow and scalability considerations]
+
+**Option C: [STYLE_NAME_3]**
+- **Hybrid Approach**: [Combination of techniques or influences]
+- **Innovation Factor**: [Unique elements that push creative boundaries]
+- **Versatility**: [Adaptability across various applications]
+- **Future Evolution**: [How style can grow and develop over time]
+
+#### Visual Elements System
+**Line and Form Language**:
+- **Line Quality**: [Thick/thin, smooth/rough, geometric/organic]
+- **Shape Philosophy**: [Angular/curved, simple/complex, structured/free-form]
+- **Proportion Strategy**: [Realistic/stylized, heroic/intimate, balanced/dramatic]
+- **Composition Rules**: [Layout principles and visual flow guidelines]
+
+**Color Strategy and Palette**:
+- **Primary Palette**: [Main colors with psychological associations]
+- **Secondary Colors**: [Supporting colors for depth and variety]
+- **Harmony System**: [Complementary, analogous, or triadic approach]
+- **Brand Color Integration**: [How brand colors enhance illustration palette]
+- **Cultural Color Considerations**: [Color meanings across different cultures]
+
+**Texture and Surface Treatment**:
+- **Surface Quality**: [Smooth/textured, flat/dimensional, polished/rough]
+- **Pattern Integration**: [Decorative elements and repeated motifs]
+- **Depth and Dimension**: [2D flat, 2.5D layered, or 3D volumetric approach]
+- **Light and Shadow**: [Lighting philosophy and shadow treatment]
+
+### 📐 Technical Specification and Production
+
+#### Art Creation Guidelines
+**Technical Standards**:
+- **Resolution Requirements**: [Print vs. digital optimization specifications]
+- **File Formats**: [Vector vs. raster considerations and output needs]
+- **Color Mode**: [RGB for digital, CMYK for print specifications]
+- **Scalability**: [Vector-based elements for infinite scaling capability]
+
+**Production Workflow**:
+- **Concept Sketching**: [Initial ideation and thumbnail development]
+- **Rough Development**: [Refined concepts and composition exploration]
+- **Final Art Creation**: [Polished illustration production process]
+- **Quality Control**: [Review process and consistency maintenance]
+
+#### Software and Tools Strategy
+**Primary Creation Tools**:
+- **Vector Illustration**: [Adobe Illustrator, Affinity Designer alternatives]
+- **Raster Painting**: [Photoshop, Procreate, or other painting software]
+- **3D Integration**: [Blender, Cinema 4D for dimensional elements]
+- **Traditional Media**: [Physical materials for texture and authenticity]
+
+**Asset Management**:
+- **File Organization**: [Folder structure and naming conventions]
+- **Version Control**: [Revision tracking and client approval process]
+- **Asset Library**: [Reusable elements and style consistency tools]
+- **Collaboration Tools**: [Team sharing and feedback collection methods]
+
+### 🎭 Visual Storytelling and Narrative
+
+#### Storytelling Approach
+**Narrative Structure**:
+- **Visual Story Arc**: [Beginning, development, and resolution in illustrations]
+- **Character Development**: [Consistent character design and personality]
+- **Environmental Storytelling**: [Background and setting narrative contribution]
+- **Sequential Storytelling**: [Multi-panel or series illustration approaches]
+
+**Symbolic Language Development**:
+- **Icon and Symbol System**: [Repeated visual elements with specific meanings]
+- **Metaphorical Representations**: [Abstract concept visualization strategies]
+- **Cultural Symbolism**: [Universally understood vs. culturally specific symbols]
+- **Visual Hierarchy**: [Importance communication through size, contrast, position]
+
+#### Concept Visualization Techniques
+**Abstract Concept Representation**:
+- **Complex Ideas**: [Methods for visualizing intangible concepts]
+- **Process Illustration**: [Step-by-step and workflow visualization]
+- **Data Visualization**: [Artistic interpretation of charts and statistics]
+- **Emotional States**: [Visual representation of feelings and moods]
+
+### 📱 Application-Specific Guidelines
+
+#### Multi-Platform Adaptation
+**Digital Applications**:
+- **Website Integration**: [Header illustrations, page elements, interactive graphics]
+- **Social Media**: [Profile graphics, post illustrations, story elements]
+- **Mobile Apps**: [UI illustrations, onboarding graphics, empty states]
+- **Email Marketing**: [Header graphics, dividers, promotional illustrations]
+
+**Print Applications**:
+- **Business Materials**: [Business cards, letterhead, presentation folders]
+- **Marketing Collateral**: [Brochures, flyers, trade show materials]
+- **Packaging Design**: [Product packaging illustrations and label graphics]
+- **Environmental Graphics**: [Signage, wall graphics, retail displays]
+
+#### Responsive Design Considerations
+**Scalability Strategy**:
+- **Detail Levels**: [Complex vs. simplified versions for different sizes]
+- **Layout Adaptation**: [Horizontal, vertical, and square format versions]
+- **Interactive Elements**: [Hover states, click interactions, animation potential]
+- **Loading Optimization**: [File size management for web performance]
+
+### 🔄 Style Evolution and Consistency
+
+#### Brand Style Guide Development
+**Illustration Standards Documentation**:
+- **Do's and Don'ts**: [Clear examples of correct and incorrect usage]
+- **Color Usage Rules**: [Palette application and combination guidelines]
+- **Typography Integration**: [How text and illustration work together]
+- **Spacing and Layout**: [White space usage and composition principles]
+
+**Quality Assurance Framework**:
+- **Consistency Checklist**: [Style adherence verification process]
+- **Brand Compliance**: [Brand guideline alignment confirmation]
+- **Technical Standards**: [File quality and specification verification]
+- **Approval Workflow**: [Review and approval process documentation]
+
+#### Future Development Planning
+**Style Evolution Strategy**:
+- **Seasonal Adaptations**: [Holiday and seasonal style variations]
+- **Campaign-Specific Variations**: [Special event illustration approaches]
+- **Market Expansion**: [Cultural adaptation for different regions]
+- **Technology Integration**: [AR, VR, and interactive illustration possibilities]
+
+### 📊 Success Measurement and Optimization
+
+#### Performance Metrics
+**Engagement Metrics**:
+- **Visual Attention**: [Eye-tracking and heat map analysis]
+- **Social Sharing**: [Illustration post performance and virality]
+- **Brand Recognition**: [Illustrated content attribution to brand]
+- **Conversion Impact**: [Illustration influence on desired actions]
+
+**Quality Assessment**:
+- **Style Consistency**: [Adherence to established visual guidelines]
+- **Production Efficiency**: [Time and resource optimization]
+- **Client Satisfaction**: [Stakeholder feedback and approval rates]
+- **Technical Quality**: [File specifications and output quality]
+
+#### Testing and Refinement
+**A/B Testing Opportunities**:
+- **Style Variations**: [Different approaches for same content]
+- **Color Schemes**: [Alternative palettes for engagement optimization]
+- **Complexity Levels**: [Simple vs. detailed illustration effectiveness]
+- **Cultural Adaptations**: [Regional preference testing and optimization]
+
+### 💰 Budget and Resource Management
+
+#### Cost Optimization Strategy
+**Production Efficiency**:
+- **Template Development**: [Reusable illustration frameworks]
+- **Asset Library Creation**: [Modular elements for quick composition]
+- **Batch Production**: [Multiple illustrations in single production cycle]
+- **Outsourcing Strategy**: [When to use external illustrators vs. in-house]
+
+**Value Maximization**:
+- **Multi-Use Planning**: [Illustrations designed for multiple applications]
+- **Seasonal Content**: [Evergreen vs. time-sensitive illustration strategy]
+- **Licensing Considerations**: [Usage rights and future application planning]
+- **ROI Tracking**: [Illustration investment impact on business metrics]
+
+Deliver a comprehensive illustration concept strategy that creates a distinctive visual language, communicates effectively with target audiences, and provides a scalable foundation for all brand illustration needs while optimizing for production efficiency and brand consistency.`,
+    variables: [
+      {
+        name: "BRAND_NAME",
+        description: "Brand or company name",
+        required: true,
+        example: "Tech startup, Publishing company, Healthcare brand, Food & beverage company, Educational platform"
+      },
+      {
+        name: "ILLUSTRATION_TYPE",
+        description: "Type of illustration project",
+        required: true,
+        example: "Brand identity illustrations, Editorial graphics, Web illustrations, Product packaging, Marketing materials"
+      },
+      {
+        name: "AUDIENCE_PROFILE",
+        description: "Target audience characteristics",
+        required: true,
+        example: "Creative professionals, Healthcare workers, Children and families, Tech enthusiasts, Small business owners"
+      },
+      {
+        name: "OBJECTIVE",
+        description: "Primary communication goal",
+        required: true,
+        example: "Explain complex concepts, Build brand recognition, Create emotional connection, Improve user experience, Drive engagement"
+      },
+      {
+        name: "BRAND_CHARACTERISTICS",
+        description: "Brand personality traits",
+        required: true,
+        example: "Professional and trustworthy, Playful and approachable, Modern and innovative, Warm and community-focused"
+      }
+    ],
+    tips: [
+      "Develop a consistent visual language that can evolve while maintaining brand recognition",
+      "Consider how illustrations will be used across different contexts and scales",
+      "Test your visual concepts with actual target audience members, not just internal stakeholders",
+      "Create modular illustration systems that allow for efficient production of new content",
+      "Balance artistic creativity with practical business and technical requirements"
     ]
   }
 ];
