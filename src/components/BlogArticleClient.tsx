@@ -112,7 +112,7 @@ export default function BlogArticleClient({ article, relatedArticles }: BlogArti
               className="w-full h-full object-cover"
               sizes="100vw"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-black/40" />
             
             {/* Overlay Content */}
             <div className="absolute bottom-0 left-0 right-0 text-white p-8">
@@ -159,7 +159,7 @@ export default function BlogArticleClient({ article, relatedArticles }: BlogArti
 
         {/* If no featured image, show regular header */}
         {!article.featuredImage && (
-          <div className="py-12 bg-gradient-to-b from-orange-500 to-red-500 text-white">
+          <div className="py-12 bg-black text-white">
             <div className="container mx-auto px-4">
               <div className="max-w-4xl">
                 {/* Breadcrumb */}
