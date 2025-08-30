@@ -85,9 +85,9 @@ export default function PerformanceMonitor() {
     scheduleIdleTask(() => {
       if ('web-vital' in window) return
       
-      import('web-vitals').then(({ onCLS, onFID, onFCP, onLCP, onTTFB }) => {
+      import('web-vitals').then(({ onCLS, onINP, onFCP, onLCP, onTTFB }) => {
         onCLS(console.log)
-        onFID(console.log)
+        onINP(console.log) // INP replaced FID
         onFCP(console.log)
         onLCP(console.log)
         onTTFB(console.log)
