@@ -119,25 +119,26 @@ img {
   will-change: transform, opacity;
 }
 
-/* AI Tools Animated Text - PRESERVED */
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
+/* AI Tools Animated Text - COMPLETE WITH ALL EFFECTS */
 .ai-tools-animated {
+  position: relative;
+  display: inline-block;
+  cursor: default;
+  user-select: none;
   background: linear-gradient(45deg, #00ff88, #ff0066, #00d4ff, #ffd700);
   background-size: 400% 400%;
   -webkit-background-clip: text;
   background-clip: text;
   -webkit-text-fill-color: transparent;
-  animation: gradient 3s ease infinite;
-  will-change: background-position;
-  position: relative;
-  display: inline-block;
-  cursor: default;
-  user-select: none;
+  animation: text-morph 8s ease-in-out infinite, gradient 3s ease infinite;
+  will-change: transform, background-position, filter;
+}
+
+/* Gradient Animation */
+@keyframes gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
 /* Glitch Effects - ALL PRESERVED */
@@ -320,10 +321,6 @@ img {
   }
 }
 
-/* AI Tools Animation Classes - PRESERVED */
-.ai-tools-animated {
-  animation: text-morph 8s ease-in-out infinite;
-}
 
 /* Individual Letter Animation - PRESERVED */
 .ai-tools-animated span {
@@ -1194,6 +1191,11 @@ img {
     transform: translateX(0);
   }
 }
+
+/* Import luxury AI tools animations */
+@import '../styles/ai-tools-luxury.css';
+@import '../styles/ai-tools-premium.css';
+@import '../styles/ai-tools-gradient.css';
 
 /* Performance Optimizations */
 @media (prefers-reduced-motion: reduce) {

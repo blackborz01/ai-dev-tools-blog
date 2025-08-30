@@ -1,0 +1,30 @@
+/* Eye-pleasing gradient animation for AI TOOLS */
+
+.ai-tools-gradient-text {
+  display: inline-block;
+  font-weight: 900;
+  position: relative;
+  color: #00ff88;
+  
+  /* Simple animation without background effects */
+  animation: color-shift 4s ease-in-out infinite;
+}
+
+/* Simple color shift animation */
+@keyframes color-shift {
+  0%, 100% {
+    color: #00ff88;
+  }
+  50% {
+    color: #00d4ff;
+  }
+}
+
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ai-tools-gradient-text {
+    animation-duration: 5s, 4s;
+  }
+}

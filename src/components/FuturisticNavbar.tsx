@@ -214,7 +214,7 @@ export default function FuturisticNavbar() {
                       <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" style={{ animationDelay: '0.4s' }} />
                     </div>
                     <div className="text-[10px] font-mono text-cyan-400/80 tracking-[0.2em] uppercase">
-                      Ship 3x Faster
+                      Ship 10x Faster
                     </div>
                     {timeString && (
                       <div className="text-[10px] font-mono text-green-400">
@@ -409,7 +409,7 @@ export default function FuturisticNavbar() {
                 <div className="text-xl font-black bg-gradient-to-r from-cyan-400 to-purple-400 bg-clip-text text-transparent">
                   BoostDevSpeed
                 </div>
-                <div className="text-[9px] font-mono text-cyan-400/80">SHIP 3X FASTER</div>
+                <div className="text-[9px] font-mono text-cyan-400/80">SHIP 10X FASTER</div>
               </div>
             </Link>
 

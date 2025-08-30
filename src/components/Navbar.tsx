@@ -76,33 +76,33 @@ export default function Navbar() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo Section */}
-            <Link href="/" className="flex items-center space-x-3">
+            <Link href="/" className="flex items-center gap-3">
               <div className="relative">
-                <div className="w-12 h-12 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center border border-gray-700">
-                  <Terminal className="w-6 h-6 text-cyan-400" />
+                <div className="w-11 h-11 bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl flex items-center justify-center border border-gray-700">
+                  <Terminal className="w-5 h-5 text-cyan-400" />
                 </div>
               </div>
               <div>
-                <div className="text-2xl font-bold tracking-tight">
+                <div className="text-xl font-bold tracking-tight">
                   <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-cyan-300 bg-clip-text text-transparent">Boost</span>
                   <span className="text-white">Dev</span>
                   <span className="bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">Speed</span>
                 </div>
                 <div className="flex items-center gap-1">
                   <div className="flex gap-0.5">
-                    <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-                    <div className="w-1.5 h-1.5 bg-yellow-400 rounded-full animate-pulse" style={{animationDelay: '0.2s'}} />
-                    <div className="w-1.5 h-1.5 bg-red-400 rounded-full animate-pulse" style={{animationDelay: '0.4s'}} />
+                    <div className="w-1 h-1 bg-green-400 rounded-full" />
+                    <div className="w-1 h-1 bg-yellow-400 rounded-full" />
+                    <div className="w-1 h-1 bg-red-400 rounded-full" />
                   </div>
-                  <div className="text-[10px] font-mono text-gray-500 uppercase tracking-wider">
-                    Ship 3x Faster
+                  <div className="text-[9px] font-mono text-gray-500 uppercase tracking-wider">
+                    Ship 10x Faster 12:48:17
                   </div>
                 </div>
               </div>
             </Link>
 
             {/* Center Navigation - Desktop */}
-            <div className="hidden md:flex items-center space-x-1">
+            <div className="hidden md:flex items-center gap-4">
               {navLinks.map((link) => {
                 const Icon = link.icon
                 const isActive = activeLink === link.name
@@ -114,13 +114,13 @@ export default function Navbar() {
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200
                       ${isActive 
-                        ? 'bg-cyan-500 text-white' 
-                        : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                        ? 'bg-cyan-500 text-black font-semibold' 
+                        : 'text-gray-400 hover:text-white'
                       }
                     `}
                   >
                     <Icon className="w-4 h-4" />
-                    <span className="text-sm font-semibold tracking-wide">
+                    <span className="text-sm font-medium">
                       {link.name}
                     </span>
                   </Link>
@@ -135,13 +135,13 @@ export default function Navbar() {
                   className={`
                     flex items-center gap-2 px-4 py-2 rounded-lg transition-all duration-200
                     ${activeLink === 'MORE'
-                      ? 'bg-cyan-500 text-white' 
-                      : 'text-gray-400 hover:text-white hover:bg-gray-800/50'
+                      ? 'bg-cyan-500 text-black font-semibold' 
+                      : 'text-gray-400 hover:text-white'
                     }
                   `}
                 >
+                  <span className="text-sm font-medium">MORE</span>
                   <ChevronDown className={`w-4 h-4 transition-transform ${moreDropdownOpen ? 'rotate-180' : ''}`} />
-                  <span className="text-sm font-semibold tracking-wide">MORE</span>
                 </button>
                 
                 {/* Dropdown Menu */}
@@ -184,20 +184,20 @@ export default function Navbar() {
             <div className="hidden md:flex items-center gap-3">
               {/* Login Button */}
               <Link href="/auth/signin">
-                <button className="flex items-center gap-2 px-5 py-2.5 text-gray-300 hover:text-white transition-colors">
+                <button className="flex items-center gap-1.5 px-3 py-1.5 text-gray-400 hover:text-gray-200 transition-colors">
                   <User className="w-4 h-4" />
-                  <span className="text-sm font-semibold">LOGIN</span>
+                  <span className="text-sm font-medium">LOGIN</span>
                 </button>
               </Link>
               
               {/* Subscribe Button */}
               <Link href="/subscribe">
-                <button className="group flex items-center gap-2 px-6 py-2.5 bg-gradient-to-r from-cyan-500 via-blue-500 to-purple-500 rounded-lg hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300">
-                  <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z" />
+                <button className="group flex items-center gap-1.5 px-4 py-1.5 bg-gradient-to-r from-cyan-400 to-blue-500 text-black rounded-md hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300">
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
                   </svg>
-                  <span className="text-sm font-bold text-white">SUBSCRIBE</span>
-                  <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-0.5 transition-transform" />
+                  <span className="text-sm font-semibold">SUBSCRIBE</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </button>
               </Link>
             </div>

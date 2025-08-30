@@ -1,0 +1,385 @@
+/* Ultra Premium AI Tools Text Animation - Expensive Look */
+
+/* Main container for premium AI TOOLS animation */
+.ai-tools-premium {
+  position: relative;
+  display: inline-block;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  
+  /* Base gradient - liquid chrome effect */
+  background: linear-gradient(
+    135deg,
+    #00ffaa 0%,
+    #00ffff 15%,
+    #00ff88 30%,
+    #ff00ff 45%,
+    #00ffff 60%,
+    #00ff88 75%,
+    #00ffaa 100%
+  );
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Smooth premium animation */
+  animation: 
+    premium-gradient 4s ease-in-out infinite,
+    luxury-float 6s ease-in-out infinite,
+    holographic-shift 3s linear infinite,
+    expensive-glow 2s ease-in-out infinite;
+  
+  /* 3D transform for depth */
+  transform-style: preserve-3d;
+  transform: perspective(1000px) rotateY(-5deg);
+  
+  /* Premium text shadow for depth */
+  filter: drop-shadow(0 0 20px rgba(0, 255, 255, 0.8))
+          drop-shadow(0 0 40px rgba(255, 0, 255, 0.5))
+          drop-shadow(2px 2px 0 rgba(255, 0, 0, 0.8));
+}
+
+/* Chrome reflection layer */
+.ai-tools-premium::before {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Chrome gradient */
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.4) 45%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.4) 55%,
+    transparent 100%
+  );
+  background-size: 200% 100%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Shimmer animation */
+  animation: chrome-shimmer 3s linear infinite;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+}
+
+/* Holographic layer */
+.ai-tools-premium::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  
+  /* Holographic colors */
+  background: linear-gradient(
+    45deg,
+    #ff0080,
+    #ff8c00,
+    #ffd700,
+    #00ff00,
+    #00ffff,
+    #ff00ff,
+    #ff0080
+  );
+  background-size: 400% 400%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  
+  /* Blur for glow effect */
+  filter: blur(8px);
+  opacity: 0.6;
+  
+  /* Offset animation */
+  animation: 
+    hologram-offset 2s ease-in-out infinite,
+    rainbow-shift 8s linear infinite;
+  
+  transform: translateZ(-10px) scale(1.02);
+}
+
+/* 3D Extrusion effect */
+.ai-tools-3d-extrude {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  
+  /* Red extrusion color */
+  color: #ff0044;
+  text-shadow: 
+    1px 1px 0 #ff0044,
+    2px 2px 0 #ff0044,
+    3px 3px 0 #ff0044,
+    4px 4px 0 #ff0044,
+    5px 5px 0 #ff0044,
+    6px 6px 0 #ff0044,
+    7px 7px 0 #ff0044,
+    8px 8px 10px rgba(255, 0, 68, 0.5);
+}
+
+/* Liquid metal distortion */
+@keyframes liquid-metal {
+  0%, 100% {
+    filter: url('#liquid-metal-filter');
+  }
+  50% {
+    filter: url('#liquid-metal-filter-2');
+  }
+}
+
+/* Premium gradient animation */
+@keyframes premium-gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Luxury floating effect */
+@keyframes luxury-float {
+  0%, 100% {
+    transform: perspective(1000px) rotateY(-5deg) translateY(0) scale(1);
+  }
+  25% {
+    transform: perspective(1000px) rotateY(5deg) translateY(-5px) scale(1.02);
+  }
+  50% {
+    transform: perspective(1000px) rotateY(-5deg) translateY(2px) scale(1.01);
+  }
+  75% {
+    transform: perspective(1000px) rotateY(5deg) translateY(-2px) scale(1.02);
+  }
+}
+
+/* Chrome shimmer effect */
+@keyframes chrome-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+/* Holographic shift */
+@keyframes holographic-shift {
+  0% {
+    filter: hue-rotate(0deg) brightness(1.2) contrast(1.1);
+  }
+  50% {
+    filter: hue-rotate(180deg) brightness(1.4) contrast(1.2);
+  }
+  100% {
+    filter: hue-rotate(360deg) brightness(1.2) contrast(1.1);
+  }
+}
+
+/* Expensive glow animation */
+@keyframes expensive-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 0.9))
+            drop-shadow(0 0 60px rgba(255, 0, 255, 0.6))
+            drop-shadow(3px 3px 0 rgba(255, 0, 0, 1));
+  }
+  50% {
+    filter: drop-shadow(0 0 40px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 80px rgba(255, 0, 255, 0.8))
+            drop-shadow(4px 4px 0 rgba(255, 0, 0, 1));
+  }
+}
+
+/* Hologram offset animation */
+@keyframes hologram-offset {
+  0%, 100% {
+    transform: translateZ(-10px) scale(1.02) translate(0, 0);
+  }
+  25% {
+    transform: translateZ(-10px) scale(1.02) translate(2px, -2px);
+  }
+  50% {
+    transform: translateZ(-10px) scale(1.02) translate(-2px, 2px);
+  }
+  75% {
+    transform: translateZ(-10px) scale(1.02) translate(2px, 2px);
+  }
+}
+
+/* Rainbow shift for holographic layer */
+@keyframes rainbow-shift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 400% 50%;
+  }
+}
+
+/* Neon pulse lights */
+.ai-tools-premium .neon-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  
+  background: radial-gradient(
+    circle at 20% 50%,
+    rgba(0, 255, 255, 0.3) 0%,
+    transparent 50%
+  );
+  
+  animation: neon-pulse 3s ease-in-out infinite;
+}
+
+@keyframes neon-pulse {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+/* Particle system overlay */
+.ai-tools-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ai-tools-particles::before,
+.ai-tools-particles::after {
+  content: '';
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+  border-radius: 50%;
+  box-shadow: 
+    0 0 10px #00ffff,
+    0 0 20px #00ffff;
+  animation: particle-flow 5s linear infinite;
+}
+
+.ai-tools-particles::after {
+  animation-delay: 2.5s;
+  background: linear-gradient(45deg, #ff00ff, #00ff00);
+}
+
+@keyframes particle-flow {
+  0% {
+    transform: translate(-100px, -50px) scale(0);
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+    transform: translate(0, 0) scale(1);
+  }
+  80% {
+    opacity: 1;
+    transform: translate(100px, 50px) scale(1);
+  }
+  100% {
+    transform: translate(200px, 100px) scale(0);
+    opacity: 0;
+  }
+}
+
+/* Electric arc effect */
+.ai-tools-premium .electric-arc {
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, 
+    transparent,
+    #00ffff,
+    #ffffff,
+    #00ffff,
+    transparent
+  );
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  opacity: 0;
+  animation: electric-sweep 4s linear infinite;
+}
+
+@keyframes electric-sweep {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-50%) scaleX(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-50%) scaleX(1);
+  }
+}
+
+/* Matrix digital rain overlay */
+.ai-tools-matrix {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  opacity: 0.1;
+  background-image: linear-gradient(
+    0deg,
+    transparent 0%,
+    rgba(0, 255, 0, 0.1) 50%,
+    transparent 100%
+  );
+  background-size: 100% 10px;
+  animation: matrix-fall 2s linear infinite;
+}
+
+@keyframes matrix-fall {
+  0% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(10px);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .ai-tools-premium {
+    animation-duration: 5s, 7s, 4s, 3s;
+  }
+}
+
+/* Dark mode optimizations */
+@media (prefers-color-scheme: dark) {
+  .ai-tools-premium {
+    filter: drop-shadow(0 0 30px rgba(0, 255, 255, 1))
+            drop-shadow(0 0 60px rgba(255, 0, 255, 0.7))
+            drop-shadow(3px 3px 0 rgba(255, 0, 0, 1));
+  }
+}

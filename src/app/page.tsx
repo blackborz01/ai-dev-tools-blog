@@ -15,7 +15,7 @@ const LoadingSkeleton = memo(() => (
 LoadingSkeleton.displayName = 'LoadingSkeleton'
 
 // Critical components - load immediately (above-fold)
-import FuturisticNavbar from '@/components/FuturisticNavbar'
+import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 
 // High priority components - load with intersection observer
@@ -69,7 +69,7 @@ const ShipCodeSection = memo(() => (
   <section className="relative min-h-[60vh] flex items-center justify-center py-20">
     <div className="container mx-auto px-4 py-16 text-center relative">
       <h1 className="text-5xl md:text-7xl font-black mb-6 text-white">
-        SHIP CODE <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">3X FASTER</span>
+        SHIP CODE <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">10X FASTER</span>
       </h1>
       <p className="text-xl md:text-2xl mb-8 text-gray-300">
         Master AI Coding Tools. Fix MCP Errors. Boost Productivity.
@@ -98,7 +98,7 @@ ShipCodeSection.displayName = 'ShipCodeSection'
 export default function HomePage() {
   return (
     <>
-      <FuturisticNavbar />
+      <Navbar />
       
       {/* Main content wrapper with EXACT TRENDING.NOW background - ALL ANIMATIONS PRESERVED */}
       <div className="min-h-screen bg-black relative overflow-hidden">
@@ -131,7 +131,7 @@ export default function HomePage() {
             <FuturisticTrending />
           </Suspense>
 
-          {/* SHIP CODE 3X FASTER - Memoized for performance */}
+          {/* SHIP CODE 10X FASTER - Memoized for performance */}
           <ShipCodeSection />
 
           {/* Scrolling Banner */}

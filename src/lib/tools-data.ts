@@ -362,7 +362,7 @@ GitHub Copilot is proven to increase developer productivity by 55% and is used b
     slug: "windsurf-ide",
     name: "WINDSURF IDE",
     tagline: "The AI IDE that codes alongside you",
-    description: "The AI IDE that codes alongside you, not just completes lines. Understands your architecture, writes entire features, and refactors codebases. Early adopters report 3x productivity gains. Built by the team behind Codeium. Get early access before the waitlist grows.",
+    description: "The AI IDE that codes alongside you, not just completes lines. Understands your architecture, writes entire features, and refactors codebases. Early adopters report 10x productivity gains. Built by the team behind Codeium. Get early access before the waitlist grows.",
     longDescription: `Windsurf represents the next evolution in AI-powered development. Unlike traditional code completion tools, Windsurf acts as a true pair programmer that understands your entire project architecture.
 
 Revolutionary features:

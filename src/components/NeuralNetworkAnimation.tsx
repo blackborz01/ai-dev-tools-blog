@@ -108,7 +108,7 @@ export default function NeuralNetworkAnimation() {
     const ctx = canvas.getContext('2d', { alpha: true })
     if (!ctx) return
     
-    // Enable better rendering
+    // Enable better rendering with performance optimizations
     ctx.imageSmoothingEnabled = true
     ctx.imageSmoothingQuality = 'high'
     
@@ -276,7 +276,7 @@ export default function NeuralNetworkAnimation() {
       for (let i = 0; i < 2; i++) {
         conn.particles.push({
           progress: Math.random(),
-          speed: 0.003 + Math.random() * 0.007,
+          speed: 0.002 + Math.random() * 0.003,  // Reduced from 0.003-0.01 (60% slower)
           size: 3 + Math.random() * 2,
           trail: []
         })
@@ -298,7 +298,7 @@ export default function NeuralNetworkAnimation() {
       matrixColumns.push({
         x: (i * (spread / numColumns)) - spread / 2,
         y: Math.random() * -800,
-        speed: 0.8 + Math.random() * 1.5,
+        speed: 0.4 + Math.random() * 0.8,  // Reduced from 0.8-2.3 (50% slower)
         opacity: 0.08 + Math.random() * 0.15,
         phrase: matrixPhrases[Math.floor(Math.random() * matrixPhrases.length)],
         charIndex: Math.floor(Math.random() * 10),
@@ -484,8 +484,8 @@ export default function NeuralNetworkAnimation() {
       ctx.translate(width / 2, height / 2)
       
       // Update time
-      time += 0.01
-      rotation += 0.001
+      time += 0.008  // Decreased by 20% from 0.01
+      rotation += 0.00064  // Decreased by 20% from 0.0008
       frameCount++
       
       // Draw Matrix rain background first
@@ -498,15 +498,15 @@ export default function NeuralNetworkAnimation() {
       // Update and draw matrix columns
       matrixColumns.forEach((column, index) => {
         // Update position
-        column.y += column.speed
-        column.charIndex += 0.03
+        column.y += column.speed * 1.2  // Decreased by 20% from 1.5
+        column.charIndex += 0.02  // Decreased by 20% from 0.025
         
         // Reset when off screen
         if (column.y > height / 2 + 200) {
           column.y = -height / 2 - 200
           column.phrase = matrixPhrases[Math.floor(Math.random() * matrixPhrases.length)]
           column.charIndex = 0
-          column.speed = 0.8 + Math.random() * 1.5
+          column.speed = 0.4 + Math.random() * 0.8  // Reduced from 0.8-2.3 (50% slower)
           column.opacity = 0.08 + Math.random() * 0.15
           column.color = ['#84cc16', '#06b6d4', '#9333ea'][Math.floor(Math.random() * 3)]
         }
@@ -564,7 +564,7 @@ export default function NeuralNetworkAnimation() {
       
       // Update nodes
       nodes.forEach((node, i) => {
-        node.rotation += 0.01
+        node.rotation += 0.012  // Decreased by 20% from 0.015
         if (i !== 0) {
           // Orbital motion with more complex patterns
           const angle = rotation + (i - 1) * (Math.PI * 2 / 8)
@@ -588,7 +588,7 @@ export default function NeuralNetworkAnimation() {
         }
         
         // Update pulse
-        node.pulsePhase += 0.015
+        node.pulsePhase += 0.016  // Decreased by 20% from 0.02
       })
       
       // Sort nodes by z-index for proper layering
@@ -627,7 +627,7 @@ export default function NeuralNetworkAnimation() {
           particle.progress += particle.speed
           if (particle.progress > 1) {
             particle.progress = 0
-            particle.speed = 0.003 + Math.random() * 0.007
+            particle.speed = 0.002 + Math.random() * 0.003  // Reduced from 0.003-0.01 (60% slower)
             particle.trail = []
           }
           

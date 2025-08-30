@@ -14,7 +14,7 @@ import {
 } from 'lucide-react'
 import { articles } from '@/lib/articles'
 import SearchBar from '@/components/SearchBar'
-import FuturisticNavbar from '@/components/FuturisticNavbar'
+import Navbar from '@/components/Navbar'
 
 // Category configuration with icons and colors
 const categoryConfig: { [key: string]: { icon: any, gradient: string, bgColor: string, borderColor: string } } = {
@@ -121,15 +121,15 @@ export default function BlogPage() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <FuturisticNavbar />
+      <Navbar />
 
       {/* Hero Section */}
-      <section className="relative overflow-hidden border-b border-gray-800">
+      <section className="relative overflow-hidden border-b border-gray-800 mt-16">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-pink-900/20">
           <div className="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg%20width=%2260%22%20height=%2260%22%20xmlns=%22http://www.w3.org/2000/svg%22%3E%3Cdefs%3E%3Cpattern%20id=%22grid%22%20width=%2260%22%20height=%2260%22%20patternUnits=%22userSpaceOnUse%22%3E%3Cpath%20d=%22M%2060%200%20L%200%200%200%2060%22%20fill=%22none%22%20stroke=%22white%22%20stroke-width=%220.5%22%20opacity=%220.1%22/%3E%3C/pattern%3E%3C/defs%3E%3Crect%20width=%22100%25%22%20height=%22100%25%22%20fill=%22url(%23grid)%22/%3E%3C/svg%3E')]" />
         </div>
 
-        <div className="relative container mx-auto px-4 py-20">
+        <div className="relative container mx-auto px-4 py-32">
           <div className="max-w-5xl">
             <div className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-purple-600/20 to-pink-600/20 backdrop-blur-xl border border-purple-500/30 rounded-full mb-8">
               <Sparkles className="w-5 h-5 text-purple-400" />
@@ -164,9 +164,9 @@ export default function BlogPage() {
       </section>
 
       {/* Search and Filter Bar */}
-      <section className="sticky top-0 z-40 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800">
+      <section className="sticky top-16 z-40 bg-gray-900/95 backdrop-blur-xl border-b border-gray-800">
         <div className="container mx-auto px-4 py-4">
-          <div className="flex flex-col lg:flex-row gap-4">
+          <div className="flex flex-col lg:flex-row gap-8">
             <div className="flex-1 relative">
               <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
               <input
@@ -178,7 +178,7 @@ export default function BlogPage() {
               />
             </div>
             
-            <div className="flex gap-2">
+            <div className="flex gap-4">
               <button
                 onClick={() => setViewMode('grid')}
                 className={`px-4 py-3 rounded-lg transition-all ${

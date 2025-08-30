@@ -193,7 +193,9 @@ export default function OriginalHero() {
             {/* Main Headline - Single H1 for SEO */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-4 md:mb-6">
               <span className="block">THE ONLY</span>
-              <span className="block ai-tools-animated">AI TOOLS</span>
+              <span className="block">
+                <span className="ai-tools-gradient-text">AI TOOLS</span>
+              </span>
               <span className="block">DATABASE</span>
               <span className="block">YOU NEED</span>
             </h1>

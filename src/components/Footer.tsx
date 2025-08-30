@@ -20,7 +20,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-gray-400 mb-4">
-              Ship code 3x faster with AI. Real benchmarks, MCP guides, and productivity tips.
+              Ship code 10x faster with AI. Real benchmarks, MCP guides, and productivity tips.
             </p>
             <div className="flex gap-3">
               <a href="https://github.com" target="_blank" rel="noopener noreferrer" 
@@ -123,7 +123,7 @@ export default function Footer() {
         <div className="pt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <p className="font-mono text-xs text-gray-500">
-              © {currentYear} BOOSTDEVSPEED • SHIP CODE 3X FASTER WITH AI
+              © {currentYear} BOOSTDEVSPEED • SHIP CODE 10X FASTER WITH AI
             </p>
             <div className="flex gap-6">
               <Link href="/privacy" className="text-xs text-gray-500 hover:text-cyan-400 transition-colors">

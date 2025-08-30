@@ -4,7 +4,7 @@ export const websiteSchema = {
   "name": "BoostDevSpeed",
   "alternateName": "BDS",
   "url": "https://www.boostdevspeed.com",
-  "description": "Master AI coding tools and boost developer productivity 3x with proven strategies and real benchmarks",
+  "description": "Master AI coding tools and boost developer productivity 10x with proven strategies and real benchmarks",
   "publisher": {
     "@type": "Organization",
     "name": "BoostDevSpeed",

@@ -55,15 +55,15 @@ const FacebookPixel = dynamic(
 
 export const metadata: Metadata = {
   metadataBase: new URL('https://www.boostdevspeed.com'),
-  title: 'BoostDevSpeed - Ship Code 3x Faster with AI Coding Tools',
-  description: 'Master AI coding tools like Cursor, GitHub Copilot & Claude. Fix MCP errors, boost developer productivity 3x with proven strategies.',
+  title: 'BoostDevSpeed - Ship Code 10x Faster with AI Coding Tools',
+  description: 'Master AI coding tools like Cursor, GitHub Copilot & Claude. Fix MCP errors, boost developer productivity 10x with proven strategies.',
   keywords: 'boost developer speed, AI coding tools, MCP servers, GitHub Copilot, Cursor IDE, Claude, developer productivity, AI code optimization, faster coding',
   authors: [{ name: 'BoostDevSpeed' }],
   alternates: {
     canonical: 'https://www.boostdevspeed.com',
   },
   openGraph: {
-    title: 'BoostDevSpeed - Ship Code 3x Faster',
+    title: 'BoostDevSpeed - Ship Code 10x Faster',
     description: 'Master AI coding tools. Real benchmarks. Proven strategies. Boost your development speed.',
     url: 'https://www.boostdevspeed.com',
     siteName: 'BoostDevSpeed',
@@ -72,7 +72,7 @@ export const metadata: Metadata = {
         url: 'https://www.boostdevspeed.com/api/og',
         width: 1200,
         height: 630,
-        alt: 'BoostDevSpeed - Ship Code 3x Faster'
+        alt: 'BoostDevSpeed - Ship Code 10x Faster'
       },
     ],
     locale: 'en_US',
@@ -81,7 +81,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'BoostDevSpeed',
-    description: 'Ship code 3x faster with AI. Real benchmarks & strategies.',
+    description: 'Ship code 10x faster with AI. Real benchmarks & strategies.',
     images: ['https://www.boostdevspeed.com/api/og'],
   },
   robots: {
