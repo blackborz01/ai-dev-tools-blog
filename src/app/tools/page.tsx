@@ -131,24 +131,33 @@ export default function ToolsPage() {
   const processedTools = useMemo(() => {
     let filtered = [...allTools]
     
-    // Search
-    if (searchQuery) {
-      filtered = searchTools(filtered, searchQuery)
-    }
+    // If no filters are active, show only featured tools initially
+    const hasActiveFilters = searchQuery || selectedCategory || selectedPricing !== 'all' || selectedSource !== 'All'
     
-    // Category filter
-    if (selectedCategory) {
-      filtered = filterByCategory(filtered, selectedCategory)
-    }
-    
-    // Pricing filter
-    if (selectedPricing !== 'all') {
-      filtered = filterByPricing(filtered, selectedPricing as any)
-    }
-    
-    // Source filter
-    if (selectedSource !== 'All') {
-      filtered = filterBySource(filtered, selectedSource)
+    if (!hasActiveFilters) {
+      // Show only featured tools when no filters are active
+      filtered = filtered.filter(tool => tool.featured)
+    } else {
+      // Apply filters when user interacts
+      // Search
+      if (searchQuery) {
+        filtered = searchTools(filtered, searchQuery)
+      }
+      
+      // Category filter
+      if (selectedCategory) {
+        filtered = filterByCategory(filtered, selectedCategory)
+      }
+      
+      // Pricing filter
+      if (selectedPricing !== 'all') {
+        filtered = filterByPricing(filtered, selectedPricing as any)
+      }
+      
+      // Source filter
+      if (selectedSource !== 'All') {
+        filtered = filterBySource(filtered, selectedSource)
+      }
     }
     
     // Sort
@@ -411,7 +420,9 @@ export default function ToolsPage() {
           </div>
 
           <div className="text-sm text-gray-400">
-            {processedTools.length} tools found
+            {!searchQuery && !selectedCategory && selectedPricing === 'all' && selectedSource === 'All' 
+              ? `${processedTools.length} featured tools` 
+              : `${processedTools.length} tools found`}
           </div>
         </div>
 
@@ -466,6 +477,18 @@ export default function ToolsPage() {
                 </button>
               </div>
             </div>
+          </div>
+        )}
+
+        {/* Section Title */}
+        {!searchQuery && !selectedCategory && selectedPricing === 'all' && selectedSource === 'All' && (
+          <div className="mb-6 text-center">
+            <h2 className="text-2xl font-bold text-white mb-2">
+              Featured Vibe Coding Tools
+            </h2>
+            <p className="text-gray-400">
+              Click on a category above or use filters to explore all {allTools.length} tools
+            </p>
           </div>
         )}
 
