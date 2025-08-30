@@ -30,16 +30,6 @@ const nextConfig = {
     scrollRestoration: true,
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
-    // New CSS optimization flags
-    cssChunking: 'strict',
-    turbo: {
-      rules: {
-        '*.module.css': {
-          loaders: ['css-loader'],
-          as: '*.css',
-        },
-      },
-    },
   },
   
   // Compress and optimize
