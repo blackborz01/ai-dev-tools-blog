@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
+import './performance-styles.css'
 import { ThemeProvider } from '@/components/theme-provider'
 import { Toaster } from '@/components/ui/toaster'
 import dynamic from 'next/dynamic'
@@ -9,6 +10,7 @@ import CookieConsent from '@/components/CookieConsent'
 import { websiteSchema, organizationSchema } from '@/lib/schema'
 import { AuthProvider } from '@/providers/auth-provider'
 import Script from 'next/script'
+import CriticalCSS from '@/components/CriticalCSS'
 // Optimize font loading with display: swap and font-display
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -45,7 +47,7 @@ const GoogleAnalytics = dynamic(
 )
 
 const FacebookPixel = dynamic(
-  () => import('@/components/FacebookPixel'),
+  () => import('@/components/OptimizedFacebookPixel'),
   { 
     ssr: false,
     loading: () => null
@@ -108,27 +110,16 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Critical CSS inline for instant rendering */}
-        <style dangerouslySetInnerHTML={{
-          __html: `
-            /* Critical above-fold styles */
-            body{margin:0;padding:0;background:#000;color:#fff;font-family:system-ui,-apple-system,sans-serif}
-            *{box-sizing:border-box}
-            .min-h-screen{min-height:100vh}
-            .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}
-            @media(min-width:768px){.container{padding:0 2rem}}
-            /* Prevent layout shift from font loading */
-            .font-sans{font-family:Inter,system-ui,-apple-system,sans-serif}
-            /* Initial brutal shadow styles */
-            .brutal-shadow{box-shadow:4px 4px 0 0 currentColor}
-          `
-        }} />
+        {/* Critical CSS for preventing CLS and render-blocking */}
+        <CriticalCSS />
         
-        {/* Preconnect to critical domains with high priority */}
+        {/* Preconnect to critical domains - ordered by priority */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://www.google-analytics.com" />
+        <link rel="dns-prefetch" href="https://vitals.vercel-insights.com" />
         <link rel="dns-prefetch" href="https://images.unsplash.com" />
         
         {/* Preload critical font */}

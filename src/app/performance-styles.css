@@ -1,0 +1,77 @@
+/* Performance CSS - Prevent Layout Shifts */
+
+/* Reserve space for hero text to prevent CLS */
+.hero-title-reserve {
+  min-height: 120px;
+}
+
+@media (min-width: 768px) {
+  .hero-title-reserve {
+    min-height: 150px;
+  }
+}
+
+/* Ship Code Section - Prevent CLS */
+section.ship-code-section {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Font loading states */
+.font-loading h1,
+.font-loading h2,
+.font-loading p {
+  visibility: hidden;
+}
+
+.font-loaded h1,
+.font-loaded h2,
+.font-loaded p {
+  visibility: visible;
+}
+
+/* Tracking text - reserve space */
+.tracking-text {
+  min-height: 32px;
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .tracking-text {
+    min-height: 40px;
+  }
+}
+
+/* Prevent button layout shifts */
+.hero-buttons {
+  min-height: 64px;
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+/* Search bar container - fixed height */
+.search-container {
+  min-height: 72px;
+  position: relative;
+}
+
+/* Stats container - prevent shift */
+.stats-container {
+  min-height: 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* Navbar space reservation */
+body {
+  padding-top: 64px;
+}
+
+/* Lazy load non-critical images */
+img[loading="lazy"] {
+  background: #111;
+}
