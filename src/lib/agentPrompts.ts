@@ -333,7 +333,6 @@ You follow journalistic standards and provide transparent verification processes
     ]
   },
 
-[
   {
     id: "survey-analyst",
     name: "Survey Analyst",
