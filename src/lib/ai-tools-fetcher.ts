@@ -33,17 +33,7 @@ export const CATEGORIES = {
   'Chatbots & Assistants': ['AI Pair Programmers', 'Code Assistants', 'Copilots', 'Code Completion'],
   'Productivity': ['Development Agents', 'Workflow Automation', 'DevOps AI', 'Terminal Tools'],
   'Security & Privacy': ['Code Testing', 'Bug Detection', 'Vulnerability Scanning', 'Security Analysis'],
-  'Writing & Content': ['Documentation', 'Code Comments', 'README Generation', 'Technical Writing'],
-  'Data & Analytics': ['Code Analytics', 'Performance Monitoring', 'Development Metrics'],
-  'Image & Design': ['UI/UX Generation', 'Design-to-Code', 'Visual Development'],
-  'Audio & Music': ['Voice Coding', 'Audio Debugging'],
-  'Video & Animation': ['Code Walkthroughs', 'Demo Builders'],
-  'Marketing & Sales': ['Developer Marketing', 'API Documentation'],
-  'Education & Learning': ['Coding Tutorials', 'Interactive Learning'],
-  'Business & Finance': ['Project Management', 'Cost Calculators'],
-  'Healthcare & Fitness': ['Developer Wellness', 'Ergonomics'],
-  'Gaming & Entertainment': ['Game Development AI', 'Procedural Generation'],
-  'Research & Science': ['ML Development', 'Data Science']
+  'Data & Analytics': ['Code Analytics', 'Performance Monitoring', 'Development Metrics']
 }
 
 // Generate vibe coding tools database
