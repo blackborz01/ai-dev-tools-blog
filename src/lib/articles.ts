@@ -3658,7 +3658,7 @@ while($true) {
   <p class="mb-6">The root cause? Zapier AI agents don't garbage collect. Every action, every API response, every intermediate result—it all stays in memory. Forever. Until crash.</p>
 
   <!-- Memory Leak 3D Visualization -->
-  <div class="bg-gradient-to-br from-purple-900/30 via-black to-pink-900/20 p-8 rounded-xl border border-purple-500/20 mb-8 overflow-hidden">
+  <div class="bg-black/50 p-8 rounded-xl border border-purple-500/20 mb-8 overflow-hidden">
     <h4 class="text-xl font-bold text-center mb-6 text-purple-400">🧠 Agent Memory Architecture: Where Leaks Hide</h4>
     <div class="relative">
       <!-- 3D Memory Cube Visualization -->
@@ -3671,7 +3671,7 @@ while($true) {
               <!-- Context Layer - Largest -->
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-purple-500/10 rounded-xl blur-xl"></div>
-                <div class="relative bg-gradient-to-br from-purple-900/60 to-purple-800/40 rounded-xl p-6 border-2 border-purple-500/50 shadow-2xl" style="transform: translateZ(60px);">
+                <div class="relative bg-black/60 rounded-xl p-6 border-2 border-purple-500/50 shadow-2xl" style="transform: translateZ(60px);">
                   <div class="flex items-center justify-between">
                     <div class="flex-1">
                       <div class="flex items-center gap-3 mb-2">
@@ -3698,7 +3698,7 @@ while($true) {
               <!-- Variable Cache -->
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-500/10 rounded-xl blur-xl"></div>
-                <div class="relative bg-gradient-to-br from-blue-900/60 to-blue-800/40 rounded-xl p-6 border-2 border-blue-500/50 shadow-xl" style="transform: translateZ(40px) translateX(20px);">
+                <div class="relative bg-black/60 rounded-xl p-6 border-2 border-blue-500/50 shadow-xl" style="transform: translateZ(40px) translateX(20px);">
                   <div class="flex items-center justify-between">
                     <div class="flex-1">
                       <div class="flex items-center gap-3 mb-2">
@@ -3725,7 +3725,7 @@ while($true) {
               <!-- API Layer -->
               <div class="relative">
                 <div class="absolute inset-0 bg-gradient-to-r from-cyan-600/20 to-cyan-500/10 rounded-xl blur-xl"></div>
-                <div class="relative bg-gradient-to-br from-cyan-900/60 to-cyan-800/40 rounded-xl p-6 border-2 border-cyan-500/50 shadow-lg" style="transform: translateZ(20px) translateX(40px);">
+                <div class="relative bg-black/60 rounded-xl p-6 border-2 border-cyan-500/50 shadow-lg" style="transform: translateZ(20px) translateX(40px);">
                   <div class="flex items-center justify-between">
                     <div class="flex-1">
                       <div class="flex items-center gap-3 mb-2">
@@ -3753,7 +3753,7 @@ while($true) {
             <!-- Critical Warning Box -->
             <div class="relative mt-8">
               <div class="absolute inset-0 bg-red-600/20 rounded-xl blur-2xl animate-pulse"></div>
-              <div class="relative bg-gradient-to-r from-red-900/80 to-orange-900/80 rounded-xl p-6 border-2 border-red-500/50">
+              <div class="relative bg-black/80 rounded-xl p-6 border-2 border-red-500/50">
                 <div class="flex items-center justify-center gap-4">
                   <div class="text-6xl animate-bounce">🚨</div>
                   <div class="text-center">
@@ -3832,13 +3832,13 @@ while($true) {
   <p class="mb-6">Your agent is crashing right now? These three fixes work immediately:</p>
 
   <!-- Emergency Fix Control Panel -->
-  <div class="bg-gradient-to-br from-gray-900 via-red-900/20 to-black p-8 rounded-xl border border-red-500/20 mb-8">
+  <div class="bg-black/50 p-8 rounded-xl border border-red-500/20 mb-8">
     <h3 class="text-2xl font-bold text-center mb-6 text-red-400">🚑 Emergency Fix Control Panel</h3>
     <div class="grid md:grid-cols-3 gap-6">
       <!-- Fix Card 1 - Circuit Breaker Style -->
       <div class="relative">
         <div class="absolute inset-0 bg-red-600/10 rounded-2xl blur-2xl"></div>
-        <div class="relative bg-gradient-to-b from-red-950/90 to-black rounded-2xl border-2 border-red-500/50 overflow-hidden">
+        <div class="relative bg-black/80 rounded-2xl border-2 border-red-500/50 overflow-hidden">
           <!-- Status Light -->
           <div class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
           
@@ -3885,7 +3885,7 @@ while($true) {
       <!-- Fix Card 2 - Memory Cleaner Style -->
       <div class="relative">
         <div class="absolute inset-0 bg-yellow-600/10 rounded-2xl blur-2xl"></div>
-        <div class="relative bg-gradient-to-b from-yellow-950/90 to-black rounded-2xl border-2 border-yellow-500/50 overflow-hidden">
+        <div class="relative bg-black/80 rounded-2xl border-2 border-yellow-500/50 overflow-hidden">
           <!-- Status Light -->
           <div class="absolute top-4 right-4 w-3 h-3 bg-yellow-500 rounded-full animate-pulse"></div>
           
@@ -3925,7 +3925,7 @@ while($true) {
       <!-- Fix Card 3 - Timer Style -->
       <div class="relative">
         <div class="absolute inset-0 bg-green-600/10 rounded-2xl blur-2xl"></div>
-        <div class="relative bg-gradient-to-b from-green-950/90 to-black rounded-2xl border-2 border-green-500/50 overflow-hidden">
+        <div class="relative bg-black/80 rounded-2xl border-2 border-green-500/50 overflow-hidden">
           <!-- Status Light -->
           <div class="absolute top-4 right-4 w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
           
@@ -4092,7 +4092,7 @@ while($true) {
   <p class="mb-6">Prevention beats recovery. Monitor these metrics in real-time:</p>
 
   <!-- Agent Health Monitoring System -->
-  <div class="bg-gradient-to-br from-black via-green-900/10 to-blue-900/10 p-8 rounded-xl border border-green-500/20 mb-8 relative overflow-hidden">
+  <div class="bg-black/50 p-8 rounded-xl border border-green-500/20 mb-8 relative overflow-hidden">
     <!-- Animated Grid Background -->
     <div class="absolute inset-0 opacity-10">
       <div class="absolute inset-0" style="background-image: linear-gradient(cyan 1px, transparent 1px), linear-gradient(90deg, cyan 1px, transparent 1px); background-size: 50px 50px;"></div>
@@ -4106,7 +4106,7 @@ while($true) {
       <div class="grid md:grid-cols-4 gap-6 mb-8">
         <!-- Memory Gauge -->
         <div class="relative">
-          <div class="bg-gradient-to-b from-gray-900/90 to-black rounded-2xl p-4 border border-green-500/30">
+          <div class="bg-black/80 rounded-2xl p-4 border border-green-500/30">
             <!-- Circular Gauge -->
             <div class="relative w-32 h-32 mx-auto mb-3">
               <svg class="w-32 h-32 transform -rotate-90">
@@ -4129,7 +4129,7 @@ while($true) {
         
         <!-- Action Counter -->
         <div class="relative">
-          <div class="bg-gradient-to-b from-gray-900/90 to-black rounded-2xl p-4 border border-yellow-500/30">
+          <div class="bg-black/80 rounded-2xl p-4 border border-yellow-500/30">
             <!-- Digital Counter -->
             <div class="bg-black rounded-lg p-4 mb-3 border border-yellow-500/20">
               <div class="flex justify-center items-center gap-1">
@@ -4151,7 +4151,7 @@ while($true) {
         
         <!-- Response Time -->
         <div class="relative">
-          <div class="bg-gradient-to-b from-gray-900/90 to-black rounded-2xl p-4 border border-green-500/30">
+          <div class="bg-black/80 rounded-2xl p-4 border border-green-500/30">
             <!-- Speed Meter -->
             <div class="relative h-24 mb-3">
               <div class="absolute inset-0 flex items-end justify-center">
@@ -4180,12 +4180,12 @@ while($true) {
         
         <!-- Error Rate -->
         <div class="relative">
-          <div class="bg-gradient-to-b from-gray-900/90 to-black rounded-2xl p-4 border border-red-500/30">
+          <div class="bg-black/80 rounded-2xl p-4 border border-red-500/30">
             <!-- Alert Display -->
             <div class="relative h-24 mb-3 flex items-center justify-center">
               <div class="relative">
                 <div class="absolute inset-0 bg-red-600/20 rounded-full blur-xl animate-pulse"></div>
-                <div class="relative bg-gradient-to-b from-red-900/80 to-red-800/60 rounded-full w-20 h-20 flex items-center justify-center border-2 border-red-500">
+                <div class="relative bg-black/80 rounded-full w-20 h-20 flex items-center justify-center border-2 border-red-500">
                   <div class="text-center">
                     <p class="text-2xl font-bold text-white">12%</p>
                   </div>
@@ -4201,7 +4201,7 @@ while($true) {
       </div>
       
       <!-- Alert Thresholds Matrix -->
-      <div class="bg-gradient-to-r from-gray-900/80 to-black rounded-xl p-6 border border-gray-700">
+      <div class="bg-black/60 rounded-xl p-6 border border-gray-700">
         <div class="flex items-center justify-between mb-4">
           <p class="font-bold text-green-400">System Alert Thresholds</p>
           <div class="flex gap-2">
