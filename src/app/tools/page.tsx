@@ -94,15 +94,11 @@ export default function ToolsPage() {
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState(categoryParam || '')
-  const [selectedPricing, setSelectedPricing] = useState('all')
-  const [selectedSource, setSelectedSource] = useState('All')
-  const [sortBy, setSortBy] = useState('popular')
-  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
-  const [showFilters, setShowFilters] = useState(false)
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(24)
   const [allTools, setAllTools] = useState<AITool[]>([])
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
+  const [carouselIndex, setCarouselIndex] = useState(0)
 
   useEffect(() => {
     async function loadTools() {
@@ -132,7 +128,7 @@ export default function ToolsPage() {
     let filtered = [...allTools]
     
     // If no filters are active, show only featured tools initially
-    const hasActiveFilters = searchQuery || selectedCategory || selectedPricing !== 'all' || selectedSource !== 'All'
+    const hasActiveFilters = searchQuery || selectedCategory
     
     if (!hasActiveFilters) {
       // Show only featured tools when no filters are active
@@ -148,23 +144,13 @@ export default function ToolsPage() {
       if (selectedCategory) {
         filtered = filterByCategory(filtered, selectedCategory)
       }
-      
-      // Pricing filter
-      if (selectedPricing !== 'all') {
-        filtered = filterByPricing(filtered, selectedPricing as any)
-      }
-      
-      // Source filter
-      if (selectedSource !== 'All') {
-        filtered = filterBySource(filtered, selectedSource)
-      }
     }
     
-    // Sort
-    filtered = sortTools(filtered, sortBy as any)
+    // Sort by popularity
+    filtered = sortTools(filtered, 'popular')
     
     return filtered
-  }, [allTools, searchQuery, selectedCategory, selectedPricing, selectedSource, sortBy])
+  }, [allTools, searchQuery, selectedCategory])
 
   // Pagination
   const paginatedTools = useMemo(() => {
@@ -174,12 +160,6 @@ export default function ToolsPage() {
   }, [processedTools, currentPage, itemsPerPage])
 
   const totalPages = Math.ceil(processedTools.length / itemsPerPage)
-
-  // Get unique sources
-  const uniqueSources = useMemo(() => {
-    const sources = new Set(allTools.map(tool => tool.source))
-    return ['All', ...Array.from(sources)]
-  }, [allTools])
 
   // Category stats
   const categoryStats = useMemo(() => {
@@ -367,147 +347,151 @@ export default function ToolsPage() {
           })}
         </div>
 
-        {/* Filters Bar */}
-        <div className="flex flex-wrap items-center gap-4 mb-8 p-4 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10">
-          <button
-            onClick={() => setShowFilters(!showFilters)}
-            className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-          >
-            <Filter className="w-4 h-4" />
-            Filters
-            <ChevronDown className={`w-4 h-4 transition-transform ${showFilters ? 'rotate-180' : ''}`} />
-          </button>
 
-          <select
-            value={sortBy}
-            onChange={(e) => setSortBy(e.target.value)}
-            className="px-4 py-2 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:border-cyan-500/50 text-white"
-          >
-            <option value="popular">Most Popular</option>
-            <option value="recent">Recently Added</option>
-            <option value="name">Name (A-Z)</option>
-            <option value="stars">Most Stars</option>
-          </select>
-
-          <select
-            value={selectedPricing}
-            onChange={(e) => setSelectedPricing(e.target.value)}
-            className="px-4 py-2 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:border-cyan-500/50 text-white"
-          >
-            <option value="all">All Pricing</option>
-            <option value="free">Free</option>
-            <option value="freemium">Freemium</option>
-            <option value="paid">Paid</option>
-          </select>
-
-          <div className="flex items-center gap-2 ml-auto">
-            <button
-              onClick={() => setViewMode('grid')}
-              className={`p-2 rounded-lg transition-colors ${
-                viewMode === 'grid' ? 'bg-cyan-500/20 text-cyan-400' : 'hover:bg-white/10 text-gray-400'
-              }`}
-            >
-              <Grid className="w-5 h-5" />
-            </button>
-            <button
-              onClick={() => setViewMode('list')}
-              className={`p-2 rounded-lg transition-colors ${
-                viewMode === 'list' ? 'bg-cyan-500/20 text-cyan-400' : 'hover:bg-white/10 text-gray-400'
-              }`}
-            >
-              <List className="w-5 h-5" />
-            </button>
-          </div>
-
-          <div className="text-sm text-gray-400">
-            {!searchQuery && !selectedCategory && selectedPricing === 'all' && selectedSource === 'All' 
-              ? `${processedTools.length} featured tools` 
-              : `${processedTools.length} tools found`}
-          </div>
-        </div>
-
-        {/* Advanced Filters (Expandable) */}
-        {showFilters && (
-          <div className="mb-8 p-6 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Source</label>
-                <select
-                  value={selectedSource}
-                  onChange={(e) => setSelectedSource(e.target.value)}
-                  className="w-full px-4 py-2 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:border-cyan-500/50 text-white"
-                >
-                  {uniqueSources.map(source => (
-                    <option key={source} value={source}>{source}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div>
-                <label className="block text-sm font-medium text-gray-300 mb-2">Items per page</label>
-                <select
-                  value={itemsPerPage}
-                  onChange={(e) => {
-                    setItemsPerPage(Number(e.target.value))
-                    setCurrentPage(1)
-                  }}
-                  className="w-full px-4 py-2 bg-white/10 rounded-lg border border-white/20 focus:outline-none focus:border-cyan-500/50 text-white"
-                >
-                  <option value="12">12</option>
-                  <option value="24">24</option>
-                  <option value="48">48</option>
-                  <option value="96">96</option>
-                </select>
-              </div>
-
-              <div className="flex items-end">
-                <button
-                  onClick={() => {
-                    setSearchQuery('')
-                    setSelectedCategory('')
-                    setSelectedPricing('all')
-                    setSelectedSource('All')
-                    setSortBy('popular')
-                    setCurrentPage(1)
-                    router.push('/tools')
-                  }}
-                  className="w-full px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors"
-                >
-                  Clear All Filters
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
-
-        {/* Section Title */}
-        {!searchQuery && !selectedCategory && selectedPricing === 'all' && selectedSource === 'All' && (
-          <div className="mb-6 text-center">
-            <h2 className="text-2xl font-bold text-white mb-2">
+        {/* Featured Tools Carousel - Only show when no filters active */}
+        {!searchQuery && !selectedCategory && (
+          <div className="mb-12">
+            <h2 className="text-2xl font-bold text-white mb-6 text-center">
               Featured Vibe Coding Tools
             </h2>
-            <p className="text-gray-400">
-              Click on a category above or use filters to explore all {allTools.length} tools
+            
+            {/* Carousel Container */}
+            <div className="relative">
+              <div className="overflow-hidden rounded-xl">
+                <div 
+                  className="flex transition-transform duration-300 ease-in-out"
+                  style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
+                >
+                  {allTools.filter(t => t.featured).map((tool) => {
+                    const badge = getPricingBadge(tool.pricing)
+                    return (
+                      <div key={tool.id} className="min-w-full px-4">
+                        <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-8">
+                          <div className="flex items-start gap-6">
+                            {/* Logo */}
+                            <div className="flex-shrink-0">
+                              {tool.logo ? (
+                                <img 
+                                  src={tool.logo} 
+                                  alt={tool.name}
+                                  className="w-16 h-16 rounded-lg object-contain bg-white/10 p-2"
+                                  onError={(e) => {
+                                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="3" y="3" width="18" height="18" rx="2" ry="2"/%3E%3C/svg%3E'
+                                  }}
+                                />
+                              ) : (
+                                <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                                  <Code className="w-8 h-8 text-white" />
+                                </div>
+                              )}
+                            </div>
+                            
+                            {/* Content */}
+                            <div className="flex-1">
+                              <div className="flex items-start justify-between mb-3">
+                                <div>
+                                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
+                                  <div className="flex items-center gap-2">
+                                    <span className={`inline-flex px-3 py-1 text-sm font-medium rounded-full border ${badge.class}`}>
+                                      {badge.text}
+                                    </span>
+                                    <span className="text-sm text-gray-400">{tool.category}</span>
+                                  </div>
+                                </div>
+                                <a 
+                                  href={tool.url} 
+                                  target="_blank" 
+                                  rel="noopener noreferrer"
+                                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
+                                >
+                                  <ExternalLink className="w-5 h-5 text-cyan-400" />
+                                </a>
+                              </div>
+                              
+                              <p className="text-gray-300 mb-4 text-lg leading-relaxed">
+                                {tool.description}
+                              </p>
+                              
+                              {/* Stats */}
+                              <div className="flex items-center gap-4 text-sm text-gray-400">
+                                {tool.stars && (
+                                  <span className="flex items-center gap-1">
+                                    <Star className="w-4 h-4" />
+                                    {formatNumber(tool.stars)} stars
+                                  </span>
+                                )}
+                                {tool.downloads && (
+                                  <span className="flex items-center gap-1">
+                                    <Download className="w-4 h-4" />
+                                    {formatNumber(tool.downloads)} downloads
+                                  </span>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )
+                  })}
+                </div>
+              </div>
+              
+              {/* Carousel Controls */}
+              <button
+                onClick={() => setCarouselIndex(prev => Math.max(0, prev - 1))}
+                disabled={carouselIndex === 0}
+                className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 p-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronLeft className="w-6 h-6 text-white" />
+              </button>
+              
+              <button
+                onClick={() => setCarouselIndex(prev => Math.min(allTools.filter(t => t.featured).length - 1, prev + 1))}
+                disabled={carouselIndex >= allTools.filter(t => t.featured).length - 1}
+                className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="w-6 h-6 text-white" />
+              </button>
+              
+              {/* Carousel Indicators */}
+              <div className="flex justify-center gap-2 mt-4">
+                {allTools.filter(t => t.featured).map((_, index) => (
+                  <button
+                    key={index}
+                    onClick={() => setCarouselIndex(index)}
+                    className={`w-2 h-2 rounded-full transition-all ${
+                      index === carouselIndex 
+                        ? 'w-8 bg-cyan-400' 
+                        : 'bg-white/30 hover:bg-white/50'
+                    }`}
+                  />
+                ))}
+              </div>
+            </div>
+            
+            <p className="text-center text-gray-400 mt-6">
+              Click on a category above to explore all {allTools.length} vibe coding tools
             </p>
           </div>
         )}
 
-        {/* Tools Grid/List */}
-        {loading ? (
-          <div className="flex items-center justify-center py-20">
-            <Loader2 className="w-8 h-8 animate-spin text-cyan-400" />
-          </div>
-        ) : paginatedTools.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-800 rounded-full mb-4">
-              <Search className="w-8 h-8 text-gray-600" />
+        {/* Tools Grid - Show when filters are active */}
+        {(searchQuery || selectedCategory) && (
+          loading ? (
+            <div className="flex items-center justify-center py-20">
+              <Loader2 className="w-8 h-8 animate-spin text-cyan-400" />
             </div>
-            <h3 className="text-xl font-semibold mb-2">No tools found</h3>
-            <p className="text-gray-400">Try adjusting your filters or search query</p>
-          </div>
-        ) : viewMode === 'grid' ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {paginatedTools.map((tool) => {
+          ) : paginatedTools.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-gray-800 rounded-full mb-4">
+                <Search className="w-8 h-8 text-gray-600" />
+              </div>
+              <h3 className="text-xl font-semibold mb-2">No tools found</h3>
+              <p className="text-gray-400">Try adjusting your filters or search query</p>
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {paginatedTools.map((tool) => {
               const badge = getPricingBadge(tool.pricing)
               const categoryInfo = categoryConfig[tool.category] || {
                 gradient: 'from-gray-600 to-gray-700',

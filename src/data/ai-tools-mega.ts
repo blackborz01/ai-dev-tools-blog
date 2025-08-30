@@ -9,7 +9,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Code & Development', 
     description: 'AI-first code editor built on VS Code with GPT-4 and Claude integration for autonomous coding with Agent Mode', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://cursor.sh/favicon.ico'
   },
   { 
     name: 'Claude Code', 
@@ -17,7 +18,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Code & Development', 
     description: 'Anthropic\'s official VS Code extension for Claude AI with advanced code understanding and generation', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://claude.ai/favicon.ico'
   },
   { 
     name: 'Windsurf', 
@@ -25,7 +27,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Code & Development', 
     description: 'Next-gen AI IDE by Codeium with Flow mode for seamless human-AI collaboration', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://codeium.com/favicon.ico'
   },
   { 
     name: 'Zed AI', 
@@ -84,7 +87,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Chatbots & Assistants', 
     description: 'AI pair programmer by GitHub and OpenAI that suggests code in real-time', 
     pricing: 'paid',
-    featured: true
+    featured: true,
+    logo: 'https://github.githubassets.com/favicons/favicon.svg'
   },
   { 
     name: 'Amazon CodeWhisperer', 
@@ -157,7 +161,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Code & Development', 
     description: 'Generate React components and UIs from text descriptions using AI', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://v0.dev/favicon.ico'
   },
   { 
     name: 'Bolt.new', 
@@ -165,7 +170,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Code & Development', 
     description: 'StackBlitz\'s AI that builds, runs, and deploys full-stack apps in the browser', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://bolt.new/favicon.ico'
   },
   { 
     name: 'Create.xyz', 
@@ -231,7 +237,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Security & Privacy', 
     description: 'AI that generates meaningful tests and finds bugs before production', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://www.codium.ai/favicon.ico'
   },
   { 
     name: 'Metabob', 
@@ -290,7 +297,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Productivity', 
     description: 'World\'s first AI software engineer that can plan and execute complex tasks', 
     pricing: 'paid',
-    featured: true
+    featured: true,
+    logo: 'https://www.cognition.ai/favicon.ico'
   },
   { 
     name: 'SWE-agent', 
@@ -349,7 +357,8 @@ export const AI_TOOLS_MEGA_LIST = [
     category: 'Productivity', 
     description: 'AI-powered terminal with natural language commands and intelligent suggestions', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: 'https://www.warp.dev/favicon.ico'
   },
   { 
     name: 'Raycast AI', 

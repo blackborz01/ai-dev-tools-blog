@@ -10,6 +10,7 @@ export interface AITool {
   url: string
   sourceUrl?: string
   imageUrl?: string
+  logo?: string
   pricing: 'free' | 'freemium' | 'paid' | 'unknown'
   tags: string[]
   stars?: number
