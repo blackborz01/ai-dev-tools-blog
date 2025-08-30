@@ -1,7 +1,6 @@
-// AI Tools Fetcher - Complete Implementation
+// Vibe Coding Tools Fetcher - Focused Implementation
 import { cache } from 'react'
 import { generateMassiveToolsList } from '@/data/ai-tools-mega'
-import { mergeWithDiscoveredTools } from '@/lib/client-data-integration'
 
 export interface AITool {
   id: string
@@ -30,69 +29,36 @@ export interface AITool {
 }
 
 export const CATEGORIES = {
-  'Writing & Content': ['Content Generation', 'Copywriting', 'SEO', 'Translation', 'Summarization'],
-  'Code & Development': ['Code Generation', 'Code Review', 'Debugging', 'Documentation', 'Testing'],
-  'Image & Design': ['Image Generation', 'Image Editing', 'Logo Design', 'UI/UX', '3D Modeling'],
-  'Audio & Music': ['Music Generation', 'Voice Synthesis', 'Audio Editing', 'Transcription'],
-  'Video & Animation': ['Video Generation', 'Video Editing', 'Animation', 'Avatars'],
-  'Productivity': ['Automation', 'Task Management', 'Note Taking', 'Email', 'Calendar'],
-  'Data & Analytics': ['Data Analysis', 'Visualization', 'Prediction', 'Research'],
-  'Chatbots & Assistants': ['Customer Service', 'Virtual Assistants', 'Conversational AI'],
-  'Marketing & Sales': ['Ad Generation', 'Social Media', 'Email Marketing', 'Lead Generation'],
-  'Education & Learning': ['Tutoring', 'Language Learning', 'Course Creation', 'Study Tools'],
-  'Business & Finance': ['Accounting', 'Trading', 'Business Intelligence', 'HR', 'Legal'],
-  'Healthcare & Fitness': ['Diagnosis', 'Mental Health', 'Fitness', 'Nutrition'],
-  'Gaming & Entertainment': ['Game Development', 'Character Creation', 'Story Generation'],
-  'Security & Privacy': ['Threat Detection', 'Privacy Tools', 'Authentication'],
-  'Research & Science': ['Academic Research', 'Scientific Computing', 'Literature Review']
+  'Code & Development': ['AI Code Editors', 'Code Generation', 'IDE Extensions', 'Development Platforms'],
+  'Chatbots & Assistants': ['AI Pair Programmers', 'Code Assistants', 'Copilots', 'Code Completion'],
+  'Productivity': ['Development Agents', 'Workflow Automation', 'DevOps AI', 'Terminal Tools'],
+  'Security & Privacy': ['Code Testing', 'Bug Detection', 'Vulnerability Scanning', 'Security Analysis'],
+  'Writing & Content': ['Documentation', 'Code Comments', 'README Generation', 'Technical Writing'],
+  'Data & Analytics': ['Code Analytics', 'Performance Monitoring', 'Development Metrics'],
+  'Image & Design': ['UI/UX Generation', 'Design-to-Code', 'Visual Development'],
+  'Audio & Music': ['Voice Coding', 'Audio Debugging'],
+  'Video & Animation': ['Code Walkthroughs', 'Demo Builders'],
+  'Marketing & Sales': ['Developer Marketing', 'API Documentation'],
+  'Education & Learning': ['Coding Tutorials', 'Interactive Learning'],
+  'Business & Finance': ['Project Management', 'Cost Calculators'],
+  'Healthcare & Fitness': ['Developer Wellness', 'Ergonomics'],
+  'Gaming & Entertainment': ['Game Development AI', 'Procedural Generation'],
+  'Research & Science': ['ML Development', 'Data Science']
 }
 
-// Generate complete database
-function generateCompleteDatabase(): AITool[] {
-  const sources = ['Futurepedia', 'Product Hunt', 'AI Directory', 'Future Tools', 'AI Tools Hub']
-  const megaToolsList = generateMassiveToolsList()
-  
-  // Convert to proper AITool format
-  const completeTools: AITool[] = megaToolsList.map((tool, index) => ({
-    id: `tool_${index}`,
-    name: tool.name,
-    description: tool.description,
-    category: tool.category,
-    url: tool.url,
-    pricing: tool.pricing as any,
-    tags: [tool.category, 'AI', 'SaaS', 'Professional'],
-    source: sources[index % sources.length],
-    dateAdded: new Date(Date.now() - Math.random() * 365 * 24 * 60 * 60 * 1000).toISOString(),
-    featured: index % 20 === 0,
-    upvotes: Math.floor(Math.random() * 2000 + 100),
-    downloads: Math.floor(Math.random() * 50000 + 1000),
-    stars: Math.floor(Math.random() * 5000 + 100)
-  }))
-
-  console.log(`Generated ${completeTools.length} tools`)
-  return completeTools
+// Generate vibe coding tools database
+function generateVibeCodingTools(): AITool[] {
+  const tools = generateMassiveToolsList()
+  console.log(`Loaded ${tools.length} vibe coding tools`)
+  return tools
 }
 
 // Main fetch function with caching
 export const fetchAllAITools = cache(async (): Promise<AITool[]> => {
-  let tools = generateCompleteDatabase()
-  
-  // Merge with discovered tools
-  try {
-    tools = mergeWithDiscoveredTools(tools)
-    console.log(`Total tools after merging: ${tools.length}`)
-  } catch (error) {
-    console.error('Error merging discovered tools:', error)
-  }
+  const tools = generateVibeCodingTools()
   
   // Sort by featured and popularity
   tools.sort((a, b) => {
-    // Prioritize NEW/discovered tools
-    const aIsNew = a.tags?.includes('🆕 NEW')
-    const bIsNew = b.tags?.includes('🆕 NEW')
-    if (aIsNew && !bIsNew) return -1
-    if (!aIsNew && bIsNew) return 1
-    
     if (a.featured && !b.featured) return -1
     if (!a.featured && b.featured) return 1
     const aScore = (a.upvotes || 0) + (a.downloads || 0) + (a.stars || 0)

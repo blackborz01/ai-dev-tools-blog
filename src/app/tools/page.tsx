@@ -152,7 +152,7 @@ const categoryConfig: {
     gradient: 'from-slate-600 via-gray-500 to-zinc-500',
     bgGradient: 'from-slate-900/20 via-gray-900/20 to-zinc-900/20',
     accentColor: 'slate',
-    description: 'Security tools, privacy protection, and threat detection',
+    description: 'AI-powered code testing, vulnerability detection, and security analysis tools',
     iconBg: 'bg-gradient-to-br from-slate-500 to-gray-500'
   },
   'Research & Science': {
@@ -160,7 +160,7 @@ const categoryConfig: {
     gradient: 'from-teal-600 via-cyan-500 to-blue-500',
     bgGradient: 'from-teal-900/20 via-cyan-900/20 to-blue-900/20',
     accentColor: 'teal',
-    description: 'Research tools, scientific computing, and academic AI',
+    description: 'ML model development, data science coding, and research automation tools',
     iconBg: 'bg-gradient-to-br from-teal-500 to-cyan-500'
   }
 }
