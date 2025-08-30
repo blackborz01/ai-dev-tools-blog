@@ -3,6 +3,7 @@
 import Link from 'next/link'
 import { Activity, Clock, TrendingUp, Zap, ChevronRight } from 'lucide-react'
 import { articles } from '@/lib/articles'
+import LazyImage from '@/components/optimized/LazyImage'
 
 export default function LatestIntel() {
   // Get the first 3 articles
@@ -56,10 +57,13 @@ export default function LatestIntel() {
                     {/* Image side */}
                     <div className="lg:w-1/2 h-64 lg:h-auto relative bg-gradient-to-br from-gray-800 to-gray-900 overflow-hidden">
                       {featuredArticle.featuredImage ? (
-                        <img 
+                        <LazyImage 
                           src={featuredArticle.featuredImage} 
                           alt={featuredArticle.title}
+                          fill
                           className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                          priority
                         />
                       ) : (
                         <>
@@ -134,10 +138,12 @@ export default function LatestIntel() {
                     {/* Image */}
                     <div className="h-48 bg-gradient-to-br from-gray-800 to-gray-900 relative overflow-hidden">
                       {article.thumbnail ? (
-                        <img 
+                        <LazyImage 
                           src={article.thumbnail} 
                           alt={article.title}
+                          fill
                           className="w-full h-full object-cover"
+                          sizes="(max-width: 768px) 100vw, 33vw"
                         />
                       ) : (
                         <div className="absolute inset-0 bg-gradient-to-br from-gray-800 to-gray-900" />

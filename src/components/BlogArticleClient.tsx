@@ -6,6 +6,7 @@ import {
   Terminal, Share2, Bookmark, Copy, ChevronRight, User, Calendar, Clock, BookOpen
 } from 'lucide-react'
 import ReadingProgress from '@/components/ReadingProgress'
+import LazyImage from '@/components/optimized/LazyImage'
 
 interface Article {
   slug: string
@@ -103,10 +104,13 @@ export default function BlogArticleClient({ article, relatedArticles }: BlogArti
         {/* Featured Image */}
         {article.featuredImage && (
           <div className="relative h-[400px] md:h-[500px] overflow-hidden">
-            <img 
+            <LazyImage 
               src={article.featuredImage}
               alt={article.imageAlt || article.title}
+              fill
+              priority
               className="w-full h-full object-cover"
+              sizes="100vw"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
             

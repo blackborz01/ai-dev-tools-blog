@@ -28,8 +28,16 @@ const nextConfig = {
   experimental: {
     optimizeCss: true,
     scrollRestoration: true,
-    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu'],
+    optimizePackageImports: ['lucide-react', '@radix-ui/react-icons', '@radix-ui/react-dialog', '@radix-ui/react-dropdown-menu', '@radix-ui/react-label', '@radix-ui/react-separator', '@radix-ui/react-slot', '@radix-ui/react-toast'],
     webVitalsAttribution: ['CLS', 'LCP', 'FCP', 'FID', 'TTFB', 'INP'],
+    turbo: {
+      rules: {
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
+        },
+      },
+    },
   },
   
   // Compress and optimize
@@ -62,6 +70,9 @@ const nextConfig = {
       transform: 'lodash/{{member}}',
     },
   },
+  
+  // Disable legacy JavaScript polyfills
+  transpilePackages: [],
   
   // HTTP Headers for caching and security with performance focus
   async headers() {
@@ -196,7 +207,9 @@ const nextConfig = {
   },
   
   // Enhanced webpack config for maximum optimization
-  webpack: (config, { dev, isServer, webpack }) => {
+  webpack: (config, { dev, isServer, webpack, nextRuntime }) => {
+    // Don't apply optimizations to Edge runtime
+    if (nextRuntime === 'edge') return config
     // Production optimizations
     if (!dev && !isServer) {
       // Better chunk splitting for CSS
@@ -287,6 +300,15 @@ const nextConfig = {
       config.plugins.push(
         new webpack.optimize.ModuleConcatenationPlugin()
       );
+      
+      // Remove legacy JavaScript polyfills
+      config.resolve.alias = {
+        ...config.resolve.alias,
+        'core-js': false,
+      };
+      
+      // Optimize module resolution for faster builds
+      config.resolve.preferRelative = true;
     }
     
     // CSS optimization

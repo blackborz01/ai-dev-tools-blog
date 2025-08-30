@@ -11,6 +11,8 @@ import { websiteSchema, organizationSchema } from '@/lib/schema'
 import { AuthProvider } from '@/providers/auth-provider'
 import Script from 'next/script'
 import CriticalCSS from '@/components/CriticalCSS'
+import ScriptLoader from '@/components/optimized/ScriptLoader'
+import PerformanceMonitor from '@/components/optimized/PerformanceMonitor'
 // Optimize font loading with display: swap and font-display
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -172,14 +174,15 @@ export default function RootLayout({
               {/* Load analytics after main content with lower priority */}
               {process.env.NODE_ENV === 'production' && (
                 <>
-                  <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
-                  <FacebookPixel pixelId={process.env.NEXT_PUBLIC_FB_PIXEL_ID || ''} />
-                  <Analytics />
-                  <SpeedInsights />
+                  <ScriptLoader>
+                    <Analytics />
+                    <SpeedInsights />
+                  </ScriptLoader>
                 </>
               )}
               
               <CookieConsent />
+              <PerformanceMonitor />
             </ThemeProvider>
           </AuthProvider>
         </ErrorBoundary>
