@@ -1,0 +1,438 @@
+#!/usr/bin/env node
+
+/**
+ * Generate Critical CSS for Above-the-Fold Content
+ * This script extracts critical CSS to inline in the HTML head
+ */
+
+const fs = require('fs');
+const path = require('path');
+
+// Critical CSS for immediate rendering
+const criticalCSS = `
+/* Critical Above-the-Fold CSS */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #000;
+  color: #fff;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  line-height: 1.5;
+}
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding: 0 2rem;
+  }
+}
+
+/* Typography */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+}
+
+h2 {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+/* Links */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Buttons */
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* Layout */
+.min-h-screen {
+  min-height: 100vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.fixed {
+  position: fixed;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
+.z-20 {
+  z-index: 20;
+}
+
+.overflow-hidden {
+  overflow: hidden;
+}
+
+/* Spacing */
+.p-4 {
+  padding: 1rem;
+}
+
+.py-4 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 1rem;
+}
+
+.mb-6 {
+  margin-bottom: 1.5rem;
+}
+
+.mb-8 {
+  margin-bottom: 2rem;
+}
+
+/* Colors */
+.bg-black {
+  background-color: #000;
+}
+
+.text-white {
+  color: #fff;
+}
+
+.text-gray-300 {
+  color: #d1d5db;
+}
+
+/* Gradients */
+.bg-gradient-to-r {
+  background-image: linear-gradient(to right, var(--tw-gradient-stops));
+}
+
+.bg-gradient-to-br {
+  background-image: linear-gradient(to bottom right, var(--tw-gradient-stops));
+}
+
+.from-cyan-400 {
+  --tw-gradient-from: #22d3ee;
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.to-blue-500 {
+  --tw-gradient-to: #3b82f6;
+}
+
+.from-purple-900\/20 {
+  --tw-gradient-from: rgb(88 28 135 / 0.2);
+  --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+
+.via-black {
+  --tw-gradient-stops: var(--tw-gradient-from), #000, var(--tw-gradient-to);
+}
+
+.to-cyan-900\/20 {
+  --tw-gradient-to: rgb(22 78 99 / 0.2);
+}
+
+/* Text Gradient */
+.bg-clip-text {
+  -webkit-background-clip: text;
+  background-clip: text;
+}
+
+.text-transparent {
+  color: transparent;
+}
+
+/* Brutal Design System */
+.brutal-shadow {
+  box-shadow: 4px 4px 0px 0px currentColor;
+}
+
+/* Animations - Only Critical */
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}
+
+.animate-pulse {
+  animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+/* Font Loading */
+.font-sans {
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+/* Prevent Layout Shift */
+.antialiased {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Border Radius */
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+
+/* Transitions */
+.transition-transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+.transition-colors {
+  transition-property: color, background-color, border-color;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
+
+/* Hover Effects */
+.hover\\:scale-105:hover {
+  transform: scale(1.05);
+}
+
+/* Border */
+.border-2 {
+  border-width: 2px;
+}
+
+.border-cyan-500 {
+  border-color: #06b6d4;
+}
+
+/* Opacity */
+.opacity-10 {
+  opacity: 0.1;
+}
+
+/* Blur */
+.blur-3xl {
+  filter: blur(64px);
+}
+
+/* Font Weight */
+.font-bold {
+  font-weight: 700;
+}
+
+.font-black {
+  font-weight: 900;
+}
+
+/* Text Size Responsive */
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.text-xl {
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+@media (min-width: 768px) {
+  .md\\:text-7xl {
+    font-size: 4.5rem;
+    line-height: 1;
+  }
+  
+  .md\\:text-2xl {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+/* Gap */
+.gap-4 {
+  gap: 1rem;
+}
+
+/* Width/Height */
+.w-96 {
+  width: 24rem;
+}
+
+.h-96 {
+  height: 24rem;
+}
+
+/* Position */
+.top-20 {
+  top: 5rem;
+}
+
+.left-20 {
+  left: 5rem;
+}
+
+.bottom-20 {
+  bottom: 5rem;
+}
+
+.right-20 {
+  right: 5rem;
+}
+
+/* Background Colors with Opacity */
+.bg-purple-500\/10 {
+  background-color: rgb(168 85 247 / 0.1);
+}
+
+.bg-cyan-500\/10 {
+  background-color: rgb(6 182 212 / 0.1);
+}
+
+/* Rounded */
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Text Center */
+.text-center {
+  text-align: center;
+}
+
+/* Display */
+.inline-block {
+  display: inline-block;
+}
+
+/* Prevent FOUC */
+html:not(.hydrated) * {
+  transition: none !important;
+}
+
+/* Loading State */
+.loading-skeleton {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+`;
+
+// Write critical CSS file
+const outputPath = path.join(__dirname, '..', 'src', 'styles', 'critical.css');
+const outputDir = path.dirname(outputPath);
+
+// Create directory if it doesn't exist
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir, { recursive: true });
+}
+
+// Write the file
+fs.writeFileSync(outputPath, criticalCSS.trim());
+
+console.log('✅ Critical CSS generated successfully at:', outputPath);
+console.log('📊 Size:', (criticalCSS.length / 1024).toFixed(2), 'KB');
+
+// Also create a minified version
+const minifiedCSS = criticalCSS
+  .replace(/\/\*[\s\S]*?\*\//g, '') // Remove comments
+  .replace(/\s+/g, ' ') // Replace multiple spaces with single space
+  .replace(/\s*{\s*/g, '{') // Remove spaces around {
+  .replace(/\s*}\s*/g, '}') // Remove spaces around }
+  .replace(/\s*:\s*/g, ':') // Remove spaces around :
+  .replace(/\s*;\s*/g, ';') // Remove spaces around ;
+  .replace(/\s*,\s*/g, ',') // Remove spaces around ,
+  .trim();
+
+const minifiedPath = path.join(__dirname, '..', 'src', 'styles', 'critical.min.css');
+fs.writeFileSync(minifiedPath, minifiedCSS);
+
+console.log('✅ Minified critical CSS generated at:', minifiedPath);
+console.log('📊 Minified size:', (minifiedCSS.length / 1024).toFixed(2), 'KB');
+console.log('🎯 Compression ratio:', ((1 - minifiedCSS.length / criticalCSS.length) * 100).toFixed(1), '%');

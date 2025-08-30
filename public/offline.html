@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline - BoostDevSpeed</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+        
+        .container {
+            text-align: center;
+            max-width: 600px;
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00ff88, #ff0066, #00d4ff, #ffd700);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .ascii-art {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: #00ff88;
+            margin: 2rem 0;
+            white-space: pre;
+            line-height: 1.2;
+        }
+        
+        p {
+            font-size: 1.25rem;
+            color: #d1d5db;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        button {
+            background: linear-gradient(to right, #06b6d4, #3b82f6);
+            color: white;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 0.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+            box-shadow: 4px 4px 0px 0px rgba(0, 255, 136, 0.4);
+        }
+        
+        button:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 6px 6px 0px 0px rgba(0, 255, 136, 0.6);
+        }
+        
+        .status-dot {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            background: #ff0033;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.5; transform: scale(1.2); }
+        }
+        
+        .grid-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
+            background-size: 50px 50px;
+            opacity: 0.1;
+            pointer-events: none;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="container">
+        <div class="ascii-art">
+    ____  _____ _____ __    ___ _   _ _____ 
+   / __ \|  ___|  ___| |   |_ _| \ | | ____|
+  | |  | | |_  | |_  | |    | ||  \| |  _|  
+  | |  | |  _| |  _| | |___ | || |\  | |___ 
+   \____/|_|   |_|   |_____|___|_| \_|_____|
+        </div>
+        
+        <h1>YOU'RE OFFLINE</h1>
+        
+        <p>
+            <span class="status-dot"></span>
+            No internet connection detected. Check your connection and try again.
+        </p>
+        
+        <button onclick="window.location.reload()">
+            TRY AGAIN
+        </button>
+        
+        <p style="margin-top: 3rem; font-size: 1rem; color: #6b7280;">
+            Pro tip: Some pages may still be available offline.<br>
+            Try navigating back or refreshing when connected.
+        </p>
+    </div>
+    
+    <script>
+        // Check connection status periodically
+        setInterval(() => {
+            if (navigator.onLine) {
+                document.querySelector('.status-dot').style.background = '#00ff88';
+                setTimeout(() => {
+                    window.location.reload();
+                }, 1000);
+            }
+        }, 3000);
+        
+        // Reload on connection restore
+        window.addEventListener('online', () => {
+            window.location.reload();
+        });
+    </script>
+</body>
+</html>

@@ -8,35 +8,49 @@ import { ErrorBoundary } from '@/components/ErrorBoundary'
 import CookieConsent from '@/components/CookieConsent'
 import { websiteSchema, organizationSchema } from '@/lib/schema'
 import { AuthProvider } from '@/providers/auth-provider'
+import Script from 'next/script'
 
-// Optimize font loading with display: swap
+// Optimize font loading with display: swap and font-display
 const inter = Inter({ 
   subsets: ['latin'], 
   variable: '--font-inter',
   display: 'swap',
   preload: true,
-  fallback: ['system-ui', '-apple-system', 'sans-serif']
+  fallback: ['system-ui', '-apple-system', 'sans-serif'],
+  adjustFontFallback: true,
 })
 
 // Lazy load analytics to not block initial render
 const Analytics = dynamic(
   () => import('@vercel/analytics/react').then(mod => mod.Analytics),
-  { ssr: false }
+  { 
+    ssr: false,
+    loading: () => null
+  }
 )
 
 const SpeedInsights = dynamic(
   () => import('@vercel/speed-insights/next').then(mod => mod.SpeedInsights),
-  { ssr: false }
+  { 
+    ssr: false,
+    loading: () => null
+  }
 )
 
 const GoogleAnalytics = dynamic(
   () => import('@/components/GoogleAnalytics'),
-  { ssr: false }
+  { 
+    ssr: false,
+    loading: () => null
+  }
 )
 
 const FacebookPixel = dynamic(
   () => import('@/components/FacebookPixel'),
-  { ssr: false }
+  { 
+    ssr: false,
+    loading: () => null
+  }
 )
 
 export const metadata: Metadata = {
@@ -95,27 +109,66 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Preconnect to critical domains */}
+        {/* Critical CSS inline for instant rendering */}
+        <style dangerouslySetInnerHTML={{
+          __html: `
+            /* Critical above-fold styles */
+            body{margin:0;padding:0;background:#000;color:#fff;font-family:system-ui,-apple-system,sans-serif}
+            *{box-sizing:border-box}
+            .min-h-screen{min-height:100vh}
+            .container{width:100%;max-width:1280px;margin:0 auto;padding:0 1rem}
+            @media(min-width:768px){.container{padding:0 2rem}}
+            /* Prevent layout shift from font loading */
+            .font-sans{font-family:Inter,system-ui,-apple-system,sans-serif}
+            /* Initial brutal shadow styles */
+            .brutal-shadow{box-shadow:4px 4px 0 0 currentColor}
+            /* Prevent CLS from animations */
+            @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+          `
+        }} />
+        
+        {/* Preconnect to critical domains with high priority */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <link rel="dns-prefetch" href="https://connect.facebook.net" />
+        <link rel="dns-prefetch" href="https://images.unsplash.com" />
         
-        {/* Favicons */}
+        {/* Preload critical font */}
+        <link 
+          rel="preload" 
+          href="https://fonts.gstatic.com/s/inter/v13/UcC73FwrK3iLTeHuS_fvQtMwCp50KnMa1ZL7.woff2" 
+          as="font" 
+          type="font/woff2" 
+          crossOrigin="anonymous"
+        />
+        
+        {/* Favicons with proper sizes */}
         <link rel="icon" href="/icon.svg?v=2" type="image/svg+xml" />
         <link rel="icon" href="/favicon-32.svg?v=2" sizes="32x32" type="image/svg+xml" />
         <link rel="icon" href="/favicon-16.svg?v=2" sizes="16x16" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-icon.svg?v=2" />
+        <link rel="manifest" href="/manifest.json" />
         
-        {/* Structured Data */}
-        <script
+        {/* Theme color for better mobile experience */}
+        <meta name="theme-color" content="#000000" />
+        
+        {/* Viewport for proper mobile rendering */}
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+        
+        {/* Structured Data - defer parsing */}
+        <Script
+          id="website-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(websiteSchema)
           }}
         />
-        <script
+        <Script
+          id="organization-schema"
           type="application/ld+json"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify(organizationSchema)
           }}
@@ -128,7 +181,7 @@ export default function RootLayout({
               {children}
               <Toaster />
               
-              {/* Load analytics after main content */}
+              {/* Load analytics after main content with lower priority */}
               {process.env.NODE_ENV === 'production' && (
                 <>
                   <GoogleAnalytics measurementId={process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || ''} />
@@ -142,6 +195,10 @@ export default function RootLayout({
             </ThemeProvider>
           </AuthProvider>
         </ErrorBoundary>
+        
+        {/* Prefetch key routes for instant navigation */}
+        <link rel="prefetch" href="/blog" />
+        <link rel="prefetch" href="/tools" />
       </body>
     </html>
   )

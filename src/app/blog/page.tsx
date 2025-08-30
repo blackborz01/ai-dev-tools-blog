@@ -303,7 +303,7 @@ export default function BlogPage() {
                           </span>
                           <span className="flex items-center gap-1">
                             <Eye className="w-3 h-3" />
-                            {Math.floor(Math.random() * 50 + 10)}K views
+                            {(index + 1) * 17}K views
                           </span>
                         </div>
                         <ArrowUpRight className="w-5 h-5 text-purple-400 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform" />

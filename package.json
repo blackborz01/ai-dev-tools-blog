@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run optimize:prebuild && next build && npm run optimize:postbuild",
     "start": "next start",
     "lint": "next lint",
     "update-data": "node scripts/run-update.js",
@@ -16,7 +16,13 @@
     "diagnose": "node scripts/diagnose-build.js",
     "clean": "rm -rf .next node_modules package-lock.json",
     "clean-install": "npm run clean && npm install",
-    "lighthouse": "lighthouse https://boostdevspeed.com --output html --view"
+    "lighthouse": "lighthouse https://boostdevspeed.com --output html --view",
+    "optimize:prebuild": "node scripts/optimize-images.js && node scripts/generate-critical-css.js",
+    "optimize:postbuild": "node scripts/compress-assets.js",
+    "optimize:images": "node scripts/optimize-images.js",
+    "optimize:css": "node scripts/generate-critical-css.js",
+    "test:performance": "lighthouse https://boostdevspeed.com --output json --output-path=./lighthouse-report.json",
+    "bundle:analyze": "ANALYZE=true npm run build"
   },
   "dependencies": {
     "next": "14.2.0",
@@ -56,6 +62,7 @@
     "tailwindcss": "^3.3.0",
     "typescript": "^5",
     "@next/bundle-analyzer": "^14.2.0",
-    "critters": "^0.0.24"
+    "critters": "^0.0.24",
+    "sharp": "^0.33.2"
   }
 }
