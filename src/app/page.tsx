@@ -100,70 +100,73 @@ export default function HomePage() {
     <>
       <Navbar />
       
-      {/* Main content wrapper with EXACT TRENDING.NOW background - ALL ANIMATIONS PRESERVED */}
-      <div className="min-h-screen bg-black relative overflow-hidden">
-        {/* EXACT Background from FuturisticTrending - ALL ANIMATIONS INTACT */}
-        <div className="fixed inset-0">
-          <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
+      {/* Main content wrapper */}
+      <div className="min-h-screen bg-black">
+        {/* Section with gradient background - ONLY for Hero, Trending, and Ship Code */}
+        <div className="relative overflow-hidden">
+          {/* EXACT Background from FuturisticTrending - ALL ANIMATIONS INTACT */}
+          <div className="absolute inset-0">
+            <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
+            
+            {/* Animated Grid - ANIMATION PRESERVED */}
+            <div className="absolute inset-0 opacity-10" style={{
+              backgroundImage: 'linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)',
+              backgroundSize: '50px 50px',
+              animation: 'slide 10s linear infinite',
+              willChange: 'transform'
+            }} />
+            
+            {/* Gradient Orbs - ANIMATIONS PRESERVED */}
+            <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          </div>
           
-          {/* Animated Grid - ANIMATION PRESERVED */}
-          <div className="absolute inset-0 opacity-10" style={{
-            backgroundImage: 'linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)',
-            backgroundSize: '50px 50px',
-            animation: 'slide 10s linear infinite',
-            willChange: 'transform'
-          }} />
-          
-          {/* Gradient Orbs - ANIMATIONS PRESERVED */}
-          <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          {/* Content wrapper for gradient sections */}
+          <div className="relative z-10">
+            {/* Original Hero at top */}
+            <Suspense fallback={<LoadingSkeleton />}>
+              <OriginalHero />
+            </Suspense>
+
+            {/* TRENDING.NOW section */}
+            <Suspense fallback={<LoadingSkeleton />}>
+              <FuturisticTrending />
+            </Suspense>
+
+            {/* SHIP CODE 10X FASTER - Memoized for performance */}
+            <ShipCodeSection />
+          </div>
         </div>
-        
-        {/* Content wrapper */}
-        <div className="relative z-10">
-          {/* Original Hero at top */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <OriginalHero />
-          </Suspense>
 
-          {/* TRENDING.NOW section */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <FuturisticTrending />
-          </Suspense>
+        {/* Scrolling Banner - OUTSIDE gradient background */}
+        <Suspense fallback={null}>
+          <ScrollingBanner />
+        </Suspense>
 
-          {/* SHIP CODE 10X FASTER - Memoized for performance */}
-          <ShipCodeSection />
+        {/* Find Your Perfect AI Tool */}
+        <Suspense fallback={<LoadingSkeleton />}>
+          <SmartToolFinder />
+        </Suspense>
 
-          {/* Scrolling Banner */}
-          <Suspense fallback={null}>
-            <ScrollingBanner />
-          </Suspense>
+        {/* LATEST INTEL section */}
+        <Suspense fallback={<LoadingSkeleton />}>
+          <LatestIntel />
+        </Suspense>
 
-          {/* Find Your Perfect AI Tool */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <SmartToolFinder />
-          </Suspense>
+        {/* SocialProof - TRUSTED BY DEVELOPERS with stats */}
+        <Suspense fallback={<LoadingSkeleton />}>
+          <SocialProof />
+        </Suspense>
 
-          {/* LATEST INTEL section */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <LatestIntel />
-          </Suspense>
+        {/* TrustBadges - Secure, Transparent, Community, Growing */}
+        <Suspense fallback={<LoadingSkeleton />}>
+          <TrustBadges />
+        </Suspense>
 
-          {/* SocialProof - TRUSTED BY DEVELOPERS with stats */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <SocialProof />
-          </Suspense>
-
-          {/* TrustBadges - Secure, Transparent, Community, Growing */}
-          <Suspense fallback={<LoadingSkeleton />}>
-            <TrustBadges />
-          </Suspense>
-
-          {/* Non-critical components */}
-          <Suspense fallback={null}>
-            <NewsletterPopup />
-          </Suspense>
-        </div>
+        {/* Non-critical components */}
+        <Suspense fallback={null}>
+          <NewsletterPopup />
+        </Suspense>
       </div>
 
       {/* Footer - Outside gradient wrapper with clean black background */}
@@ -178,6 +181,12 @@ export default function HomePage() {
           100% {
             transform: translate(50px, 50px);
           }
+        }
+        
+        @keyframes rainbow-glow {
+          0% { background-position: 0 0; }
+          50% { background-position: 400% 0; }
+          100% { background-position: 0 0; }
         }
         
         /* Use GPU acceleration for animations */

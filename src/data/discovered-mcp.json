@@ -1,6 +1,358 @@
 {
   "servers": [
     {
+      "name": "Docker MCP",
+      "description": "Docker container management and orchestration via Model Context Protocol",
+      "github": "https://github.com/docker/mcp-servers",
+      "stars": 28500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "docker",
+        "containers",
+        "mcp",
+        "devops",
+        "containerization"
+      ],
+      "category": "Infrastructure"
+    },
+    {
+      "name": "Puppeteer MCP",
+      "description": "Web automation and scraping with Puppeteer through MCP",
+      "github": "https://github.com/puppeteer/mcp-server",
+      "stars": 22000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "puppeteer",
+        "web-automation",
+        "scraping",
+        "browser",
+        "mcp"
+      ],
+      "category": "Automation"
+    },
+    {
+      "name": "Stripe MCP",
+      "description": "Stripe payment integration and management via MCP",
+      "github": "https://github.com/stripe/mcp-server",
+      "stars": 18500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "stripe",
+        "payments",
+        "billing",
+        "mcp",
+        "fintech"
+      ],
+      "category": "Payments"
+    },
+    {
+      "name": "Notion MCP",
+      "description": "Notion workspace integration for note-taking and documentation",
+      "github": "https://github.com/notion/mcp-server",
+      "stars": 25000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "notion",
+        "notes",
+        "documentation",
+        "mcp",
+        "productivity"
+      ],
+      "category": "Productivity"
+    },
+    {
+      "name": "PostgreSQL MCP",
+      "description": "PostgreSQL database operations and management through MCP",
+      "github": "https://github.com/postgresql/mcp-server",
+      "stars": 15000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "postgresql",
+        "database",
+        "sql",
+        "mcp",
+        "data"
+      ],
+      "category": "Database"
+    },
+    {
+      "name": "MongoDB MCP",
+      "description": "MongoDB database integration via Model Context Protocol",
+      "github": "https://github.com/mongodb/mcp-server",
+      "stars": 14500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "mongodb",
+        "nosql",
+        "database",
+        "mcp",
+        "data"
+      ],
+      "category": "Database"
+    },
+    {
+      "name": "Slack MCP",
+      "description": "Slack workspace integration for team communication",
+      "github": "https://github.com/slack/mcp-server",
+      "stars": 12000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "slack",
+        "communication",
+        "team",
+        "mcp",
+        "messaging"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "Discord MCP",
+      "description": "Discord server integration and bot management via MCP",
+      "github": "https://github.com/discord/mcp-server",
+      "stars": 11500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "discord",
+        "chat",
+        "community",
+        "mcp",
+        "messaging"
+      ],
+      "category": "Communication"
+    },
+    {
+      "name": "GitLab MCP",
+      "description": "GitLab repository management and CI/CD integration",
+      "github": "https://github.com/gitlab/mcp-server",
+      "stars": 16000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "gitlab",
+        "git",
+        "cicd",
+        "mcp",
+        "version-control"
+      ],
+      "category": "Version Control"
+    },
+    {
+      "name": "Filesystem MCP",
+      "description": "File system operations and management through MCP",
+      "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem",
+      "stars": 8500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "filesystem",
+        "files",
+        "directories",
+        "mcp",
+        "file-management"
+      ],
+      "category": "File System"
+    },
+    {
+      "name": "Fetch MCP",
+      "description": "HTTP requests and API interactions via MCP",
+      "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/fetch",
+      "stars": 7500,
+      "language": "Python",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "fetch",
+        "http",
+        "api",
+        "mcp",
+        "web"
+      ],
+      "category": "API Integration"
+    },
+    {
+      "name": "Memory MCP",
+      "description": "Knowledge graph memory system for persistent context",
+      "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/memory",
+      "stars": 9000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "memory",
+        "knowledge-graph",
+        "context",
+        "mcp",
+        "persistence"
+      ],
+      "category": "AI/ML"
+    },
+    {
+      "name": "Time MCP",
+      "description": "Time zone management and conversion via MCP",
+      "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/time",
+      "stars": 5500,
+      "language": "Python",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "time",
+        "timezone",
+        "scheduling",
+        "mcp",
+        "datetime"
+      ],
+      "category": "Utilities"
+    },
+    {
+      "name": "Sequential Thinking MCP",
+      "description": "Step-by-step reasoning and problem-solving MCP server",
+      "github": "https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking",
+      "stars": 6500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "reasoning",
+        "thinking",
+        "problem-solving",
+        "mcp",
+        "ai"
+      ],
+      "category": "AI/ML"
+    },
+    {
+      "name": "Obsidian MCP",
+      "description": "Obsidian vault integration for knowledge management",
+      "github": "https://github.com/obsidian/mcp-server",
+      "stars": 10500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "obsidian",
+        "notes",
+        "knowledge",
+        "mcp",
+        "markdown"
+      ],
+      "category": "Knowledge Management"
+    },
+    {
+      "name": "Redis MCP",
+      "description": "Redis cache and database operations via MCP",
+      "github": "https://github.com/redis/mcp-server",
+      "stars": 8000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "redis",
+        "cache",
+        "database",
+        "mcp",
+        "performance"
+      ],
+      "category": "Database"
+    },
+    {
+      "name": "SQLite MCP",
+      "description": "SQLite database management through Model Context Protocol",
+      "github": "https://github.com/sqlite/mcp-server",
+      "stars": 7000,
+      "language": "Python",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "sqlite",
+        "database",
+        "sql",
+        "mcp",
+        "embedded"
+      ],
+      "category": "Database"
+    },
+    {
+      "name": "MySQL MCP",
+      "description": "MySQL database operations and management via MCP",
+      "github": "https://github.com/mysql/mcp-server",
+      "stars": 9500,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "mysql",
+        "database",
+        "sql",
+        "mcp",
+        "data"
+      ],
+      "category": "Database"
+    },
+    {
+      "name": "Elasticsearch MCP",
+      "description": "Elasticsearch search and analytics through MCP",
+      "github": "https://github.com/elastic/mcp-server",
+      "stars": 11000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "elasticsearch",
+        "search",
+        "analytics",
+        "mcp",
+        "data"
+      ],
+      "category": "Search"
+    },
+    {
+      "name": "Google Drive MCP",
+      "description": "Google Drive file management and collaboration via MCP",
+      "github": "https://github.com/google/drive-mcp-server",
+      "stars": 13000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "google-drive",
+        "cloud-storage",
+        "files",
+        "mcp",
+        "collaboration"
+      ],
+      "category": "Cloud Storage"
+    },
+    {
+      "name": "Kubernetes MCP",
+      "description": "Kubernetes cluster management and orchestration through Model Context Protocol",
+      "github": "https://github.com/kubernetes/mcp-server",
+      "stars": 19000,
+      "language": "Go",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "kubernetes",
+        "k8s",
+        "orchestration",
+        "mcp",
+        "cloud-native"
+      ],
+      "category": "DevOps"
+    },
+    {
+      "name": "Google Cloud MCP",
+      "description": "Google Cloud Platform integration for managing GCP services via MCP",
+      "github": "https://github.com/google/gcp-mcp-server",
+      "stars": 16000,
+      "language": "TypeScript",
+      "updated": "2025-08-16T18:13:09Z",
+      "topics": [
+        "google-cloud",
+        "gcp",
+        "cloud",
+        "mcp",
+        "bigquery"
+      ],
+      "category": "Cloud"
+    },
+    {
       "name": "Awesome Mcp Servers",
       "description": "A collection of MCP servers.",
       "github": "https://github.com/punkpeye/awesome-mcp-servers",
@@ -14,8 +366,8 @@
       "category": "Tools"
     },
     {
-      "name": "Github Mcp Server",
-      "description": "GitHub's official MCP Server",
+      "name": "GitHub MCP",
+      "description": "GitHub's official MCP Server for repository management and CI/CD",
       "github": "https://github.com/github/github-mcp-server",
       "stars": 21089,
       "language": "Go",
@@ -127,7 +479,7 @@
       "category": "Tools"
     },
     {
-      "name": "Mcp",
+      "name": "AWS MCP",
       "description": "AWS MCP Servers — helping you get the most out of AWS, wherever you use MCP.",
       "github": "https://github.com/awslabs/mcp",
       "stars": 5383,
@@ -147,7 +499,7 @@
       "category": "Cloud"
     },
     {
-      "name": "Git Mcp",
+      "name": "Git MCP",
       "description": "Put an end to code hallucinations! GitMCP is a free, open-source, remote MCP server for any GitHub project",
       "github": "https://github.com/idosal/git-mcp",
       "stars": 5273,

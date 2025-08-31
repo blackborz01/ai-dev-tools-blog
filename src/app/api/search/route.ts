@@ -1,278 +1,219 @@
 import { NextRequest, NextResponse } from 'next/server'
+import Fuse from 'fuse.js'
+import { getAllSearchableItems, getStats, COMPLETE_TOOLS_LIST, COMPLETE_MCP_LIST } from '@/data/search-index-complete'
 
-// Import all tool sources
-import { generateMassiveToolsList } from '@/data/ai-tools-mega'
-import discoveredTools from '@/data/discovered-tools.json'
-
-// Try to import other sources with error handling
-let aiToolsComplete: any[] = []
-let toolsDatabase: any[] = []
-
-try {
-  const module = require('@/lib/ai-tools-database')
-  aiToolsComplete = module.AI_TOOLS_COMPLETE || []
-} catch (e) {}
-
-try {
-  const module = require('@/lib/toolsDatabase')
-  toolsDatabase = module.toolsDatabase || []
-} catch (e) {}
-
-// Cache for all tools
-let ALL_TOOLS_CACHE: any[] | null = null
-
-// Function to get ALL tools (3700+)
-function getAllTools() {
-  if (ALL_TOOLS_CACHE) return ALL_TOOLS_CACHE
-  
-  const allTools: any[] = []
-  const seenNames = new Set<string>()
-  
-  // 1. Load generated tools (3500+)
-  try {
-    const generatedTools = generateMassiveToolsList()
-    generatedTools.forEach((tool: any) => {
-      if (tool.name && !seenNames.has(tool.name)) {
-        seenNames.add(tool.name)
-        allTools.push({
-          name: tool.name,
-          description: tool.description || '',
-          category: tool.category || 'AI Tool',
-          url: tool.url || '',
-          pricing: tool.pricing || 'unknown',
-          type: 'tool'
-        })
-      }
-    })
-    console.log(`Loaded ${generatedTools.length} generated tools`)
-  } catch (e) {
-    console.error('Error loading generated tools:', e)
-  }
-  
-  // 2. Load discovered tools
-  if (discoveredTools && discoveredTools.tools) {
-    discoveredTools.tools.forEach((tool: any) => {
-      if (tool.name && !seenNames.has(tool.name)) {
-        seenNames.add(tool.name)
-        allTools.push({
-          name: tool.name,
-          description: tool.description || '',
-          category: tool.category || 'AI Tool',
-          url: tool.website || tool.github || '',
-          pricing: tool.pricing || 'unknown',
-          type: 'tool'
-        })
-      }
-    })
-    console.log(`Loaded ${discoveredTools.tools.length} discovered tools`)
-  }
-  
-  // 3. Load AI tools complete
-  if (aiToolsComplete.length > 0) {
-    aiToolsComplete.forEach(tool => {
-      if (tool.name && !seenNames.has(tool.name)) {
-        seenNames.add(tool.name)
-        allTools.push({
-          name: tool.name,
-          description: tool.description || '',
-          category: tool.category || 'AI Tool',
-          url: tool.url || '',
-          pricing: tool.pricing || 'unknown',
-          type: 'tool'
-        })
-      }
-    })
-  }
-  
-  // 4. Load tools database
-  if (toolsDatabase.length > 0) {
-    toolsDatabase.forEach(tool => {
-      if (tool.name && !seenNames.has(tool.name)) {
-        seenNames.add(tool.name)
-        allTools.push({
-          name: tool.name,
-          description: tool.description || '',
-          category: tool.category || 'AI Tool',
-          url: tool.website || '',
-          pricing: tool.pricing?.type || 'unknown',
-          type: 'tool'
-        })
-      }
-    })
-  }
-  
-  // Cache the results
-  ALL_TOOLS_CACHE = allTools
-  console.log(`Total tools loaded: ${allTools.length}`)
-  
-  return allTools
+// Interface for search items
+interface SearchItem {
+  id: string
+  name: string
+  description: string
+  category: string
+  url?: string
+  type: 'tool' | 'mcp' | 'api'
+  tags?: string[]
+  features?: string[]
+  status?: string
+  pricing?: string
+  provider?: string
+  searchableText?: string
 }
 
-// Optimized search function
-function searchTools(query: string, limit: number = 50) {
-  if (!query || query.length < 2) return []
+// Cache for search with TTL
+let SEARCH_INDEX_CACHE: Fuse<SearchItem> | null = null
+let CACHE_TIMESTAMP = 0
+const CACHE_TTL = 5 * 60 * 1000 // 5 minutes cache
+
+// Initialize Fuse.js search with optimized settings
+function getSearchIndex(): Fuse<SearchItem> {
+  const now = Date.now()
   
-  const searchTerm = query.toLowerCase().trim()
-  const searchWords = searchTerm.split(/\s+/).filter(w => w.length > 1)
-  const allTools = getAllTools()
-  const results: any[] = []
-  
-  // Search through all tools
-  for (const tool of allTools) {
-    let score = 0
-    let matchReason = ''
-    
-    const name = (tool.name || '').toLowerCase()
-    const category = (tool.category || '').toLowerCase()
-    const description = (tool.description || '').toLowerCase()
-    const url = (tool.url || '').toLowerCase()
-    
-    // Exact name match (highest priority)
-    if (name === searchTerm) {
-      score = 10000
-      matchReason = 'Exact match'
-    }
-    // Name starts with query
-    else if (name.startsWith(searchTerm)) {
-      score = 5000
-      matchReason = 'Name starts with query'
-    }
-    // Name contains full query
-    else if (name.includes(searchTerm)) {
-      score = 3000
-      matchReason = 'Name contains query'
-    }
-    // Category exact match
-    else if (category === searchTerm) {
-      score = 2000
-      matchReason = 'Category match'
-    }
-    // Category contains query
-    else if (category.includes(searchTerm)) {
-      score = 1500
-      matchReason = 'Category contains query'
-    }
-    // Description contains query
-    else if (description.includes(searchTerm)) {
-      score = 1000
-      matchReason = 'Description match'
-    }
-    // URL contains query
-    else if (url.includes(searchTerm)) {
-      score = 500
-      matchReason = 'URL match'
-    }
-    
-    // Multi-word search
-    if (searchWords.length > 1 && score === 0) {
-      const fullText = `${name} ${category} ${description}`.toLowerCase()
-      let matchedWords = 0
-      
-      for (const word of searchWords) {
-        if (fullText.includes(word)) {
-          matchedWords++
-        }
-      }
-      
-      if (matchedWords === searchWords.length) {
-        score = 800
-        matchReason = 'All words found'
-      } else if (matchedWords > 0) {
-        score = 300 * matchedWords
-        matchReason = `${matchedWords}/${searchWords.length} words matched`
-      }
-    }
-    
-    // Partial word match (fuzzy)
-    if (score === 0 && searchTerm.length >= 3) {
-      // Check if any word in name starts with search term
-      const nameWords = name.split(/[\s\-_]+/)
-      for (const word of nameWords) {
-        if (word.startsWith(searchTerm.substring(0, 3))) {
-          score = 200
-          matchReason = 'Partial match'
-          break
-        }
-      }
-    }
-    
-    // Handle common abbreviations and typos
-    const shortcuts: Record<string, string[]> = {
-      'gpt': ['chatgpt', 'gpt-4', 'gpt-3', 'openai'],
-      'claude': ['claude', 'anthropic'],
-      'dalle': ['dall-e', 'dalle', 'dall e'],
-      'sd': ['stable diffusion', 'stablediffusion'],
-      'mj': ['midjourney', 'mid journey'],
-      'gh': ['github', 'copilot'],
-      'hf': ['hugging face', 'huggingface'],
-      'llm': ['language model', 'chat', 'assistant'],
-      'img': ['image', 'photo', 'picture'],
-      'vid': ['video', 'movie', 'animation'],
-      'ai': ['artificial intelligence', 'machine learning', 'ml']
-    }
-    
-    for (const [shortcut, targets] of Object.entries(shortcuts)) {
-      if (searchTerm === shortcut || searchTerm.includes(shortcut)) {
-        for (const target of targets) {
-          if (name.includes(target) || description.includes(target)) {
-            score = Math.max(score, 1000)
-            matchReason = 'Shortcut match'
-            break
-          }
-        }
-      }
-    }
-    
-    if (score > 0) {
-      results.push({
-        name: tool.name,
-        title: tool.name,  // Ensure title is the tool name, not category
-        description: tool.description || '',
-        category: tool.category || 'AI Tool',
-        url: tool.url || `/tools/${tool.name.toLowerCase().replace(/\s+/g, '-')}`,
-        type: 'tool',
-        score,
-        matchReason,
-        excerpt: (tool.description || '').substring(0, 200) + '...'
-      })
-    }
+  // Return cached index if still valid
+  if (SEARCH_INDEX_CACHE && (now - CACHE_TIMESTAMP) < CACHE_TTL) {
+    return SEARCH_INDEX_CACHE
   }
   
-  // Sort by score (highest first)
-  results.sort((a, b) => b.score - a.score)
+  const items = getAllSearchableItems()
   
-  // Return limited results
-  return results.slice(0, limit)
+  // Transform items to ensure all have proper URLs
+  const searchItems = items.map((item: any) => {
+    let url = item.url
+    
+    if (!url) {
+      // Generate URLs based on type
+      if (item.type === 'tool') {
+        const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/tools/${slug}`
+      } else if (item.type === 'mcp') {
+        const slug = (item.id || item.name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/mcp/servers/${slug}`
+      } else if (item.type === 'api') {
+        const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/api/${slug}`
+      }
+    }
+    
+    return {
+      ...item,
+      url,
+      searchText: `${item.name} ${item.description || ''} ${item.category || ''} ${(item.tags || []).join(' ')} ${(item.features || []).join(' ')} ${item.type}`.toLowerCase()
+    }
+  })
+  
+  const fuseOptions: Fuse.IFuseOptions<SearchItem> = {
+    keys: [
+      { name: 'name', weight: 3 },
+      { name: 'description', weight: 2 },
+      { name: 'category', weight: 1.5 },
+      { name: 'tags', weight: 1 },
+      { name: 'features', weight: 0.8 },
+      { name: 'searchText', weight: 0.5 },
+      { name: 'searchableText', weight: 0.5 }
+    ],
+    threshold: 0.3, // More lenient matching
+    includeScore: true,
+    includeMatches: false,
+    minMatchCharLength: 2,
+    shouldSort: true,
+    findAllMatches: true,
+    location: 0,
+    distance: 100,
+    ignoreLocation: false,
+    ignoreFieldNorm: false,
+    fieldNormWeight: 1,
+    useExtendedSearch: false
+  }
+  
+  SEARCH_INDEX_CACHE = new Fuse(searchItems, fuseOptions)
+  CACHE_TIMESTAMP = now
+  
+  return SEARCH_INDEX_CACHE
 }
 
+// Enhanced search function with fuzzy matching
+function searchItems(query: string, type?: string, limit: number = 50) {
+  const searchIndex = getSearchIndex()
+  const items = getAllSearchableItems()
+  
+  // Transform items for consistent structure
+  const searchableItems = items.map((item: any) => {
+    let url = item.url
+    
+    if (!url) {
+      if (item.type === 'tool') {
+        const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/tools/${slug}`
+      } else if (item.type === 'mcp') {
+        const slug = (item.id || item.name).toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/mcp/servers/${slug}`
+      } else if (item.type === 'api') {
+        const slug = item.name.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '')
+        url = `/api/${slug}`
+      }
+    }
+    
+    return { ...item, url }
+  })
+  
+  // If query is very short, do prefix matching
+  if (query.length <= 2) {
+    const lowerQuery = query.toLowerCase()
+    const filtered = searchableItems.filter((item: any) => {
+      const matchesType = !type || item.type === type
+      const matchesQuery = item.name?.toLowerCase().startsWith(lowerQuery) ||
+                          item.searchableText?.includes(lowerQuery) ||
+                          item.description?.toLowerCase().includes(lowerQuery)
+      return matchesType && matchesQuery
+    })
+    
+    return filtered.slice(0, limit).map((item: any) => ({
+      id: item.id,
+      name: item.name,
+      title: item.name,
+      description: item.description || '',
+      category: item.category || '',
+      url: item.url,
+      type: item.type,
+      provider: item.provider,
+      score: 1,
+      excerpt: (item.description || '').substring(0, 200) + ((item.description || '').length > 200 ? '...' : ''),
+      metadata: {
+        tags: item.tags || [],
+        features: item.features || [],
+        status: item.status,
+        pricing: item.pricing
+      }
+    }))
+  }
+  
+  // For longer queries, use Fuse.js fuzzy search
+  let results = searchIndex.search(query, { limit: limit * 2 })
+  
+  // Filter by type if specified
+  if (type) {
+    results = results.filter(r => r.item.type === type)
+  }
+  
+  // Format and limit results
+  return results.slice(0, limit).map(result => {
+    const item = result.item
+    return {
+      id: item.id,
+      name: item.name,
+      title: item.name,
+      description: item.description || '',
+      category: item.category || '',
+      url: item.url || '',
+      type: item.type,
+      provider: item.provider,
+      score: 1 - (result.score || 0),
+      excerpt: (item.description || '').substring(0, 200) + ((item.description || '').length > 200 ? '...' : ''),
+      metadata: {
+        tags: item.tags || [],
+        features: item.features || [],
+        status: item.status,
+        pricing: item.pricing
+      }
+    }
+  })
+}
+
+// API Route Handler
 export async function GET(request: NextRequest) {
   try {
     const searchParams = request.nextUrl.searchParams
     const query = searchParams.get('q') || ''
+    const type = searchParams.get('type') || undefined
     const limit = parseInt(searchParams.get('limit') || '50')
     
-    // Initialize tools on first request
-    const totalTools = getAllTools().length
+    // Get stats
+    const stats = getStats()
     
-    if (!query || query.length < 2) {
+    // Return empty results if query is too short
+    if (!query || query.length < 1) {
       return NextResponse.json({
         success: true,
         results: [],
         query,
-        message: 'Enter at least 2 characters to search',
-        totalTools
+        message: 'Enter at least 1 character to search',
+        totalItems: stats.total,
+        stats
       })
     }
     
-    const results = searchTools(query, limit)
+    // Perform search
+    const results = searchItems(query, type, limit)
+    
+    // Log search for debugging
+    console.log(`Search query: "${query}", Results: ${results.length}, Total items: ${stats.total}`)
     
     return NextResponse.json({
       success: true,
       query,
       total: results.length,
       results,
-      totalTools,
-      message: results.length === 0 ? `No results found for "${query}"` : null
+      totalItems: stats.total,
+      stats,
+      message: results.length === 0 ? 'No results found. Try different keywords.' : undefined
     })
     
   } catch (error) {
@@ -282,7 +223,29 @@ export async function GET(request: NextRequest) {
       query: request.nextUrl.searchParams.get('q') || '',
       results: [],
       total: 0,
-      message: 'Search error occurred'
+      message: 'Search error occurred. Please try again.',
+      error: error instanceof Error ? error.message : 'Unknown error'
+    }, { status: 500 })
+  }
+}
+
+// API Route for getting search stats
+export async function POST(request: NextRequest) {
+  try {
+    const stats = getStats()
+    
+    return NextResponse.json({
+      success: true,
+      stats: {
+        ...stats,
+        lastUpdated: new Date().toISOString()
+      }
     })
+  } catch (error) {
+    console.error('Stats error:', error)
+    return NextResponse.json({
+      success: false,
+      message: 'Failed to get stats'
+    }, { status: 500 })
   }
 }

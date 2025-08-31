@@ -2,12 +2,14 @@
 
 import { useState, useMemo, useEffect } from 'react'
 import Link from 'next/link'
-import { Search, Filter, Star, Clock, Users, ArrowRight, Terminal, TrendingUp, Sparkles, Shield, Zap, Activity, Cpu, Database, GitBranch, Layers, Server, Wifi, Code2, ChevronUp, Gauge, AlertCircle, BarChart3, Network, Pause, Play } from 'lucide-react'
+import { Search, Filter, Star, Clock, Users, ArrowRight, Terminal, TrendingUp, Sparkles, Shield, Zap, Activity, Cpu, Database, GitBranch, Layers, Server, Wifi, Code2, ChevronUp, Gauge, AlertCircle, BarChart3, Network, Pause, Play, Loader2 } from 'lucide-react'
 import { mcpServers, mcpCategories, featuredServers, trendingServers, newServers } from './servers/data'
 import Navbar from '@/components/Navbar'
 
 export default function MCPDirectoryPage() {
   const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [isSearching, setIsSearching] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [sortBy, setSortBy] = useState('stars')
   const [activeMetric, setActiveMetric] = useState(0)
@@ -20,6 +22,35 @@ export default function MCPDirectoryPage() {
     dataTransfer: 847.3,
     serverUptime: 99.97
   })
+
+  // Search API call
+  useEffect(() => {
+    const searchTimer = setTimeout(async () => {
+      if (searchQuery.trim()) {
+        setIsSearching(true)
+        try {
+          const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`)
+          if (response.ok) {
+            const data = await response.json()
+            // Filter to only show MCP results
+            const mcpResults = data.results?.filter((r: any) => 
+              r.type === 'mcp' || r.title?.toLowerCase().includes('mcp')
+            ) || []
+            setSearchResults(mcpResults)
+          }
+        } catch (error) {
+          console.error('Search error:', error)
+          setSearchResults([])
+        } finally {
+          setIsSearching(false)
+        }
+      } else {
+        setSearchResults([])
+      }
+    }, 300) // Debounce search
+
+    return () => clearTimeout(searchTimer)
+  }, [searchQuery])
 
   // Update live metrics with performance optimization
   useEffect(() => {
@@ -40,20 +71,39 @@ export default function MCPDirectoryPage() {
   const filteredServers = useMemo(() => {
     let filtered = mcpServers
 
-    // Category filter
-    if (selectedCategory !== 'all') {
+    // If we have search results from API, use them
+    if (searchQuery && searchResults.length > 0) {
+      // Map search results to MCP servers
+      filtered = searchResults.map(result => {
+        // Try to find matching server in mcpServers
+        const matchingServer = mcpServers.find(server => 
+          server.name.toLowerCase() === result.title?.toLowerCase() ||
+          server.name.toLowerCase().includes(result.title?.toLowerCase()) ||
+          result.title?.toLowerCase().includes(server.name.toLowerCase())
+        )
+        
+        if (matchingServer) {
+          return matchingServer
+        }
+        
+        // Create a temporary server object from search result
+        return {
+          id: result.title?.toLowerCase().replace(/\s+/g, '-'),
+          name: result.title || '',
+          description: result.excerpt || result.description || '',
+          category: result.category || 'Tools',
+          stars: 0,
+          users: '0',
+          tags: [],
+          setupTime: 'Unknown',
+          icon: Terminal
+        }
+      }).filter(Boolean)
+    }
+    // If no search query, apply category filter
+    else if (selectedCategory !== 'all') {
       filtered = filtered.filter(server => 
         server.category.toLowerCase() === selectedCategory.toLowerCase()
-      )
-    }
-
-    // Search filter
-    if (searchQuery) {
-      const query = searchQuery.toLowerCase()
-      filtered = filtered.filter(server => 
-        server.name.toLowerCase().includes(query) ||
-        server.description.toLowerCase().includes(query) ||
-        server.tags.some((tag: string) => tag.toLowerCase().includes(query))
       )
     }
 
@@ -70,7 +120,7 @@ export default function MCPDirectoryPage() {
     })
 
     return filtered
-  }, [searchQuery, selectedCategory, sortBy])
+  }, [searchQuery, searchResults, selectedCategory, sortBy])
 
   const featured = useMemo(() => mcpServers.filter(s => featuredServers.includes(s.id)), [])
   const trending = useMemo(() => mcpServers.filter(s => trendingServers.includes(s.id)), [])
@@ -208,14 +258,26 @@ export default function MCPDirectoryPage() {
               <div className="relative group">
                 <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-500 rounded-lg blur opacity-50 group-hover:opacity-75 transition duration-200"></div>
                 <div className="relative flex items-center">
-                  <Search className="absolute left-4 w-6 h-6 text-cyan-400" />
+                  {isSearching ? (
+                    <Loader2 className="absolute left-4 w-6 h-6 text-cyan-400 animate-spin" />
+                  ) : (
+                    <Search className="absolute left-4 w-6 h-6 text-cyan-400" />
+                  )}
                   <input
                     type="text"
-                    placeholder="Search MCP servers... (e.g., 'database', 'github', 'aws')"
+                    placeholder="Search MCP servers... (e.g., 'docker', 'github', 'aws')"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
                     className="w-full pl-14 pr-4 py-4 text-lg bg-black/90 border border-cyan-500/30 rounded-lg focus:outline-none focus:border-cyan-400 transition-colors"
                   />
+                  {searchQuery && (
+                    <button
+                      onClick={() => setSearchQuery('')}
+                      className="absolute right-4 text-gray-400 hover:text-cyan-400 transition-colors"
+                    >
+                      ✕
+                    </button>
+                  )}
                 </div>
               </div>
             </div>

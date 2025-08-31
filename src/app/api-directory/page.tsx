@@ -77,15 +77,38 @@ export default function APIDirectoryPage() {
   const fetchModelData = async () => {
     setLoading(true)
     try {
+      console.log('Fetching model data...')
       const response = await fetch('/api/fetch-models')
-      const data = await response.json()
+      console.log('Response status:', response.status)
       
-      if (data.success) {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`)
+      }
+      
+      const data = await response.json()
+      console.log('Data received:', data)
+      
+      if (data.success && data.data) {
         setModelData(data.data)
         setLastRefresh(new Date())
+        console.log('Model data set successfully')
+      } else {
+        console.error('Invalid data structure:', data)
       }
     } catch (error) {
       console.error('Failed to fetch model data:', error)
+      // Set some fallback data to prevent infinite loading
+      setModelData({
+        models: {},
+        stats: {
+          totalModels: 0,
+          providers: 0,
+          availableModels: 0,
+          betaModels: 0,
+          lastUpdated: new Date().toISOString()
+        },
+        providers: []
+      })
     } finally {
       setLoading(false)
     }
@@ -692,10 +715,22 @@ export default function APIDirectoryPage() {
       {/* Models Display */}
       <section className="py-12">
         <div className="container mx-auto px-4">
-          {loading && !modelData ? (
+          {loading ? (
             <div className="text-center py-12">
               <RefreshCw className="w-12 h-12 animate-spin mx-auto mb-4 text-cyan-400" />
               <p className="font-black text-xl">LOADING MODELS...</p>
+              <p className="text-sm text-gray-500 mt-2">Fetching {modelData ? 'complete...' : 'data...'}</p>
+            </div>
+          ) : !modelData || Object.keys(modelData.models || {}).length === 0 ? (
+            <div className="text-center py-12">
+              <AlertCircle className="w-12 h-12 mx-auto mb-4 text-yellow-400" />
+              <p className="font-black text-xl">NO MODELS FOUND</p>
+              <button 
+                onClick={fetchModelData}
+                className="mt-4 px-4 py-2 bg-cyan-500 text-white rounded hover:bg-cyan-600"
+              >
+                Retry
+              </button>
             </div>
           ) : (
             <>

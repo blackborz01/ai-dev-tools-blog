@@ -1,6 +1,125 @@
 {
   "tools": [
     {
+      "name": "Docker Desktop",
+      "description": "Docker Desktop provides containerization for development environments with a beautiful UI",
+      "github": "https://github.com/docker/desktop",
+      "stars": 45000,
+      "language": "TypeScript",
+      "category": "Development Tools",
+      "website": "https://docker.com/products/docker-desktop",
+      "topics": [
+        "docker",
+        "containers",
+        "development",
+        "devops",
+        "virtualization"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Puppeteer",
+      "description": "Headless Chrome Node.js API for web automation and scraping",
+      "github": "https://github.com/puppeteer/puppeteer",
+      "stars": 88000,
+      "language": "TypeScript",
+      "category": "Automation",
+      "website": "https://pptr.dev",
+      "topics": [
+        "puppeteer",
+        "chrome",
+        "automation",
+        "scraping",
+        "testing"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Stripe CLI",
+      "description": "Command-line tool for Stripe API development and testing",
+      "github": "https://github.com/stripe/stripe-cli",
+      "stars": 15000,
+      "language": "Go",
+      "category": "Development Tools",
+      "website": "https://stripe.com/docs/cli",
+      "topics": [
+        "stripe",
+        "payments",
+        "cli",
+        "api",
+        "fintech"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Notion",
+      "description": "All-in-one workspace for notes, docs, and collaboration",
+      "github": "https://github.com/makenotion/notion-sdk-js",
+      "stars": 25000,
+      "language": "TypeScript",
+      "category": "Productivity",
+      "website": "https://notion.so",
+      "topics": [
+        "notion",
+        "notes",
+        "productivity",
+        "collaboration",
+        "documentation"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Postman",
+      "description": "API development and testing platform for building better APIs faster",
+      "github": "https://github.com/postmanlabs/postman-app-support",
+      "stars": 18000,
+      "language": "JavaScript",
+      "category": "API Tools",
+      "website": "https://postman.com",
+      "topics": [
+        "api",
+        "testing",
+        "development",
+        "rest",
+        "http"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Insomnia",
+      "description": "Cross-platform HTTP and GraphQL client for API development",
+      "github": "https://github.com/Kong/insomnia",
+      "stars": 34000,
+      "language": "JavaScript",
+      "category": "API Tools",
+      "website": "https://insomnia.rest",
+      "topics": [
+        "api",
+        "rest",
+        "graphql",
+        "testing",
+        "development"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
+      "name": "Playwright",
+      "description": "Framework for Web Testing and Automation across browsers",
+      "github": "https://github.com/microsoft/playwright",
+      "stars": 65000,
+      "language": "TypeScript",
+      "category": "Testing",
+      "website": "https://playwright.dev",
+      "topics": [
+        "playwright",
+        "testing",
+        "automation",
+        "e2e",
+        "browser"
+      ],
+      "updated": "2025-08-16T18:14:52Z"
+    },
+    {
       "name": "AutoGPT",
       "description": "AutoGPT is the vision of accessible AI for everyone, to use and to build on. Our mission is to provide the tools, so that you can focus on what matters.",
       "github": "https://github.com/Significant-Gravitas/AutoGPT",

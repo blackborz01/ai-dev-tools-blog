@@ -93,6 +93,8 @@ export default function ToolsPage() {
   const [tools, setTools] = useState<AITool[]>([])
   const [loading, setLoading] = useState(true)
   const [searchQuery, setSearchQuery] = useState('')
+  const [searchResults, setSearchResults] = useState<any[]>([])
+  const [isSearching, setIsSearching] = useState(false)
   const [selectedCategory, setSelectedCategory] = useState(categoryParam || '')
   const [currentPage, setCurrentPage] = useState(1)
   const [itemsPerPage, setItemsPerPage] = useState(24)
@@ -123,6 +125,35 @@ export default function ToolsPage() {
     }
   }, [categoryParam])
 
+  // Search API call
+  useEffect(() => {
+    const searchTimer = setTimeout(async () => {
+      if (searchQuery.trim()) {
+        setIsSearching(true)
+        try {
+          const response = await fetch(`/api/search?q=${encodeURIComponent(searchQuery)}`)
+          if (response.ok) {
+            const data = await response.json()
+            // Filter to show both tools and MCPs
+            const relevantResults = data.results?.filter((r: any) => 
+              r.type === 'tool' || r.type === 'mcp'
+            ) || []
+            setSearchResults(relevantResults)
+          }
+        } catch (error) {
+          console.error('Search error:', error)
+          setSearchResults([])
+        } finally {
+          setIsSearching(false)
+        }
+      } else {
+        setSearchResults([])
+      }
+    }, 300) // Debounce search
+
+    return () => clearTimeout(searchTimer)
+  }, [searchQuery])
+
   // Filter and sort tools
   const processedTools = useMemo(() => {
     let filtered = [...allTools]
@@ -134,14 +165,43 @@ export default function ToolsPage() {
       // Show only featured tools when no filters are active
       filtered = filtered.filter(tool => tool.featured)
     } else {
-      // Apply filters when user interacts
-      // Search
-      if (searchQuery) {
+      // If we have search results from API, use them
+      if (searchQuery && searchResults.length > 0) {
+        // Map search results to tools
+        filtered = searchResults.map(result => {
+          // Try to find matching tool in allTools
+          const matchingTool = allTools.find(tool => 
+            tool.name.toLowerCase() === result.title?.toLowerCase() ||
+            tool.name.toLowerCase().includes(result.title?.toLowerCase()) ||
+            result.title?.toLowerCase().includes(tool.name.toLowerCase())
+          )
+          
+          if (matchingTool) {
+            return matchingTool
+          }
+          
+          // Create a temporary tool object from search result
+          return {
+            id: result.id || result.title?.toLowerCase().replace(/\s+/g, '-'),
+            name: result.title || result.name || '',
+            url: result.url || '#',
+            category: result.category || 'Code & Development',
+            description: result.excerpt || result.description || '',
+            pricing: result.metadata?.pricing || 'unknown',
+            featured: false,
+            logo: null,
+            tags: result.metadata?.tags || [],
+            source: 'search'
+          } as AITool
+        }).filter(Boolean)
+      }
+      // Otherwise use local search
+      else if (searchQuery) {
         filtered = searchTools(filtered, searchQuery)
       }
       
       // Category filter
-      if (selectedCategory) {
+      if (selectedCategory && !searchQuery) {
         filtered = filterByCategory(filtered, selectedCategory)
       }
     }
@@ -229,7 +289,11 @@ export default function ToolsPage() {
             {/* Search Bar */}
             <div className="max-w-2xl mx-auto mb-12">
               <div className="relative group">
-                <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                {isSearching ? (
+                  <Loader2 className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5 animate-spin" />
+                ) : (
+                  <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                )}
                 <input
                   type="text"
                   placeholder="Search AI coding tools..."

@@ -64,40 +64,13 @@ const ScrollingBanner = () => {
   }, [])
 
   return (
-    <div className="relative w-full overflow-hidden my-12 rounded-2xl">
-      {/* Premium dark gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-r from-gray-900 via-gray-950 to-gray-900" />
-      
-      {/* Subtle animated gradient overlay */}
-      <div 
-        className="absolute inset-0 opacity-30"
-        style={{
-          background: 'linear-gradient(90deg, transparent 0%, rgba(6, 182, 212, 0.1) 25%, rgba(59, 130, 246, 0.1) 50%, rgba(6, 182, 212, 0.1) 75%, transparent 100%)',
-          backgroundSize: '200% 100%',
-          animation: 'shimmer 15s ease-in-out infinite'
-        }}
-      />
-      
-      {/* Noise texture for premium feel */}
-      <div 
-        className="absolute inset-0 opacity-[0.015]"
-        style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")`
-        }}
-      />
-      
-      {/* Premium glass effect */}
-      <div className="absolute inset-0 backdrop-blur-[2px] bg-black/20" />
-      
-      {/* Top highlight line */}
-      <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
-      
-      {/* Elegant fade edges */}
-      <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-gray-950 to-transparent z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-gray-950 to-transparent z-10" />
+    <div className="relative w-full overflow-hidden bg-black">
+      {/* Fade edges for seamless scroll */}
+      <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-black to-transparent z-10" />
+      <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-black to-transparent z-10" />
       
       {/* Scrolling content */}
-      <div className="py-4 relative z-20">
+      <div className="py-1 relative">
         <div 
           ref={scrollRef}
           className="flex items-center whitespace-nowrap"
@@ -111,10 +84,10 @@ const ScrollingBanner = () => {
               {/* Type badge */}
               <span 
                 className={`
-                  px-2 py-0.5 rounded-full text-[10px] font-bold tracking-wider
+                  px-2.5 py-1 rounded-full text-xs font-bold tracking-wider
                   ${item.highlight 
-                    ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border border-cyan-500/20' 
-                    : 'bg-white/5 text-gray-500 border border-white/10'
+                    ? 'bg-gradient-to-r from-cyan-500/20 to-blue-500/20 text-cyan-400 border-2 border-cyan-500/30' 
+                    : 'bg-white/5 text-gray-500 border-2 border-white/20'
                   }
                 `}
               >
@@ -124,7 +97,7 @@ const ScrollingBanner = () => {
               {/* Announcement text */}
               <span 
                 className={`
-                  text-sm font-medium tracking-wide transition-all duration-300
+                  text-base font-medium tracking-wide transition-all duration-300
                   ${item.highlight 
                     ? 'text-white group-hover:text-cyan-400' 
                     : 'text-gray-400 group-hover:text-white'
@@ -142,27 +115,6 @@ const ScrollingBanner = () => {
           ))}
         </div>
       </div>
-      
-      {/* Bottom highlight */}
-      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-white/5 to-transparent" />
-      
-      {/* Subtle corner accents */}
-      <div className="absolute top-0 left-0 w-px h-8 bg-gradient-to-b from-cyan-500/20 to-transparent" />
-      <div className="absolute top-0 right-0 w-px h-8 bg-gradient-to-b from-blue-500/20 to-transparent" />
-      <div className="absolute bottom-0 left-0 w-px h-8 bg-gradient-to-t from-cyan-500/20 to-transparent" />
-      <div className="absolute bottom-0 right-0 w-px h-8 bg-gradient-to-t from-blue-500/20 to-transparent" />
-      
-      {/* CSS animations */}
-      <style jsx>{`
-        @keyframes shimmer {
-          0% {
-            background-position: -200% 0;
-          }
-          100% {
-            background-position: 200% 0;
-          }
-        }
-      `}</style>
     </div>
   )
 }
