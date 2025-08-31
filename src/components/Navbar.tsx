@@ -306,9 +306,6 @@ export default function Navbar() {
           </div>
         )}
       </nav>
-
-      {/* Spacer */}
-      <div className="h-16" />
     </>
   )
 }

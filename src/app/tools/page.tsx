@@ -198,11 +198,12 @@ export default function ToolsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white">
-      <Navbar />
-      
-      {/* Hero Section */}
-      <div className="relative overflow-hidden">
+    <>
+      <div className="min-h-screen bg-black text-white">
+        <Navbar />
+        
+        {/* Hero Section */}
+        <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-blue-900/20 to-cyan-900/20" />
         <div className="absolute inset-0">
           <div className="absolute top-20 left-10 w-72 h-72 bg-purple-500/20 rounded-full blur-3xl" />
@@ -360,73 +361,76 @@ export default function ToolsPage() {
               <div className="overflow-hidden rounded-xl">
                 <div 
                   className="flex transition-transform duration-300 ease-in-out"
-                  style={{ transform: `translateX(-${carouselIndex * 100}%)` }}
+                  style={{ transform: `translateX(-${carouselIndex * (100 / 4)}%)` }}
                 >
                   {allTools.filter(t => t.featured).map((tool) => {
                     const badge = getPricingBadge(tool.pricing)
                     return (
-                      <div key={tool.id} className="min-w-full px-4">
-                        <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-8">
-                          <div className="flex items-start gap-6">
-                            {/* Logo */}
-                            <div className="flex-shrink-0">
-                              {tool.logo ? (
-                                <img 
-                                  src={tool.logo} 
-                                  alt={tool.name}
-                                  className="w-16 h-16 rounded-lg object-contain bg-white/10 p-2"
+                      <div key={tool.id} className="w-full md:w-1/2 lg:w-1/4 flex-shrink-0 px-2">
+                        <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 h-full">
+                          <div className="flex flex-col h-full">
+                            {/* Header with Logo and Title */}
+                            <div className="flex items-start gap-3 mb-3">
+                              <div className="flex-shrink-0">
+                                {tool.logo ? (
+                                  <img 
+                                    src={tool.logo} 
+                                    alt={tool.name}
+                                    className="w-12 h-12 rounded-lg object-contain bg-white/10 p-1"
                                   onError={(e) => {
                                     e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="3" y="3" width="18" height="18" rx="2" ry="2"/%3E%3C/svg%3E'
                                   }}
                                 />
                               ) : (
-                                <div className="w-16 h-16 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                                  <Code className="w-8 h-8 text-white" />
+                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
+                                  <Code className="w-6 h-6 text-white" />
                                 </div>
                               )}
                             </div>
                             
-                            {/* Content */}
-                            <div className="flex-1">
-                              <div className="flex items-start justify-between mb-3">
-                                <div>
-                                  <h3 className="text-2xl font-bold text-white mb-2">{tool.name}</h3>
-                                  <div className="flex items-center gap-2">
-                                    <span className={`inline-flex px-3 py-1 text-sm font-medium rounded-full border ${badge.class}`}>
-                                      {badge.text}
-                                    </span>
-                                    <span className="text-sm text-gray-400">{tool.category}</span>
-                                  </div>
+                              {/* Title and Badge */}
+                              <div className="flex-1">
+                                <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">{tool.name}</h3>
+                                <div className="flex items-center gap-2">
+                                  <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-full border ${badge.class}`}>
+                                    {badge.text}
+                                  </span>
+                                  <span className="text-xs text-gray-400">{tool.category}</span>
                                 </div>
-                                <a 
-                                  href={tool.url} 
-                                  target="_blank" 
-                                  rel="noopener noreferrer"
-                                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
-                                >
-                                  <ExternalLink className="w-5 h-5 text-cyan-400" />
-                                </a>
                               </div>
+                            </div>
                               
-                              <p className="text-gray-300 mb-4 text-lg leading-relaxed">
-                                {tool.description}
-                              </p>
+                            {/* Description */}
+                            <p className="text-sm text-gray-300 mb-3 line-clamp-3 flex-grow">
+                              {tool.description}
+                            </p>
                               
-                              {/* Stats */}
-                              <div className="flex items-center gap-4 text-sm text-gray-400">
-                                {tool.stars && (
-                                  <span className="flex items-center gap-1">
-                                    <Star className="w-4 h-4" />
-                                    {formatNumber(tool.stars)} stars
-                                  </span>
-                                )}
-                                {tool.downloads && (
-                                  <span className="flex items-center gap-1">
-                                    <Download className="w-4 h-4" />
-                                    {formatNumber(tool.downloads)} downloads
-                                  </span>
-                                )}
+                            {/* Footer with Stats and Link */}
+                            <div className="mt-auto">
+                              <div className="flex items-center justify-between text-xs text-gray-400 mb-3">
+                                <div className="flex items-center gap-3">
+                                  {tool.stars && (
+                                    <span className="flex items-center gap-1">
+                                      <Star className="w-3 h-3" />
+                                      {formatNumber(tool.stars)}
+                                    </span>
+                                  )}
+                                  {tool.downloads && (
+                                    <span className="flex items-center gap-1">
+                                      <Download className="w-3 h-3" />
+                                      {formatNumber(tool.downloads)}
+                                    </span>
+                                  )}
+                                </div>
                               </div>
+                              <a 
+                                href={tool.url} 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="block w-full text-center px-3 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 text-sm transition-all"
+                              >
+                                Visit Tool →
+                              </a>
                             </div>
                           </div>
                         </div>
@@ -446,8 +450,8 @@ export default function ToolsPage() {
               </button>
               
               <button
-                onClick={() => setCarouselIndex(prev => Math.min(allTools.filter(t => t.featured).length - 1, prev + 1))}
-                disabled={carouselIndex >= allTools.filter(t => t.featured).length - 1}
+                onClick={() => setCarouselIndex(prev => Math.min(Math.max(0, allTools.filter(t => t.featured).length - 4), prev + 1))}
+                disabled={carouselIndex >= Math.max(0, allTools.filter(t => t.featured).length - 4)}
                 className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 p-2 bg-white/10 backdrop-blur-xl rounded-full border border-white/20 hover:bg-white/20 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 <ChevronRight className="w-6 h-6 text-white" />
@@ -455,7 +459,7 @@ export default function ToolsPage() {
               
               {/* Carousel Indicators */}
               <div className="flex justify-center gap-2 mt-4">
-                {allTools.filter(t => t.featured).map((_, index) => (
+                {Array.from({ length: Math.max(1, allTools.filter(t => t.featured).length - 3) }).map((_, index) => (
                   <button
                     key={index}
                     onClick={() => setCarouselIndex(index)}
@@ -492,190 +496,95 @@ export default function ToolsPage() {
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {paginatedTools.map((tool) => {
-              const badge = getPricingBadge(tool.pricing)
-              const categoryInfo = categoryConfig[tool.category] || {
-                gradient: 'from-gray-600 to-gray-700',
-                icon: Package
-              }
-              const Icon = categoryInfo.icon
-              
-              return (
-                <div
-                  key={tool.id}
-                  className="group relative bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/10"
-                >
-                  {tool.featured && (
-                    <div className="absolute top-4 right-4 z-10">
-                      <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full border border-yellow-500/30">
-                        <Crown className="w-3 h-3 text-yellow-400" />
-                        <span className="text-xs font-medium text-yellow-400">Featured</span>
-                      </div>
-                    </div>
-                  )}
-
-                  <div className="p-6">
-                    <div className="flex items-start gap-4 mb-4">
-                      <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300`}>
-                        <Icon className="w-6 h-6 text-white" />
-                      </div>
-                      
-                      <div className="flex-1">
-                        <h3 className="font-bold text-lg text-white mb-1 line-clamp-1">
-                          {tool.name}
-                        </h3>
-                        <div className="flex items-center gap-2">
-                          <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-full border ${badge.class}`}>
-                            {badge.text}
-                          </span>
-                          {tool.tags?.includes('🆕 NEW') && (
-                            <span className="inline-flex px-2 py-0.5 text-xs font-medium rounded-full bg-green-500/20 text-green-400 border border-green-500/30">
-                              New
-                            </span>
-                          )}
+                const badge = getPricingBadge(tool.pricing)
+                const categoryInfo = categoryConfig[tool.category] || {
+                  gradient: 'from-gray-600 to-gray-700',
+                  icon: Package
+                }
+                const Icon = categoryInfo.icon
+                
+                return (
+                  <div
+                    key={tool.id}
+                    className="group relative bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl hover:shadow-cyan-500/10"
+                  >
+                    {tool.featured && (
+                      <div className="absolute top-4 right-4 z-10">
+                        <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full border border-yellow-500/30">
+                          <Crown className="w-3 h-3 text-yellow-400" />
+                          <span className="text-xs font-medium text-yellow-400">Featured</span>
                         </div>
                       </div>
-                    </div>
+                    )}
 
-                    <p className="text-sm text-gray-300 mb-4 line-clamp-2">
-                      {tool.description}
-                    </p>
-
-                    <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
-                      <div className="flex items-center gap-3">
-                        {tool.stars && (
-                          <span className="flex items-center gap-1">
-                            <Star className="w-3 h-3" />
-                            {formatNumber(tool.stars)}
-                          </span>
-                        )}
-                        {tool.downloads && (
-                          <span className="flex items-center gap-1">
-                            <Download className="w-3 h-3" />
-                            {formatNumber(tool.downloads)}
-                          </span>
-                        )}
-                      </div>
-                      <span className="text-gray-500">{tool.source}</span>
-                    </div>
-
-                    <div className="flex items-center gap-2">
-                      <a
-                        href={tool.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 transition-all duration-300"
-                      >
-                        <Globe className="w-4 h-4" />
-                        Visit Tool
-                      </a>
-                      <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                        <Bookmark className="w-4 h-4 text-gray-400" />
-                      </button>
-                      <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                        <Share2 className="w-4 h-4 text-gray-400" />
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )
-            })}
-          </div>
-        ) : (
-          <div className="space-y-4">
-            {paginatedTools.map((tool) => {
-              const badge = getPricingBadge(tool.pricing)
-              const categoryInfo = categoryConfig[tool.category] || {
-                gradient: 'from-gray-600 to-gray-700',
-                icon: Package
-              }
-              const Icon = categoryInfo.icon
-              
-              return (
-                <div
-                  key={tool.id}
-                  className="group relative bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 overflow-hidden hover:border-cyan-500/30 transition-all duration-300"
-                >
-                  <div className="p-6 flex items-start gap-4">
-                    <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300`}>
-                      <Icon className="w-6 h-6 text-white" />
-                    </div>
-                    
-                    <div className="flex-1">
-                      <div className="flex items-start justify-between mb-2">
-                        <div>
-                          <h3 className="font-bold text-lg text-white mb-1">
+                    <div className="p-6">
+                      <div className="flex items-start gap-4 mb-4">
+                        <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300`}>
+                          <Icon className="w-6 h-6 text-white" />
+                        </div>
+                        
+                        <div className="flex-1">
+                          <h3 className="font-bold text-lg text-white mb-1 line-clamp-1">
                             {tool.name}
                           </h3>
-                          <div className="flex items-center gap-2 mb-2">
+                          <div className="flex items-center gap-2">
                             <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-full border ${badge.class}`}>
                               {badge.text}
                             </span>
-                            <span className="text-xs text-gray-500">{tool.category}</span>
-                            {tool.featured && (
-                              <div className="flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-yellow-500/20 to-orange-500/20 rounded-full border border-yellow-500/30">
-                                <Crown className="w-3 h-3 text-yellow-400" />
-                                <span className="text-xs font-medium text-yellow-400">Featured</span>
-                              </div>
+                            {tool.tags?.includes('🆕 NEW') && (
+                              <span className="inline-flex px-2 py-0.5 text-xs font-medium rounded-full bg-green-500/20 text-green-400 border border-green-500/30">
+                                New
+                              </span>
                             )}
                           </div>
                         </div>
-                        
-                        <div className="flex items-center gap-2">
-                          <a
-                            href={tool.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 transition-all duration-300"
-                          >
-                            <Globe className="w-4 h-4" />
-                            Visit Tool
-                          </a>
-                          <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                            <Bookmark className="w-4 h-4 text-gray-400" />
-                          </button>
-                          <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                            <Share2 className="w-4 h-4 text-gray-400" />
-                          </button>
-                        </div>
                       </div>
-                      
-                      <p className="text-sm text-gray-300 mb-3">
+
+                      <p className="text-sm text-gray-300 mb-4 line-clamp-2">
                         {tool.description}
                       </p>
-                      
-                      <div className="flex items-center gap-4 text-xs text-gray-400">
-                        {tool.stars && (
-                          <span className="flex items-center gap-1">
-                            <Star className="w-3 h-3" />
-                            {formatNumber(tool.stars)}
-                          </span>
-                        )}
-                        {tool.downloads && (
-                          <span className="flex items-center gap-1">
-                            <Download className="w-3 h-3" />
-                            {formatNumber(tool.downloads)}
-                          </span>
-                        )}
-                        {tool.upvotes && (
-                          <span className="flex items-center gap-1">
-                            <Heart className="w-3 h-3" />
-                            {formatNumber(tool.upvotes)}
-                          </span>
-                        )}
-                        <span className="text-gray-500">Source: {tool.source}</span>
-                        {tool.dateAdded && (
-                          <span className="flex items-center gap-1 text-gray-500">
-                            <Calendar className="w-3 h-3" />
-                            {new Date(tool.dateAdded).toLocaleDateString()}
-                          </span>
-                        )}
+
+                      <div className="flex items-center justify-between text-xs text-gray-400 mb-4">
+                        <div className="flex items-center gap-3">
+                          {tool.stars && (
+                            <span className="flex items-center gap-1">
+                              <Star className="w-3 h-3" />
+                              {formatNumber(tool.stars)}
+                            </span>
+                          )}
+                          {tool.downloads && (
+                            <span className="flex items-center gap-1">
+                              <Download className="w-3 h-3" />
+                              {formatNumber(tool.downloads)}
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-gray-500">{tool.source}</span>
+                      </div>
+
+                      <div className="flex items-center gap-2">
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 transition-all duration-300"
+                        >
+                          <Globe className="w-4 h-4" />
+                          Visit Tool
+                        </a>
+                        <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                          <Bookmark className="w-4 h-4 text-gray-400" />
+                        </button>
+                        <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
+                          <Share2 className="w-4 h-4 text-gray-400" />
+                        </button>
                       </div>
                     </div>
                   </div>
-                </div>
-              )
-            })}
-          </div>
+                )
+              })}
+            </div>
+          )
         )}
 
         {/* Pagination */}
@@ -750,6 +659,7 @@ export default function ToolsPage() {
           </Link>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }

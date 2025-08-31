@@ -177,7 +177,7 @@ export default function OriginalHero() {
   }
 
   return (
-    <section className="relative overflow-hidden py-12 md:py-20 border-b-4 border-black dark:border-white bg-white dark:bg-black">
+    <section className="relative overflow-hidden pt-16 pb-12 md:pb-20 border-b-4 border-black dark:border-white bg-white dark:bg-black">
       <div className="absolute inset-0 grid-pattern opacity-5"></div>
       <div className="container mx-auto px-4 relative">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -194,7 +194,7 @@ export default function OriginalHero() {
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-4 md:mb-6">
               <span className="block">THE ONLY</span>
               <span className="block">
-                <span className="ai-tools-gradient-text">AI TOOLS</span>
+                <span className="ai-tools-gradient-text">VIBE CODING</span>
               </span>
               <span className="block">DATABASE</span>
               <span className="block">YOU NEED</span>

@@ -6,11 +6,12 @@ import {
   ChevronRight, ChevronLeft, CheckCircle, Code,
   Zap, DollarSign, Users, Target, ArrowRight,
   Trophy, Star, RefreshCw, Loader2, MessageSquare,
-  Database, Globe, Palette, Music, BarChart3
+  Database, Globe, Palette, Music, BarChart3,
+  Smartphone, Cloud, Gamepad2
 } from 'lucide-react'
 import Link from 'next/link'
 
-type UseCase = 'content' | 'coding' | 'image' | 'video' | 'voice' | 'chat' | 'data' | 'productivity' | 'business'
+type UseCase = 'fullstack' | 'frontend' | 'backend' | 'mobile' | 'data' | 'devops' | 'game' | 'automation' | 'general'
 type ProjectScale = 'personal' | 'startup' | 'business' | 'enterprise'
 type Experience = 'new' | 'some' | 'experienced' | 'expert'
 type Budget = 'free' | 'budget' | 'professional' | 'unlimited'
@@ -351,19 +352,19 @@ export default function SmartToolFinder() {
   const questions = [
     {
       id: 'useCase',
-      title: "What do you want to create with AI?",
-      subtitle: "Select your primary use case",
+      title: "What type of coding do you focus on?",
+      subtitle: "Select your primary development area",
       type: 'single',
       options: [
-        { value: 'content', label: 'Content & Writing', icon: <FileText className="w-5 h-5" />, description: 'Blog posts, articles, copy, emails' },
-        { value: 'coding', label: 'Code & Development', icon: <Code className="w-5 h-5" />, description: 'Write, debug, and understand code' },
-        { value: 'image', label: 'Images & Design', icon: <Image className="w-5 h-5" />, description: 'Art, logos, product images, graphics' },
-        { value: 'video', label: 'Video & Animation', icon: <Video className="w-5 h-5" />, description: 'Video generation, editing, animation' },
-        { value: 'voice', label: 'Voice & Audio', icon: <Mic className="w-5 h-5" />, description: 'Voice cloning, narration, podcasts' },
-        { value: 'chat', label: 'Chat & Assistance', icon: <MessageSquare className="w-5 h-5" />, description: 'General AI chat, research, Q&A' },
-        { value: 'data', label: 'Data & Analytics', icon: <BarChart3 className="w-5 h-5" />, description: 'Data analysis, visualization, insights' },
-        { value: 'productivity', label: 'Productivity Tools', icon: <Zap className="w-5 h-5" />, description: 'Note-taking, automation, workflows' },
-        { value: 'business', label: 'Business Solutions', icon: <Target className="w-5 h-5" />, description: 'Sales, marketing, customer service' }
+        { value: 'fullstack', label: 'Full-Stack Development', icon: <Code className="w-5 h-5" />, description: 'Frontend & backend development' },
+        { value: 'frontend', label: 'Frontend Development', icon: <Globe className="w-5 h-5" />, description: 'React, Vue, Angular, UI/UX' },
+        { value: 'backend', label: 'Backend Development', icon: <Database className="w-5 h-5" />, description: 'APIs, databases, server-side' },
+        { value: 'mobile', label: 'Mobile Development', icon: <Smartphone className="w-5 h-5" />, description: 'iOS, Android, React Native' },
+        { value: 'data', label: 'Data Science & ML', icon: <BarChart3 className="w-5 h-5" />, description: 'Python, R, machine learning' },
+        { value: 'devops', label: 'DevOps & Cloud', icon: <Cloud className="w-5 h-5" />, description: 'AWS, Docker, Kubernetes, CI/CD' },
+        { value: 'game', label: 'Game Development', icon: <Gamepad2 className="w-5 h-5" />, description: 'Unity, Unreal, game engines' },
+        { value: 'automation', label: 'Automation & Scripts', icon: <Zap className="w-5 h-5" />, description: 'Bash, Python scripts, automation' },
+        { value: 'general', label: 'General Coding', icon: <FileText className="w-5 h-5" />, description: 'Multiple languages and projects' }
       ]
     },
     {
@@ -388,38 +389,38 @@ export default function SmartToolFinder() {
     },
     {
       id: 'experience',
-      title: "How experienced are you with AI tools?",
+      title: "How experienced are you with AI coding tools?",
       subtitle: "We'll recommend tools that match your skill level",
       type: 'single',
       options: [
-        { value: 'new', label: "I'm New to AI", icon: <Star className="w-4 h-4" />, description: 'Just getting started' },
-        { value: 'some', label: 'Some Experience', icon: <Zap className="w-4 h-4" />, description: 'Used a few AI tools' },
-        { value: 'experienced', label: 'Experienced', icon: <Trophy className="w-4 h-4" />, description: 'Regular AI tool user' },
-        { value: 'expert', label: 'Expert User', icon: <Brain className="w-4 h-4" />, description: 'Power user, need advanced features' }
+        { value: 'new', label: "New to AI Coding", icon: <Star className="w-4 h-4" />, description: 'Just starting with AI assistants' },
+        { value: 'some', label: 'Some Experience', icon: <Zap className="w-4 h-4" />, description: 'Used Copilot or similar' },
+        { value: 'experienced', label: 'Experienced', icon: <Trophy className="w-4 h-4" />, description: 'Regular AI coding tool user' },
+        { value: 'expert', label: 'Power User', icon: <Brain className="w-4 h-4" />, description: 'Advanced features, MCP servers' }
       ]
     },
     {
       id: 'budget',
-      title: "What's your monthly budget for AI tools?",
+      title: "What's your monthly budget for AI coding tools?",
       subtitle: "We'll find tools that fit your budget",
       type: 'single',
       options: [
-        { value: 'free', label: 'Free Only', icon: <span className="text-lg">🆓</span>, description: 'Open source and free tools' },
-        { value: 'budget', label: '$1-30/month', icon: <DollarSign className="w-4 h-4" />, description: 'Individual budget' },
-        { value: 'professional', label: '$30-200/month', icon: <span className="text-lg">💰</span>, description: 'Professional budget' },
-        { value: 'unlimited', label: '$200+/month', icon: <span className="text-lg">💎</span>, description: 'Enterprise budget' }
+        { value: 'free', label: 'Free Only', icon: <span className="text-lg">🆓</span>, description: 'Open source, free tiers' },
+        { value: 'budget', label: '$10-30/month', icon: <DollarSign className="w-4 h-4" />, description: 'Copilot, basic plans' },
+        { value: 'professional', label: '$30-100/month', icon: <span className="text-lg">💰</span>, description: 'Cursor Pro, Claude Pro' },
+        { value: 'unlimited', label: '$100+/month', icon: <span className="text-lg">💎</span>, description: 'Multiple tools, teams' }
       ]
     },
     {
       id: 'priority',
-      title: "What matters most to you?",
+      title: "What's most important in a coding assistant?",
       subtitle: "We'll prioritize tools based on this",
       type: 'single',
       options: [
-        { value: 'quality', label: 'Output Quality', icon: <Star className="w-4 h-4" />, description: 'Best possible results' },
-        { value: 'speed', label: 'Speed & Efficiency', icon: <Zap className="w-4 h-4" />, description: 'Fast generation and workflow' },
+        { value: 'quality', label: 'Code Quality', icon: <Star className="w-4 h-4" />, description: 'Clean, efficient code' },
+        { value: 'speed', label: 'Speed & Efficiency', icon: <Zap className="w-4 h-4" />, description: 'Fast completions' },
         { value: 'cost', label: 'Cost Effectiveness', icon: <DollarSign className="w-4 h-4" />, description: 'Best value for money' },
-        { value: 'features', label: 'Feature Rich', icon: <Sparkles className="w-4 h-4" />, description: 'Most capabilities and options' }
+        { value: 'features', label: 'Advanced Features', icon: <Sparkles className="w-4 h-4" />, description: 'MCP, multi-file edits' }
       ]
     }
   ]
@@ -427,59 +428,59 @@ export default function SmartToolFinder() {
   // Dynamic options for specific needs based on use case
   const getSpecificNeedOptions = (useCase: string) => {
     const optionsMap: Record<string, any[]> = {
-      content: [
-        { value: 'blog', label: 'Blog Posts & Articles', icon: <FileText className="w-4 h-4" />, description: 'Long-form content' },
-        { value: 'marketing', label: 'Marketing Copy', icon: <Target className="w-4 h-4" />, description: 'Ads, emails, landing pages' },
-        { value: 'social', label: 'Social Media', icon: <MessageSquare className="w-4 h-4" />, description: 'Posts, captions, threads' },
-        { value: 'seo', label: 'SEO Content', icon: <Globe className="w-4 h-4" />, description: 'Optimized for search' }
-      ],
-      coding: [
+      fullstack: [
         { value: 'completion', label: 'Code Completion', icon: <Zap className="w-4 h-4" />, description: 'AI autocomplete' },
-        { value: 'generation', label: 'Code Generation', icon: <Code className="w-4 h-4" />, description: 'Generate from scratch' },
+        { value: 'generation', label: 'Code Generation', icon: <Code className="w-4 h-4" />, description: 'Generate from prompts' },
         { value: 'debugging', label: 'Debug & Fix', icon: <span className="text-lg">🐛</span>, description: 'Find and fix bugs' },
-        { value: 'learning', label: 'Learn & Understand', icon: <Brain className="w-4 h-4" />, description: 'Explain code' }
+        { value: 'refactoring', label: 'Code Refactoring', icon: <RefreshCw className="w-4 h-4" />, description: 'Improve code quality' }
       ],
-      image: [
-        { value: 'art', label: 'Digital Art', icon: <Palette className="w-4 h-4" />, description: 'Creative artwork' },
-        { value: 'product', label: 'Product Images', icon: <Image className="w-4 h-4" />, description: 'E-commerce, mockups' },
-        { value: 'marketing', label: 'Marketing Graphics', icon: <Target className="w-4 h-4" />, description: 'Ads, banners, social' },
-        { value: 'photo', label: 'Photo Editing', icon: <span className="text-lg">📸</span>, description: 'Enhance, edit photos' }
+      frontend: [
+        { value: 'component', label: 'Component Generation', icon: <Globe className="w-4 h-4" />, description: 'React, Vue components' },
+        { value: 'styling', label: 'CSS & Styling', icon: <Palette className="w-4 h-4" />, description: 'Tailwind, styled-components' },
+        { value: 'responsive', label: 'Responsive Design', icon: <Smartphone className="w-4 h-4" />, description: 'Mobile-first development' },
+        { value: 'performance', label: 'Performance Optimization', icon: <Zap className="w-4 h-4" />, description: 'Speed optimization' }
       ],
-      video: [
-        { value: 'generation', label: 'Video Generation', icon: <Video className="w-4 h-4" />, description: 'Text to video' },
-        { value: 'editing', label: 'Video Editing', icon: <span className="text-lg">✂️</span>, description: 'AI-powered editing' },
-        { value: 'animation', label: 'Animation', icon: <Sparkles className="w-4 h-4" />, description: '3D, 2D animation' },
-        { value: 'shorts', label: 'Short Form', icon: <Zap className="w-4 h-4" />, description: 'TikTok, Reels, Shorts' }
+      backend: [
+        { value: 'api', label: 'API Development', icon: <Globe className="w-4 h-4" />, description: 'REST, GraphQL APIs' },
+        { value: 'database', label: 'Database Design', icon: <Database className="w-4 h-4" />, description: 'SQL, NoSQL optimization' },
+        { value: 'auth', label: 'Authentication', icon: <Users className="w-4 h-4" />, description: 'Auth systems, JWT' },
+        { value: 'microservices', label: 'Microservices', icon: <Cloud className="w-4 h-4" />, description: 'Distributed systems' }
       ],
-      voice: [
-        { value: 'narration', label: 'Narration', icon: <Mic className="w-4 h-4" />, description: 'Audiobooks, videos' },
-        { value: 'clone', label: 'Voice Cloning', icon: <Users className="w-4 h-4" />, description: 'Clone any voice' },
-        { value: 'podcast', label: 'Podcasts', icon: <span className="text-lg">🎙️</span>, description: 'Podcast production' },
-        { value: 'translation', label: 'Dubbing', icon: <Globe className="w-4 h-4" />, description: 'Multi-language' }
-      ],
-      chat: [
-        { value: 'general', label: 'General Assistant', icon: <MessageSquare className="w-4 h-4" />, description: 'All-purpose AI' },
-        { value: 'research', label: 'Research', icon: <Globe className="w-4 h-4" />, description: 'Deep research, citations' },
-        { value: 'creative', label: 'Creative Tasks', icon: <Sparkles className="w-4 h-4" />, description: 'Writing, brainstorming' },
-        { value: 'technical', label: 'Technical Help', icon: <Code className="w-4 h-4" />, description: 'Programming, analysis' }
+      mobile: [
+        { value: 'native', label: 'Native Apps', icon: <Smartphone className="w-4 h-4" />, description: 'iOS, Android development' },
+        { value: 'crossplatform', label: 'Cross-Platform', icon: <Globe className="w-4 h-4" />, description: 'React Native, Flutter' },
+        { value: 'ui', label: 'Mobile UI/UX', icon: <Palette className="w-4 h-4" />, description: 'Mobile design patterns' },
+        { value: 'testing', label: 'Mobile Testing', icon: <CheckCircle className="w-4 h-4" />, description: 'Unit, integration tests' }
       ],
       data: [
-        { value: 'analysis', label: 'Data Analysis', icon: <BarChart3 className="w-4 h-4" />, description: 'Statistical analysis' },
-        { value: 'visualization', label: 'Visualization', icon: <span className="text-lg">📊</span>, description: 'Charts, graphs' },
-        { value: 'prediction', label: 'Predictions', icon: <Brain className="w-4 h-4" />, description: 'ML, forecasting' },
-        { value: 'automation', label: 'Automation', icon: <Zap className="w-4 h-4" />, description: 'Automate workflows' }
+        { value: 'analysis', label: 'Data Analysis', icon: <BarChart3 className="w-4 h-4" />, description: 'Python, pandas, numpy' },
+        { value: 'ml', label: 'Machine Learning', icon: <Brain className="w-4 h-4" />, description: 'TensorFlow, PyTorch' },
+        { value: 'visualization', label: 'Data Visualization', icon: <span className="text-lg">📊</span>, description: 'Matplotlib, D3.js' },
+        { value: 'pipeline', label: 'Data Pipelines', icon: <Database className="w-4 h-4" />, description: 'ETL, data processing' }
       ],
-      productivity: [
-        { value: 'notes', label: 'Smart Notes', icon: <FileText className="w-4 h-4" />, description: 'AI-enhanced notes' },
-        { value: 'automation', label: 'Workflow Automation', icon: <Zap className="w-4 h-4" />, description: 'Automate tasks' },
-        { value: 'search', label: 'Smart Search', icon: <Globe className="w-4 h-4" />, description: 'AI-powered search' },
-        { value: 'assistant', label: 'Personal Assistant', icon: <Brain className="w-4 h-4" />, description: 'Task management' }
+      devops: [
+        { value: 'cicd', label: 'CI/CD Pipelines', icon: <Zap className="w-4 h-4" />, description: 'GitHub Actions, Jenkins' },
+        { value: 'cloud', label: 'Cloud Infrastructure', icon: <Cloud className="w-4 h-4" />, description: 'AWS, Azure, GCP' },
+        { value: 'containers', label: 'Containers', icon: <Database className="w-4 h-4" />, description: 'Docker, Kubernetes' },
+        { value: 'monitoring', label: 'Monitoring', icon: <BarChart3 className="w-4 h-4" />, description: 'Logs, metrics, alerts' }
       ],
-      business: [
-        { value: 'sales', label: 'Sales Tools', icon: <Target className="w-4 h-4" />, description: 'Lead gen, outreach' },
-        { value: 'support', label: 'Customer Support', icon: <Users className="w-4 h-4" />, description: 'Chatbots, helpdesk' },
-        { value: 'marketing', label: 'Marketing', icon: <Sparkles className="w-4 h-4" />, description: 'Campaigns, content' },
-        { value: 'analytics', label: 'Analytics', icon: <BarChart3 className="w-4 h-4" />, description: 'Business intelligence' }
+      game: [
+        { value: 'engine', label: 'Game Engines', icon: <Gamepad2 className="w-4 h-4" />, description: 'Unity, Unreal, Godot' },
+        { value: 'graphics', label: 'Graphics Programming', icon: <Palette className="w-4 h-4" />, description: 'Shaders, rendering' },
+        { value: 'physics', label: 'Game Physics', icon: <Zap className="w-4 h-4" />, description: 'Physics engines' },
+        { value: 'ai', label: 'Game AI', icon: <Brain className="w-4 h-4" />, description: 'NPC behavior, pathfinding' }
+      ],
+      automation: [
+        { value: 'scripts', label: 'Script Writing', icon: <FileText className="w-4 h-4" />, description: 'Bash, Python scripts' },
+        { value: 'workflow', label: 'Workflow Automation', icon: <Zap className="w-4 h-4" />, description: 'Task automation' },
+        { value: 'testing', label: 'Test Automation', icon: <CheckCircle className="w-4 h-4" />, description: 'Selenium, Cypress' },
+        { value: 'deployment', label: 'Deploy Automation', icon: <Cloud className="w-4 h-4" />, description: 'Auto-deployment' }
+      ],
+      general: [
+        { value: 'completion', label: 'Code Completion', icon: <Zap className="w-4 h-4" />, description: 'AI autocomplete' },
+        { value: 'generation', label: 'Code Generation', icon: <Code className="w-4 h-4" />, description: 'Generate from prompts' },
+        { value: 'debugging', label: 'Debug & Fix', icon: <span className="text-lg">🐛</span>, description: 'Find and fix bugs' },
+        { value: 'learning', label: 'Learn & Understand', icon: <Brain className="w-4 h-4" />, description: 'Explain code' }
       ]
     }
     return optionsMap[useCase] || []
@@ -876,10 +877,10 @@ export default function SmartToolFinder() {
             AI-POWERED RECOMMENDATIONS
           </div>
           <h2 className="text-5xl md:text-6xl font-black mb-4 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
-            Find Your Perfect AI Tool
+            Find Your Perfect Vibe Coding Tool
           </h2>
           <p className="text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto">
-            Answer a few questions and we'll recommend the best AI tools from our database of 100+ options
+            Answer a few questions and we'll recommend the best vibe coding tools from our database of 50+ options
           </p>
         </div>
 
