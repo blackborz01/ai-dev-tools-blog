@@ -68,9 +68,9 @@ const SocialProof = dynamic(() => import('@/components/SocialProof'), {
 const ShipCodeSection = memo(() => (
   <section className="relative min-h-[60vh] flex items-center justify-center py-20">
     <div className="container mx-auto px-4 py-16 text-center relative">
-      <h1 className="text-5xl md:text-7xl font-black mb-6 text-white">
+      <h2 className="text-5xl md:text-7xl font-black mb-6 text-white">
         SHIP CODE <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">10X FASTER</span>
-      </h1>
+      </h2>
       <p className="text-xl md:text-2xl mb-8 text-gray-300">
         Master AI Coding Tools. Fix MCP Errors. Boost Productivity.
       </p>
