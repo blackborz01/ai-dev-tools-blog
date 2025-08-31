@@ -66,25 +66,25 @@ const SocialProof = dynamic(() => import('@/components/SocialProof'), {
 
 // Memoized Ship Code section for performance
 const ShipCodeSection = memo(() => (
-  <section className="relative min-h-[60vh] flex items-center justify-center py-20">
-    <div className="container mx-auto px-4 py-16 text-center relative">
-      <h2 className="text-5xl md:text-7xl font-black mb-6 text-white">
+  <section className="relative py-12 md:py-16">
+    <div className="container mx-auto px-4 text-center relative">
+      <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-white">
         SHIP CODE <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">10X FASTER</span>
       </h2>
-      <p className="text-xl md:text-2xl mb-8 text-gray-300">
+      <p className="text-lg md:text-xl mb-6 text-gray-300">
         Master AI Coding Tools. Fix MCP Errors. Boost Productivity.
       </p>
       <div className="flex gap-4 justify-center">
         <Link 
           href="/blog" 
-          className="px-8 py-4 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:scale-105 transition-transform rounded-lg"
+          className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:scale-105 transition-transform rounded-lg"
           prefetch={true}
         >
           READ GUIDES
         </Link>
         <Link 
           href="/tools" 
-          className="px-8 py-4 border-2 border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500/10 transition-colors rounded-lg"
+          className="px-6 py-3 border-2 border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500/10 transition-colors rounded-lg"
           prefetch={true}
         >
           EXPLORE TOOLS
