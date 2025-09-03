@@ -93,7 +93,7 @@ export default function APIDirectoryPage() {
     return Object.values(modelData.models).flat()
   }
 
-  const getFilteredModels = (): APIModel[] => {
+  const filteredModels = useMemo((): APIModel[] => {
     let models = getAllModels()
     
     // Filter by provider
@@ -132,7 +132,7 @@ export default function APIDirectoryPage() {
     })
     
     return models
-  }
+  }, [modelData, selectedProvider, selectedCapability, searchQuery, sortBy])
 
   const getAllCapabilities = (): string[] => {
     const caps = new Set<string>()
@@ -176,7 +176,7 @@ export default function APIDirectoryPage() {
   }
 
   const exportData = () => {
-    const models = getFilteredModels()
+    const models = filteredModels
     const csv = [
       ['Provider', 'Model', 'Context', 'Input Price', 'Output Price', 'Status', 'Capabilities'],
       ...models.map(m => [
@@ -423,93 +423,118 @@ export default function APIDirectoryPage() {
 
 
 
-      {/* Filters Section */}
-      <section className="py-8 border-b border-cyan-500/30">
+      {/* Enhanced Filters Section */}
+      <section className="py-8">
         <div className="container mx-auto px-4">
-          <div className="flex flex-wrap items-center justify-between gap-4 mb-6">
-            <div className="flex flex-wrap gap-2">
-              <button
-                onClick={() => setSelectedProvider('all')}
-                className={`px-4 py-2 font-mono text-sm rounded-lg transition-all ${
-                  selectedProvider === 'all'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-black'
-                    : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-                }`}
-              >
-                ALL PROVIDERS
-              </button>
-              {modelData?.providers.map(provider => (
-                <button
-                  key={provider.name}
-                  onClick={() => setSelectedProvider(provider.name)}
-                  className={`px-4 py-2 font-mono text-sm rounded-lg transition-all ${
-                    selectedProvider === provider.name
-                      ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-black'
-                      : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-                  }`}
-                >
-                  {provider.icon} {provider.name} ({provider.modelCount})
-                </button>
-              ))}
+          {/* Filter Container */}
+          <div className="bg-gray-900/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-800">
+            {/* Section Header */}
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">Filter AI Models</h3>
+                <p className="text-sm text-gray-400">Browse by provider or filter by capabilities</p>
+              </div>
+              <div className="flex items-center gap-4">
+                <div className="text-sm text-gray-500">
+                  <span className="text-cyan-400 font-bold">{filteredModels.length}</span> models found
+                </div>
+                <div className="flex gap-2">
+                  <button
+                    onClick={() => setViewMode('grid')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewMode === 'grid'
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-gray-700/50'
+                    }`}
+                    title="Grid View"
+                  >
+                    <Grid className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={() => setViewMode('table')}
+                    className={`p-2 rounded-lg transition-all ${
+                      viewMode === 'table'
+                        ? 'bg-cyan-500/20 text-cyan-400 border border-cyan-500/50'
+                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-gray-700/50'
+                    }`}
+                    title="Table View"
+                  >
+                    <List className="w-4 h-4" />
+                  </button>
+                  <button
+                    onClick={exportData}
+                    className="px-3 py-2 bg-green-500/20 text-green-400 border border-green-500/50 hover:bg-green-500/30 rounded-lg flex items-center gap-2 text-sm font-medium transition-all"
+                  >
+                    <Download className="w-3 h-3" />
+                    Export
+                  </button>
+                </div>
+              </div>
             </div>
             
-            <div className="flex gap-2">
-              <button
-                onClick={() => setViewMode('grid')}
-                className={`px-4 py-2 font-mono text-sm rounded-lg transition-all ${
-                  viewMode === 'grid'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-black'
-                    : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-                }`}
-              >
-                <Grid className="w-4 h-4" />
-              </button>
-              <button
-                onClick={() => setViewMode('table')}
-                className={`px-4 py-2 font-mono text-sm rounded-lg transition-all ${
-                  viewMode === 'table'
-                    ? 'bg-gradient-to-r from-cyan-500 to-purple-500 text-black'
-                    : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-                }`}
-              >
-                <List className="w-4 h-4" />
-              </button>
-              <button
-                onClick={exportData}
-                className="px-4 py-2 glass-morphism border border-green-500/30 hover:border-green-400/50 text-green-400 font-mono text-sm rounded-lg flex items-center gap-2"
-              >
-                <Download className="w-4 h-4" />
-                EXPORT
-              </button>
+            {/* Provider Pills */}
+            <div className="mb-5">
+              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 block">Providers</label>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedProvider('all')}
+                  className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+                    selectedProvider === 'all'
+                      ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-105'
+                      : 'bg-gray-800/80 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-700/50'
+                  }`}
+                >
+                  <span className="mr-2">🌟</span>
+                  <span>All Providers</span>
+                </button>
+                {modelData?.providers.map(provider => (
+                  <button
+                    key={provider.name}
+                    onClick={() => setSelectedProvider(provider.name)}
+                    className={`px-5 py-2.5 rounded-xl font-medium text-sm transition-all duration-200 ${
+                      selectedProvider === provider.name
+                        ? 'bg-gradient-to-r from-cyan-500 to-blue-600 text-white shadow-lg shadow-cyan-500/25 scale-105'
+                        : 'bg-gray-800/80 text-gray-300 hover:bg-gray-700/80 hover:text-white border border-gray-700/50'
+                    }`}
+                  >
+                    <span className="mr-2">{provider.icon}</span>
+                    <span>{provider.name}</span>
+                    <span className="ml-2 text-xs opacity-70">({provider.modelCount})</span>
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Capability Filter */}
-          <div className="flex flex-wrap gap-2">
-            <button
-              onClick={() => setSelectedCapability('all')}
-              className={`px-3 py-1 font-mono text-xs rounded transition-all ${
-                selectedCapability === 'all'
-                  ? 'bg-purple-500 text-black'
-                  : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-              }`}
-            >
-              ALL CAPABILITIES
-            </button>
-            {getAllCapabilities().slice(0, 10).map(cap => (
-              <button
-                key={cap}
-                onClick={() => setSelectedCapability(cap)}
-                className={`px-3 py-1 font-mono text-xs rounded transition-all flex items-center gap-1 ${
-                  selectedCapability === cap
-                    ? 'bg-purple-500 text-black'
-                    : 'glass-morphism border border-cyan-500/30 hover:border-cyan-400/50'
-                }`}
-              >
-                {getCapabilityIcon(cap)}
-                {cap.toUpperCase()}
-              </button>
-            ))}
+            {/* Capability Pills */}
+            <div className="pt-5 border-t border-gray-800">
+              <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-3 block">Capabilities</label>
+              <div className="flex flex-wrap gap-2">
+                <button
+                  onClick={() => setSelectedCapability('all')}
+                  className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 ${
+                    selectedCapability === 'all'
+                      ? 'bg-purple-500/20 text-purple-400 border border-purple-500/50'
+                      : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-gray-700/50'
+                  }`}
+                >
+                  All Capabilities
+                </button>
+                {getAllCapabilities().slice(0, 10).map(cap => (
+                  <button
+                    key={cap}
+                    onClick={() => setSelectedCapability(cap)}
+                    className={`px-4 py-2 rounded-lg font-medium text-sm transition-all duration-200 flex items-center gap-2 ${
+                      selectedCapability === cap
+                        ? 'bg-purple-500/20 text-purple-400 border border-purple-500/50'
+                        : 'bg-gray-800/50 text-gray-400 hover:text-gray-200 border border-gray-700/50'
+                    }`}
+                  >
+                    {getCapabilityIcon(cap)}
+                    <span>{cap}</span>
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -537,14 +562,14 @@ export default function APIDirectoryPage() {
           ) : (
             <>
               <p className="font-mono text-sm mb-6 text-gray-400">
-                Found {getFilteredModels().length} models {selectedProvider !== 'all' && `in ${selectedProvider}`}
+                Found {filteredModels.length} models {selectedProvider !== 'all' && `in ${selectedProvider}`}
               </p>
 
               {viewMode === 'table' ? (
-                <APIComparisonTable models={getFilteredModels()} />
+                <APIComparisonTable models={filteredModels} />
               ) : (
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-                  {getFilteredModels().map((model, idx) => {
+                  {filteredModels.map((model, idx) => {
                     const providerSlug = model.provider.toLowerCase().replace(/\s+/g, '-')
                     const modelSlug = model.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
                     return (
@@ -602,7 +627,7 @@ export default function APIDirectoryPage() {
                 </div>
               )}
 
-              {getFilteredModels().length === 0 && (
+              {filteredModels.length === 0 && (
                 <div className="text-center py-12">
                   <AlertCircle className="w-12 h-12 mx-auto mb-4 text-cyan-400" />
                   <p className="text-xl font-bold mb-2 text-cyan-400">No models found</p>
