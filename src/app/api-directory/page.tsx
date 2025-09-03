@@ -3,13 +3,11 @@
 import { useState, useEffect, useMemo } from 'react'
 import Link from 'next/link'
 import { 
-  Terminal, RefreshCw, TrendingUp, DollarSign, 
+  Terminal, RefreshCw, DollarSign, 
   Zap, Clock, Globe, ChevronRight, AlertCircle,
-  Cpu, Code, Eye, Mic, FileText, BarChart3,
+  Cpu, Code, Eye, Mic, FileText,
   Search, Filter, Grid, List, Download, Star,
-  Activity, Database, GitBranch, Layers, Server,
-  Wifi, Code2, ChevronUp, Gauge, Network, Pause,
-  Play, Shield, Sparkles, Users
+  Sparkles
 } from 'lucide-react'
 import APIComparisonTable from '@/components/APIComparisonTable'
 import { APIModel } from '@/data/api-models-complete'
@@ -42,30 +40,6 @@ export default function APIDirectoryPage() {
   const [searchQuery, setSearchQuery] = useState('')
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'context'>('name')
   const [pulseAnimation, setPulseAnimation] = useState(true)
-  const [activeMetric, setActiveMetric] = useState(0)
-
-  // Simulated live metrics
-  const [liveMetrics, setLiveMetrics] = useState({
-    requestsPerSec: 8429,
-    activeModels: 147,
-    avgLatency: 284,
-    successRate: 99.94
-  })
-
-  // Update live metrics
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setLiveMetrics(prev => ({
-        requestsPerSec: Math.max(0, prev.requestsPerSec + Math.floor(Math.random() * 500 - 250)),
-        activeModels: Math.max(0, prev.activeModels + Math.floor(Math.random() * 10 - 5)),
-        avgLatency: Math.max(50, prev.avgLatency + Math.floor(Math.random() * 20 - 10)),
-        successRate: Math.min(100, +(99.9 + Math.random() * 0.1).toFixed(2))
-      }))
-      setActiveMetric((prev) => (prev + 1) % 4)
-    }, 2000)
-
-    return () => clearInterval(interval)
-  }, [])
 
   useEffect(() => {
     fetchModelData()
@@ -322,19 +296,19 @@ export default function APIDirectoryPage() {
           <div className="max-w-4xl mx-auto text-center">
             <div className="inline-flex items-center gap-2 px-4 py-2 glass-morphism rounded-full mb-6">
               <Sparkles className={`w-4 h-4 text-yellow-400 ${pulseAnimation ? 'animate-pulse' : ''}`} />
-              <span className="font-mono text-xs text-cyan-400">150+ AI MODELS • REAL-TIME PRICING • LIVE UPDATES</span>
+              <span className="font-mono text-xs text-cyan-400">CUTTING-EDGE MODELS • GPT-5 • CLAUDE 4 • DEVELOPER FOCUSED</span>
             </div>
             
             <h1 className="text-5xl md:text-7xl font-black mb-6 bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-              AI Model API Directory
+              Next-Gen AI Model APIs
               <span className="block text-3xl md:text-4xl mt-4 text-gray-400">
-                Compare Pricing, Context Windows & Capabilities
+                GPT-5, Claude 4, and Other Cutting-Edge Models for Developers
               </span>
             </h1>
             
             <p className="text-xl mb-8 text-gray-300">
-              The most comprehensive database of AI model APIs. Real-time pricing, detailed specifications, 
-              and instant comparisons across all major providers.
+              The most advanced AI models for serious developers. GPT-5 for balanced reasoning, Claude 4 for repo-wide analysis, 
+              DeepSeek R1 for smart debugging, and more cutting-edge models.
             </p>
 
             {/* Search Bar */}
@@ -354,29 +328,7 @@ export default function APIDirectoryPage() {
               </div>
             </div>
 
-            {/* Live Metrics */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
-              <div className={`glass-morphism rounded-lg p-4 border ${activeMetric === 0 ? 'border-cyan-400' : 'border-cyan-500/30'} transition-all`}>
-                <Activity className="w-5 h-5 text-cyan-400 mb-2" />
-                <div className="text-2xl font-mono font-bold">{liveMetrics.requestsPerSec.toLocaleString()}/s</div>
-                <div className="text-xs text-gray-400">API Requests</div>
-              </div>
-              <div className={`glass-morphism rounded-lg p-4 border ${activeMetric === 1 ? 'border-purple-400' : 'border-cyan-500/30'} transition-all`}>
-                <Cpu className="w-5 h-5 text-purple-400 mb-2" />
-                <div className="text-2xl font-mono font-bold">{liveMetrics.activeModels}</div>
-                <div className="text-xs text-gray-400">Active Models</div>
-              </div>
-              <div className={`glass-morphism rounded-lg p-4 border ${activeMetric === 2 ? 'border-pink-400' : 'border-cyan-500/30'} transition-all`}>
-                <Clock className="w-5 h-5 text-pink-400 mb-2" />
-                <div className="text-2xl font-mono font-bold">{liveMetrics.avgLatency}ms</div>
-                <div className="text-xs text-gray-400">Avg Latency</div>
-              </div>
-              <div className={`glass-morphism rounded-lg p-4 border ${activeMetric === 3 ? 'border-green-400' : 'border-cyan-500/30'} transition-all`}>
-                <Gauge className="w-5 h-5 text-green-400 mb-2" />
-                <div className="text-2xl font-mono font-bold">{liveMetrics.successRate}%</div>
-                <div className="text-xs text-gray-400">Success Rate</div>
-              </div>
-            </div>
+
           </div>
         </div>
       </section>
@@ -469,157 +421,7 @@ export default function APIDirectoryPage() {
         </section>
       )}
 
-      {/* LATEST INTEL Section */}
-      <section className="py-16 relative border-b border-cyan-500/30">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className={`absolute top-0 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl ${pulseAnimation ? 'animate-pulse' : ''}`} />
-          <div className={`absolute bottom-0 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl ${pulseAnimation ? 'animate-pulse' : ''}`} style={{ animationDelay: pulseAnimation ? '1s' : '0s' }} />
-        </div>
 
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-12">
-            <div className="inline-flex items-center gap-3 mb-4">
-              <div className="flex gap-1">
-                <div className={`w-2 h-2 bg-red-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                <div className={`w-2 h-2 bg-yellow-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} style={{ animationDelay: pulseAnimation ? '0.2s' : '0s' }} />
-                <div className={`w-2 h-2 bg-green-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} style={{ animationDelay: pulseAnimation ? '0.4s' : '0s' }} />
-              </div>
-              <h2 className="text-4xl font-black bg-gradient-to-r from-cyan-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                LATEST INTEL
-              </h2>
-              <div className="flex gap-1">
-                <div className={`w-2 h-2 bg-green-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} style={{ animationDelay: pulseAnimation ? '0.4s' : '0s' }} />
-                <div className={`w-2 h-2 bg-yellow-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} style={{ animationDelay: pulseAnimation ? '0.2s' : '0s' }} />
-                <div className={`w-2 h-2 bg-red-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} />
-              </div>
-            </div>
-            <p className="font-mono text-sm text-gray-400">REAL-TIME MODEL INTELLIGENCE • UPDATED EVERY 60 SECONDS</p>
-          </div>
-
-          <div className="grid lg:grid-cols-2 gap-8">
-            {/* Trending Models Panel */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-red-500 to-orange-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
-              <div className="relative glass-morphism rounded-xl border border-red-500/30 overflow-hidden">
-                <div className="p-6 border-b border-red-500/20">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <TrendingUp className="w-8 h-8 text-red-400" />
-                        <div className={`absolute -top-1 -right-1 w-3 h-3 bg-red-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-red-400">TRENDING MODELS</h3>
-                        <p className="text-xs font-mono text-gray-500">MOST REQUESTED THIS WEEK</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <BarChart3 className={`w-5 h-5 text-red-400 ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                      <span className="font-mono text-xs text-red-400">LIVE</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-4">
-                  {trendingModels.slice(0, 4).map((model, index) => {
-                    const providerSlug = model.provider.toLowerCase().replace(/\s+/g, '-')
-                    const modelSlug = model.name.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '')
-                    return (
-                    <Link
-                      key={`${model.provider}-${model.name}-${index}`}
-                      href={`/api-directory/${providerSlug}/${modelSlug}`}
-                      className="block group/item"
-                    >
-                      <div className="relative">
-                        <div className="absolute -left-3 -top-2 z-10">
-                          <div className="w-8 h-8 bg-gradient-to-br from-red-500 to-orange-500 rounded-full flex items-center justify-center font-mono font-bold text-xs text-black">
-                            #{index + 1}
-                          </div>
-                        </div>
-
-                        <div className="holographic-card rounded-lg border border-red-500/20 p-4 group-hover/item:border-red-400/50 transition-all">
-                          <div className="flex items-start justify-between">
-                            <div>
-                              <h4 className="font-bold text-lg group-hover/item:text-red-400 transition-colors">{model.name}</h4>
-                              <p className="text-xs text-gray-500 mt-1">{model.provider}</p>
-                            </div>
-                            <div className="flex flex-col items-end gap-1">
-                              <div className="flex items-center gap-1 text-green-400">
-                                <ChevronUp className="w-3 h-3" />
-                                <span className="text-xs font-mono">+{87 - index * 20}%</span>
-                              </div>
-                              <span className={`text-xs font-mono px-2 py-0.5 rounded border ${getStatusColor(model.status)}`}>
-                                {model.status}
-                              </span>
-                            </div>
-                          </div>
-
-                          <div className="mt-3 flex items-center gap-4 text-xs font-mono">
-                            <div>
-                              <span className="text-gray-500">Context:</span>
-                              <span className="text-cyan-400 ml-1">{formatContextLength(model.contextLength)}</span>
-                            </div>
-                            <div>
-                              <span className="text-gray-500">Price:</span>
-                              <span className="text-green-400 ml-1">{formatPrice(model.pricing?.input)}</span>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </Link>
-                    )
-                  })}
-                </div>
-              </div>
-            </div>
-
-            {/* Provider Updates Panel */}
-            <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition duration-300"></div>
-              <div className="relative glass-morphism rounded-xl border border-cyan-500/30 overflow-hidden">
-                <div className="p-6 border-b border-cyan-500/20">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="flex items-center gap-3">
-                      <div className="relative">
-                        <Database className="w-8 h-8 text-cyan-400" />
-                        <div className={`absolute -top-1 -right-1 w-3 h-3 bg-cyan-500 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                      </div>
-                      <div>
-                        <h3 className="text-2xl font-bold text-cyan-400">PROVIDER STATUS</h3>
-                        <p className="text-xs font-mono text-gray-500">LIVE SYSTEM UPDATES</p>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <AlertCircle className={`w-5 h-5 text-cyan-400 ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                      <span className="font-mono text-xs text-cyan-400">MONITORING</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="p-6 space-y-4">
-                  {modelData?.providers.slice(0, 5).map((provider, index) => (
-                    <div key={provider.name} className="glass-morphism rounded-lg border border-cyan-500/20 p-4">
-                      <div className="flex items-center justify-between">
-                        <div className="flex items-center gap-3">
-                          <span className="text-2xl">{provider.icon}</span>
-                          <div>
-                            <h4 className="font-bold text-cyan-400">{provider.name}</h4>
-                            <p className="text-xs text-gray-500">{provider.modelCount} models available</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <div className={`w-2 h-2 bg-green-400 rounded-full ${pulseAnimation ? 'animate-pulse' : ''}`} />
-                          <span className="text-xs font-mono text-green-400">ONLINE</span>
-                        </div>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Filters Section */}
       <section className="py-8 border-b border-cyan-500/30">
