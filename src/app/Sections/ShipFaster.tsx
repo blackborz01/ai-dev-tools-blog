@@ -1,46 +1,48 @@
-// app/Sections/ShipFaster.tsx
+// app/(home)/Sections/ShipFaster.tsx
 import Image from "next/image";
-import Link from "next/link";
 
 export default function ShipFaster() {
   return (
     <section
       className="relative py-12 md:py-16 bg-black"
       // Reserve vertical space so the layout doesn't jump when fonts/content load
-      style={{ minHeight: 320 }}
+      style={{ minHeight: 480 }}
       aria-label="Ship code faster"
     >
-      <div className="container mx-auto px-4 text-center relative">
+      {/* Optional decorative background (kept stable with parent minHeight) */}
+      <div className="absolute inset-0 -z-10 overflow-hidden">
+        {/* Remove if you don't have a bg image */}
+      </div>
+
+      <div className="container mx-auto px-6 md:px-10">
         {/* Headline block — fixed intrinsic height prevents font-swap jump */}
-        <div style={{ minHeight: 120 }}>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black mb-4 text-white">
+        <div className="max-w-4xl mx-auto text-center" style={{ minHeight: 140 }}>
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-semibold leading-tight tracking-[-0.01em] text-white">
             SHIP CODE <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">10X FASTER</span>
           </h2>
         </div>
 
         {/* Subhead — also reserved height */}
-        <div style={{ minHeight: 40 }}>
-          <p className="text-lg md:text-xl mb-6 text-gray-300">
+        <div className="mt-4 md:mt-5 max-w-3xl mx-auto text-center" style={{ minHeight: 80 }}>
+          <p className="text-lg md:text-xl text-neutral-300 leading-relaxed">
             Master AI Coding Tools. Fix MCP Errors. Boost Productivity.
           </p>
         </div>
 
         {/* CTA row — fixed height so late hydration/widgets don't push content */}
-        <div className="flex gap-4 justify-center" style={{ minHeight: 56 }}>
-          <Link 
-            href="/blog" 
-            className="px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-bold hover:scale-105 transition-transform rounded-lg"
-            prefetch={true}
+        <div className="mt-6 md:mt-8 flex flex-wrap gap-3 justify-center" style={{ minHeight: 56 }}>
+          <a
+            href="/blog"
+            className="inline-flex items-center rounded-lg px-5 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 text-white font-medium hover:scale-105 transition-transform"
           >
             READ GUIDES
-          </Link>
-          <Link 
-            href="/tools" 
-            className="px-6 py-3 border-2 border-cyan-500 text-cyan-400 font-bold hover:bg-cyan-500/10 transition-colors rounded-lg"
-            prefetch={true}
+          </a>
+          <a
+            href="/tools"
+            className="inline-flex items-center rounded-lg px-5 py-3 border-2 border-cyan-500 text-cyan-400 font-medium hover:bg-cyan-500/10 transition-colors"
           >
             EXPLORE TOOLS
-          </Link>
+          </a>
         </div>
       </div>
 
