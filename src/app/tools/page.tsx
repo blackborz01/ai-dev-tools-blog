@@ -496,9 +496,10 @@ export default function ToolsPage() {
                                 href={tool.url} 
                                 target="_blank" 
                                 rel="noopener noreferrer"
-                                className="block w-full text-center px-3 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 text-sm transition-all"
+                                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-xl border border-purple-500/30 hover:border-purple-400/50 hover:from-purple-500/30 hover:to-purple-600/30 text-white font-medium transition-all duration-200 group"
                               >
-                                Visit Tool →
+                                <FileText className="w-4 h-4" />
+                                <span>Visit Page</span>
                               </a>
                             </div>
                           </div>
@@ -636,16 +637,13 @@ export default function ToolsPage() {
                           href={tool.url}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex-1 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-cyan-500/20 to-blue-500/20 rounded-lg border border-cyan-500/30 hover:border-cyan-400/50 text-cyan-400 transition-all duration-300"
+                          className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-xl border border-purple-500/30 hover:border-purple-400/50 hover:from-purple-500/30 hover:to-purple-600/30 text-white font-medium transition-all duration-200 group"
                         >
-                          <Globe className="w-4 h-4" />
-                          Visit Tool
+                          <FileText className="w-4 h-4" />
+                          <span>Visit Page</span>
                         </a>
-                        <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                          <Bookmark className="w-4 h-4 text-gray-400" />
-                        </button>
-                        <button className="p-2 bg-white/5 rounded-lg hover:bg-white/10 transition-colors">
-                          <Share2 className="w-4 h-4 text-gray-400" />
+                        <button className="p-2.5 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-200">
+                          <ExternalLink className="w-4 h-4 text-cyan-400" />
                         </button>
                       </div>
                     </div>
