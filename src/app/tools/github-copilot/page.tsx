@@ -10,7 +10,7 @@ const githubCopilotData = {
   description: 'GitHub Copilot uses the OpenAI Codex to suggest code and entire functions in real-time, right from your editor. Trained on billions of lines of code, it turns natural language prompts into coding suggestions across dozens of languages.',
   url: 'https://github.com/features/copilot',
   category: 'AI Code Assistant',
-  logo: null,
+  logo: '/logos/github-copilot.svg',
   
   pricing: {
     type: 'freemium' as const,

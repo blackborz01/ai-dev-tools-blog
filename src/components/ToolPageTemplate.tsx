@@ -224,26 +224,27 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
               </motion.div>
 
               {/* Title and Logo */}
-              <div className="flex items-start gap-4 mb-6">
+              <div className="flex items-center gap-4 mb-6">
                 {toolData.logo && !toolData.logo.startsWith('http') ? (
                   <motion.div 
-                    className="w-20 h-20 rounded-2xl bg-white/10 p-3 backdrop-blur-xl border border-white/20"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
+                    className="flex-shrink-0"
+                    whileHover={{ scale: 1.05 }}
                   >
                     <NextImage 
                       src={toolData.logo} 
                       alt={toolData.name}
-                      width={80}
-                      height={80}
-                      className="w-full h-full object-contain"
+                      width={40}
+                      height={40}
+                      className="h-10 w-auto object-contain"
+                      style={{ width: 'auto', height: '40px' }}
                     />
                   </motion.div>
                 ) : (
                   <motion.div 
-                    className="w-20 h-20 rounded-2xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center"
+                    className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
-                    <Code className="w-10 h-10 text-white" />
+                    <Code className="w-6 h-6 text-white" />
                   </motion.div>
                 )}
                 <div>
@@ -634,6 +635,7 @@ console.log(result.code);`}</code>
       </section>
 
       {/* Pricing Section */}
+      {toolData.pricing.plans && (
       <section ref={pricingRef} id="pricing" className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
         <div className="max-w-7xl mx-auto">
           <motion.div 
@@ -892,6 +894,7 @@ console.log(result.code);`}</code>
           </div>
         </div>
       </section>
+      )}
 
       {/* FAQ Section */}
       <section className="py-20 px-4">
