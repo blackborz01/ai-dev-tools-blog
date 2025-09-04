@@ -10,7 +10,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-first code editor built on VS Code with GPT-4 and Claude integration for autonomous coding with Agent Mode', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://cursor.sh/favicon.ico'
+    logo: null
   },
   { 
     name: 'Claude Code', 
@@ -19,7 +19,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Anthropic\'s official VS Code extension for Claude AI with advanced code understanding and generation', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://claude.ai/favicon.ico'
+    logo: null
   },
   { 
     name: 'Windsurf', 
@@ -28,7 +28,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Next-gen AI IDE by Codeium with Flow mode for seamless human-AI collaboration', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://codeium.com/favicon.ico'
+    logo: null
   },
   { 
     name: 'Zed AI', 
@@ -82,13 +82,14 @@ export const AI_TOOLS_MEGA_LIST = [
 
   // === AI PAIR PROGRAMMING (10) ===
   { 
+    id: 'github-copilot',
     name: 'GitHub Copilot', 
     url: 'https://github.com/features/copilot', 
     category: 'Chatbots & Assistants', 
     description: 'AI pair programmer by GitHub and OpenAI that suggests code in real-time', 
     pricing: 'paid',
     featured: true,
-    logo: 'https://github.githubassets.com/favicons/favicon.svg'
+    logo: null
   },
   { 
     name: 'Amazon CodeWhisperer', 
@@ -387,12 +388,12 @@ export const AI_TOOLS_MEGA_LIST = [
 export function generateMassiveToolsList() {
   return AI_TOOLS_MEGA_LIST.map((tool, index) => ({
     ...tool,
-    id: `tool_${index}`,
+    id: tool.id || tool.name.toLowerCase().replace(/[\s+&]/g, '-').replace(/[^a-z0-9-]/g, ''),
     tags: [tool.category, 'AI', 'Developer Tools', 'Vibe Coding', 'Programming'],
     source: 'Curated',
     dateAdded: new Date().toISOString(),
     upvotes: Math.floor(Math.random() * 5000 + 1000),
-    downloads: Math.floor(Math.random() * 100000 + 10000),
-    stars: Math.floor(Math.random() * 10000 + 1000)
+    downloads: tool.downloads || Math.floor(Math.random() * 100000 + 10000),
+    stars: tool.stars || Math.floor(Math.random() * 10000 + 1000)
   }))
 }

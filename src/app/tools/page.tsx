@@ -437,7 +437,7 @@ export default function ToolsPage() {
                             {/* Header with Logo and Title */}
                             <div className="flex items-start gap-3 mb-3">
                               <div className="flex-shrink-0">
-                                {tool.logo ? (
+                                {tool.logo && !tool.logo.startsWith('http') ? (
                                   <div className="relative w-12 h-12">
                                     <NextImage 
                                       src={tool.logo} 
@@ -492,15 +492,24 @@ export default function ToolsPage() {
                                   )}
                                 </div>
                               </div>
-                              <a 
-                                href={tool.url} 
-                                target="_blank" 
-                                rel="noopener noreferrer"
-                                className="flex items-center justify-center gap-2 w-full px-4 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-xl border border-purple-500/30 hover:border-purple-400/50 hover:from-purple-500/30 hover:to-purple-600/30 text-white font-medium transition-all duration-200 group"
-                              >
-                                <FileText className="w-4 h-4" />
-                                <span>Visit Page</span>
-                              </a>
+                              <div className="flex items-center gap-2">
+                                <Link
+                                  href={`/tools/${tool.id || tool.name.toLowerCase().replace(/\s+/g, '-')}`}
+                                  className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-xl border border-purple-500/30 hover:border-purple-400/50 hover:from-purple-500/30 hover:to-purple-600/30 text-white font-medium transition-all duration-200 group"
+                                >
+                                  <FileText className="w-4 h-4" />
+                                  <span>Visit Page</span>
+                                </Link>
+                                <a
+                                  href={tool.url}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="p-2.5 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-200 group"
+                                  title="Visit official website"
+                                >
+                                  <ExternalLink className="w-4 h-4 text-cyan-400" />
+                                </a>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -633,18 +642,22 @@ export default function ToolsPage() {
                       </div>
 
                       <div className="flex items-center gap-2">
-                        <a
-                          href={tool.url}
-                          target="_blank"
-                          rel="noopener noreferrer"
+                        <Link
+                          href={`/tools/${tool.id || tool.name.toLowerCase().replace(/\s+/g, '-')}`}
                           className="flex-1 flex items-center justify-center gap-2 px-4 py-3 bg-gradient-to-r from-purple-500/20 to-purple-600/20 rounded-xl border border-purple-500/30 hover:border-purple-400/50 hover:from-purple-500/30 hover:to-purple-600/30 text-white font-medium transition-all duration-200 group"
                         >
                           <FileText className="w-4 h-4" />
                           <span>Visit Page</span>
-                        </a>
-                        <button className="p-2.5 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-200">
+                        </Link>
+                        <a
+                          href={tool.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2.5 bg-gradient-to-r from-cyan-500/10 to-blue-500/10 rounded-xl border border-cyan-500/20 hover:border-cyan-400/40 hover:from-cyan-500/20 hover:to-blue-500/20 transition-all duration-200 group"
+                          title="Visit official website"
+                        >
                           <ExternalLink className="w-4 h-4 text-cyan-400" />
-                        </button>
+                        </a>
                       </div>
                     </div>
                   </div>
