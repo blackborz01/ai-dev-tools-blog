@@ -734,6 +734,7 @@ console.log(result.code);`}</code>
           </div>
         </div>
       </section>
+      )}
 
       {/* Integration Ecosystem */}
       <section ref={integrationsRef} id="integrations" className="py-20 px-4">
@@ -835,19 +836,20 @@ console.log(result.code);`}</code>
       </section>
 
       {/* Testimonials / Reviews */}
-      <section ref={reviewsRef} id="reviews" className="py-20 px-4 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Loved by Developers
-            </h2>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              See what our users are saying
-            </p>
-          </div>
+      {toolData.testimonials && toolData.testimonials.length > 0 && (
+        <section ref={reviewsRef} id="reviews" className="py-20 px-4 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent">
+          <div className="max-w-7xl mx-auto">
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                Loved by Developers
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                See what our users are saying
+              </p>
+            </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {toolData.testimonials?.map((testimonial, index) => (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {toolData.testimonials.map((testimonial, index) => (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 20 }}

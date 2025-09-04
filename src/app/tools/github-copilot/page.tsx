@@ -95,35 +95,36 @@ const githubCopilotData = {
   
   features: [
     {
-      title: 'Contextual Code Suggestions',
-      description: 'Get AI-powered code suggestions based on your current file context and coding patterns',
+      title: 'GitHub Copilot Coding Agent',
+      description: 'Assigns issues, plans, writes, tests, and creates fully-tested pull requests ready for review',
       icon: Brain,
       highlight: true
     },
     {
-      title: 'Multi-Language Support',
-      description: 'Works with Python, JavaScript, TypeScript, Ruby, Go, C++, and dozens more languages',
+      title: 'Agent Mode in IDEs',
+      description: 'Iterates on its own output, recognizes and fixes errors automatically, suggests terminal commands',
+      icon: Zap,
+      highlight: true
+    },
+    {
+      title: 'Copilot Edits',
+      description: 'Edit multiple files at once using natural language, with inline changes across your workspace',
       icon: Code
     },
     {
-      title: 'IDE Integration',
-      description: 'Native integration with VS Code, JetBrains IDEs, Neovim, and Visual Studio',
-      icon: Zap
+      title: 'Multi-IDE Support',
+      description: 'VS Code, Visual Studio, JetBrains IDEs, Azure Data Studio, Xcode, Vim/Neovim, and Eclipse',
+      icon: Rocket
     },
     {
-      title: 'Security Scanning',
-      description: 'Automatic detection and filtering of insecure code patterns and vulnerabilities',
-      icon: Shield
-    },
-    {
-      title: 'Test Generation',
-      description: 'Automatically generate unit tests and test cases for your functions',
+      title: 'Advanced AI Models',
+      description: 'Access to GPT-5, Claude Opus 4.1, Gemini 2.0 Flash, o3-mini, and more cutting-edge models',
       icon: Target
     },
     {
-      title: 'Documentation',
-      description: 'Generate comprehensive documentation and comments for your code',
-      icon: Rocket
+      title: 'Vision for Copilot',
+      description: 'Feed Copilot mockups, screenshots, or images to generate UI, alt text, and code instantly',
+      icon: Shield
     }
   ],
   
@@ -140,24 +141,24 @@ const githubCopilotData = {
   
   comparisons: [
     {
-      feature: 'Code Completion',
-      tool: true,
-      competitors: { 'Cursor': true, 'Codeium': true, 'Tabnine': true }
+      feature: 'Autonomous Coding Agent',
+      tool: 'Yes (Full PR creation)',
+      competitors: { 'Cursor': 'Limited', 'Codeium': 'No', 'Tabnine': 'No' }
     },
     {
-      feature: 'Multi-line Suggestions',
-      tool: true,
-      competitors: { 'Cursor': true, 'Codeium': true, 'Tabnine': false }
+      feature: 'Multi-file Editing',
+      tool: 'Yes (Copilot Edits)',
+      competitors: { 'Cursor': 'Yes', 'Codeium': 'Limited', 'Tabnine': 'No' }
     },
     {
-      feature: 'Test Generation',
+      feature: 'Vision/Image Input',
       tool: true,
       competitors: { 'Cursor': true, 'Codeium': false, 'Tabnine': false }
     },
     {
-      feature: 'Security Scanning',
-      tool: true,
-      competitors: { 'Cursor': false, 'Codeium': false, 'Tabnine': false }
+      feature: 'Agent Mode',
+      tool: 'Full (self-healing)',
+      competitors: { 'Cursor': 'Yes', 'Codeium': 'No', 'Tabnine': 'No' }
     },
     {
       feature: 'Languages Supported',
@@ -201,29 +202,8 @@ const githubCopilotData = {
     }
   ],
   
-  testimonials: [
-    {
-      author: 'Sarah Chen',
-      role: 'Senior Developer',
-      company: 'TechCorp',
-      content: 'GitHub Copilot has increased my coding speed by at least 40%. It\'s like having a senior developer pair programming with me 24/7.',
-      rating: 5
-    },
-    {
-      author: 'Michael Rodriguez',
-      role: 'Full Stack Engineer',
-      company: 'StartupXYZ',
-      content: 'The context awareness is incredible. It understands my coding style and suggests exactly what I need.',
-      rating: 5
-    },
-    {
-      author: 'Emily Johnson',
-      role: 'Tech Lead',
-      company: 'Enterprise Co',
-      content: 'We\'ve seen a significant reduction in boilerplate code and faster onboarding of new team members.',
-      rating: 4
-    }
-  ],
+  // Testimonials removed - only add real, verified reviews with sources
+  testimonials: [],
   
   resources: {
     documentation: 'https://docs.github.com/copilot',
