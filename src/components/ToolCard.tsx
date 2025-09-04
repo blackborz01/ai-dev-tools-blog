@@ -1,4 +1,5 @@
 import React from 'react'
+import Image from 'next/image'
 import { 
   Star, ArrowUpRight, Users, Download, 
   Clock, Tag, Bookmark, Share2, ExternalLink,
@@ -60,20 +61,24 @@ export default function ToolCard({ tool }: ToolCardProps) {
         {/* Logo/Favicon */}
         <div className="flex-shrink-0">
           {faviconUrl ? (
-            <img 
-              src={faviconUrl} 
-              alt={tool.name}
-              className="w-14 h-14 rounded-xl object-cover bg-gray-50 dark:bg-gray-800 p-2"
-              onError={(e) => {
-                const target = e.target as HTMLImageElement
-                target.style.display = 'none'
-                target.parentElement!.innerHTML = `
-                  <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-                    ${tool.name.charAt(0).toUpperCase()}
-                  </div>
-                `
-              }}
-            />
+            <div className="relative w-14 h-14">
+              <Image 
+                src={faviconUrl} 
+                alt={tool.name}
+                width={56}
+                height={56}
+                className="rounded-xl object-cover bg-gray-50 dark:bg-gray-800 p-2"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement
+                  target.style.display = 'none'
+                  target.parentElement!.innerHTML = `
+                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
+                      ${tool.name.charAt(0).toUpperCase()}
+                    </div>
+                  `
+                }}
+              />
+            </div>
           ) : (
             <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
               {tool.name.charAt(0).toUpperCase()}

@@ -4,6 +4,7 @@ import { useSession } from 'next-auth/react'
 import { redirect } from 'next/navigation'
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import {
   BarChart3, TrendingUp, Activity, Clock, BookOpen, Code2,
   Trophy, Star, Zap, Target, Award, Gift, Crown, Sparkles,
@@ -312,7 +313,15 @@ export default function DashboardPage() {
                   <div className="w-16 h-16 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 p-0.5">
                     <div className="w-full h-full rounded-full bg-gray-900 flex items-center justify-center">
                       {session.user?.image ? (
-                        <img src={session.user.image} alt="Profile" className="w-full h-full rounded-full object-cover" />
+                        <div className="relative w-full h-full">
+                          <Image 
+                            src={session.user.image} 
+                            alt="Profile" 
+                            fill
+                            sizes="100px"
+                            className="rounded-full object-cover" 
+                          />
+                        </div>
                       ) : (
                         <span className="text-2xl font-bold text-white">
                           {session.user?.name?.[0] || session.user?.email?.[0] || 'U'}

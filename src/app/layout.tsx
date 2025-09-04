@@ -15,12 +15,9 @@ import ScriptLoader from '@/components/optimized/ScriptLoader'
 import PerformanceMonitor from '@/components/optimized/PerformanceMonitor'
 // Optimize font loading with display: swap and font-display
 const inter = Inter({ 
-  subsets: ['latin'], 
-  variable: '--font-inter',
-  display: 'swap',
-  preload: true,
-  fallback: ['system-ui', '-apple-system', 'sans-serif'],
-  adjustFontFallback: true,
+  subsets: ['latin'],
+  display: 'swap',         // Prevents font flash
+  adjustFontFallback: true  // Keeps metrics consistent to reduce shift
 })
 
 // Lazy load analytics to not block initial render
@@ -110,7 +107,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className={inter.className} suppressHydrationWarning>
       <head>
         {/* Critical CSS for preventing CLS and render-blocking */}
         <CriticalCSS />
@@ -164,7 +161,7 @@ export default function RootLayout({
           }}
         />
       </head>
-      <body className={`${inter.variable} font-sans antialiased`}>
+      <body className="bg-black text-white antialiased">
         <ErrorBoundary>
           <AuthProvider>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false} forcedTheme="dark">

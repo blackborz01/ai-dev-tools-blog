@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from 'react'
 import { useSession, signOut } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   User, Settings, LogOut, ChevronDown, Shield, CreditCard,
   BarChart3, Bell, Moon, Sun, Sparkles, Crown, Zap,
@@ -108,10 +109,12 @@ export default function UserProfileDropdown() {
           {/* Avatar */}
           <div className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-transparent bg-gradient-to-br from-cyan-400 to-purple-600">
             {session.user.image ? (
-              <img 
+              <Image 
                 src={session.user.image} 
                 alt={session.user.name || 'User'}
-                className="w-full h-full object-cover"
+                width={40}
+                height={40}
+                className="object-cover"
               />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-gradient-to-br from-cyan-400 to-purple-600">
@@ -160,10 +163,12 @@ export default function UserProfileDropdown() {
                 {/* Avatar Container */}
                 <div className="relative w-20 h-20 rounded-full border-4 border-gray-950 overflow-hidden bg-gradient-to-br from-cyan-400 to-purple-600">
                   {session.user.image ? (
-                    <img 
+                    <Image 
                       src={session.user.image} 
                       alt={session.user.name || 'User'}
-                      className="w-full h-full object-cover"
+                      width={80}
+                      height={80}
+                      className="object-cover"
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">

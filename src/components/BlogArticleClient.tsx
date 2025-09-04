@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { 
   Terminal, Share2, Bookmark, Copy, ChevronRight, User, Calendar, Clock, BookOpen
 } from 'lucide-react'
@@ -294,11 +295,13 @@ export default function BlogArticleClient({ article, relatedArticles }: BlogArti
                   <div className="bg-white dark:bg-black text-black dark:text-white border-4 border-white dark:border-black p-6 brutal-shadow brutal-hover cursor-pointer">
                     {/* Thumbnail */}
                     {relatedArticle.thumbnail && (
-                      <div className="mb-4 -mx-6 -mt-6">
-                        <img 
+                      <div className="mb-4 -mx-6 -mt-6 relative h-48">
+                        <Image 
                           src={relatedArticle.thumbnail}
                           alt={relatedArticle.imageAlt || relatedArticle.title}
-                          className="w-full h-48 object-cover border-b-4 border-white dark:border-black"
+                          fill
+                          sizes="(max-width: 768px) 100vw, 33vw"
+                          className="object-cover border-b-4 border-white dark:border-black"
                         />
                       </div>
                     )}

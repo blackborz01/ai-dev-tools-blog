@@ -2,6 +2,7 @@
 
 import { useState, useEffect, useMemo } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
+import NextImage from 'next/image'
 import { 
   Search, Filter, Grid, List, Star, GitBranch, MessageSquare, 
   ExternalLink, ChevronRight, ChevronLeft, Loader2, Globe,
@@ -437,14 +438,18 @@ export default function ToolsPage() {
                             <div className="flex items-start gap-3 mb-3">
                               <div className="flex-shrink-0">
                                 {tool.logo ? (
-                                  <img 
-                                    src={tool.logo} 
-                                    alt={tool.name}
-                                    className="w-12 h-12 rounded-lg object-contain bg-white/10 p-1"
-                                  onError={(e) => {
-                                    e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="3" y="3" width="18" height="18" rx="2" ry="2"/%3E%3C/svg%3E'
-                                  }}
-                                />
+                                  <div className="relative w-12 h-12">
+                                    <NextImage 
+                                      src={tool.logo} 
+                                      alt={tool.name}
+                                      width={48}
+                                      height={48}
+                                      className="rounded-lg object-contain bg-white/10 p-1"
+                                      onError={(e) => {
+                                        e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="3" y="3" width="18" height="18" rx="2" ry="2"/%3E%3C/svg%3E'
+                                      }}
+                                    />
+                                  </div>
                               ) : (
                                 <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
                                   <Code className="w-6 h-6 text-white" />

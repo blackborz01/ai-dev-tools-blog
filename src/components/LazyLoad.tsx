@@ -2,6 +2,7 @@
 
 import dynamic from 'next/dynamic'
 import { Suspense } from 'react'
+import Image from 'next/image'
 
 // Loading component for lazy loaded components
 const LoadingSpinner = () => (
@@ -93,44 +94,64 @@ export const useLazyLoad = () => {
   return { ref, isIntersecting }
 }
 
-// Component for lazy loading images
+// Component for lazy loading images using Next.js Image
 export const LazyImage = ({ 
   src, 
   alt, 
   className = '',
-  priority = false 
+  priority = false,
+  width,
+  height,
+  fill = false,
+  sizes
 }: { 
   src: string
   alt: string
   className?: string
   priority?: boolean
+  width?: number
+  height?: number
+  fill?: boolean
+  sizes?: string
 }) => {
   const { ref, isIntersecting } = useLazyLoad()
 
-  if (priority) {
+  // If priority, load immediately with Next Image
+  if (priority || isIntersecting) {
+    if (fill) {
+      return (
+        <div ref={ref} className="relative w-full h-full">
+          <Image 
+            src={src} 
+            alt={alt} 
+            fill
+            sizes={sizes || "100vw"}
+            className={className}
+            priority={priority}
+          />
+        </div>
+      )
+    }
+    
     return (
-      <img 
-        src={src} 
-        alt={alt} 
-        className={className}
-        loading="eager"
-      />
+      <div ref={ref}>
+        <Image 
+          src={src} 
+          alt={alt} 
+          width={width || 800}
+          height={height || 600}
+          sizes={sizes}
+          className={className}
+          priority={priority}
+        />
+      </div>
     )
   }
 
+  // Placeholder while not intersecting
   return (
-    <div ref={ref} className={className}>
-      {isIntersecting ? (
-        <img 
-          src={src} 
-          alt={alt} 
-          className={className}
-          loading="lazy"
-          decoding="async"
-        />
-      ) : (
-        <div className={`${className} bg-gray-200 dark:bg-gray-800 animate-pulse`} />
-      )}
+    <div ref={ref} className={fill ? "relative w-full h-full" : ""}>
+      <div className={`${className} ${fill ? 'absolute inset-0' : `w-[${width}px] h-[${height}px]`} bg-gray-200 dark:bg-gray-800 animate-pulse`} />
     </div>
   )
 }

@@ -3,6 +3,7 @@
 import { useState, useEffect, useRef } from 'react'
 import Link from 'next/link'
 import { Boxes, Database, Activity, BarChart3, Search, ChevronRight, Sparkles, ArrowRight, Zap } from 'lucide-react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import NeuralNetworkAnimation from './NeuralNetworkAnimation'
 import { useDataStats, useAnimatedCount } from '@/hooks/useDataStats'
@@ -40,6 +41,8 @@ interface SearchResult {
 }
 
 export default function OriginalHero() {
+  // Reserve space to prevent layout shift
+  const heroMinHeight = 'min-h-[600px] md:min-h-[700px] lg:min-h-[800px]'
   const router = useRouter()
   const [searchQuery, setSearchQuery] = useState('')
   const [searchResults, setSearchResults] = useState<SearchResult[]>([])
@@ -217,7 +220,7 @@ export default function OriginalHero() {
   }
 
   return (
-    <section className="relative overflow-hidden pt-16 pb-12 md:pb-20 border-b-4 border-black dark:border-white bg-white dark:bg-black">
+    <section className={`relative overflow-hidden pt-16 pb-12 md:pb-20 border-b-4 border-black dark:border-white bg-white dark:bg-black ${heroMinHeight}`}>
       <div className="absolute inset-0 grid-pattern opacity-5"></div>
       <div className="container mx-auto px-4 relative">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
@@ -230,8 +233,8 @@ export default function OriginalHero() {
               <span className="font-mono text-xs md:text-sm opacity-60">// UPDATES DAILY</span>
             </div>
 
-            {/* Main Headline - Single H1 for SEO */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-4 md:mb-6">
+            {/* Main Headline - Reserve space */}
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-8xl font-black leading-none tracking-tighter mb-4 md:mb-6" style={{ minHeight: '200px' }}>
               <span className="block">THE ONLY</span>
               <span className="block">
                 <span className="ai-tools-gradient-text">VIBE CODING</span>
@@ -240,8 +243,8 @@ export default function OriginalHero() {
               <span className="block">YOU NEED</span>
             </h1>
 
-            {/* Description - Mobile Optimized with SEO Keywords */}
-            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold max-w-3xl mb-6 md:mb-8 text-gray-700 dark:text-gray-300 leading-relaxed">
+            {/* Description - Reserve space */}
+            <p className="text-base sm:text-lg md:text-xl lg:text-2xl font-semibold max-w-3xl mb-6 md:mb-8 text-gray-700 dark:text-gray-300 leading-relaxed" style={{ minHeight: '80px' }}>
               <span className="block mb-2">
                 <span className="text-cyan-600 dark:text-cyan-400">✓</span> Accelerate web development speed with performance optimization tools
               </span>
@@ -447,8 +450,8 @@ export default function OriginalHero() {
               )}
             </div>
 
-            {/* CTA Buttons - Premium Design */}
-            <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-12">
+            {/* CTA Buttons - Reserve space */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8 md:mb-12" style={{ minHeight: '64px' }}>
               {/* Primary CTA - Browse All Tools with Glowing Effect */}
               <Link 
                 href="/tools" 
@@ -494,8 +497,8 @@ export default function OriginalHero() {
               </button>
             </div>
 
-            {/* Live Stats - Solid Premium Design */}
-            <div className="grid grid-cols-4 gap-3">
+            {/* Live Stats - Reserve space */}
+            <div className="grid grid-cols-4 gap-3" style={{ minHeight: '100px' }}>
               {[
                 { label: "TOOLS", value: loading ? '...' : toolsCount.toLocaleString(), icon: Boxes },
                 { label: "MCP", value: loading ? '...' : mcpCount.toString(), icon: Database },
@@ -524,9 +527,9 @@ export default function OriginalHero() {
             </div>
           </div>
 
-          {/* Right Side - Reserved for Animation */}
-          <div className="hidden lg:flex lg:items-start" style={{ marginTop: '-280px' }}>
-            <div className="w-full" style={{ minHeight: '700px', minWidth: '700px' }}>
+          {/* Right Side - Reserved space for Animation */}
+          <div className="hidden lg:flex lg:items-start" style={{ marginTop: '-280px', minHeight: '700px', minWidth: '700px' }}>
+            <div className="w-full h-full">
               <NeuralNetworkAnimation />
             </div>
           </div>
