@@ -13,13 +13,14 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: null
   },
   { 
+    id: 'claude-code',
     name: 'Claude Code', 
-    url: 'https://claude.ai/code', 
+    url: 'https://www.anthropic.com/claude-code', 
     category: 'Code & Development', 
-    description: 'Anthropic\'s official VS Code extension for Claude AI with advanced code understanding and generation', 
-    pricing: 'freemium',
+    description: 'Anthropic\'s terminal-based AI coding assistant that turns ideas into code at thought-speed with full codebase awareness', 
+    pricing: 'paid',
     featured: true,
-    logo: null
+    logo: '/logos/claude-code.svg'
   },
   { 
     name: 'Windsurf', 
@@ -157,13 +158,14 @@ export const AI_TOOLS_MEGA_LIST = [
 
   // === CODE GENERATION PLATFORMS (10) ===
   { 
+    id: 'v0',
     name: 'v0 by Vercel', 
     url: 'https://v0.dev', 
     category: 'Code & Development', 
-    description: 'Generate React components and UIs from text descriptions using AI', 
+    description: 'AI-powered UI generation that transforms natural language into production-ready React components with shadcn/ui', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://v0.dev/favicon.ico'
+    logo: '/logos/v0.svg'
   },
   { 
     name: 'Bolt.new', 

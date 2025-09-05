@@ -739,103 +739,75 @@ console.log(result.code);`}</code>
       )}
 
       {/* Integration Ecosystem */}
+      {toolData.integrations && toolData.integrations.length > 0 && (
       <section ref={integrationsRef} id="integrations" className="py-20 px-4">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12">
             <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
-              Integration Ecosystem
+              Works With Your Stack
             </h2>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Seamlessly connects with your favorite tools
+              Seamlessly integrates with the tools you already use
             </p>
           </div>
 
-          {/* Integration Network Visualization */}
-          <div className="relative h-96 mb-12">
-            <div className="absolute inset-0 flex items-center justify-center">
-              {/* Center Node */}
-              <motion.div 
-                className="absolute w-32 h-32 bg-gradient-to-br from-purple-500 to-blue-500 rounded-full flex items-center justify-center z-10"
-                animate={{ 
-                  scale: [1, 1.1, 1],
-                }}
-                transition={{ duration: 3, repeat: Infinity }}
-              >
-                <span className="text-white font-bold text-lg">{toolData.name}</span>
-              </motion.div>
+          {/* Integration Grid with Categories */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4">
+            {toolData.integrations?.map((integration, index) => {
+              const getIntegrationIcon = () => {
+                switch(integration.type?.toLowerCase()) {
+                  case 'deployment': return Cloud
+                  case 'version control': return GitBranch
+                  case 'design': return Palette
+                  case 'framework': return Layers
+                  case 'library': return Package
+                  case 'component library': return Box
+                  case 'styling': return Palette
+                  case 'language': return Code
+                  case 'database': return Database
+                  case 'authentication': return Lock
+                  case 'analytics': return BarChart3
+                  case 'monitoring': return Activity
+                  case 'testing': return FlaskConical
+                  default: return Boxes
+                }
+              }
               
-              {/* Integration Nodes */}
-              {toolData.integrations?.slice(0, 8).map((integration, index) => {
-                const angle = (index * 360) / 8
-                const x = Math.cos(angle * Math.PI / 180) * 150
-                const y = Math.sin(angle * Math.PI / 180) * 150
-                
-                return (
-                  <motion.div
-                    key={index}
-                    className="absolute w-20 h-20 bg-white/10 backdrop-blur-xl rounded-full flex items-center justify-center border border-white/20"
-                    style={{ 
-                      transform: `translate(${x}px, ${y}px)`,
-                    }}
-                    initial={{ opacity: 0, scale: 0 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.2 }}
-                  >
-                    <span className="text-xs text-center text-white font-medium">{integration.name}</span>
-                  </motion.div>
-                )
-              })}
+              const Icon = getIntegrationIcon()
               
-              {/* Connection Lines */}
-              <svg className="absolute inset-0 w-full h-full pointer-events-none">
-                {toolData.integrations?.slice(0, 8).map((_, index) => {
-                  const angle = (index * 360) / 8
-                  const x = Math.cos(angle * Math.PI / 180) * 150 + 192
-                  const y = Math.sin(angle * Math.PI / 180) * 150 + 192
-                  
-                  return (
-                    <motion.line
-                      key={index}
-                      x1="192"
-                      y1="192"
-                      x2={x}
-                      y2={y}
-                      stroke="url(#gradient)"
-                      strokeWidth="2"
-                      initial={{ pathLength: 0 }}
-                      animate={{ pathLength: 1 }}
-                      transition={{ duration: 1, delay: index * 0.1 }}
-                    />
-                  )
-                })}
-                <defs>
-                  <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                    <stop offset="0%" stopColor="#8B5CF6" stopOpacity="0.5" />
-                    <stop offset="100%" stopColor="#3B82F6" stopOpacity="0.5" />
-                  </linearGradient>
-                </defs>
-              </svg>
-            </div>
-          </div>
-
-          {/* Integration List */}
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
-            {toolData.integrations?.map((integration, index) => (
-              <motion.div
-                key={index}
-                className="p-4 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 hover:border-purple-500/30 transition-all text-center"
-                whileHover={{ scale: 1.05 }}
-              >
-                <div className="w-12 h-12 bg-white/10 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                  <Boxes className="w-6 h-6 text-purple-400" />
-                </div>
-                <span className="text-sm text-gray-300">{integration.name}</span>
-              </motion.div>
-            ))}
+              return (
+                <motion.div
+                  key={index}
+                  className="group relative p-4 bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 hover:border-purple-500/30 transition-all"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.3, delay: index * 0.05 }}
+                  whileHover={{ y: -2 }}
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 bg-gradient-to-br from-purple-500/20 to-blue-500/20 rounded-lg flex items-center justify-center flex-shrink-0">
+                      <Icon className="w-5 h-5 text-purple-400" />
+                    </div>
+                    <div className="flex-grow">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span className="font-semibold text-white">{integration.name}</span>
+                      </div>
+                      {integration.type && (
+                        <span className="text-xs text-gray-500 bg-white/5 px-2 py-0.5 rounded-full">
+                          {integration.type}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                  {/* Hover effect */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-blue-500/5 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+                </motion.div>
+              )
+            })}
           </div>
         </div>
       </section>
+      )}
 
       {/* Testimonials / Reviews */}
       {toolData.testimonials && toolData.testimonials.length > 0 && (
