@@ -223,36 +223,38 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
                 <span className="text-sm font-medium text-purple-300">{toolData.category}</span>
               </motion.div>
 
-              {/* Title and Logo */}
-              <div className="flex items-center gap-4 mb-6">
+              {/* Logo */}
+              <div className="mb-6">
                 {toolData.logo && !toolData.logo.startsWith('http') ? (
                   <motion.div 
-                    className="flex-shrink-0"
-                    whileHover={{ scale: 1.05 }}
+                    className="inline-block"
+                    whileHover={{ scale: 1.1 }}
                   >
                     <NextImage 
                       src={toolData.logo} 
                       alt={toolData.name}
-                      width={40}
-                      height={40}
-                      className="h-10 w-auto object-contain"
-                      style={{ width: 'auto', height: '40px' }}
+                      width={80}
+                      height={80}
+                      className="h-20 w-auto object-contain rounded-xl"
+                      style={{ width: 'auto', height: '80px' }}
                     />
                   </motion.div>
                 ) : (
                   <motion.div 
-                    className="w-10 h-10 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center flex-shrink-0"
+                    className="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center inline-flex"
                     whileHover={{ scale: 1.1, rotate: 5 }}
                   >
-                    <Code className="w-6 h-6 text-white" />
+                    <Code className="w-12 h-12 text-white" />
                   </motion.div>
                 )}
-                <div>
-                  <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
-                    {toolData.name}
-                  </h1>
-                  <p className="text-xl text-gray-300 mt-2">{toolData.tagline}</p>
-                </div>
+              </div>
+
+              {/* Title and Tagline */}
+              <div className="mb-6">
+                <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
+                  {toolData.name}
+                </h1>
+                <p className="text-xl text-gray-300 mt-2">{toolData.tagline}</p>
               </div>
 
               {/* Description */}
