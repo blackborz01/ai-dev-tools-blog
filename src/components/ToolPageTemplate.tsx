@@ -223,32 +223,6 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
                 <span className="text-sm font-medium text-purple-300">{toolData.category}</span>
               </motion.div>
 
-              {/* Logo */}
-              <div className="mb-6">
-                {toolData.logo && !toolData.logo.startsWith('http') ? (
-                  <motion.div 
-                    className="inline-block"
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    <NextImage 
-                      src={toolData.logo} 
-                      alt={toolData.name}
-                      width={80}
-                      height={80}
-                      className="h-20 w-auto object-contain rounded-xl"
-                      style={{ width: 'auto', height: '80px' }}
-                    />
-                  </motion.div>
-                ) : (
-                  <motion.div 
-                    className="w-20 h-20 rounded-xl bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center inline-flex"
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                  >
-                    <Code className="w-12 h-12 text-white" />
-                  </motion.div>
-                )}
-              </div>
-
               {/* Title and Tagline */}
               <div className="mb-6">
                 <h1 className="text-5xl md:text-6xl font-black bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent">
