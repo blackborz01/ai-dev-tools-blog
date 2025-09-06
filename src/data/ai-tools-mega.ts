@@ -23,6 +23,16 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: '/logos/claude-code.svg'
   },
   { 
+    id: 'bolt-new',
+    name: 'Bolt.new', 
+    url: 'https://bolt.new', 
+    category: 'Code & Development', 
+    description: 'StackBlitz\'s AI-powered full-stack development in browser with WebContainers - build, run, and deploy without any setup', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/bolt-new.svg'
+  },
+  { 
     name: 'Windsurf', 
     url: 'https://codeium.com/windsurf', 
     category: 'Code & Development', 
