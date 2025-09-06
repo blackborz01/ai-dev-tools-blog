@@ -1,7 +1,7 @@
 'use client'
 
 import ToolPageTemplate from '@/components/ToolPageTemplate'
-import { Terminal, Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users, Globe, Database, Lock, Activity, FileCode, Sparkles, Command } from 'lucide-react'
+import { Terminal, Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users, Globe, Database, Lock, Activity, FileCode, Sparkles, Command, Building2, Briefcase, GraduationCap, Cpu } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 
@@ -256,7 +256,68 @@ const claudeCodeData = {
       question: 'Can Claude Code submit pull requests?',
       answer: 'Yes, Claude Code integrates with GitHub and GitLab to handle complete workflows, from reading issues to implementing fixes and submitting pull requests, all from your terminal.'
     }
-  ]
+  ],
+
+  whoUsesIt: {
+    title: 'Who Uses Claude Code?',
+    segments: [
+      {
+        name: 'Professional Developers',
+        description: 'Over 100,000 developers use {toolData.name} for complex coding tasks. Terminal-native developers appreciate its Unix philosophy and scriptable nature, with many reporting 10x productivity gains on complex projects.',
+        icon: Terminal,
+        stats: '100K+ users'
+      },
+      {
+        name: 'Startups & Tech Companies',
+        description: 'Fast-moving teams leverage {toolData.name} to ship features rapidly. The tool\'s ability to handle entire features from description to implementation makes it invaluable for startups needing to move quickly.',
+        icon: Rocket,
+        stats: 'Growing fast'
+      },
+      {
+        name: 'Enterprise Teams',
+        description: 'Large organizations adopt {toolData.name} for its enterprise security features and Team Premium plans. With dedicated support and enhanced context windows, enterprises can maintain code quality at scale.',
+        icon: Building2,
+        stats: 'Enterprise ready'
+      },
+      {
+        name: 'Open Source Maintainers',
+        description: 'Project maintainers use {toolData.name} to accelerate development and handle complex refactoring. The tool\'s full codebase awareness makes it perfect for maintaining large open source projects.',
+        icon: GitBranch,
+        stats: 'OSS friendly'
+      }
+    ]
+  },
+
+  whatMakesItUnique: {
+    title: 'What Makes Claude Code Unique?',
+    points: [
+      {
+        title: 'Terminal-First Philosophy',
+        description: 'Unlike IDE extensions, {toolData.name} operates entirely from your terminal. This Unix-style approach enables powerful scripting, CI/CD integration, and workflow automation that GUI tools can\'t match.',
+        icon: Terminal
+      },
+      {
+        title: 'Full Codebase Context',
+        description: '{toolData.name} maintains awareness of your entire project structure, not just open files. It understands relationships between files, making it powerful for refactoring and feature development across multiple files.',
+        icon: FileCode
+      },
+      {
+        title: 'Model Context Protocol (MCP)',
+        description: 'Connect to external data sources including Google Drive, Figma, Slack, and custom tools. MCP enables workflows where {toolData.name} can read designs, understand requirements, and implement features seamlessly.',
+        icon: Database
+      },
+      {
+        title: 'Agentic Capabilities',
+        description: 'Goes beyond code completion to actual problem-solving. {toolData.name} can plan multi-step tasks, implement entire features from descriptions, and handle complex debugging autonomously.',
+        icon: Brain
+      },
+      {
+        title: 'Choice of Claude Models',
+        description: 'Access to Opus 4.1 for complex reasoning and Sonnet 4 for faster responses. Team Premium users get both models, allowing them to choose based on task complexity and urgency.',
+        icon: Cpu
+      }
+    ]
+  }
 }
 
 const ClaudeCodeArticle = () => (

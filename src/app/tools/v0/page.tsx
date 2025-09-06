@@ -1,7 +1,7 @@
 'use client'
 
 import ToolPageTemplate from '@/components/ToolPageTemplate'
-import { Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users, Globe, Palette, Layers, Cpu, Image, FileCode, Sparkles, Package } from 'lucide-react'
+import { Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users, Globe, Palette, Layers, Cpu, Image, FileCode, Sparkles, Package, Building2, Briefcase, GraduationCap, Component } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 
 const v0Data = {
@@ -258,7 +258,68 @@ const v0Data = {
       question: 'Can I customize the shadcn/ui components v0 generates?',
       answer: 'Absolutely! All generated components are fully customizable. You can modify styles, behavior, and structure either through v0\'s chat interface, Design Mode, or by editing the exported code directly.'
     }
-  ]
+  ],
+
+  whoUsesIt: {
+    title: 'Who Uses v0 by Vercel?',
+    segments: [
+      {
+        name: 'Frontend Developers',
+        description: 'Thousands of React developers use {toolData.name} to rapidly prototype and build UI components. It\'s particularly popular among developers working with Next.js and Tailwind CSS who need to ship features quickly.',
+        icon: Code,
+        stats: 'Growing daily'
+      },
+      {
+        name: 'Designers & Product Teams',
+        description: 'Product designers leverage {toolData.name} to turn mockups into working code without deep technical knowledge. The visual Design Mode bridges the gap between design and development teams.',
+        icon: Palette,
+        stats: 'Design to code'
+      },
+      {
+        name: 'Startups & Agencies',
+        description: 'Fast-moving teams use {toolData.name} to accelerate client projects and MVPs. The ability to generate production-ready components in minutes makes it invaluable for rapid iteration.',
+        icon: Rocket,
+        stats: 'Ship faster'
+      },
+      {
+        name: 'Students & Learners',
+        description: 'Coding bootcamps and self-taught developers use {toolData.name} to learn React best practices. The generated code serves as educational examples of modern component architecture.',
+        icon: GraduationCap,
+        stats: 'Learn by doing'
+      }
+    ]
+  },
+
+  whatMakesItUnique: {
+    title: 'What Makes v0 Unique?',
+    points: [
+      {
+        title: 'Specialized UI Focus',
+        description: 'While other tools generate general code, {toolData.name} specializes exclusively in React UI components with shadcn/ui and Tailwind CSS. This focus results in higher quality, more consistent output.',
+        icon: Component
+      },
+      {
+        title: 'Visual Design Mode',
+        description: 'Edit generated components visually without touching code. {toolData.name}\'s Design Mode allows real-time adjustments to spacing, colors, and layout through an intuitive interface.',
+        icon: Palette
+      },
+      {
+        title: 'Production-Ready Code',
+        description: 'Components follow React best practices with proper TypeScript types, accessibility features, and responsive design. Code is clean, maintainable, and ready for production deployment.',
+        icon: Shield
+      },
+      {
+        title: 'Vercel Ecosystem Integration',
+        description: 'Seamless deployment to Vercel\'s platform with one click. Deep integration with Next.js and the Vercel stack ensures optimal performance and developer experience.',
+        icon: Globe
+      },
+      {
+        title: 'Credit-Based Flexibility',
+        description: 'Pay only for what you use with a transparent credit system. Free tier includes $5 monthly credits, perfect for side projects and experimentation.',
+        icon: Zap
+      }
+    ]
+  }
 }
 
 const V0Article = () => (
