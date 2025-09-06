@@ -92,6 +92,24 @@ interface ToolPageTemplateProps {
       question: string
       answer: string
     }>
+    whoUsesIt?: {
+      title: string
+      segments: Array<{
+        name: string
+        description: string
+        icon?: any
+        stats?: string
+      }>
+    }
+    whatMakesItUnique?: {
+      title: string
+      points: Array<{
+        title: string
+        description: string
+        icon?: any
+        link?: string
+      }>
+    }
   }
 }
 
@@ -104,7 +122,9 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
   
   const overviewRef = useRef<HTMLDivElement>(null)
   const featuresRef = useRef<HTMLDivElement>(null)
+  const whoUsesRef = useRef<HTMLDivElement>(null)
   const pricingRef = useRef<HTMLDivElement>(null)
+  const uniqueRef = useRef<HTMLDivElement>(null)
   const integrationsRef = useRef<HTMLDivElement>(null)
   const reviewsRef = useRef<HTMLDivElement>(null)
   const resourcesRef = useRef<HTMLDivElement>(null)
@@ -128,7 +148,9 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
       const sections = [
         { id: 'overview', ref: overviewRef },
         { id: 'features', ref: featuresRef },
+        ...(toolData.whoUsesIt ? [{ id: 'who-uses-it', ref: whoUsesRef }] : []),
         { id: 'pricing', ref: pricingRef },
+        ...(toolData.whatMakesItUnique ? [{ id: 'unique-features', ref: uniqueRef }] : []),
         { id: 'integrations', ref: integrationsRef },
         { id: 'reviews', ref: reviewsRef },
         { id: 'resources', ref: resourcesRef }
@@ -151,7 +173,7 @@ export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
 
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+  }, [toolData.whoUsesIt, toolData.whatMakesItUnique])
 
   const getPricingGradient = (type: string) => {
     const gradients = {
@@ -463,13 +485,15 @@ console.log(result.code);`}</code>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex items-center gap-8 overflow-x-auto py-4 scrollbar-hide">
             {[
-              { id: 'overview', ref: overviewRef },
-              { id: 'features', ref: featuresRef },
-              { id: 'pricing', ref: pricingRef },
-              { id: 'integrations', ref: integrationsRef },
-              { id: 'reviews', ref: reviewsRef },
-              { id: 'resources', ref: resourcesRef }
-            ].map(({ id, ref }) => (
+              { id: 'overview', ref: overviewRef, label: 'Overview' },
+              { id: 'features', ref: featuresRef, label: 'Features' },
+              ...(toolData.whoUsesIt ? [{ id: 'who-uses-it', ref: whoUsesRef, label: 'Who Uses It' }] : []),
+              { id: 'pricing', ref: pricingRef, label: 'Pricing' },
+              ...(toolData.whatMakesItUnique ? [{ id: 'unique-features', ref: uniqueRef, label: 'What Makes It Unique' }] : []),
+              { id: 'integrations', ref: integrationsRef, label: 'Integrations' },
+              { id: 'reviews', ref: reviewsRef, label: 'Reviews' },
+              { id: 'resources', ref: resourcesRef, label: 'Resources' }
+            ].map(({ id, ref, label }) => (
               <button
                 key={id}
                 onClick={() => {
@@ -484,7 +508,7 @@ console.log(result.code);`}</code>
                   }
                 `}
               >
-                {id}
+                {label}
               </button>
             ))}
           </div>
@@ -610,6 +634,117 @@ console.log(result.code);`}</code>
         </div>
       </section>
 
+      {/* Who Uses This Tool Section */}
+      {toolData.whoUsesIt && (
+        <section ref={whoUsesRef} id="who-uses-it" className="py-20 px-4 bg-gradient-to-b from-transparent via-blue-900/10 to-transparent">
+          <div className="max-w-7xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                {toolData.whoUsesIt.title || `Who Uses ${toolData.name}?`}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Trusted by millions of developers and thousands of organizations worldwide
+              </p>
+            </motion.div>
+
+            <div className="grid md:grid-cols-2 gap-8">
+              {toolData.whoUsesIt.segments.map((segment, index) => {
+                const Icon = segment.icon || Users
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className="relative group"
+                  >
+                    <div className="p-8 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-blue-500/30 transition-all">
+                      <div className="flex items-start gap-6">
+                        <div className="flex-shrink-0">
+                          <div className="w-16 h-16 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center">
+                            <Icon className="w-8 h-8 text-blue-400" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <div className="flex items-center gap-3 mb-3">
+                            <h3 className="text-2xl font-bold text-white">{segment.name}</h3>
+                            {segment.stats && (
+                              <span className="px-3 py-1 bg-blue-500/20 rounded-full text-sm font-medium text-blue-300">
+                                {segment.stats}
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-gray-300 leading-relaxed">
+                            {segment.description.replace('{toolData.name}', toolData.name)}
+                          </p>
+                          
+                          {/* Internal Links */}
+                          {index === 0 && (
+                            <p className="mt-4 text-sm text-gray-400">
+                              Learn how <Link href="/tools" className="text-blue-400 hover:text-blue-300 underline">other AI development tools</Link> compare for enterprise use.
+                            </p>
+                          )}
+                          {index === 1 && (
+                            <p className="mt-4 text-sm text-gray-400">
+                              Compare with <Link href="/tools/cursor" className="text-blue-400 hover:text-blue-300 underline">Cursor</Link> and <Link href="/tools/v0" className="text-blue-400 hover:text-blue-300 underline">v0 by Vercel</Link> for individual developers.
+                            </p>
+                          )}
+                          
+                          {/* External Links */}
+                          {index === 2 && (
+                            <a 
+                              href="https://github.com/customer-stories" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 mt-4 text-sm text-blue-400 hover:text-blue-300"
+                            >
+                              View case studies <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          {index === 3 && (
+                            <a 
+                              href="https://education.github.com" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-2 mt-4 text-sm text-blue-400 hover:text-blue-300"
+                            >
+                              Learn about free access <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* Additional SEO Content */}
+            <motion.div 
+              className="mt-12 p-8 bg-gradient-to-r from-blue-500/10 to-cyan-500/10 rounded-2xl border border-blue-500/20"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+            >
+              <p className="text-center text-gray-300">
+                {toolData.name} has grown to over <strong className="text-white">20 million users</strong> worldwide with{' '}
+                <strong className="text-white">1.3 million paid subscribers</strong>. Join the world's most adopted AI developer tool used by{' '}
+                <strong className="text-white">one-third of Fortune 500 companies</strong>.{' '}
+                <Link href="/blog" className="text-blue-400 hover:text-blue-300 underline">
+                  Read more success stories
+                </Link>{' '}
+                on our blog.
+              </p>
+            </motion.div>
+          </div>
+        </section>
+      )}
+
       {/* Pricing Section */}
       {toolData.pricing.plans && (
       <section ref={pricingRef} id="pricing" className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
@@ -712,6 +847,157 @@ console.log(result.code);`}</code>
           </div>
         </div>
       </section>
+      )}
+
+      {/* What Makes It Unique Section */}
+      {toolData.whatMakesItUnique && (
+        <section ref={uniqueRef} id="unique-features" className="py-20 px-4 bg-gradient-to-b from-transparent via-purple-900/10 to-transparent">
+          <div className="max-w-7xl mx-auto">
+            <motion.div 
+              className="text-center mb-16"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+            >
+              <h2 className="text-4xl md:text-5xl font-black mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent">
+                {toolData.whatMakesItUnique.title || `What Makes ${toolData.name} Unique?`}
+              </h2>
+              <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+                Key differentiators that set {toolData.name} apart from alternatives
+              </p>
+            </motion.div>
+
+            <div className="space-y-6">
+              {toolData.whatMakesItUnique.points.map((point, index) => {
+                const Icon = point.icon || Sparkles
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    whileHover={{ x: 10 }}
+                    className="relative"
+                  >
+                    <div className="p-6 bg-gradient-to-r from-white/5 to-white/10 backdrop-blur-xl rounded-2xl border border-white/10 hover:border-purple-500/30 transition-all">
+                      <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0">
+                          <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                            <Icon className="w-7 h-7 text-white" />
+                          </div>
+                        </div>
+                        <div className="flex-1">
+                          <h3 className="text-xl font-bold text-white mb-2">{point.title}</h3>
+                          <p className="text-gray-300 leading-relaxed">
+                            {point.description.replace('{toolData.name}', toolData.name)}
+                          </p>
+                          
+                          {/* Dynamic Links based on index */}
+                          {index === 0 && (
+                            <div className="mt-4 flex items-center gap-4">
+                              <Link href="/tools/claude-code" className="text-purple-400 hover:text-purple-300 text-sm underline">
+                                Compare with Claude Code
+                              </Link>
+                              <a 
+                                href="https://github.com/newsroom/press-releases/github-universe-2024" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300"
+                              >
+                                Official announcement <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+                          )}
+                          
+                          {index === 1 && (
+                            <div className="mt-4">
+                              <Link href="/tools" className="text-purple-400 hover:text-purple-300 text-sm underline">
+                                Explore GitHub alternatives
+                              </Link>
+                              <span className="mx-2 text-gray-500">•</span>
+                              <a 
+                                href="https://docs.github.com/en/copilot" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300"
+                              >
+                                Documentation <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+                          )}
+                          
+                          {index === 2 && (
+                            <a 
+                              href="https://github.blog/news-insights/product-news/github-copilot-meet-the-new-coding-agent/" 
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 mt-4 text-sm text-purple-400 hover:text-purple-300"
+                            >
+                              Learn about coding agents <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                          
+                          {index === 3 && (
+                            <div className="mt-4">
+                              <Link href="/blog" className="text-purple-400 hover:text-purple-300 text-sm underline">
+                                Read security insights
+                              </Link>
+                              <span className="mx-2 text-gray-500">•</span>
+                              <a 
+                                href="https://github.com/security" 
+                                target="_blank" 
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-sm text-purple-400 hover:text-purple-300"
+                              >
+                                Security policies <ExternalLink className="w-3 h-3" />
+                              </a>
+                            </div>
+                          )}
+                          
+                          {index === 4 && (
+                            <Link href="/tools" className="inline-block mt-4 text-purple-400 hover:text-purple-300 text-sm underline">
+                              View all free AI tools
+                            </Link>
+                          )}
+                          
+                          {point.link && (
+                            <a 
+                              href={point.link}
+                              target="_blank" 
+                              rel="noopener noreferrer"
+                              className="inline-flex items-center gap-1 mt-4 text-sm text-purple-400 hover:text-purple-300"
+                            >
+                              Learn more <ExternalLink className="w-3 h-3" />
+                            </a>
+                          )}
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                )
+              })}
+            </div>
+
+            {/* SEO-Rich Summary */}
+            <motion.div 
+              className="mt-12 text-center"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.5 }}
+            >
+              <p className="text-gray-300 max-w-4xl mx-auto">
+                {toolData.name} stands out with its <strong className="text-white">multi-model AI choice</strong>,{' '}
+                <strong className="text-white">native GitHub integration</strong>, and{' '}
+                <strong className="text-white">coding agent capabilities</strong>. Unlike competitors locked to single models,{' '}
+                {toolData.name} offers flexibility with Claude 3.5 Sonnet, GPT-4o, and Gemini 1.5 Pro.{' '}
+                <Link href="/tools/github-copilot" className="text-purple-400 hover:text-purple-300 underline">
+                  Compare all features
+                </Link>{' '}
+                to find the right tool for your workflow.
+              </p>
+            </motion.div>
+          </div>
+        </section>
       )}
 
       {/* Integration Ecosystem */}

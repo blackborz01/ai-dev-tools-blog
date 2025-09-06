@@ -1,7 +1,7 @@
 'use client'
 
 import ToolPageTemplate from '@/components/ToolPageTemplate'
-import { Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users } from 'lucide-react'
+import { Code, Zap, Shield, Brain, Rocket, Target, GitBranch, Users, Building2, Globe2, Network, GraduationCap } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 
 const githubCopilotData = {
@@ -234,7 +234,68 @@ const githubCopilotData = {
       question: 'Does it work offline?',
       answer: 'No, GitHub Copilot requires an internet connection to communicate with the AI model hosted on GitHub\'s servers for generating code suggestions.'
     }
-  ]
+  ],
+
+  whoUsesIt: {
+    title: 'Who Uses GitHub Copilot?',
+    segments: [
+      {
+        name: 'Fortune 500 Companies',
+        description: 'Over 77,000 organizations including BBVA, FedEx, H&M, and Infosys trust {toolData.name}. One-third of Fortune 500 companies have adopted it, with 90% of Fortune 100 companies using GitHub\'s ecosystem.',
+        icon: Building2,
+        stats: '50,000+ orgs'
+      },
+      {
+        name: 'Individual Developers',
+        description: 'With over 20 million users worldwide and 1.3 million paid subscribers, {toolData.name} is the world\'s most adopted AI developer tool. 67% of users utilize it at least 5 days per week.',
+        icon: Users,
+        stats: '20M+ developers'
+      },
+      {
+        name: 'Enterprise Teams',
+        description: 'Enterprise adoption grew 75% quarter-over-quarter in 2024. 88% of developers report increased productivity, with up to 55% faster code writing.',
+        icon: Network,
+        stats: '75% YoY growth'
+      },
+      {
+        name: 'Open Source Contributors',
+        description: 'Free access for verified students, teachers, and open source maintainers. 80% of provided licenses are actively used, showing strong community adoption.',
+        icon: GraduationCap,
+        stats: 'Free for OSS'
+      }
+    ]
+  },
+
+  whatMakesItUnique: {
+    title: 'What Makes GitHub Copilot Unique?',
+    points: [
+      {
+        title: 'Multi-Model AI Choice (New in 2024)',
+        description: 'Unlike competitors locked to single models, {toolData.name} offers choice between Claude 3.5 Sonnet, GPT-4o, Gemini 1.5 Pro, and o1-preview models. Switch models based on task complexity.',
+        icon: Brain
+      },
+      {
+        title: 'Native GitHub Integration',
+        description: 'Deeply integrated into GitHub\'s ecosystem with access to repositories, issues, and Actions. Acts like an onboarded team member from day one, unlike standalone tools.',
+        icon: GitBranch
+      },
+      {
+        title: 'Coding Agent Capabilities',
+        description: 'Delegate entire issues to Copilot\'s coding agent. It plans, writes, tests, and submits pull requests automatically using GitHub Actions - beyond simple code completion.',
+        icon: Rocket
+      },
+      {
+        title: 'Enterprise Security & Privacy',
+        description: 'GitHub doesn\'t use Business or Enterprise data to train models. Includes code referencing filter to detect public code matches. SOC 2 Type II compliant.',
+        icon: Shield
+      },
+      {
+        title: 'Free Tier Available',
+        description: 'New in 2024: GitHub Copilot Free offers 50 agent requests and 2,000 completions monthly. The only major AI coding assistant with a generous free tier.',
+        icon: Zap
+      }
+    ]
+  }
 }
 
 export default function GitHubCopilotPage() {
