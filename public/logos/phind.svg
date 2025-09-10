@@ -1,0 +1,36 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#phind-gradient-bg)"/>
+  
+  <!-- Phind search lens with code element -->
+  <g transform="translate(24, 24)">
+    <!-- Search circle -->
+    <circle cx="-4" cy="-4" r="10" stroke="white" stroke-width="2.5" fill="none" opacity="0.95"/>
+    
+    <!-- Code brackets inside lens -->
+    <text x="-10" y="-2" font-family="monospace" font-size="12" font-weight="bold" fill="white" opacity="0.9">&lt;/&gt;</text>
+    
+    <!-- Search handle -->
+    <line x1="3" y1="3" x2="10" y2="10" stroke="white" stroke-width="3" stroke-linecap="round" opacity="0.95"/>
+    
+    <!-- Magnifying glass highlight -->
+    <circle cx="-6" cy="-6" r="2" fill="white" opacity="0.7"/>
+  </g>
+  
+  <!-- Speed lines indicating fast search -->
+  <line x1="8" y1="24" x2="12" y2="24" stroke="white" stroke-width="1.5" opacity="0.6" stroke-linecap="round"/>
+  <line x1="6" y1="20" x2="10" y2="20" stroke="white" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  <line x1="6" y1="28" x2="10" y2="28" stroke="white" stroke-width="1.5" opacity="0.5" stroke-linecap="round"/>
+  
+  <!-- AI sparkles -->
+  <circle cx="38" cy="10" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="10" cy="38" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.6"/>
+  
+  <defs>
+    <linearGradient id="phind-gradient-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+  </defs>
+</svg>

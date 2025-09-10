@@ -111,9 +111,10 @@ interface ToolPageTemplateProps {
       }>
     }
   }
+  children?: React.ReactNode
 }
 
-export default function ToolPageTemplate({ toolData }: ToolPageTemplateProps) {
+export default function ToolPageTemplate({ toolData, children }: ToolPageTemplateProps) {
   const [activeTab, setActiveTab] = useState('overview')
   const [copied, setCopied] = useState(false)
   const [selectedPlan, setSelectedPlan] = useState(1)
@@ -480,6 +481,15 @@ console.log(result.code);`}</code>
         </div>
       </motion.section>
 
+      {/* Article Content (Children) */}
+      {children && (
+        <section className="py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            {children}
+          </div>
+        </section>
+      )}
+
       {/* Navigation Tabs */}
       <section className="sticky top-0 z-40 bg-black/80 backdrop-blur-xl border-y border-white/10">
         <div className="max-w-7xl mx-auto px-4">
@@ -633,6 +643,15 @@ console.log(result.code);`}</code>
           </motion.div>
         </div>
       </section>
+
+      {/* SEO Content Section - Between Features and Who Uses It */}
+      {toolData.seoContent && (
+        <section className="py-16 px-4">
+          <div className="max-w-4xl mx-auto">
+            {toolData.seoContent}
+          </div>
+        </section>
+      )}
 
       {/* Who Uses This Tool Section */}
       {toolData.whoUsesIt && (

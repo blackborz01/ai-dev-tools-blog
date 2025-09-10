@@ -1,0 +1,19 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#supabase-bg)"/>
+  <path d="M30.8 37.2C30.2 38.1 28.8 37.7 28.8 36.6V24H38.4C39.8 24 40.5 25.7 39.7 26.8L30.8 37.2Z" fill="url(#supabase-gradient)"/>
+  <path d="M17.2 10.8C17.8 9.9 19.2 10.3 19.2 11.4V24H9.6C8.2 24 7.5 22.3 8.3 21.2L17.2 10.8Z" fill="url(#supabase-gradient2)"/>
+  <defs>
+    <linearGradient id="supabase-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#1F1F1F"/>
+      <stop offset="1" stop-color="#0F0F0F"/>
+    </linearGradient>
+    <linearGradient id="supabase-gradient" x1="28.8" y1="24" x2="39.7" y2="37.2" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3ECF8E"/>
+      <stop offset="1" stop-color="#249361"/>
+    </linearGradient>
+    <linearGradient id="supabase-gradient2" x1="19.2" y1="24" x2="8.3" y2="10.8" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#3ECF8E"/>
+      <stop offset="1" stop-color="#249361"/>
+    </linearGradient>
+  </defs>
+</svg>

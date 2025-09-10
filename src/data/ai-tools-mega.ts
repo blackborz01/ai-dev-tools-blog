@@ -4,13 +4,14 @@
 export const AI_TOOLS_MEGA_LIST = [
   // === AI CODE EDITORS (10) ===
   { 
+    id: 'cursor',
     name: 'Cursor', 
     url: 'https://cursor.sh', 
     category: 'Code & Development', 
     description: 'AI-first code editor built on VS Code with GPT-4 and Claude integration for autonomous coding with Agent Mode', 
     pricing: 'freemium',
     featured: true,
-    logo: null
+    logo: '/logos/cursor.svg'
   },
   { 
     id: 'claude-code',
@@ -33,13 +34,14 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: '/logos/bolt-new.svg'
   },
   { 
+    id: 'windsurf',
     name: 'Windsurf', 
     url: 'https://codeium.com/windsurf', 
     category: 'Code & Development', 
     description: 'Next-gen AI IDE by Codeium with Flow mode for seamless human-AI collaboration', 
     pricing: 'freemium',
     featured: true,
-    logo: null
+    logo: '/logos/windsurf.svg'
   },
   { 
     name: 'Zed AI', 
@@ -49,46 +51,64 @@ export const AI_TOOLS_MEGA_LIST = [
     pricing: 'free'
   },
   { 
+    id: 'replit-ai',
     name: 'Replit AI', 
     url: 'https://replit.com', 
     category: 'Code & Development', 
     description: 'Browser-based IDE with AI code completion, generation, and deployment in one platform', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/replit.svg'
   },
   { 
+    id: 'project-idx',
     name: 'Project IDX', 
     url: 'https://idx.dev', 
     category: 'Code & Development', 
     description: 'Google\'s AI-powered cloud IDE with Gemini integration for full-stack development', 
-    pricing: 'free'
+    pricing: 'free',
+    featured: true,
+    logo: '/logos/project-idx.svg'
   },
   { 
+    id: 'continue-dev',
     name: 'Continue.dev', 
     url: 'https://continue.dev', 
     category: 'Code & Development', 
     description: 'Open-source AI code assistant that integrates with any IDE and any LLM', 
-    pricing: 'free'
+    pricing: 'free',
+    featured: true,
+    logo: '/logos/continue-dev.svg'
   },
   { 
+    id: 'pieces-for-developers',
     name: 'Pieces for Developers', 
     url: 'https://pieces.app', 
     category: 'Code & Development', 
     description: 'AI-powered code snippet manager with context-aware search and generation', 
-    pricing: 'freemium'
+    pricing: 'free',
+    featured: true,
+    logo: '/logos/pieces.svg'
   },
   { 
-    name: 'Codespaces AI', 
+    id: 'codespaces-ai',
+    name: 'GitHub Codespaces', 
     url: 'https://github.com/features/codespaces', 
     category: 'Code & Development', 
-    description: 'GitHub\'s cloud development environment with Copilot integration', 
-    pricing: 'freemium'
+    description: 'GitHub\'s cloud development environment with native Copilot AI integration and Agent Mode', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/codespaces.svg'
   },
   { 
-    name: 'Codeium Editor', 
+    id: 'codeium-editor',
+    name: 'Codeium', 
     url: 'https://codeium.com', 
     category: 'Code & Development', 
-    description: 'Free AI code completion tool supporting 70+ languages across all major IDEs', 
-    pricing: 'free'
+    description: 'Free AI code completion tool supporting 70+ languages across 40+ IDEs with unlimited usage', 
+    pricing: 'free',
+    featured: true,
+    logo: '/logos/codeium.svg'
   },
 
   // === AI PAIR PROGRAMMING (10) ===
@@ -103,67 +123,94 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: null
   },
   { 
+    id: 'amazon-codewhisperer',
     name: 'Amazon CodeWhisperer', 
     url: 'https://aws.amazon.com/codewhisperer', 
     category: 'Chatbots & Assistants', 
-    description: 'Amazon\'s AI coding companion with AWS optimization and security scanning', 
-    pricing: 'freemium'
+    description: 'Now Amazon Q Developer - AWS-optimized AI with security scanning and code migration', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/codewhisperer.svg'
   },
   { 
+    id: 'tabnine',
     name: 'Tabnine', 
     url: 'https://tabnine.com', 
     category: 'Chatbots & Assistants', 
-    description: 'AI assistant that learns from your codebase for personalized completions', 
-    pricing: 'freemium'
+    description: 'Enterprise AI coding assistant with zero data retention, air-gapped deployment, and team learning', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/tabnine.svg'
   },
   { 
-    name: 'Bito AI', 
-    url: 'https://bito.ai', 
+    id: 'claude',
+    name: 'Claude', 
+    url: 'https://claude.ai', 
     category: 'Chatbots & Assistants', 
-    description: 'AI that understands your code with 10x faster development through chat and completions', 
-    pricing: 'freemium'
+    description: 'Anthropic\'s AI with Claude 4 models, 200K context, extended thinking, and Artifacts', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/claude.svg'
   },
   { 
-    name: 'CodeGPT', 
-    url: 'https://codegpt.co', 
+    id: 'perplexity',
+    name: 'Perplexity AI', 
+    url: 'https://perplexity.ai', 
     category: 'Chatbots & Assistants', 
-    description: 'VS Code extension bringing ChatGPT directly into your editor', 
-    pricing: 'freemium'
+    description: 'AI-powered search engine with real-time data, excellent for developer research', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/perplexity.svg'
   },
   { 
+    id: 'sourcegraph-cody',
     name: 'Sourcegraph Cody', 
     url: 'https://sourcegraph.com/cody', 
     category: 'Chatbots & Assistants', 
-    description: 'AI coding assistant with deep codebase context and multi-repo understanding', 
-    pricing: 'freemium'
+    description: 'Enterprise AI assistant with multi-repo context, shared team prompts, and zero data retention', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/sourcegraph-cody.svg'
   },
   { 
+    id: 'jetbrains-ai-assistant',
     name: 'JetBrains AI Assistant', 
     url: 'https://jetbrains.com/ai', 
     category: 'Chatbots & Assistants', 
-    description: 'Native AI integration across all JetBrains IDEs with context-aware suggestions', 
-    pricing: 'paid'
+    description: 'Native AI coding in all JetBrains IDEs with Junie agent and OpenAI o1/o3 models', 
+    pricing: 'paid',
+    featured: true,
+    logo: '/logos/jetbrains.svg'
   },
   { 
-    name: 'Duet AI for Developers', 
-    url: 'https://cloud.google.com/duet-ai', 
+    id: 'gemini-code-assist',
+    name: 'Gemini Code Assist', 
+    url: 'https://cloud.google.com/gemini/docs/code-assist', 
     category: 'Chatbots & Assistants', 
-    description: 'Google Cloud\'s AI collaborator for coding, debugging, and cloud operations', 
-    pricing: 'paid'
+    description: 'Google\'s AI coding assistant (formerly Duet AI) with Gemini 2.5 for cloud-native development', 
+    pricing: 'paid',
+    featured: true,
+    logo: '/logos/gemini.svg'
   },
   { 
-    name: 'CodeComplete', 
-    url: 'https://codecomplete.ai', 
+    id: 'phind',
+    name: 'Phind', 
+    url: 'https://phind.com', 
     category: 'Chatbots & Assistants', 
-    description: 'Enterprise-focused AI code assistant with self-hosted deployment options', 
-    pricing: 'paid'
+    description: 'Developer-focused AI search engine with visual answers, code execution, and VS Code integration', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/phind.svg'
   },
   { 
-    name: 'Blackbox AI', 
-    url: 'https://blackbox.ai', 
+    id: 'chatgpt',
+    name: 'ChatGPT', 
+    url: 'https://chat.openai.com', 
     category: 'Chatbots & Assistants', 
-    description: 'AI-powered code search and autocomplete with code extraction from videos', 
-    pricing: 'freemium'
+    description: 'OpenAI\'s conversational AI with GPT-4, o1 models, and Canvas for coding', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/chatgpt.svg'
   },
 
   // === CODE GENERATION PLATFORMS (10) ===
@@ -178,69 +225,74 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: '/logos/v0.svg'
   },
   { 
-    name: 'Bolt.new', 
-    url: 'https://bolt.new', 
-    category: 'Code & Development', 
-    description: 'StackBlitz\'s AI that builds, runs, and deploys full-stack apps in the browser', 
-    pricing: 'freemium',
-    featured: true,
-    logo: 'https://bolt.new/favicon.ico'
-  },
-  { 
+    id: 'create-xyz',
     name: 'Create.xyz', 
     url: 'https://create.xyz', 
     category: 'Code & Development', 
     description: 'AI app builder that turns ideas into deployed applications instantly', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/create-xyz.svg'
   },
   { 
-    name: 'Lovable.dev', 
+    id: 'lovable',
+    name: 'Lovable', 
     url: 'https://lovable.dev', 
     category: 'Code & Development', 
-    description: 'GPT Engineer\'s platform for building full-stack apps through conversation', 
-    pricing: 'freemium'
+    description: 'The world\'s first AI Full Stack Engineer - build complete web apps through natural language conversation', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/lovable.svg'
   },
   { 
-    name: 'GPT Engineer', 
-    url: 'https://gptengineer.app', 
-    category: 'Code & Development', 
-    description: 'Build and deploy web apps by chatting with AI in natural language', 
-    pricing: 'freemium'
-  },
-  { 
+    id: 'marblism',
     name: 'Marblism', 
     url: 'https://marblism.com', 
     category: 'Code & Development', 
-    description: 'Generate full-stack NextJS apps with database, auth, and design from prompts', 
-    pricing: 'paid'
+    description: 'Generate full-stack Next.js apps in 45 minutes + 7 AI employees for business automation', 
+    pricing: 'paid',
+    featured: true,
+    logo: '/logos/marblism.svg'
   },
   { 
+    id: 'supabase-ai',
     name: 'Supabase AI', 
     url: 'https://supabase.com/ai', 
     category: 'Code & Development', 
     description: 'AI-powered database and backend generation with instant APIs', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/supabase.svg'
   },
   { 
+    id: 'builder-io-ai',
     name: 'Builder.io AI', 
     url: 'https://builder.io/ai', 
     category: 'Code & Development', 
     description: 'Visual development platform with AI that converts designs to code', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/builder-io.svg'
   },
   { 
+    id: 'durable-ai',
     name: 'Durable AI', 
     url: 'https://durable.co', 
     category: 'Code & Development', 
     description: 'AI website builder that creates complete sites in 30 seconds', 
-    pricing: 'paid'
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/durable.svg'
   },
   { 
-    name: 'Ion by Ionic', 
-    url: 'https://ionic.io/ion', 
+    id: 'flutterflow',
+    name: 'FlutterFlow', 
+    url: 'https://flutterflow.io', 
     category: 'Code & Development', 
-    description: 'AI that builds native mobile apps from text descriptions', 
-    pricing: 'freemium'
+    description: 'AI-powered visual app builder that generates native Flutter code from text prompts', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/flutterflow.svg'
   },
 
   // === TESTING & DEBUGGING AI (8) ===

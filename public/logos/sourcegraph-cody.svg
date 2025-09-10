@@ -1,0 +1,43 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#sourcegraph-gradient-bg)"/>
+  
+  <!-- Sourcegraph network/graph design -->
+  <g transform="translate(24, 24)">
+    <!-- Central node -->
+    <circle cx="0" cy="0" r="4" fill="white" opacity="0.95"/>
+    
+    <!-- Connected nodes forming a graph -->
+    <circle cx="-12" cy="-8" r="3" fill="white" opacity="0.8"/>
+    <circle cx="12" cy="-8" r="3" fill="white" opacity="0.8"/>
+    <circle cx="-12" cy="8" r="3" fill="white" opacity="0.8"/>
+    <circle cx="12" cy="8" r="3" fill="white" opacity="0.8"/>
+    <circle cx="0" cy="-14" r="2.5" fill="white" opacity="0.7"/>
+    <circle cx="0" cy="14" r="2.5" fill="white" opacity="0.7"/>
+    
+    <!-- Connecting lines (code graph) -->
+    <line x1="0" y1="0" x2="-12" y2="-8" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="0" x2="12" y2="-8" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="0" x2="-12" y2="8" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="0" x2="12" y2="8" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="0" x2="0" y2="-14" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    <line x1="0" y1="0" x2="0" y2="14" stroke="white" stroke-width="1.5" opacity="0.5"/>
+    
+    <!-- Cross connections -->
+    <line x1="-12" y1="-8" x2="0" y2="-14" stroke="white" stroke-width="1" opacity="0.3"/>
+    <line x1="12" y1="-8" x2="0" y2="-14" stroke="white" stroke-width="1" opacity="0.3"/>
+    <line x1="-12" y1="8" x2="0" y2="14" stroke="white" stroke-width="1" opacity="0.3"/>
+    <line x1="12" y1="8" x2="0" y2="14" stroke="white" stroke-width="1" opacity="0.3"/>
+  </g>
+  
+  <!-- AI sparkle accents -->
+  <circle cx="8" cy="8" r="1" fill="white" opacity="0.6"/>
+  <circle cx="40" cy="40" r="1" fill="white" opacity="0.6"/>
+  
+  <defs>
+    <linearGradient id="sourcegraph-gradient-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF5543"/>
+      <stop offset="0.5" stop-color="#F0443A"/>
+      <stop offset="1" stop-color="#E03330"/>
+    </linearGradient>
+  </defs>
+</svg>

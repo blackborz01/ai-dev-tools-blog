@@ -1,0 +1,24 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="#000000"/>
+  
+  <!-- JetBrains style geometric shape -->
+  <g transform="translate(8, 8)">
+    <!-- Main shape representing JB logo style -->
+    <path d="M4 4 L16 4 L16 8 L8 8 L8 16 L4 16 Z" fill="#FF318C"/>
+    <path d="M16 4 L28 4 L28 16 L24 16 L24 8 L16 8 Z" fill="#FFD848"/>
+    <path d="M4 16 L8 16 L8 24 L16 24 L16 28 L4 28 Z" fill="#07C3F2"/>
+    <path d="M16 24 L24 24 L24 16 L28 16 L28 28 L16 28 Z" fill="#7866FF"/>
+    
+    <!-- Center AI indicator -->
+    <circle cx="16" cy="16" r="4" fill="white" opacity="0.9"/>
+    <circle cx="16" cy="16" r="2" fill="#000000"/>
+  </g>
+  
+  <!-- JetBrains signature box -->
+  <rect x="10" y="36" width="28" height="4" fill="white"/>
+  
+  <!-- AI sparkles -->
+  <circle cx="38" cy="10" r="1.5" fill="white" opacity="0.8"/>
+  <circle cx="10" cy="10" r="1" fill="white" opacity="0.6"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.6"/>
+</svg>

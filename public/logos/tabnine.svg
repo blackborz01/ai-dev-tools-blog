@@ -1,0 +1,36 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#tabnine-gradient-bg)"/>
+  
+  <!-- Tabnine T shape with tab key inspiration -->
+  <g transform="translate(24, 24)">
+    <!-- Main T shape -->
+    <path d="M -14 -12 L 14 -12 L 14 -7 L 3 -7 L 3 12 L -3 12 L -3 -7 L -14 -7 Z" 
+          fill="white" opacity="0.95"/>
+    
+    <!-- Tab key accent (right arrow) -->
+    <g transform="translate(8, 0)">
+      <path d="M -2 -3 L 4 0 L -2 3" 
+            stroke="white" stroke-width="2" fill="none" opacity="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+      <line x1="-6" y1="0" x2="2" y2="0" 
+            stroke="white" stroke-width="2" opacity="0.8" stroke-linecap="round"/>
+    </g>
+    
+    <!-- Code brackets accent -->
+    <text x="-18" y="3" font-family="monospace" font-size="10" fill="white" opacity="0.5">{</text>
+    <text x="15" y="3" font-family="monospace" font-size="10" fill="white" opacity="0.5">}</text>
+  </g>
+  
+  <!-- AI sparkles -->
+  <circle cx="10" cy="10" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="38" cy="10" r="1.5" fill="white" opacity="0.7"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.5"/>
+  <circle cx="10" cy="38" r="1" fill="white" opacity="0.5"/>
+  
+  <defs>
+    <linearGradient id="tabnine-gradient-bg" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#E94057"/>
+      <stop offset="0.5" stop-color="#F27121"/>
+      <stop offset="1" stop-color="#FF9A00"/>
+    </linearGradient>
+  </defs>
+</svg>
