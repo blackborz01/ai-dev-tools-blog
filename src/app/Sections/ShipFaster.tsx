@@ -1,19 +1,11 @@
 // app/(home)/Sections/ShipFaster.tsx
-import Image from "next/image";
-
 export default function ShipFaster() {
   return (
     <section
       className="relative py-12 md:py-16 bg-black"
-      // Reserve vertical space so the layout doesn't jump when fonts/content load
-      style={{ minHeight: 480 }}
+      style={{ minHeight: 480, contain: 'layout style paint' }}
       aria-label="Ship code faster"
     >
-      {/* Optional decorative background (kept stable with parent minHeight) */}
-      <div className="absolute inset-0 -z-10 overflow-hidden">
-        {/* Remove if you don't have a bg image */}
-      </div>
-
       <div className="container mx-auto px-6 md:px-10">
         {/* Headline block — fixed intrinsic height prevents font-swap jump */}
         <div className="max-w-4xl mx-auto text-center" style={{ minHeight: 140 }}>
@@ -45,16 +37,6 @@ export default function ShipFaster() {
           </a>
         </div>
       </div>
-
-      {/* Accessibility/perf niceties */}
-      <style jsx global>{`
-        @media (prefers-reduced-motion: reduce) {
-          .transition-opacity,
-          .transition-transform {
-            transition: none !important;
-          }
-        }
-      `}</style>
     </section>
   );
 }

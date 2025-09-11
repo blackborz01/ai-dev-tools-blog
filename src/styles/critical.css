@@ -380,6 +380,25 @@ html:not(.hydrated) * {
   }
 }
 
+/* CLS Prevention - CSS Containment */
+.absolute.inset-0 {
+  contain: layout style paint;
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+/* Prevent layout shifts on sections */
+section {
+  contain: layout style;
+  transform: translateZ(0);
+}
+
+/* GPU Acceleration for overlays */
+.absolute {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
 /* Reduced Motion */
 @media (prefers-reduced-motion: reduce) {
   *,

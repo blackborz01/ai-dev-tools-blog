@@ -1,0 +1,98 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#raycast-gradient)"/>
+  
+  <!-- Raycast logo: Command key + AI rays -->
+  <g transform="translate(24, 24)">
+    <!-- Command key symbol (⌘) -->
+    <g opacity="0.95">
+      <!-- Top left corner -->
+      <path d="M -8 -8 L -8 -4 A 4 4 0 0 0 -4 -8 L -8 -8" 
+            fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      
+      <!-- Top right corner -->
+      <path d="M 8 -8 L 4 -8 A 4 4 0 0 0 8 -4 L 8 -8" 
+            fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      
+      <!-- Bottom right corner -->
+      <path d="M 8 8 L 8 4 A 4 4 0 0 0 4 8 L 8 8" 
+            fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      
+      <!-- Bottom left corner -->
+      <path d="M -8 8 L -4 8 A 4 4 0 0 0 -8 4 L -8 8" 
+            fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round"/>
+      
+      <!-- Center square -->
+      <rect x="-3" y="-3" width="6" height="6" fill="white" opacity="0.9"/>
+    </g>
+    
+    <!-- AI rays emanating from center -->
+    <g opacity="0.8">
+      <!-- Top ray -->
+      <line x1="0" y1="-3" x2="0" y2="-10" stroke="white" stroke-width="1" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Top-right ray -->
+      <line x1="2.1" y1="-2.1" x2="7" y2="-7" stroke="white" stroke-width="1" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="0.25s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Right ray -->
+      <line x1="3" y1="0" x2="10" y2="0" stroke="white" stroke-width="1" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Bottom-right ray -->
+      <line x1="2.1" y1="2.1" x2="7" y2="7" stroke="white" stroke-width="1" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="0.75s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Bottom ray -->
+      <line x1="0" y1="3" x2="0" y2="10" stroke="white" stroke-width="1" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Bottom-left ray -->
+      <line x1="-2.1" y1="2.1" x2="-7" y2="7" stroke="white" stroke-width="1" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="1.25s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Left ray -->
+      <line x1="-3" y1="0" x2="-10" y2="0" stroke="white" stroke-width="1" opacity="0.9">
+        <animate attributeName="opacity" values="0.9;0.4;0.9" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Top-left ray -->
+      <line x1="-2.1" y1="-2.1" x2="-7" y2="-7" stroke="white" stroke-width="1" opacity="0.8">
+        <animate attributeName="opacity" values="0.8;0.3;0.8" dur="2s" begin="1.75s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- AI indicator dots -->
+    <g opacity="0.9">
+      <circle cx="0" cy="-12" r="1" fill="white">
+        <animate attributeName="r" values="1;1.5;1" dur="2s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="8.5" cy="-8.5" r="0.8" fill="white">
+        <animate attributeName="r" values="0.8;1.2;0.8" dur="2s" begin="0.5s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="12" cy="0" r="1" fill="white">
+        <animate attributeName="r" values="1;1.5;1" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </circle>
+      <circle cx="8.5" cy="8.5" r="0.8" fill="white">
+        <animate attributeName="r" values="0.8;1.2;0.8" dur="2s" begin="1.5s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+  </g>
+  
+  <!-- Corner accent -->
+  <circle cx="38" cy="38" r="1.5" fill="white" opacity="0.7"/>
+  
+  <defs>
+    <linearGradient id="raycast-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FF6363"/>
+      <stop offset="0.5" stop-color="#FF4E8C"/>
+      <stop offset="1" stop-color="#7C3AED"/>
+    </linearGradient>
+  </defs>
+</svg>

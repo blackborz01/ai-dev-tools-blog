@@ -1,0 +1,40 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#gitpod-gradient)"/>
+  
+  <!-- Gitpod/Ona logo: G shape with cloud and AI elements -->
+  <g transform="translate(24, 24)">
+    <!-- Main G shape -->
+    <path d="M 2 -10 C -6 -10 -12 -4 -12 4 C -12 12 -6 18 2 18 C 8 18 13 14 14 8 L 6 8 L 6 4 L 18 4 C 18 14 11 22 2 22 C -8 22 -16 14 -16 4 C -16 -6 -8 -14 2 -14 C 9 -14 14 -10 16 -4 L 12 -2 C 11 -6 7 -10 2 -10 Z" 
+          fill="none" stroke="white" stroke-width="2.5" opacity="0.9"/>
+    
+    <!-- Cloud element inside G -->
+    <g transform="translate(-2, 2)">
+      <ellipse cx="0" cy="0" rx="4" ry="3" fill="white" opacity="0.3"/>
+      <ellipse cx="-3" cy="0" rx="3" ry="2.5" fill="white" opacity="0.25"/>
+      <ellipse cx="3" cy="0" rx="3" ry="2.5" fill="white" opacity="0.25"/>
+    </g>
+    
+    <!-- AI sparkle -->
+    <g transform="translate(8, -8)">
+      <circle cx="0" cy="0" r="2" fill="white" opacity="0.9"/>
+      <path d="M -3 0 L 3 0 M 0 -3 L 0 3" stroke="white" stroke-width="1" opacity="0.7"/>
+    </g>
+  </g>
+  
+  <!-- Speed dots for instant boot -->
+  <circle cx="8" cy="24" r="1" fill="white" opacity="0.6"/>
+  <circle cx="12" cy="24" r="1" fill="white" opacity="0.5"/>
+  <circle cx="16" cy="24" r="1" fill="white" opacity="0.4"/>
+  
+  <!-- Corner accents -->
+  <circle cx="10" cy="10" r="1" fill="white" opacity="0.5"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.5"/>
+  
+  <defs>
+    <linearGradient id="gitpod-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#FFB45B"/>
+      <stop offset="0.5" stop-color="#FF8A00"/>
+      <stop offset="1" stop-color="#FF6B00"/>
+    </linearGradient>
+  </defs>
+</svg>

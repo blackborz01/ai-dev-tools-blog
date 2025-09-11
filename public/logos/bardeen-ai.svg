@@ -1,0 +1,46 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#bardeen-gradient)"/>
+  
+  <!-- Bardeen logo: B with workflow nodes -->
+  <g transform="translate(24, 24)">
+    <!-- Main B shape -->
+    <path d="M -10 -12 L -10 12 L 2 12 C 6 12 10 9 10 5 C 10 2 8 0 6 -1 C 8 -2 9 -4 9 -7 C 9 -10 6 -12 2 -12 Z M -6 -8 L 2 -8 C 4 -8 5 -7 5 -5 C 5 -3 4 -2 2 -2 L -6 -2 Z M -6 2 L 2 2 C 4 2 6 3 6 5 C 6 7 4 8 2 8 L -6 8 Z" 
+          fill="white" opacity="0.95"/>
+    
+    <!-- Workflow automation nodes -->
+    <g opacity="0.85">
+      <!-- Central workflow node -->
+      <circle cx="8" cy="0" r="2" fill="white"/>
+      
+      <!-- Connected automation points -->
+      <circle cx="12" cy="-4" r="1.5" fill="white" opacity="0.9"/>
+      <circle cx="12" cy="4" r="1.5" fill="white" opacity="0.9"/>
+      <circle cx="4" cy="0" r="1" fill="white" opacity="0.8"/>
+      
+      <!-- Workflow connections -->
+      <line x1="8" y1="0" x2="12" y2="-4" stroke="white" stroke-width="0.5" opacity="0.6"/>
+      <line x1="8" y1="0" x2="12" y2="4" stroke="white" stroke-width="0.5" opacity="0.6"/>
+      <line x1="4" y1="0" x2="8" y2="0" stroke="white" stroke-width="0.5" opacity="0.5"/>
+    </g>
+    
+    <!-- Browser automation indicator -->
+    <g transform="translate(-8, -10)">
+      <rect x="-2" y="-1" width="4" height="2" rx="0.5" fill="white" opacity="0.7"/>
+      <circle cx="0" cy="0" r="0.5" fill="white" opacity="0.9"/>
+    </g>
+  </g>
+  
+  <!-- Corner dots for integration points -->
+  <circle cx="10" cy="10" r="1" fill="white" opacity="0.5"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.5"/>
+  <circle cx="38" cy="10" r="0.8" fill="white" opacity="0.4"/>
+  <circle cx="10" cy="38" r="0.8" fill="white" opacity="0.4"/>
+  
+  <defs>
+    <linearGradient id="bardeen-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#9333EA"/>
+      <stop offset="0.5" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+</svg>

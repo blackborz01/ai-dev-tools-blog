@@ -675,10 +675,11 @@ img {
   100% { stroke-dashoffset: -8; }
 }
 
+/* Removed slide animation to fix CLS - was causing 50px layout shifts
 @keyframes slide {
   0% { transform: translate(0, 0); }
   100% { transform: translate(50px, 50px); }
-}
+} */
 
 @keyframes shine {
   0% { background-position: 0% center; }
@@ -1245,6 +1246,19 @@ img {
   }
   to {
     transform: translateX(0);
+  }
+}
+
+/* Prevent ShipFaster flash during navigation */
+[data-nextjs-scroll-focus-boundary] section:has(h2:has(span:contains("10X FASTER"))) {
+  opacity: 0;
+  animation: fadeIn 0.3s forwards;
+  animation-delay: 0.1s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
   }
 }
 

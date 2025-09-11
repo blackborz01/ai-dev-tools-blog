@@ -295,155 +295,212 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: '/logos/flutterflow.svg'
   },
 
-  // === TESTING & DEBUGGING AI (8) ===
+  // === CODE SECURITY & PRIVACY AI (8) ===
   { 
-    name: 'Codium AI', 
-    url: 'https://codium.ai', 
+    name: 'Snyk', 
+    url: 'https://snyk.io', 
     category: 'Security & Privacy', 
-    description: 'AI that generates meaningful tests and finds bugs before production', 
+    description: 'AI-powered vulnerability scanning for code, dependencies, containers, and IaC', 
+    pricing: 'freemium',
+    featured: true
+  },
+  { 
+    id: 'gitguardian',
+    name: 'GitGuardian', 
+    url: 'https://www.gitguardian.com', 
+    category: 'Security & Privacy', 
+    description: '500+ secrets detection, 91% accuracy, public monitoring. #1 GitHub security app', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://www.codium.ai/favicon.ico'
+    logo: '/logos/gitguardian.svg'
   },
   { 
-    name: 'Metabob', 
-    url: 'https://metabob.com', 
+    name: 'Semgrep', 
+    url: 'https://semgrep.dev', 
     category: 'Security & Privacy', 
-    description: 'AI code review that detects complex bugs and security vulnerabilities', 
+    description: 'Static analysis tool using AI to find bugs, security issues, and anti-patterns', 
     pricing: 'freemium'
   },
   { 
-    name: 'DeepCode (Snyk)', 
-    url: 'https://snyk.io/platform/deepcode-ai', 
+    id: 'socket',
+    name: 'Socket', 
+    url: 'https://socket.dev', 
     category: 'Security & Privacy', 
-    description: 'AI-powered static analysis for security vulnerabilities and code quality', 
+    description: 'Detects 100+ zero-day supply chain attacks weekly. Free for OSS, $40M funded', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/socket.svg'
+  },
+  { 
+    name: 'SonarQube', 
+    url: 'https://www.sonarsource.com/products/sonarqube', 
+    category: 'Security & Privacy', 
+    description: 'Code quality and security analysis with AI-assisted vulnerability detection', 
     pricing: 'freemium'
   },
   { 
-    name: 'Testim', 
-    url: 'https://testim.io', 
+    id: 'bearer',
+    name: 'Bearer', 
+    url: 'https://www.bearer.com', 
     category: 'Security & Privacy', 
-    description: 'AI-powered test automation that self-heals and maintains itself', 
+    description: 'Data-first SAST - detects 120+ data types, GDPR compliance, 60% faster scanning', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/bearer.svg'
+  },
+  { 
+    name: 'Checkmarx', 
+    url: 'https://checkmarx.com', 
+    category: 'Security & Privacy', 
+    description: 'AI-powered application security testing throughout the SDLC', 
     pricing: 'paid'
   },
   { 
-    name: 'Mabl', 
-    url: 'https://mabl.com', 
+    id: 'aikido-security',
+    name: 'Aikido Security', 
+    url: 'https://www.aikido.dev', 
     category: 'Security & Privacy', 
-    description: 'Intelligent test automation with auto-healing and insights', 
-    pricing: 'paid'
-  },
-  { 
-    name: 'PoniCode', 
-    url: 'https://ponicode.com', 
-    category: 'Security & Privacy', 
-    description: 'AI unit test generation integrated into your IDE', 
-    pricing: 'freemium'
-  },
-  { 
-    name: 'Diffblue Cover', 
-    url: 'https://diffblue.com', 
-    category: 'Security & Privacy', 
-    description: 'Autonomous AI that writes Java unit tests at scale', 
-    pricing: 'paid'
-  },
-  { 
-    name: 'Bugasura', 
-    url: 'https://bugasura.io', 
-    category: 'Security & Privacy', 
-    description: 'AI-powered bug tracker with automatic bug detection and reporting', 
-    pricing: 'freemium'
+    description: 'All-in-one platform - SAST, DAST, SCA, cloud, runtime. 95% less noise, AI fixes', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/aikido-security.svg'
   },
 
-  // === DEVELOPMENT AGENTS (7) ===
+  // === DEVELOPMENT AGENTS & PRODUCTIVITY (15) ===
   { 
+    id: 'devin',
     name: 'Devin', 
-    url: 'https://cognition.ai', 
+    url: 'https://devin.ai', 
     category: 'Productivity', 
-    description: 'World\'s first AI software engineer that can plan and execute complex tasks', 
+    description: 'World\'s first AI software engineer - 13.86% SWE-bench, now from $20/month', 
     pricing: 'paid',
     featured: true,
     logo: 'https://www.cognition.ai/favicon.ico'
   },
   { 
+    name: 'Linear', 
+    url: 'https://linear.app', 
+    category: 'Productivity', 
+    description: 'AI-powered project management built for software teams with smart automation', 
+    pricing: 'freemium',
+    featured: true
+  },
+  { 
+    id: 'notion-ai',
+    name: 'Notion AI', 
+    url: 'https://notion.so', 
+    category: 'Productivity', 
+    description: 'AI workspace with Q&A, writing, database autofill, meeting notes - included in Business plan', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/notion-ai.svg'
+  },
+  { 
+    id: 'height',
+    name: 'Height', 
+    url: 'https://height.app', 
+    category: 'Productivity', 
+    description: '⚠️ SHUTTING DOWN SEPT 24, 2025 - Was AI-autonomous project management with copilot', 
+    pricing: 'discontinued',
+    featured: true,
+    logo: '/logos/height.svg'
+  },
+  { 
+    id: 'swe-agent',
     name: 'SWE-agent', 
     url: 'https://swe-agent.com', 
     category: 'Productivity', 
-    description: 'AI agent that autonomously fixes bugs and implements features in repositories', 
+    description: 'Princeton AI that fixes GitHub issues - 65% SWE-bench success, fully open-source', 
     pricing: 'free'
   },
   { 
+    id: 'autogpt',
     name: 'AutoGPT', 
     url: 'https://autogpt.net', 
     category: 'Productivity', 
-    description: 'Autonomous AI agent that can write, debug, and improve code independently', 
+    description: 'Original autonomous AI agent - GitHub\'s most-starred AI project with 50K+ community', 
     pricing: 'free'
   },
   { 
+    id: 'agentgpt',
     name: 'AgentGPT', 
     url: 'https://agentgpt.reworkd.ai', 
     category: 'Productivity', 
-    description: 'Browser-based autonomous AI agent for coding tasks', 
+    description: 'Browser-based AI agents - 100k+ users, YC-backed, zero setup required', 
     pricing: 'freemium'
   },
   { 
-    name: 'OpenDevin', 
-    url: 'https://opendevin.github.io', 
+    id: 'opendevin',
+    name: 'OpenDevin (OpenHands)', 
+    url: 'https://github.com/All-Hands-AI/OpenHands', 
     category: 'Productivity', 
-    description: 'Open-source alternative to Devin for autonomous software development', 
+    description: 'Open-source Devin alternative - 63.4k stars, 37.4% SWE-bench, free + $20 cloud credits', 
     pricing: 'free'
   },
   { 
-    name: 'Smol Developer', 
-    url: 'https://github.com/smol-ai/developer', 
+    id: 'zapier-ai',
+    name: 'Zapier AI', 
+    url: 'https://zapier.com', 
     category: 'Productivity', 
-    description: 'AI pair programmer that generates entire codebases from single prompts', 
-    pricing: 'free'
+    description: 'AI automation with Central agents, Copilot builder - connect 8,000+ apps intelligently', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/zapier-ai.svg'
   },
   { 
-    name: 'GPT Pilot', 
-    url: 'https://github.com/Pythagora-io/gpt-pilot', 
+    id: 'superhuman-ai',
+    name: 'Superhuman AI', 
+    url: 'https://superhuman.com', 
     category: 'Productivity', 
-    description: 'AI that codes entire scalable apps from scratch with developer oversight', 
-    pricing: 'free'
+    description: 'Lightning-fast email with AI writing, auto-summarize, and <100ms performance', 
+    pricing: 'paid',
+    featured: true,
+    logo: '/logos/superhuman.svg'
   },
 
   // === DEVELOPER TOOLS & PRODUCTIVITY (5) ===
   { 
-    name: 'Fig AI', 
-    url: 'https://fig.io', 
+    id: 'mem-ai',
+    name: 'Mem AI', 
+    url: 'https://mem.ai', 
     category: 'Productivity', 
-    description: 'AI-powered terminal autocomplete and scripts for faster command-line work', 
+    description: 'Self-organizing AI knowledge base with GPT-4 - Mem 2.0 knows your entire vault', 
     pricing: 'freemium'
   },
   { 
+    id: 'warp-ai',
     name: 'Warp AI', 
     url: 'https://warp.dev', 
     category: 'Productivity', 
-    description: 'AI-powered terminal with natural language commands and intelligent suggestions', 
+    description: 'First agentic development environment with AI terminal - #1 on Terminal-bench', 
     pricing: 'freemium',
     featured: true,
     logo: 'https://www.warp.dev/favicon.ico'
   },
   { 
+    id: 'raycast-ai',
     name: 'Raycast AI', 
-    url: 'https://raycast.com/ai', 
+    url: 'https://www.raycast.com', 
     category: 'Productivity', 
-    description: 'AI-powered productivity tool with code snippets, scripts, and automation', 
+    description: 'macOS AI launcher with o3-mini, Claude 3.7, DeepSeek - control your OS with natural language', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/raycast-ai.svg'
+  },
+  { 
+    id: 'bardeen-ai',
+    name: 'Bardeen AI', 
+    url: 'https://bardeen.ai', 
+    category: 'Productivity', 
+    description: 'GTM copilot for browser automation - no-code workflows, 100+ integrations', 
     pricing: 'freemium'
   },
   { 
-    name: 'DevDocs AI', 
-    url: 'https://devdocs.io', 
+    id: 'gitpod-ai',
+    name: 'Gitpod AI (now Ona)', 
+    url: 'https://ona.com', 
     category: 'Productivity', 
-    description: 'AI-enhanced documentation browser for instant API references', 
-    pricing: 'free'
-  },
-  { 
-    name: 'Gitpod AI', 
-    url: 'https://gitpod.io', 
-    category: 'Productivity', 
-    description: 'Cloud development environments with AI-powered setup and configuration', 
+    description: 'AI cloud dev environments with Claude Sonnet 4 - contributed 72% of code in testing', 
     pricing: 'freemium'
   }
 ]

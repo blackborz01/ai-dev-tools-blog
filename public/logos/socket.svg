@@ -1,0 +1,95 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#socket-gradient)"/>
+  
+  <!-- Socket logo: Power plug with security shield -->
+  <g transform="translate(24, 24)">
+    <!-- Main socket/plug shape -->
+    <g opacity="0.95">
+      <!-- Socket base -->
+      <rect x="-8" y="-6" width="16" height="12" rx="2" fill="white"/>
+      
+      <!-- Socket holes (representing package connections) -->
+      <circle cx="-3" cy="-2" r="1.5" fill="url(#socket-gradient)"/>
+      <circle cx="3" cy="-2" r="1.5" fill="url(#socket-gradient)"/>
+      <rect x="-1" y="2" width="2" height="3" rx="0.5" fill="url(#socket-gradient)"/>
+    </g>
+    
+    <!-- Security shield overlay -->
+    <g opacity="0.9">
+      <path d="M 0 -10 L -6 -7 L -6 -1 Q -6 3 0 6 Q 6 3 6 -1 L 6 -7 Z" 
+            fill="none" stroke="white" stroke-width="1" opacity="0.8"/>
+      
+      <!-- Shield checkmark -->
+      <path d="M -2 -3 L -0.5 -1.5 L 2 -4" 
+            fill="none" stroke="white" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+        <animate attributeName="opacity" values="0;1;0" dur="3s" repeatCount="indefinite"/>
+      </path>
+    </g>
+    
+    <!-- Package flow indicators (npm/PyPI packages) -->
+    <g opacity="0.7">
+      <!-- Left package stream -->
+      <rect x="-14" y="-2" width="3" height="3" rx="0.5" fill="white">
+        <animate attributeName="x" values="-14;-11;-14" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+      </rect>
+      
+      <!-- Right package stream -->
+      <rect x="11" y="-2" width="3" height="3" rx="0.5" fill="white">
+        <animate attributeName="x" values="11;14;11" dur="2s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </rect>
+    </g>
+    
+    <!-- AI scanning beams -->
+    <g opacity="0.6">
+      <!-- Top scan beam -->
+      <line x1="0" y1="-12" x2="0" y2="-8" stroke="white" stroke-width="0.5">
+        <animate attributeName="y2" values="-8;-6;-8" dur="2s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" repeatCount="indefinite"/>
+      </line>
+      
+      <!-- Bottom scan beam -->
+      <line x1="0" y1="8" x2="0" y2="12" stroke="white" stroke-width="0.5">
+        <animate attributeName="y1" values="8;6;8" dur="2s" begin="1s" repeatCount="indefinite"/>
+        <animate attributeName="opacity" values="0.6;1;0.6" dur="2s" begin="1s" repeatCount="indefinite"/>
+      </line>
+    </g>
+    
+    <!-- Zero-day detection indicators -->
+    <g opacity="0.8">
+      <!-- Alert dot (100+ weekly) -->
+      <circle cx="8" cy="-8" r="2" fill="#FF6B6B">
+        <animate attributeName="r" values="2;2.5;2" dur="1.5s" repeatCount="indefinite"/>
+      </circle>
+      <text x="8" y="-7" font-family="Arial" font-size="2" fill="white" text-anchor="middle" font-weight="bold">!</text>
+      
+      <!-- Success indicator -->
+      <circle cx="-8" cy="8" r="1.5" fill="#51CF66">
+        <animate attributeName="opacity" values="0.8;1;0.8" dur="2s" repeatCount="indefinite"/>
+      </circle>
+    </g>
+    
+    <!-- Connection lines (supply chain) -->
+    <g opacity="0.4">
+      <line x1="-8" y1="0" x2="-12" y2="0" stroke="white" stroke-width="0.5" stroke-dasharray="2,1"/>
+      <line x1="8" y1="0" x2="12" y2="0" stroke="white" stroke-width="0.5" stroke-dasharray="2,1"/>
+      <line x1="0" y1="-6" x2="0" y2="-10" stroke="white" stroke-width="0.5" stroke-dasharray="2,1"/>
+      <line x1="0" y1="6" x2="0" y2="10" stroke="white" stroke-width="0.5" stroke-dasharray="2,1"/>
+    </g>
+  </g>
+  
+  <!-- Corner accent - OSS badge -->
+  <g transform="translate(38, 10)">
+    <circle cx="0" cy="0" r="2.5" fill="white" opacity="0.9"/>
+    <text x="0" y="0.5" font-family="monospace" font-size="2" fill="url(#socket-gradient)" text-anchor="middle" font-weight="bold">OSS</text>
+  </g>
+  
+  <defs>
+    <linearGradient id="socket-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#4C6EF5"/>
+      <stop offset="0.5" stop-color="#5C7CFA"/>
+      <stop offset="1" stop-color="#748FFC"/>
+    </linearGradient>
+  </defs>
+</svg>

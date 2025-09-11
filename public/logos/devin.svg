@@ -1,0 +1,44 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#devin-gradient)"/>
+  
+  <!-- Devin logo: D with AI brain circuit pattern -->
+  <g transform="translate(24, 24)">
+    <!-- Main D shape -->
+    <path d="M -10 -10 L -10 10 L -2 10 C 6 10 10 6 10 0 C 10 -6 6 -10 -2 -10 Z M -6 -6 L -2 -6 C 4 -6 6 -4 6 0 C 6 4 4 6 -2 6 L -6 6 Z" 
+          fill="white" opacity="0.95"/>
+    
+    <!-- AI circuit patterns inside D -->
+    <g opacity="0.8">
+      <!-- Neural nodes -->
+      <circle cx="0" cy="0" r="2" fill="white"/>
+      <circle cx="-3" cy="-3" r="1" fill="white"/>
+      <circle cx="-3" cy="3" r="1" fill="white"/>
+      <circle cx="3" cy="0" r="1" fill="white"/>
+      
+      <!-- Connecting lines -->
+      <line x1="0" y1="0" x2="-3" y2="-3" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="-3" y2="3" stroke="white" stroke-width="0.5"/>
+      <line x1="0" y1="0" x2="3" y2="0" stroke="white" stroke-width="0.5"/>
+    </g>
+    
+    <!-- AI sparkle accent -->
+    <g transform="translate(8, -8)">
+      <circle cx="0" cy="0" r="1.5" fill="white" opacity="0.9"/>
+      <path d="M -2.5 0 L 2.5 0 M 0 -2.5 L 0 2.5" stroke="white" stroke-width="0.8" opacity="0.7"/>
+    </g>
+  </g>
+  
+  <!-- Corner accents for autonomous agent feel -->
+  <circle cx="10" cy="10" r="1" fill="white" opacity="0.6"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.6"/>
+  <circle cx="38" cy="10" r="0.8" fill="white" opacity="0.4"/>
+  <circle cx="10" cy="38" r="0.8" fill="white" opacity="0.4"/>
+  
+  <defs>
+    <linearGradient id="devin-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#7C3AED"/>
+      <stop offset="0.5" stop-color="#6D28D9"/>
+      <stop offset="1" stop-color="#5B21B6"/>
+    </linearGradient>
+  </defs>
+</svg>

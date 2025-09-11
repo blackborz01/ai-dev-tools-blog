@@ -1,0 +1,46 @@
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="48" height="48" rx="10" fill="url(#mem-gradient)"/>
+  
+  <!-- Mem AI logo: M with neural network nodes -->
+  <g transform="translate(24, 24)">
+    <!-- Main M shape -->
+    <path d="M -14 10 L -14 -10 L -10 -10 L -10 2 L -4 -6 L 0 2 L 0 -10 L 4 -10 L 4 2 L 10 -10 L 14 -10 L 14 10 L 10 10 L 10 -2 L 4 6 L 0 -2 L -4 6 L -10 -2 L -10 10 Z" 
+          fill="white" opacity="0.95"/>
+    
+    <!-- Neural network nodes representing self-organization -->
+    <g opacity="0.85">
+      <!-- Central node -->
+      <circle cx="0" cy="-2" r="2" fill="white"/>
+      
+      <!-- Connected nodes -->
+      <circle cx="-7" cy="-5" r="1.5" fill="white" opacity="0.9"/>
+      <circle cx="7" cy="-5" r="1.5" fill="white" opacity="0.9"/>
+      <circle cx="-5" cy="3" r="1.2" fill="white" opacity="0.8"/>
+      <circle cx="5" cy="3" r="1.2" fill="white" opacity="0.8"/>
+      
+      <!-- Connection lines -->
+      <line x1="0" y1="-2" x2="-7" y2="-5" stroke="white" stroke-width="0.5" opacity="0.6"/>
+      <line x1="0" y1="-2" x2="7" y2="-5" stroke="white" stroke-width="0.5" opacity="0.6"/>
+      <line x1="0" y1="-2" x2="-5" y2="3" stroke="white" stroke-width="0.5" opacity="0.5"/>
+      <line x1="0" y1="-2" x2="5" y2="3" stroke="white" stroke-width="0.5" opacity="0.5"/>
+    </g>
+    
+    <!-- AI sparkle accent -->
+    <g transform="translate(10, -10)">
+      <circle cx="0" cy="0" r="1" fill="white" opacity="0.9"/>
+      <path d="M -2 0 L 2 0 M 0 -2 L 0 2" stroke="white" stroke-width="0.6" opacity="0.7"/>
+    </g>
+  </g>
+  
+  <!-- Corner dots for knowledge base -->
+  <circle cx="10" cy="10" r="1" fill="white" opacity="0.5"/>
+  <circle cx="38" cy="38" r="1" fill="white" opacity="0.5"/>
+  
+  <defs>
+    <linearGradient id="mem-gradient" x1="0" y1="0" x2="48" y2="48" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#8B5CF6"/>
+      <stop offset="0.5" stop-color="#7C3AED"/>
+      <stop offset="1" stop-color="#6D28D9"/>
+    </linearGradient>
+  </defs>
+</svg>
