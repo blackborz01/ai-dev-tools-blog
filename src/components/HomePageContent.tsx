@@ -44,11 +44,6 @@ const SmartToolFinder = dynamic(() => import('@/components/SmartToolFinder'), {
   ssr: false
 })
 
-const AIToolsLuxuryAnimation = dynamic(() => import('@/components/AIToolsLuxuryAnimation'), {
-  loading: () => <LoadingSkeleton />,
-  ssr: false
-})
-
 const TrustBadges = dynamic(() => import('@/components/TrustBadges'), {
   loading: () => null,
   ssr: false
@@ -98,10 +93,6 @@ export default function HomePageContent() {
 
       <Suspense fallback={<LoadingSkeleton />}>
         <SmartToolFinder />
-      </Suspense>
-
-      <Suspense fallback={<LoadingSkeleton />}>
-        <AIToolsLuxuryAnimation />
       </Suspense>
 
       <Suspense fallback={null}>
