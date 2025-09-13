@@ -297,12 +297,14 @@ export const AI_TOOLS_MEGA_LIST = [
 
   // === CODE SECURITY & PRIVACY AI (8) ===
   { 
+    id: 'snyk',
     name: 'Snyk', 
     url: 'https://snyk.io', 
     category: 'Security & Privacy', 
-    description: 'AI-powered vulnerability scanning for code, dependencies, containers, and IaC', 
+    description: 'AI-powered developer security - 2x faster scanning, 80% auto-fix accuracy, SAST/SCA/Container security with 2.8M+ vuln database', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: '/logos/snyk.svg'
   },
   { 
     id: 'gitguardian',
@@ -315,11 +317,14 @@ export const AI_TOOLS_MEGA_LIST = [
     logo: '/logos/gitguardian.svg'
   },
   { 
+    id: 'semgrep',
     name: 'Semgrep', 
     url: 'https://semgrep.dev', 
     category: 'Security & Privacy', 
-    description: 'Static analysis tool using AI to find bugs, security issues, and anti-patterns', 
-    pricing: 'freemium'
+    description: 'AI-powered SAST, SCA & Secrets Detection - 10-second scans, 30+ languages, reduces false positives by 20% with AI Assistant', 
+    pricing: 'freemium',
+    featured: true,
+    logo: '/logos/semgrep.svg'
   },
   { 
     id: 'socket',

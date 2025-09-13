@@ -1,7 +1,7 @@
 'use client'
 
 import ToolPageTemplate from '@/components/ToolPageTemplate'
-import { Shield, Key, Lock, GitBranch, Eye, Target, Users, Globe, AlertTriangle, Cloud, Terminal, FileCode, Search, Brain, Zap, CheckCircle } from 'lucide-react'
+import { Shield, Key, Lock, GitBranch, Eye, Target, Users, Globe, AlertTriangle, Cloud, Terminal, FileCode, Search, Brain, Zap, CheckCircle, Building2 } from 'lucide-react'
 import Navbar from '@/components/Navbar'
 import Link from 'next/link'
 
