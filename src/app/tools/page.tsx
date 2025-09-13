@@ -598,8 +598,31 @@ export default function ToolsPage() {
 
                     <div className="p-6">
                       <div className="flex items-start gap-4 mb-4">
-                        <div className={`p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300`}>
-                          <Icon className="w-6 h-6 text-white" />
+                        {/* Tool Logo */}
+                        <div className="flex-shrink-0">
+                          {tool.logo && !tool.logo.startsWith('http') ? (
+                            <div className="relative w-14 h-14">
+                              <NextImage 
+                                src={tool.logo} 
+                                alt={tool.name}
+                                width={56}
+                                height={56}
+                                className="rounded-xl object-contain bg-white/10 p-2"
+                                onError={(e) => {
+                                  e.currentTarget.style.display = 'none'
+                                  e.currentTarget.parentElement!.innerHTML = `
+                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} flex items-center justify-center">
+                                      <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
+                                    </div>
+                                  `
+                                }}
+                              />
+                            </div>
+                          ) : (
+                            <div className={`w-14 h-14 p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
+                              <Icon className="w-7 h-7 text-white" />
+                            </div>
+                          )}
                         </div>
                         
                         <div className="flex-1">
