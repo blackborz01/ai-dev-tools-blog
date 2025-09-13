@@ -1,92 +1,83 @@
 'use client'
 
-import { Component, ReactNode } from 'react'
+import React from 'react'
+import { AlertCircle, RefreshCw, Home } from 'lucide-react'
 import Link from 'next/link'
-import { AlertCircle, Home, RefreshCw } from 'lucide-react'
 
-interface Props {
-  children: ReactNode
-  fallback?: ReactNode
+interface ErrorBoundaryProps {
+  children: React.ReactNode
+  fallback?: React.ComponentType<{ error: Error; reset: () => void }>
 }
 
-interface State {
+interface ErrorBoundaryState {
   hasError: boolean
-  error?: Error
+  error: Error | null
 }
 
-export class ErrorBoundary extends Component<Props, State> {
-  constructor(props: Props) {
+class ErrorBoundary extends React.Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  constructor(props: ErrorBoundaryProps) {
     super(props)
-    this.state = { hasError: false }
+    this.state = { hasError: false, error: null }
   }
 
-  static getDerivedStateFromError(error: Error): State {
+  static getDerivedStateFromError(error: Error): ErrorBoundaryState {
     return { hasError: true, error }
   }
 
-  componentDidCatch(error: Error, errorInfo: any) {
-    // Log error to error reporting service
-    console.error('Error caught by boundary:', error, errorInfo)
-    
-    // Send to error tracking service (e.g., Sentry)
-    if (typeof window !== 'undefined' && (window as any).Sentry) {
-      (window as any).Sentry.captureException(error, {
-        contexts: {
-          react: {
-            componentStack: errorInfo.componentStack
-          }
-        }
-      })
-    }
+  componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo)
+  }
+
+  reset = () => {
+    this.setState({ hasError: false, error: null })
   }
 
   render() {
-    if (this.state.hasError) {
+    if (this.state.hasError && this.state.error) {
       if (this.props.fallback) {
-        return this.props.fallback
+        const FallbackComponent = this.props.fallback
+        return <FallbackComponent error={this.state.error} reset={this.reset} />
       }
 
+      // Default error UI
       return (
-        <div className="min-h-[400px] flex items-center justify-center p-8">
-          <div className="max-w-md w-full">
-            <div className="text-center">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-red-100 dark:bg-red-900/20 rounded-full mb-4">
-                <AlertCircle className="w-8 h-8 text-red-600 dark:text-red-400" />
+        <div className="min-h-screen bg-black text-white flex items-center justify-center p-4">
+          <div className="max-w-2xl mx-auto text-center">
+            <div className="flex justify-center mb-8">
+              <div className="w-24 h-24 bg-red-500/20 border-2 border-red-500 rounded-xl flex items-center justify-center animate-pulse">
+                <AlertCircle className="w-12 h-12 text-red-500" />
               </div>
-              
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-                Oops! Something went wrong
-              </h2>
-              
-              <p className="text-gray-600 dark:text-gray-400 mb-6">
-                We're sorry, but something unexpected happened. The error has been logged and we'll look into it.
-              </p>
+            </div>
 
-              {process.env.NODE_ENV === 'development' && this.state.error && (
-                <div className="mb-6 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg text-left">
-                  <p className="text-xs font-mono text-red-600 dark:text-red-400">
-                    {this.state.error.message}
-                  </p>
-                </div>
-              )}
+            <h1 className="text-5xl font-bold mb-4 bg-gradient-to-r from-red-500 to-orange-500 bg-clip-text text-transparent">
+              Something went wrong
+            </h1>
+            
+            <p className="text-gray-400 mb-8 text-lg">
+              An unexpected error occurred while loading this page.
+            </p>
 
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  onClick={() => window.location.reload()}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg transition-colors"
-                >
-                  <RefreshCw className="w-4 h-4" />
-                  Try Again
-                </button>
-                
-                <Link
-                  href="/"
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg transition-colors"
-                >
-                  <Home className="w-4 h-4" />
-                  Go Home
-                </Link>
-              </div>
+            <div className="bg-white/5 backdrop-blur-xl rounded-xl p-6 mb-8 border border-white/10">
+              <code className="text-sm text-red-400 break-all">
+                {this.state.error.message}
+              </code>
+            </div>
+
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <button
+                onClick={this.reset}
+                className="inline-flex items-center justify-center px-6 py-3 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-xl font-semibold hover:shadow-lg hover:shadow-cyan-500/25 transition-all duration-300"
+              >
+                <RefreshCw className="w-5 h-5 mr-2" />
+                Try Again
+              </button>
+              <Link 
+                href="/"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white/10 backdrop-blur-xl rounded-xl font-semibold border border-white/20 hover:bg-white/20 transition-all duration-300"
+              >
+                <Home className="w-5 h-5 mr-2" />
+                Go Home
+              </Link>
             </div>
           </div>
         </div>
@@ -97,19 +88,4 @@ export class ErrorBoundary extends Component<Props, State> {
   }
 }
 
-// Specific error boundary for async components
-export function AsyncErrorBoundary({ children }: { children: ReactNode }) {
-  return (
-    <ErrorBoundary
-      fallback={
-        <div className="p-4 bg-yellow-50 dark:bg-yellow-900/20 border border-yellow-200 dark:border-yellow-800 rounded-lg">
-          <p className="text-sm text-yellow-800 dark:text-yellow-200">
-            Failed to load this section. Please refresh the page.
-          </p>
-        </div>
-      }
-    >
-      {children}
-    </ErrorBoundary>
-  )
-}
+export default ErrorBoundary
