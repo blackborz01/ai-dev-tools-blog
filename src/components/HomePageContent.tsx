@@ -1,6 +1,5 @@
-'use client'
-
-import { lazy, Suspense, memo } from 'react'
+// Server component for SSG optimization - reduces client bundle
+import { Suspense, memo } from 'react'
 import dynamic from 'next/dynamic'
 
 // Loading skeleton component
@@ -52,7 +51,7 @@ const TrustBadges = dynamic(() => import('@/components/TrustBadges'), {
 export default function HomePageContent() {
   return (
     <>
-      {/* Section with gradient background */}
+      {/* Section with gradient background - optimized for performance */}
       <div className="relative overflow-hidden">
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-br from-purple-900/20 via-black to-cyan-900/20" />
@@ -60,10 +59,11 @@ export default function HomePageContent() {
             backgroundImage: 'linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px)',
             backgroundSize: '50px 50px',
             transform: 'translateZ(0)',
-            contain: 'layout style paint'
+            contain: 'layout style paint',
+            willChange: 'transform'  // GPU acceleration hint
           }} />
-          <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
+          <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ willChange: 'opacity', contain: 'layout' }} />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', willChange: 'opacity', contain: 'layout' }} />
         </div>
         
         <div className="relative z-10">
