@@ -14,10 +14,12 @@ import CriticalCSS from '@/components/CriticalCSS'
 import ScriptLoader from '@/components/optimized/ScriptLoader'
 import PerformanceMonitor from '@/components/optimized/PerformanceMonitor'
 // Optimize font loading with display: swap and font-display
-const inter = Inter({ 
+const inter = Inter({
   subsets: ['latin'],
   display: 'swap',         // Prevents font flash
-  adjustFontFallback: true  // Keeps metrics consistent to reduce shift
+  adjustFontFallback: true, // Keeps metrics consistent to reduce shift
+  preload: true,           // Preload critical font files for mobile
+  variable: '--font-inter'
 })
 
 // Lazy load analytics to not block initial render

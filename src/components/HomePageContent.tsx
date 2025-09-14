@@ -19,7 +19,7 @@ const OriginalHero = dynamic(() => import('@/components/OriginalHero'), {
 
 const FuturisticTrending = dynamic(() => import('@/components/FuturisticTrending'), {
   loading: () => <LoadingSkeleton />,
-  ssr: true
+  ssr: false // Defer on mobile for faster initial load
 })
 
 const ShipFaster = dynamic(() => import('@/app/Sections/ShipFaster'), {

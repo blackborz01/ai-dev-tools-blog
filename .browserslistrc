@@ -1,0 +1,11 @@
+# Target modern mobile browsers (2020+)
+# Reduces legacy JS and polyfills for better mobile performance
+last 2 Chrome versions
+last 2 Firefox versions
+last 2 Safari versions
+last 2 Edge versions
+iOS >= 13
+Android >= 10
+not dead
+not ie 11
+not op_mini all

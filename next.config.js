@@ -38,6 +38,8 @@ const nextConfig = {
         },
       },
     },
+    // Target modern mobile browsers to reduce polyfills
+    legacyBrowsers: false,
   },
   
   // Compress and optimize
@@ -147,13 +149,13 @@ const nextConfig = {
           },
         ],
       },
-      // HTML pages - short cache for freshness with stale-while-revalidate
+      // HTML pages - optimized for mobile with must-revalidate
       {
         source: '/',
         headers: [
           {
             key: 'Cache-Control',
-            value: 'public, s-maxage=10, stale-while-revalidate=59',
+            value: 'public, max-age=0, must-revalidate',
           },
           {
             key: 'X-XSS-Protection',
