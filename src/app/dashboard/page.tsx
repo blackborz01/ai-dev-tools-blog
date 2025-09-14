@@ -161,7 +161,7 @@ export default function DashboardPage() {
                 </div>
               </div>
               <div className="text-3xl font-bold text-white mb-1">
-                {mockStats.totalViews.toLocaleString()}
+                {mockStats.totalViews}
               </div>
               <div className="text-sm text-gray-400">Total Views</div>
             </div>
@@ -285,7 +285,7 @@ export default function DashboardPage() {
                       </div>
                       <div>
                         <div className="text-sm font-medium text-white">{article.title}</div>
-                        <div className="text-xs text-gray-400">{article.views.toLocaleString()} views</div>
+                        <div className="text-xs text-gray-400">{article.views} views</div>
                       </div>
                     </div>
                     <div className={`flex items-center gap-1 text-sm ${
@@ -356,7 +356,7 @@ export default function DashboardPage() {
                   <div className="text-xs text-gray-400">Global Rank</div>
                 </div>
                 <div className="p-3 bg-gray-800/30 rounded-lg">
-                  <div className="text-2xl font-bold text-white">{mockStats.totalPoints.toLocaleString()}</div>
+                  <div className="text-2xl font-bold text-white">{mockStats.totalPoints}</div>
                   <div className="text-xs text-gray-400">Total Points</div>
                 </div>
                 <div className="p-3 bg-gray-800/30 rounded-lg">

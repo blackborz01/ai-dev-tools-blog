@@ -16,20 +16,29 @@ export default function NotFound() {
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -inset-10 opacity-50">
-          {mounted && [...Array(20)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 animate-float"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: `${Math.random() * 100}%`,
-                width: `${Math.random() * 400 + 50}px`,
-                height: `${Math.random() * 400 + 50}px`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${Math.random() * 20 + 10}s`,
-              }}
-            />
-          ))}
+          {mounted && [...Array(20)].map((_, i) => {
+            // Use deterministic values based on index
+            const left = ((i * 37) % 100);
+            const top = ((i * 53) % 100);
+            const size = 50 + ((i * 97) % 400);
+            const delay = (i * 0.5) % 10;
+            const duration = 10 + ((i * 3) % 20);
+
+            return (
+              <div
+                key={i}
+                className="absolute rounded-full bg-gradient-to-r from-purple-400 to-pink-400 opacity-20 animate-float"
+                style={{
+                  left: `${left}%`,
+                  top: `${top}%`,
+                  width: `${size}px`,
+                  height: `${size}px`,
+                  animationDelay: `${delay}s`,
+                  animationDuration: `${duration}s`,
+                }}
+              />
+            );
+          })}
         </div>
       </div>
 

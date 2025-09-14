@@ -153,15 +153,15 @@ export default function APIDirectoryPage() {
 
   const formatContextLength = (length?: number): string => {
     if (!length) return 'N/A'
-    if (length >= 1000000) return `${(length / 1000000).toFixed(1)}M`
-    if (length >= 1000) return `${(length / 1000).toFixed(0)}K`
+    if (length >= 1000000) return `${Math.floor(length / 100000) / 10}M`
+    if (length >= 1000) return `${Math.floor(length / 1000)}K`
     return length.toString()
   }
 
   const formatPrice = (price?: number): string => {
     if (!price) return 'Free'
-    if (price < 0.001) return `$${(price * 1000).toFixed(3)}/1K`
-    return `$${price.toFixed(4)}`
+    if (price < 0.001) return `$${Math.floor(price * 1000000) / 1000}/1K`
+    return `$${Math.floor(price * 10000) / 10000}`
   }
 
   const getStatusColor = (status: string) => {

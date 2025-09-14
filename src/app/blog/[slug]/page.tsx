@@ -1,11 +1,12 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
-import { 
-  ArrowLeft, Clock, Calendar, User, Tag, 
+import {
+  ArrowLeft, Clock, Calendar, User, Tag,
   ChevronRight, BookOpen, Share2, Bookmark,
   Copy, TrendingUp, CheckCircle
 } from 'lucide-react'
 import { articles } from '@/lib/articles'
+import { formatNumber } from '@/lib/format-utils'
 import dynamic from 'next/dynamic'
 
 // Dynamically import ArticleTracker to avoid SSR issues
@@ -176,7 +177,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
                 {/* Word Count */}
                 <div className="flex items-center gap-2 bg-black/40 backdrop-blur-sm border border-yellow-500/20 rounded-full px-5 py-3 hover:border-yellow-400/40 transition-all duration-300 hover:scale-105">
                   <BookOpen className="w-4 h-4 text-yellow-400" />
-                  <span className="text-sm text-gray-300 font-medium">{article.wordCount.toLocaleString()} words</span>
+                  <span className="text-sm text-gray-300 font-medium">{formatNumber(article.wordCount)} words</span>
                 </div>
               </div>
 

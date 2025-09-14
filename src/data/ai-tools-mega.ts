@@ -11,7 +11,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-first code editor built on VS Code with GPT-4 and Claude integration for autonomous coding with Agent Mode', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/cursor.png'
+    logo: '/logos/cursor.svg'
   },
   { 
     id: 'claude-code',
@@ -21,7 +21,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Anthropic\'s terminal-based AI coding assistant that turns ideas into code at thought-speed with full codebase awareness', 
     pricing: 'paid',
     featured: true,
-    logo: '/logos/claude.png'
+    logo: '/logos/claude.svg'
   },
   { 
     id: 'bolt-new',
@@ -31,7 +31,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'StackBlitz\'s AI-powered full-stack development in browser with WebContainers - build, run, and deploy without any setup', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/bolt-new.png'
+    logo: '/logos/bolt-new.svg'
   },
   { 
     id: 'windsurf',
@@ -41,14 +41,16 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Next-gen AI IDE by Codeium with Flow mode for seamless human-AI collaboration', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/windsurf.png'
+    logo: '/logos/windsurf.svg'
   },
   { 
+    id: 'zed-ai',
     name: 'Zed AI', 
     url: 'https://zed.dev', 
     category: 'Code & Development', 
     description: 'High-performance collaborative code editor with built-in AI assistant and real-time collaboration', 
-    pricing: 'free'
+    pricing: 'free',
+    logo: '/logos/zed.svg'
   },
   { 
     id: 'replit-ai',
@@ -58,7 +60,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Browser-based IDE with AI code completion, generation, and deployment in one platform', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/replit.png'
+    logo: '/logos/replit.svg'
   },
   { 
     id: 'project-idx',
@@ -68,7 +70,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Google\'s AI-powered cloud IDE with Gemini integration for full-stack development', 
     pricing: 'free',
     featured: true,
-    logo: '/logos/project-idx.png'
+    logo: '/logos/project-idx.svg'
   },
   { 
     id: 'continue-dev',
@@ -78,7 +80,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Open-source AI code assistant that integrates with any IDE and any LLM', 
     pricing: 'free',
     featured: true,
-    logo: '/logos/continue-dev.png'
+    logo: '/logos/continue-dev.svg'
   },
   { 
     id: 'pieces-for-developers',
@@ -88,7 +90,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered code snippet manager with context-aware search and generation', 
     pricing: 'free',
     featured: true,
-    logo: '/logos/pieces.png'
+    logo: '/logos/pieces.svg'
   },
   { 
     id: 'codespaces-ai',
@@ -98,7 +100,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'GitHub\'s cloud development environment with native Copilot AI integration and Agent Mode', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/github.png'
+    logo: '/logos/github.svg'
   },
   { 
     id: 'codeium-editor',
@@ -108,7 +110,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Free AI code completion tool supporting 70+ languages across 40+ IDEs with unlimited usage', 
     pricing: 'free',
     featured: true,
-    logo: '/logos/codeium.png'
+    logo: '/logos/codeium.svg'
   },
 
   // === AI PAIR PROGRAMMING (10) ===
@@ -120,7 +122,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI pair programmer by GitHub and OpenAI that suggests code in real-time', 
     pricing: 'paid',
     featured: true,
-    logo: null
+    logo: '/logos/github-copilot.svg'
   },
   { 
     id: 'amazon-codewhisperer',
@@ -130,7 +132,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Now Amazon Q Developer - AWS-optimized AI with security scanning and code migration', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/aws.png'
+    logo: '/logos/aws.svg'
   },
   { 
     id: 'tabnine',
@@ -140,7 +142,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Enterprise AI coding assistant with zero data retention, air-gapped deployment, and team learning', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/tabnine.png'
+    logo: '/logos/tabnine.svg'
   },
   { 
     id: 'claude',
@@ -150,7 +152,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Anthropic\'s AI with Claude 4 models, 200K context, extended thinking, and Artifacts', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/claude.png'
+    logo: '/logos/claude.svg'
   },
   { 
     id: 'perplexity',
@@ -160,7 +162,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered search engine with real-time data, excellent for developer research', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/perplexity.png'
+    logo: '/logos/perplexity.svg'
   },
   { 
     id: 'sourcegraph-cody',
@@ -170,7 +172,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Enterprise AI assistant with multi-repo context, shared team prompts, and zero data retention', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/sourcegraph.png'
+    logo: '/logos/sourcegraph.svg'
   },
   { 
     id: 'jetbrains-ai-assistant',
@@ -180,7 +182,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Native AI coding in all JetBrains IDEs with Junie agent and OpenAI o1/o3 models', 
     pricing: 'paid',
     featured: true,
-    logo: '/logos/jetbrains.png'
+    logo: '/logos/jetbrains.svg'
   },
   { 
     id: 'gemini-code-assist',
@@ -190,7 +192,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Google\'s AI coding assistant (formerly Duet AI) with Gemini 2.5 for cloud-native development', 
     pricing: 'paid',
     featured: true,
-    logo: '/logos/gemini.png'
+    logo: '/logos/gemini.svg'
   },
   { 
     id: 'phind',
@@ -200,7 +202,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Developer-focused AI search engine with visual answers, code execution, and VS Code integration', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/phind.png'
+    logo: '/logos/phind.svg'
   },
   { 
     id: 'chatgpt',
@@ -210,7 +212,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'OpenAI\'s conversational AI with GPT-4, o1 models, and Canvas for coding', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/chatgpt.png'
+    logo: '/logos/chatgpt.svg'
   },
 
   // === CODE GENERATION PLATFORMS (10) ===
@@ -222,7 +224,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered UI generation that transforms natural language into production-ready React components with shadcn/ui', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/v0.png'
+    logo: '/logos/v0.svg'
   },
   { 
     id: 'create-xyz',
@@ -232,7 +234,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI app builder that turns ideas into deployed applications instantly', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/create-xyz.png'
+    logo: '/logos/create-xyz.svg'
   },
   { 
     id: 'lovable',
@@ -242,7 +244,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'The world\'s first AI Full Stack Engineer - build complete web apps through natural language conversation', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/lovable.png'
+    logo: '/logos/lovable.svg'
   },
   { 
     id: 'marblism',
@@ -252,7 +254,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Generate full-stack Next.js apps in 45 minutes + 7 AI employees for business automation', 
     pricing: 'paid',
     featured: true,
-    logo: '/logos/marblism.png'
+    logo: '/logos/marblism.svg'
   },
   { 
     id: 'supabase-ai',
@@ -262,7 +264,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered database and backend generation with instant APIs', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/supabase.png'
+    logo: '/logos/supabase.svg'
   },
   { 
     id: 'builder-io-ai',
@@ -272,7 +274,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Visual development platform with AI that converts designs to code', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/builder-io.png'
+    logo: '/logos/builder-io.svg'
   },
   { 
     id: 'durable-ai',
@@ -282,7 +284,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI website builder that creates complete sites in 30 seconds', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/durable.png'
+    logo: '/logos/durable.svg'
   },
   { 
     id: 'flutterflow',
@@ -292,7 +294,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered visual app builder that generates native Flutter code from text prompts', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/flutterflow.png'
+    logo: '/logos/flutterflow.svg'
   },
 
   // === CODE SECURITY & PRIVACY AI (8) ===
@@ -304,7 +306,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered developer security - 2x faster scanning, 80% auto-fix accuracy, SAST/SCA/Container security with 2.8M+ vuln database', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/snyk.png'
+    logo: '/logos/snyk.svg'
   },
   { 
     id: 'gitguardian',
@@ -314,7 +316,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: '500+ secrets detection, 91% accuracy, public monitoring. #1 GitHub security app', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/gitguardian.png'
+    logo: '/logos/gitguardian.svg'
   },
   { 
     id: 'semgrep',
@@ -324,7 +326,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI-powered SAST, SCA & Secrets Detection - 10-second scans, 30+ languages, reduces false positives by 20% with AI Assistant', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/semgrep.png'
+    logo: '/logos/semgrep.svg'
   },
   { 
     id: 'socket',
@@ -334,14 +336,16 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Detects 100+ zero-day supply chain attacks weekly. Free for OSS, $40M funded', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/socket.png'
+    logo: '/logos/socket.svg'
   },
   { 
+    id: 'sonarqube',
     name: 'SonarQube', 
     url: 'https://www.sonarsource.com/products/sonarqube', 
     category: 'Security & Privacy', 
     description: 'Code quality and security analysis with AI-assisted vulnerability detection', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    logo: '/logos/sonarqube.svg'
   },
   { 
     id: 'bearer',
@@ -351,14 +355,16 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Data-first SAST - detects 120+ data types, GDPR compliance, 60% faster scanning', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/bearer.png'
+    logo: '/logos/bearer.svg'
   },
   { 
+    id: 'checkmarx',
     name: 'Checkmarx', 
     url: 'https://checkmarx.com', 
     category: 'Security & Privacy', 
     description: 'AI-powered application security testing throughout the SDLC', 
-    pricing: 'paid'
+    pricing: 'paid',
+    logo: '/logos/checkmarx.svg'
   },
   { 
     id: 'aikido-security',
@@ -368,7 +374,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'All-in-one platform - SAST, DAST, SCA, cloud, runtime. 95% less noise, AI fixes', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/aikido-security.png'
+    logo: '/logos/aikido-security.svg'
   },
 
   // === DEVELOPMENT AGENTS & PRODUCTIVITY (15) ===
@@ -380,15 +386,17 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'World\'s first AI software engineer - 13.86% SWE-bench, now from $20/month', 
     pricing: 'paid',
     featured: true,
-    logo: 'https://www.cognition.ai/favicon.ico'
+    logo: '/logos/devin.svg'
   },
   { 
+    id: 'linear',
     name: 'Linear', 
     url: 'https://linear.app', 
     category: 'Productivity', 
     description: 'AI-powered project management built for software teams with smart automation', 
     pricing: 'freemium',
-    featured: true
+    featured: true,
+    logo: '/logos/linear.svg'
   },
   { 
     id: 'notion-ai',
@@ -398,7 +406,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI workspace with Q&A, writing, database autofill, meeting notes - included in Business plan', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/notion.png'
+    logo: '/logos/notion.svg'
   },
   { 
     id: 'height',
@@ -408,7 +416,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: '⚠️ SHUTTING DOWN SEPT 24, 2025 - Was AI-autonomous project management with copilot', 
     pricing: 'discontinued',
     featured: true,
-    logo: '/logos/height.png'
+    logo: '/logos/height.svg'
   },
   { 
     id: 'swe-agent',
@@ -416,7 +424,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://swe-agent.com', 
     category: 'Productivity', 
     description: 'Princeton AI that fixes GitHub issues - 65% SWE-bench success, fully open-source', 
-    pricing: 'free'
+    pricing: 'free',
+    logo: '/logos/swe-agent.svg'
   },
   { 
     id: 'autogpt',
@@ -424,7 +433,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://autogpt.net', 
     category: 'Productivity', 
     description: 'Original autonomous AI agent - GitHub\'s most-starred AI project with 50K+ community', 
-    pricing: 'free'
+    pricing: 'free',
+    logo: '/logos/autogpt.svg'
   },
   { 
     id: 'agentgpt',
@@ -432,7 +442,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://agentgpt.reworkd.ai', 
     category: 'Productivity', 
     description: 'Browser-based AI agents - 100k+ users, YC-backed, zero setup required', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    logo: '/logos/agentgpt.svg'
   },
   { 
     id: 'opendevin',
@@ -440,7 +451,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://github.com/All-Hands-AI/OpenHands', 
     category: 'Productivity', 
     description: 'Open-source Devin alternative - 63.4k stars, 37.4% SWE-bench, free + $20 cloud credits', 
-    pricing: 'free'
+    pricing: 'free',
+    logo: '/logos/openhands.svg'
   },
   { 
     id: 'zapier-ai',
@@ -450,7 +462,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'AI automation with Central agents, Copilot builder - connect 8,000+ apps intelligently', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/zapier.png'
+    logo: '/logos/zapier.svg'
   },
   { 
     id: 'superhuman-ai',
@@ -460,7 +472,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'Lightning-fast email with AI writing, auto-summarize, and <100ms performance', 
     pricing: 'paid',
     featured: true,
-    logo: '/logos/superhuman.png'
+    logo: '/logos/superhuman.svg'
   },
 
   // === DEVELOPER TOOLS & PRODUCTIVITY (5) ===
@@ -470,7 +482,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://mem.ai', 
     category: 'Productivity', 
     description: 'Self-organizing AI knowledge base with GPT-4 - Mem 2.0 knows your entire vault', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    logo: '/logos/mem.svg'
   },
   { 
     id: 'warp-ai',
@@ -480,7 +493,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'First agentic development environment with AI terminal - #1 on Terminal-bench', 
     pricing: 'freemium',
     featured: true,
-    logo: 'https://www.warp.dev/favicon.ico'
+    logo: '/logos/warp.svg'
   },
   { 
     id: 'raycast-ai',
@@ -490,7 +503,7 @@ export const AI_TOOLS_MEGA_LIST = [
     description: 'macOS AI launcher with o3-mini, Claude 3.7, DeepSeek - control your OS with natural language', 
     pricing: 'freemium',
     featured: true,
-    logo: '/logos/raycast.png'
+    logo: '/logos/raycast.svg'
   },
   { 
     id: 'bardeen-ai',
@@ -498,7 +511,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://bardeen.ai', 
     category: 'Productivity', 
     description: 'GTM copilot for browser automation - no-code workflows, 100+ integrations', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    logo: '/logos/bardeen.svg'
   },
   { 
     id: 'gitpod-ai',
@@ -506,7 +520,8 @@ export const AI_TOOLS_MEGA_LIST = [
     url: 'https://ona.com', 
     category: 'Productivity', 
     description: 'AI cloud dev environments with Claude Sonnet 4 - contributed 72% of code in testing', 
-    pricing: 'freemium'
+    pricing: 'freemium',
+    logo: '/logos/ona.svg'
   }
 ]
 

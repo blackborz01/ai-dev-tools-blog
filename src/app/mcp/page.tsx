@@ -55,12 +55,20 @@ export default function MCPDirectoryPage() {
   // Update live metrics with performance optimization
   useEffect(() => {
     const interval = setInterval(() => {
-      setLiveMetrics(prev => ({
-        activeConnections: Math.max(0, prev.activeConnections + Math.floor(Math.random() * 100 - 50)),
-        requestsPerSec: Math.max(0, prev.requestsPerSec + Math.floor(Math.random() * 200 - 100)),
-        dataTransfer: Math.max(0, +(prev.dataTransfer + (Math.random() * 10 - 5)).toFixed(1)),
-        serverUptime: Math.min(100, +(99.9 + Math.random() * 0.1).toFixed(2))
-      }))
+      setLiveMetrics(prev => {
+        // Use deterministic wave patterns instead of random
+        const time = Date.now() / 1000;
+        const wave1 = Math.sin(time * 0.5) * 50;
+        const wave2 = Math.cos(time * 0.3) * 100;
+        const wave3 = Math.sin(time * 0.7) * 5;
+
+        return {
+          activeConnections: Math.max(0, Math.floor(12847 + wave1)),
+          requestsPerSec: Math.max(0, Math.floor(3429 + wave2)),
+          dataTransfer: Math.max(0, Math.floor((847.3 + wave3) * 10) / 10),
+          serverUptime: 99.97
+        };
+      })
       setActiveMetric((prev) => (prev + 1) % 4)
     }, 2000)
 

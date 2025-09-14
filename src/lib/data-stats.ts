@@ -160,9 +160,13 @@ class DataStatsService {
 
   private formatNumber(num: number): string {
     if (num >= 1000) {
-      return `${(num / 1000).toFixed(1)}K+`
+      const thousands = Math.floor(num / 100) / 10
+      if (thousands === Math.floor(thousands)) {
+        return `${Math.floor(thousands)}K+`
+      }
+      return `${thousands}K+`
     }
-    return num.toString()
+    return Math.floor(num).toString()
   }
 
   // Method to force refresh stats (useful after adding new data)

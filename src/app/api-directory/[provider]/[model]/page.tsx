@@ -141,8 +141,8 @@ export default function APIDetailPage() {
                     <span className="text-xs font-bold opacity-60">CONTEXT</span>
                   </div>
                   <div className="text-2xl font-black">
-                    {api.contextLength >= 1000000 ? `${(api.contextLength / 1000000).toFixed(1)}M` :
-                     api.contextLength >= 1000 ? `${(api.contextLength / 1000).toFixed(0)}K` :
+                    {api.contextLength >= 1000000 ? `${Math.floor(api.contextLength / 100000) / 10}M` :
+                     api.contextLength >= 1000 ? `${Math.floor(api.contextLength / 1000)}K` :
                      api.contextLength}
                   </div>
                   <div className="text-xs opacity-60">tokens</div>

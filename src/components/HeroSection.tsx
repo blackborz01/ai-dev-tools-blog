@@ -299,7 +299,7 @@ export default function HeroSection() {
           </div>
           <div className="bg-black/60 backdrop-blur-md border-2 border-purple-400/30 p-6 hover:border-purple-400 transition-colors">
             <div className="text-4xl md:text-5xl font-black text-purple-400 mb-2">
-              ${(stats.saved / 1000).toFixed(0)}K
+              ${Math.floor(stats.saved / 1000)}K
             </div>
             <div className="text-sm font-bold opacity-70 uppercase tracking-wider">Saved This Month</div>
           </div>

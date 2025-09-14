@@ -1,5 +1,4 @@
 import React from 'react'
-import Image from 'next/image'
 import { 
   Star, ArrowUpRight, Users, Download, 
   Clock, Tag, Bookmark, Share2, ExternalLink,
@@ -27,23 +26,18 @@ interface ToolCardProps {
 }
 
 export default function ToolCard({ tool }: ToolCardProps) {
-  // Get favicon URL
-  const getFaviconUrl = (url: string) => {
-    try {
-      const domain = new URL(url).hostname
-      return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`
-    } catch {
-      return null
-    }
-  }
-
-  const faviconUrl = getFaviconUrl(tool.url)
 
   // Format numbers
   const formatNumber = (num: number) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}k`
-    return num.toString()
+    if (num >= 1000000) return `${Math.floor(num / 100000) / 10}M`
+    if (num >= 1000) {
+      const thousands = Math.floor(num / 100) / 10
+      if (thousands === Math.floor(thousands)) {
+        return `${Math.floor(thousands)}k`
+      }
+      return `${thousands}k`
+    }
+    return Math.floor(num).toString()
   }
 
   // Get rating (mock rating based on metrics)
@@ -57,38 +51,9 @@ export default function ToolCard({ tool }: ToolCardProps) {
   return (
     <div className="bg-white dark:bg-gray-900 rounded-2xl p-6 hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 group">
       {/* Header Section */}
-      <div className="flex items-start gap-4 mb-4">
-        {/* Logo/Favicon */}
-        <div className="flex-shrink-0">
-          {faviconUrl ? (
-            <div className="relative w-14 h-14">
-              <Image 
-                src={faviconUrl} 
-                alt={tool.name}
-                width={56}
-                height={56}
-                className="rounded-xl object-cover bg-gray-50 dark:bg-gray-800 p-2"
-                onError={(e) => {
-                  const target = e.target as HTMLImageElement
-                  target.style.display = 'none'
-                  target.parentElement!.innerHTML = `
-                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-                      ${tool.name.charAt(0).toUpperCase()}
-                    </div>
-                  `
-                }}
-              />
-            </div>
-          ) : (
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-xl">
-              {tool.name.charAt(0).toUpperCase()}
-            </div>
-          )}
-        </div>
-
+      <div className="mb-4">
         {/* Title & Badges */}
-        <div className="flex-1">
-          <div className="flex items-start justify-between">
+        <div className="flex items-start justify-between">
             <div>
               <div className="flex items-center gap-2 mb-1">
                 <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -148,7 +113,6 @@ export default function ToolCard({ tool }: ToolCardProps) {
               )}
             </div>
           </div>
-        </div>
       </div>
 
       {/* Description */}

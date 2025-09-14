@@ -96,17 +96,17 @@ export default function APIComparisonTable({ models }: APIComparisonTableProps) 
 
   const formatContextLength = (length?: number): string => {
     if (!length) return 'N/A'
-    if (length >= 1000000) return `${(length / 1000000).toFixed(1)}M`
-    if (length >= 1000) return `${Math.round(length / 1000)}K`
+    if (length >= 1000000) return `${Math.floor(length / 100000) / 10}M`
+    if (length >= 1000) return `${Math.floor(length / 1000)}K`
     return length.toString()
   }
 
   const formatPrice = (price?: number, per1K = false): string => {
     if (!price) return 'Free'
     if (per1K) {
-      return `$${(price * 1000).toFixed(3)}`
+      return `$${Math.floor(price * 1000000) / 1000}`
     }
-    return price < 0.001 ? `$${(price * 1000).toFixed(4)}/K` : `$${price.toFixed(4)}`
+    return price < 0.001 ? `$${Math.floor(price * 10000000) / 10000}/K` : `$${Math.floor(price * 10000) / 10000}`
   }
 
   const getStatusBadge = (status: string) => {
@@ -287,7 +287,7 @@ export default function APIComparisonTable({ models }: APIComparisonTableProps) 
                     </td>
                     <td className="p-3">
                       <span className="font-mono text-sm font-bold text-purple-600 dark:text-purple-400">
-                        {costPer1M > 0 ? `$${costPer1M.toFixed(2)}` : 'Free'}
+                        {costPer1M > 0 ? `$${Math.floor(costPer1M * 100) / 100}` : 'Free'}
                       </span>
                     </td>
                     <td className="p-3">

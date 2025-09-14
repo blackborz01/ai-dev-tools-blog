@@ -93,6 +93,14 @@ const categoryConfig: {
     accentColor: 'cyan',
     description: 'Developer tools, IDE extensions, and productivity software',
     iconBg: 'bg-gradient-to-br from-cyan-500 to-blue-500'
+  },
+  'PRODUCTIVITY': {
+    icon: TrendingUp,
+    gradient: 'from-purple-600 via-pink-500 to-rose-500',
+    bgGradient: 'from-purple-900/20 via-pink-900/20 to-rose-900/20',
+    accentColor: 'purple',
+    description: 'Flow state, work optimization, and developer productivity strategies',
+    iconBg: 'bg-gradient-to-br from-purple-500 to-pink-500'
   }
 }
 
@@ -130,8 +138,8 @@ export default function BlogPage() {
     
     // Apply category filter (case-insensitive)
     if (selectedCategory) {
-      filtered = filtered.filter(article => 
-        article.category.toUpperCase() === selectedCategory.toUpperCase()
+      filtered = filtered.filter(article =>
+        article.category && article.category.toUpperCase() === selectedCategory.toUpperCase()
       )
     }
     
@@ -150,8 +158,8 @@ export default function BlogPage() {
     const stats: { [key: string]: number } = {}
     Object.keys(categoryConfig).forEach(cat => {
       // Case-insensitive matching to handle both "PERFORMANCE" and "Performance"
-      stats[cat] = sortedArticles.filter(article => 
-        article.category.toUpperCase() === cat.toUpperCase()
+      stats[cat] = sortedArticles.filter(article =>
+        article.category && article.category.toUpperCase() === cat.toUpperCase()
       ).length
     })
     return stats
@@ -172,9 +180,15 @@ export default function BlogPage() {
   }
 
   const formatNumber = (num: number) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`
-    return num.toString()
+    if (num >= 1000000) return `${Math.floor(num / 100000) / 10}M`
+    if (num >= 1000) {
+      const thousands = Math.floor(num / 100) / 10
+      if (thousands === Math.floor(thousands)) {
+        return `${Math.floor(thousands)}K`
+      }
+      return `${thousands}K`
+    }
+    return Math.floor(num).toString()
   }
 
   return (

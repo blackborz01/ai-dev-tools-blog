@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo } from 'react'
+import { formatNumber, formatStars, formatDownloads } from '@/lib/format-utils'
 import { useRouter, useSearchParams } from 'next/navigation'
 import NextImage from 'next/image'
 import { 
@@ -252,11 +253,7 @@ export default function ToolsPage() {
     return badges[pricing as keyof typeof badges] || badges.unknown
   }
 
-  const formatNumber = (num: number) => {
-    if (num >= 1000000) return `${(num / 1000000).toFixed(1)}M`
-    if (num >= 1000) return `${(num / 1000).toFixed(1)}K`
-    return num.toString()
-  }
+  // Using deterministic formatting from format-utils to prevent hydration issues
 
   return (
     <>
@@ -434,31 +431,10 @@ export default function ToolsPage() {
                       <div key={tool.id} className="w-full md:w-1/2 lg:w-1/4 flex-shrink-0 px-2">
                         <div className="bg-white/5 backdrop-blur-xl rounded-xl border border-white/10 p-4 h-full">
                           <div className="flex flex-col h-full">
-                            {/* Header with Logo and Title */}
-                            <div className="flex items-start gap-3 mb-3">
-                              <div className="flex-shrink-0">
-                                {tool.logo && !tool.logo.startsWith('http') ? (
-                                  <div className="relative w-12 h-12">
-                                    <NextImage 
-                                      src={tool.logo} 
-                                      alt={tool.name}
-                                      width={48}
-                                      height={48}
-                                      className="rounded-lg object-contain bg-white/10 p-1"
-                                      onError={(e) => {
-                                        e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"%3E%3Crect x="3" y="3" width="18" height="18" rx="2" ry="2"/%3E%3C/svg%3E'
-                                      }}
-                                    />
-                                  </div>
-                              ) : (
-                                <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 flex items-center justify-center">
-                                  <Code className="w-6 h-6 text-white" />
-                                </div>
-                              )}
-                            </div>
-                            
+                            {/* Header with Title */}
+                            <div className="mb-3">
                               {/* Title and Badge */}
-                              <div className="flex-1">
+                              <div>
                                 <h3 className="text-lg font-bold text-white mb-1 line-clamp-1">{tool.name}</h3>
                                 <div className="flex items-center gap-2">
                                   <span className={`inline-flex px-2 py-0.5 text-xs font-medium rounded-full border ${badge.class}`}>
@@ -597,34 +573,8 @@ export default function ToolsPage() {
                     )}
 
                     <div className="p-6">
-                      <div className="flex items-start gap-4 mb-4">
-                        {/* Tool Logo */}
-                        <div className="flex-shrink-0">
-                          {tool.logo && !tool.logo.startsWith('http') ? (
-                            <div className="relative w-14 h-14">
-                              <NextImage 
-                                src={tool.logo} 
-                                alt={tool.name}
-                                width={56}
-                                height={56}
-                                className="rounded-xl object-contain bg-white/10 p-2"
-                                onError={(e) => {
-                                  e.currentTarget.style.display = 'none'
-                                  e.currentTarget.parentElement!.innerHTML = `
-                                    <div class="w-14 h-14 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} flex items-center justify-center">
-                                      <svg class="w-7 h-7 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"/></svg>
-                                    </div>
-                                  `
-                                }}
-                              />
-                            </div>
-                          ) : (
-                            <div className={`w-14 h-14 p-3 rounded-xl bg-gradient-to-br ${categoryInfo.gradient} group-hover:scale-110 transition-transform duration-300 flex items-center justify-center`}>
-                              <Icon className="w-7 h-7 text-white" />
-                            </div>
-                          )}
-                        </div>
-                        
+                      <div className="mb-4">
+
                         <div className="flex-1">
                           <h3 className="font-bold text-lg text-white mb-1 line-clamp-1">
                             {tool.name}
