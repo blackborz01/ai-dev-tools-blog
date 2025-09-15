@@ -212,7 +212,7 @@ const nextConfig = {
   webpack: (config, { dev, isServer, webpack, nextRuntime }) => {
     // Don't apply optimizations to Edge runtime
     if (nextRuntime === 'edge') return config
-    // Production optimizations
+    // Aggressive mobile optimizations
     if (!dev && !isServer) {
       // Better chunk splitting for CSS
       config.optimization = {
@@ -223,12 +223,12 @@ const nextConfig = {
         sideEffects: false,
         splitChunks: {
           chunks: 'all',
-          minSize: 20000,
+          minSize: 10000, // Reduced for better mobile chunking
           minRemainingSize: 0,
           minChunks: 1,
-          maxAsyncRequests: 30,
-          maxInitialRequests: 30,
-          enforceSizeThreshold: 50000,
+          maxAsyncRequests: 6, // Reduced for mobile networks
+          maxInitialRequests: 4, // Reduced for faster mobile initial load
+          enforceSizeThreshold: 30000, // Smaller chunks for mobile
           cacheGroups: {
             default: false,
             defaultVendors: false,
@@ -249,7 +249,7 @@ const nextConfig = {
             },
             lib: {
               test(module) {
-                return module.size() > 160000 &&
+                return module.size() > 80000 && // Reduced threshold for mobile
                   /node_modules[/\\]/.test(module.identifier());
               },
               name(module) {

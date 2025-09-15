@@ -13,24 +13,18 @@ LoadingSkeleton.displayName = 'LoadingSkeleton'
 
 // Dynamic imports with proper loading states
 const OriginalHero = dynamic(() => import('@/components/OriginalHero'), {
-  loading: () => <LoadingSkeleton />,
-  ssr: true
+  loading: () => null, // Minimal loading for above-fold
+  ssr: true // Keep SSR for SEO
 })
 
 const FuturisticTrending = dynamic(() => import('@/components/FuturisticTrending'), {
-  loading: () => <LoadingSkeleton />,
+  loading: () => null, // Remove skeleton for mobile speed
   ssr: false // Defer on mobile for faster initial load
 })
 
 const ShipFaster = dynamic(() => import('@/app/Sections/ShipFaster'), {
-  loading: () => (
-    <section className="py-12 md:py-16 bg-black" style={{ minHeight: 480 }}>
-      <div className="container mx-auto px-6 md:px-10">
-        <div className="h-32 bg-gray-900/20 rounded animate-pulse" />
-      </div>
-    </section>
-  ),
-  ssr: true // Keep SSR for initial render
+  loading: () => null, // Reduce loading overhead
+  ssr: false // Defer to client for mobile performance
 })
 
 const ScrollingBanner = dynamic(() => import('@/components/ScrollingBanner'), {
@@ -39,7 +33,7 @@ const ScrollingBanner = dynamic(() => import('@/components/ScrollingBanner'), {
 })
 
 const SmartToolFinder = dynamic(() => import('@/components/SmartToolFinder'), {
-  loading: () => <LoadingSkeleton />,
+  loading: () => null, // Remove skeleton for mobile speed
   ssr: false
 })
 
@@ -62,8 +56,8 @@ export default function HomePageContent() {
             contain: 'layout style paint',
             willChange: 'transform'  // GPU acceleration hint
           }} />
-          <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ willChange: 'opacity', contain: 'layout' }} />
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s', willChange: 'opacity', contain: 'layout' }} />
+          <div className="absolute top-20 left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" style={{ contain: 'layout' }} />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" style={{ contain: 'layout' }} />
         </div>
         
         <div className="relative z-10">
